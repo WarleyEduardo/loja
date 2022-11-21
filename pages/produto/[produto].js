@@ -1,7 +1,7 @@
 
 /* modulo 39 - loja virtual -  criando arquivos de pasta  */
 
-import react, { Component } from 'react';
+import React, { Component } from 'react';
 
 export default class Produto extends Component {
 	render() {

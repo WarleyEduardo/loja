@@ -1,22 +1,26 @@
-/* modulo 41 - loja virtual - criando configuração básica da loja */
+/* modulo 41 - loja virtual - criando configuração básica da pagina */
  
 import React from 'react';
-export default () => (
+/*export default () => ( */
+
+ const Style = () =>(
 	
-	<sytle jsx global>
+	<style jsx global>
 		{`
 		  body {
 
-			margim : 0;
-			padding : 0;
+			margin: 0;
+			padding: 0;
 
 		  }
 
-		  .flex {display : flex}
+		  .flex {display: flex}
 		  .flex-center {
-			justify-content: center;
+			justify-content: center;	
 			align-items: center;
 		  }
 		`}
-	</sytle>
-)
+	</style>
+);
+
+export default Style;
