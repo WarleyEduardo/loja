@@ -1,0 +1,55 @@
+
+npm init - y   ( criar a estrutura do package.json )
+
+instalar as 3 dependencias padrão react react-dom  next
+npm install --save react react-dom next  
+
+--------------------------------------------------
+depedencias:
+
+npm install --save async axios  js-cookie  moment next-redux-wrapper redux react-redux redux-thunk
+
+async - para fazer requisições assíncrona.
+axios - para fazer requisições no servidor.
+js-cookie - para armazenar o tokem no cooke.
+moment  -  para trabalhar formatação de datas.
+next-redux-wrapper - ajuda na integração do redux com next 
+redux  - para controlar os estados 
+react-redux - para integrar o react e redux
+redux-thunk - para fazer os dispatch nas actions do redux.
+
+apos instalado  editar o package.json 
+
+em script remover teste 
+e adicinoar
+"dev":"next",
+"start":"next start",
+"build":"next build" 
+
+
+
+
+rodar o servidor local
+npm rum dev -- -p 5000 
+
+
+
+
+
+
+
+
+
+-------------------- orientação do professor -------------------------------
+
+Para criar o package.json com a configuração básica para o npm​:
+
+> npm init -y
+
+ Para instalar os 3 pacotes principais:
+
+> npm install --save react@16.8.6 ​react-dom@16.8.6 next@9.0.1
+
+Para instalar o restante das dependências:
+
+> npm install --save async@3.1.0 axios@0.19.0 moment@2.24.0 react-redux@7.1.0 js-cookie@2.2.0 next-redux-wrapper@3.0.0-alpha.3 redux-thunk@2.3.0 redux@4.0.4
