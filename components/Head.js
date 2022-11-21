@@ -32,7 +32,7 @@ const Head = (props) => (
 	</NextHead>
 );
 
-Head.protoTypes = {
+Head.propTypes = {
 
 	title: string,
 	description: string,

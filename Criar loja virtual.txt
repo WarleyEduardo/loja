@@ -17,6 +17,7 @@ next-redux-wrapper - ajuda na integração do redux com next
 redux  - para controlar os estados 
 react-redux - para integrar o react e redux
 redux-thunk - para fazer os dispatch nas actions do redux.
+>npm install --save prop-types
 
 apos instalado  editar o package.json 
 
