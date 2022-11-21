@@ -11,8 +11,7 @@ const defaultDescricao = '';
 const defaultOGURL = '';
 const defaultOGImage = "/static/logo.png";
 
-const Head = props => (
-	
+const Head = (props) => (
 	<NextHead>
 		<meta charSet='UTF-8' />
 		<title>{props.title || ''}</title>
@@ -28,8 +27,10 @@ const Head = props => (
 		<meta property='og:image' content={props.ogImage || defaultOGImage} />
 		<meta property='og:image:width' content='600' />
 		<meta property='og:image:height' content='600' />
+		<link rel='stylesheet' href='/static/font-awesome.min.css' />
+		{props.children}
 	</NextHead>
-)
+);
 
 Head.protoTypes = {
 
