@@ -10,30 +10,39 @@ import { initStore } from '../redux';
 
 
 class Principal extends App {
-
 	static async getInitialProps({ Component, ctx }) {
-	   
-		return {pageProps: Component.getInitialProps ? await Component.getInitialProps(ctx) : {} }
+		return { pageProps: Component.getInitialProps ? await Component.getInitialProps(ctx) : {} };
 	}
-	
+
 	render() {
+		const { Component, pageProps, store } = this.props;
+
+		return (
+			
+				<Provider store={store}>
+					<Component {...pageProps} />
+				</Provider>
+			
+		);
+	}
+
+	/*
+	  	render() {
 		
 		const { Component, pageProps, store } = this.props;
 
 		return (
 			<Container>
 				<Provider store={store}>
-					<Component {...pageProps}>						
-					</Component>
+					<Component {...pageProps} />
 				</Provider>
 			</Container>
-		)
+		);
 	}
-	
+	  
+	 
+	 */
 }
-
-
-
 
 export default withRedux(initStore)(Principal);
 

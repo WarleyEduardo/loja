@@ -8,6 +8,10 @@ export default function (ctx) {
 	if (ctx.isServer) {
 		ctx.store.dispatch(actions.reauthenticate(getCookie('token', ctx.req)));
 	} else if (ctx.store) {
+
+		console.log('entrou aqui')
+
+		
 		const token = ctx.store.getState().auth.token;	
 
 		if (!token && (

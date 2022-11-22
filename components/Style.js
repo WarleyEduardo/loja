@@ -14,7 +14,7 @@ import React from 'react';
 
 		  }
 
-		  .flex {display: flex}
+		  .flex {display: flex;}
 		  .flex-center {
 			justify-content: center;	
 			align-items: center;
