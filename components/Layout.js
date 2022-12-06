@@ -3,7 +3,7 @@
 import  Head   from './Head';
 import  Style  from './Style';
 
-const Layout = ({ children, title, description, url, image }) => {
+const Layout = ({ children, title, description, url, image }) => (
 	
 	<div>
 		<Head
@@ -15,7 +15,7 @@ const Layout = ({ children, title, description, url, image }) => {
 			
 		</Head>	
 		<Style />
-		<div className='body'>
+		<div className="body">
           {children}
 		</div>
 		<footer>
@@ -26,7 +26,7 @@ const Layout = ({ children, title, description, url, image }) => {
 			</div>
 		</footer>
 	</div>
-};
+);
 
 
 
