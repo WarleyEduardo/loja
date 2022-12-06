@@ -9,8 +9,6 @@ export default function (ctx) {
 		ctx.store.dispatch(actions.reauthenticate(getCookie('token', ctx.req)));
 	} else if (ctx.store) {
 
-		console.log('entrou aqui')
-
 		
 		const token = ctx.store.getState().auth.token;	
 

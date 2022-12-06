@@ -3,7 +3,7 @@
 /* ao renomear o arquivos como _app  o "next" reconhece automaticamente
  o arquivo como base para todas as demais paginas */
 
-import { Provider } from 'react-redux';
+import { Provider} from 'react-redux';
 import App, { Container } from 'next/app'; 
 import withRedux from 'next-redux-wrapper';
 import { initStore } from '../redux';
@@ -18,30 +18,14 @@ class Principal extends App {
 		const { Component, pageProps, store } = this.props;
 
 		return (
-			
-				<Provider store={store}>
-					<Component {...pageProps} />
-				</Provider>
-			
+			//<Containder>
+			<Provider store={store}>
+				<Component {...pageProps} />
+			</Provider>
+			//</Containder>
 		);
 	}
 
-	/*
-	  	render() {
-		
-		const { Component, pageProps, store } = this.props;
-
-		return (
-			<Container>
-				<Provider store={store}>
-					<Component {...pageProps} />
-				</Provider>
-			</Container>
-		);
-	}
-	  
-	 
-	 */
 }
 
 export default withRedux(initStore)(Principal);
