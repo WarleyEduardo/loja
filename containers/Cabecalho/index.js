@@ -3,9 +3,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-import Logo from '../../components/logo/Cabecalho';
+import Logo from '../../components/Logo/Cabecalho';
 import CampoPesquisa from '../../components/Campos/Pesquisa';
-import CardCarrinho from '../../components/Cards/Carrinho'
+import CardCarrinho from '../../components/Cards/Carrinho';
 
 class Cabecalho extends React.Component {
 
@@ -43,7 +43,7 @@ class Cabecalho extends React.Component {
 		
 		const { simples } = this.props;
 
-		return simples ? renderCabecalhoSimples() : renderCabecalhoNormal();
+		return simples ? this.renderCabecalhoSimples() : this.renderCabecalhoNormal();
 	}
 	
 }

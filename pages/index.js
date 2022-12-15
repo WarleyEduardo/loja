@@ -7,10 +7,12 @@ import React, { Component } from 'react';
 
 import Layout from '../components/Layout';
 import Cabecalho from '../containers/Cabecalho';
+/*
 import Banners from '../containers/Banners';
 import Beneficios from '../containers/Beneficios';
 import ProdutosPaginaInicial from '../containers/Lista/ProdutosPaginaInicial';
 import Rodape from '../containers/Rodapé';
+*/
 
 
 export default class Index extends Component{
@@ -18,11 +20,11 @@ export default class Index extends Component{
 	render() {
 		return (
 			<Layout title='Loja IT - melhores produtos de informática'>
-				<Cabecalho />
-				<Banners />
+				<Cabecalho  />
+				{/*<Banners />
 				<Beneficios />
 				<ProdutosPaginaInicial />
-				<Rodape/>
+				<Rodape/>*/}
 			</Layout>
 		);
 	}
