@@ -7,6 +7,7 @@ import React, { Component } from 'react';
 
 import Layout from '../components/Layout';
 import Cabecalho from '../containers/Cabecalho';
+import Banners from '../containers/Banners';
 /*
 import Banners from '../containers/Banners';
 import Beneficios from '../containers/Beneficios';
@@ -20,8 +21,9 @@ export default class Index extends Component{
 	render() {
 		return (
 			<Layout title='Loja IT - melhores produtos de informática'>
-				<Cabecalho  />
-				{/*<Banners />
+				<Cabecalho />
+				<Banners />
+				{/*
 				<Beneficios />
 				<ProdutosPaginaInicial />
 				<Rodape/>*/}

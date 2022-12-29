@@ -15,13 +15,13 @@ class CardCarrinho extends Component {
 			<div className='itens-cabecalho flex-2 flex flex-center'>
 				<Link href="/area-cliente">
 					<div className='item-cabecalho'>
-						<i className='fas fa-user'></i>
+						<i className='fa fa-user'></i>
                          <span>Minha Conta</span>  
 					</div>
 				</Link>
 				<Link href="/carrinho">
 					<div className='item-cabecalho cart'>
-						<i className='fas fa-shopping-cart'></i>
+						<i className='fa fa-shopping-bag'></i>
 						<span>{this.state.cartQtd || 0}</span>
 					</div>
 				</Link>

@@ -7,6 +7,10 @@ import Logo from '../../components/Logo/Cabecalho';
 import CampoPesquisa from '../../components/Campos/Pesquisa';
 import CardCarrinho from '../../components/Cards/Carrinho';
 
+/* Modulo 41 - pagina inicial - criando o componente de categorias */
+
+import Categorias from '../../components/Listas/Categorias';
+
 class Cabecalho extends React.Component {
 
 
@@ -21,6 +25,14 @@ class Cabecalho extends React.Component {
 					<CampoPesquisa />
 					<CardCarrinho/>
 				</div>
+			
+				
+				<div className="categorias-wrapper">
+					<Categorias/>
+				</div>
+
+
+
 				
 		   </div>
 		)
