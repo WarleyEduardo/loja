@@ -2,12 +2,26 @@
 
 import React, { Component } from 'react';
 
-export default class Pesquisa extends Component {
+
+
+/* modulo 41 - pagina de pesquisa criando a pagina de pesquisa e componentes */
+
+import Layout from '../components/Layout';
+import Cabecalho from '../containers/Cabecalho';
+import Rodape from '../containers/Rodape'
+import ProdutosPesquisa from '../containers/Lista/ProdutosPesquisa';
+
+
+ class Pesquisa extends Component {
 	render() {
 		return (
-			<div>
-				<h2>Loja IT - pesquisa</h2>
-			</div>
+			<Layout title='Resultados para mouse |  LOJA IT - melhores produtos de tecnologia'>
+				<Cabecalho />
+				<ProdutosPesquisa />
+				<Rodape />
+			</Layout>
 		);
 	}
 }
+
+export default Pesquisa

@@ -19,14 +19,14 @@ class Categorias extends Component {
 
 		return (
 			
-			<div className="categorias flex horizontal">
+			<div className="categorias flex horizontal-mb">
 
 				{
 					categorias.map(categoria => (
 						
 						<Link href={`/categoria/${categoria.nome}?id=${categoria.id}`}>
 							<div className="categoria-item flex-1 flex flex-center">
-								<span>
+								<span className='text-center'>
 									{ categoria.nome}
 								</span>
 
