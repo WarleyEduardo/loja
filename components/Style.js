@@ -78,6 +78,16 @@ import React from 'react';
 					align-items: center;
 				}
 
+				.flex-right {
+					justify-content: right;
+					align-items: center;
+				}
+
+				.flex-left {
+					justify-content: left;
+					align-items: center;
+				}
+
 				.flex-start {
 					justify-content: flex-start;
 					align-items: center;
@@ -108,6 +118,12 @@ import React from 'react';
 
 					.horizontal {
 						flex-direction: column;
+					}
+
+					.logoTipo,
+					.itens-cabecalho {
+						justify-content: center;
+						align-items: center;
 					}
 				}
 			`}

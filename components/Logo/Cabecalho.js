@@ -7,9 +7,9 @@ const LogoCabecalho = () => (
 
 	
 	
-	<div className='flex-2 flex flex-center'>
+	<div className='flex-2 flex flex-left logoTipo'>
 		<Link href="/">
-			<img src="/static/logo.png" className="logo" width="90%"/>
+			<img src="/static/logo.png" className="logo" width="35%"/>
 		</Link>
 
 	</div>
