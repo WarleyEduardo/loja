@@ -21,7 +21,7 @@ class Hero extends Component{
 		
 		return (
 			<div className='fotos flex-2 flex vertical'>
-				<div className='fotos-principal flex-6 flex flex-center'>
+				<div className='foto-principal flex-6 flex flex-center'>
 					<img src={this.state.foto} width="95%"/>
 				</div>
 
@@ -74,62 +74,47 @@ class Hero extends Component{
 		
 		return (
 			<div className='flex-2 produto-detalhes'>
-				<div className="titulo">
+				<div className='titulo'>
 					<h2>Mouser Gamer 2</h2>
 				</div>
-				
-				<div className="categoria">
-					<p>Categoria:&nbsp;Mouser Gamer</p>
-				</div>
-				
-				<br />
-				
-				<div className="precos">
-					
-					<h2 className='preco-original preco-por'>
-						R$ 55,00
-					</h2>
-					
-					<h2 className='preco-promocao preco-por'>
-						R$ 45,00
-					</h2>
-					
-					<h4 className='preco-dividido preco-por'>
-						ou 6x de R$ 7,50 sem juros
-					</h4>
 
+				<div className='categoria'>
+					<p>
+						Categoria:&nbsp;<span className='categoria-link'>Mouser Gamer</span>
+					</p>
+				</div>
+
+				<br />
+
+				<div className='precos'>
+					<h2 className='preco-original preco-por'>R$ 55,00</h2>
+
+					<h2 className='preco-promocao'>R$ 45,00</h2>
+
+					<h4 className='preco-parcelado'>ou 6x de R$ 7,50 sem juros</h4>
 				</div>
 				<br />
 				{this.renderVariacoes()}
 
-				<div className="opcoes">
-					<div className='opcao'>
+				<div className='opcoes'>
+					<div className='opcao flex vertical'>
 						<label className='opcao-tab'>Quantidade</label>
-						<input
-							className='opcao-input'
-							type="number"
-							name="quantidade"
-							defaultValue={1}
-						/>
-						
+						<input className='opcao-input' type='number' name='quantidade' defaultValue={1} min={1} />
 					</div>
 				</div>
 
-				<div className="comprar">
-					<button className='btn btn-sucess btn-cta' onClick={()=> this.addCart()}>
+				<div className='comprar'>
+					<button className='btn btn-sucess btn-cta' onClick={() => this.addCart()}>
 						COMPRAR
 					</button>
 				</div>
-
-
-			
 			</div>
-		)
+		);
 	} 
 	render() {
 	   
 		return (
-			<div className='flex horizontal'>
+			<div className='Produto-Hero flex horizontal'>
 				{this.renderPhotos()}
 				{this.renderDetalhes()}
 			</div>

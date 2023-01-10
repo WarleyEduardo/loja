@@ -11,6 +11,11 @@ import Descricao from './Descricao';
 /* modulo 42 - paginas do produto -  criando componente de avaliacoes */
 import Avalicoes from './Avaliacoes';
 
+
+
+/* modulo 42 - paginas do produto -  criando componente de produtos relacionados */
+import ProdutosRelacionados from './ProdutosRelacionados';
+
 class ProdutoContanier extends Component{
 
 
@@ -19,7 +24,8 @@ class ProdutoContanier extends Component{
 			<div className='container-big Produto'>
 				<Hero />
 				<Descricao />				
-	         	<Avalicoes/>	
+				<Avalicoes />
+				<ProdutosRelacionados/>
 			</div>
 		);
 	 }

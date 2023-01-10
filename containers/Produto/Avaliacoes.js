@@ -9,7 +9,7 @@ class Avaliacoes extends Component{
 		
 		return (
 			<div className='avaliacoes-items flex horizontal wrap no-wrap-mb'>
-				<div className='avaliacoes flex-1 flex vertical wrap-3'>
+				<div className='avaliacao flex-1 flex vertical wrap-3'>
 					<div className='avaliacao-texto flex-3 flex-texto'>
 						<p>Ótimo produto, gostei muito do mouse, utilizado para minhas livestreams.</p>
 					</div>
@@ -30,7 +30,7 @@ class Avaliacoes extends Component{
 					</div>
 				</div>
 
-				<div className='avaliacoes flex-1 flex vertical wrap-3'>
+				<div className='avaliacao flex-1 flex vertical wrap-3'>
 					<div className='avaliacao-texto flex-3 flex-texto'>
 						<p>Produto de boa qualidade, gostei da velocidade da entrega</p>
 					</div>
@@ -52,7 +52,7 @@ class Avaliacoes extends Component{
 					</div>
 				</div>
 
-				<div className='avaliacoes flex-1 flex vertical wrap-3'>
+				<div className='avaliacao flex-1 flex vertical wrap-3'>
 					<div className='avaliacao-texto flex-3 flex-texto'>
 						<p>o produto não durou um mês comigo.</p>
 					</div>
@@ -69,7 +69,6 @@ class Avaliacoes extends Component{
 						</div>
 					</div>
 				</div>
-
 			</div>
 		);
 	}
@@ -92,7 +91,7 @@ class Avaliacoes extends Component{
 					</div>
 					<div className="flex vertical">
 						<label>Avalição</label>
-						<textarea rows="4" style={{ resize: "nome", width: "100%", maxWidth: "500px" }}
+						<textarea rows="3" style={{ resize: "nome", width: "100%", maxWidth: "500px" }}
 						 placeholder="Digite aqui a sua avaliação"
 						>
 
