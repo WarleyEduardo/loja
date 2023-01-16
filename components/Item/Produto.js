@@ -5,7 +5,12 @@ import Link from 'next/link';
 import { baseImg } from '../../config.js';
 
 
+/*
+modulo 42 - pagina de Carrinho - criando a estrutura da pagina e componentes 2/3
 const formatMoney = (value) => "R$ " + (value || 0).toFixed(2).replace(".", ",");
+*/
+
+import { formatMoney } from '../../utils';
 
 class Produto extends Component{
 

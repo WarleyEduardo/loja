@@ -40,6 +40,15 @@ import React from 'react';
 				.flex-3 {
 					flex: 3;
 				}
+				.flex-4 {
+					flex: 4;
+				}
+				.flex-5 {
+					flex: 5;
+				}
+				.flex-6 {
+					flex: 6;
+				}
 
 				.wrap {
 					flex-wrap: wrap;
