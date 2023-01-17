@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 
 import DadosCliente from './DadosCliente';
-//import DadosEntrega from './DadosEntrega';
+import DadosEntrega from './DadosEntrega';
 //import SubmitDadosCliente from './SubmitDadosCliente';
 //import DadosFrete from './DadosFrete';
 //import DadosPagamento from './DadosPagamento';
@@ -19,8 +19,8 @@ class CheckoutContainer extends Component{
 				<h2>CONCLUÍNDO SEU PEDIDO</h2>
 				<br />
 				<DadosCliente />
-				{/*
 				<DadosEntrega />
+				{/*
 				<SubmitDadosCliente />
 				<DadosFrete />
 				<DadosPagamento />
