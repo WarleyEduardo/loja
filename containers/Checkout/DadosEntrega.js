@@ -44,7 +44,7 @@ class DadosClienteContainer extends Component {
 		return (
 			<div className='flex-1 flex vertical'>
 				<div>
-					<h2>Dados de Entrega </h2>
+					<h2>DADOS DE ENTREGA </h2>
 				</div>
 
 				<div className='flex-1'>
@@ -107,7 +107,7 @@ class DadosClienteContainer extends Component {
 		return (
 			<div className='flex-1 flex vertical'>
 				<div>
-					<h2>Dados de Cobrança </h2>
+					<h2>DADOS DE COBRANÇA </h2>
 				</div>
 
 				<div className='flex-1'>

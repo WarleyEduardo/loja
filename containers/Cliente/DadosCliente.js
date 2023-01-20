@@ -79,7 +79,7 @@ class DadosClienteContainer extends Component {
 		return (
 			<div className='flex-1'>
 				<div>
-					<h2>DADOS DO ClIENTE</h2>
+					<h2>DADOS DO CLIENTE</h2>
 				</div>
 				{this.renderDadosRegistro()}
 				{this.renderDadosUsuario()}
