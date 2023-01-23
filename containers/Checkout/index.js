@@ -7,8 +7,8 @@ import DadosEntrega from './DadosEntrega';
 import SubmitDadosCliente from './SubmitDadosCliente';
 import DadosFrete from './DadosFrete';
 import DadosPagamento from './DadosPagamento';
-//import DadosPedido from './DadosPedido';
-//import CheckoutButton from './CheckoutButton';
+import DadosPedido from './DadosPedido';
+import CheckoutButton from './CheckoutButton';
 
 class CheckoutContainer extends Component{
 
@@ -23,9 +23,8 @@ class CheckoutContainer extends Component{
 				<SubmitDadosCliente />
 				<DadosFrete />
 				<DadosPagamento />
-				{/*
-				<DadosPedido />
-		<CheckoutButton/>*/}
+				<DadosPedido />			
+		        <CheckoutButton/>
 			</div>
 		);
    }

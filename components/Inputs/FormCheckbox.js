@@ -7,8 +7,8 @@ class FormSimples extends Component {
 		const {  name, checked, label, onChange } = this.props;
 
 		return (
-			<div className='form-input form-checkbox'>
-				<input type="checkbox" checked={checked} name={name}  onChange={onChange} />
+			<div className='form-input form-check'>
+				<input type='checkbox' checked={checked} name={name} onChange={onChange} />
 				<label>{label}</label>
 			</div>
 		);

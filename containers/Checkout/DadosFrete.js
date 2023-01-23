@@ -1,11 +1,17 @@
 /* modulo 42 - pagina de Checkout - criando o componente de dados de frete  */
 import React, { Component } from 'react';
 
-import FormCheckbox from '../../components/Inputs/Formcheckbox';
+import FormRadio from '../../components/Inputs/FormRadio';
 
 class DadosFrete extends Component{
 
+	state = {
+		frete_selecionado: "PAC"
+	}
+
 	render() {
+
+		const { frete_selecionado } = this.state;
 		
 		return (
 			<div className='Dados-Frete'>
@@ -13,10 +19,19 @@ class DadosFrete extends Component{
 				<br />
 				<div className='flex horizontal'>
 					<div className='flex-1'>
-						<FormCheckbox name='PAC' checked={true} label='PAC (8 dias úteis) -  R$ 18,90' />
+						<FormRadio name='frete_selecionado'
+							checked={frete_selecionado === 'PAC'}
+							label='PAC (8 dias úteis) -  R$ 18,90'
+							onChange={()=> this.setState({frete_selecionado: "PAC"})}
+						/>
 					</div>
 					<div className='flex-1'>
-						<FormCheckbox name='SEDEX' checked={false} label='SEDEX (3 dias úteis) -  R$ 35,90' />
+						<FormRadio
+							name='frete_selecionado'
+							checked={frete_selecionado === 'SEDEX'}
+							label='SEDEX (3 dias úteis) -  R$ 35,90'
+							onChange={()=> this.setState({frete_selecionado: "SEDEX"})}
+						/>
 					</div>
 				</div>
 			</div>

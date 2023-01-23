@@ -24,37 +24,35 @@ const PRODUTOS = [
 ];
 
 class ListaDeProdutos extends Component {
-	
-	renderCabecalhoCarrinho() {
+	renderCabecalhoCarrinho(semAlteracoes) {
 		return (
 			<div className='carrinho-cabecalho no-mb-flex flex'>
-				
 				<div className='flex-4'></div>
-				
-				<div className='headline flex-1 flex-center'>
+
+				<div className='headline flex-1 flex flex-center'>
 					<h3>Quantidade</h3>
 				</div>
-				
-				<div className='headline flex-1 flex-center'>
+
+				<div className='headline flex-1 flex flex-center'>
 					<h3>Preço Unitário</h3>
 				</div>
-				
-				<div className='headline flex-1 flex-center'>
+
+				<div className='headline flex-1 flex flex-center'>
 					<h3>Preço total</h3>
 				</div>
-				
-				<div className='flex-1'></div>
+
+				{!semAlteracoes && <div className='flex-1'></div>}
 			</div>
-		)
+		);
 	}
 
-	renderProduto(item) {
+	renderProduto(item, semAlteracoes) {
 		const foto = item.fotos[0];
 		const nome = item.titulo;
 		const { quantidade, precoUnitario } = item;
 
 		return (
-			<div key={item.id} className="carrinho-item flex">
+			<div key={item.id} className='carrinho-item flex'>
 				<div className='flex-4 flex'>
 					<div className='produto-image flex-2 flex flex-center'>
 						<img src={foto} alt={nome} width='100px' />
@@ -66,7 +64,7 @@ class ListaDeProdutos extends Component {
 				</div>
 
 				<div className='flex-1 flex flex-center'>
-					<input type='number' defaultValue={quantidade} className='produto-quantidade' />
+					{semAlteracoes ? <span>{quantidade}</span> : <input type='number' defaultValue={quantidade} className='produto-quantidade' />}
 				</div>
 
 				<div className='flex-1 flex flex-center'>
@@ -76,26 +74,27 @@ class ListaDeProdutos extends Component {
 				<div className='flex-1 flex flex-center'>
 					<span>{formatMoney(precoUnitario * quantidade)}</span>
 				</div>
-
-				<div className='flex-1 flex flex-center'>
-					<span className='btn-remover'>Remover</span>
-				</div>
+				{!semAlteracoes && (
+					<div className='flex-1 flex flex-center'>
+						<span className='btn-remover'>Remover</span>
+					</div>
+				)}
 			</div>
 		);
 	}
 
-	renderProdutos() {
-		return PRODUTOS.map((item) => this.renderProduto(item))
-		
+	renderProdutos(semAlteracoes) {
+		return PRODUTOS.map((item) => this.renderProduto(item, semAlteracoes));
 	}
 
 	render() {
+		const { semAlteracoes } = this.props;
 		return (
 			<div className='Lista-De-Produtos flex vertical'>
-				{this.renderCabecalhoCarrinho()}
-				{this.renderProdutos()}
+				{this.renderCabecalhoCarrinho(semAlteracoes)}
+				{this.renderProdutos(semAlteracoes)}
 			</div>
-		)
+		);
 	}
 }
 

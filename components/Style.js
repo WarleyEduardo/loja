@@ -88,7 +88,7 @@ import React from 'react';
 				}
 
 				.flex-right {
-					justify-content: right;
+					justify-content: flex-end;
 					align-items: center;
 				}
 

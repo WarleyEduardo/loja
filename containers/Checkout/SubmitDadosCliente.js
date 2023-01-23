@@ -11,8 +11,8 @@ class SubmitDadosCliente extends Component{
 			<div>
 				<AlertGeral show={true} msg='E-mail já utilizado na loja' />
 
-				<div className='flex flex-left'>
-					<button className="btn btn-sucess btn-cta"
+				<div className='flex flex-right'>
+					<button className="btn btn-success btn-cta"
 						onClick={() => alert('continuar pedido')}>
 						CONTINUAR PEDIDO
 					</button>

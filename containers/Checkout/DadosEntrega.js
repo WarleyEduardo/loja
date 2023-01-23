@@ -60,7 +60,7 @@ class DadosClienteContainer extends Component {
 						<FormSimples value={numero} name='numero' placeholder='999' label='Número' onChange={(e) => this.onChange('numero', e)} />
 					</div>
 				</div>
-				
+
 				<div className='flex-1 flex horizontal'>
 					<div className='flex-1 flex'>
 						<FormSimples value={bairro} name='bairro' placeholder='Bairro' label='Bairro' onChange={(e) => this.onChange('bairro', e)} />
@@ -76,7 +76,8 @@ class DadosClienteContainer extends Component {
 						<FormSimples value={cidade} name='cidade' placeholder='Cidade' label='Cidade' onChange={(e) => this.onChange('cidade', e)} />
 					</div>
 
-					<div className='flex-1 flex'>
+					<div className='flex-1 flex vertical form-input'>
+						<label>Estado</label>
 						<select value={estado} onChange={(e) => this.onChange('cidade', e)}>
 							<option>Selecione...</option>
 							{Object.keys(ESTADOS).map((abbr) => (
@@ -93,7 +94,7 @@ class DadosClienteContainer extends Component {
 					<input
 						checked={dadosEntregaIgualDadosCobranca}
 						type='checkbox'
-						onChange={() => this.setState({ dadosEntregaIgualDadosCobranca : !dadosEntregaIgualDadosCobranca})}
+						onChange={() => this.setState({ dadosEntregaIgualDadosCobranca: !dadosEntregaIgualDadosCobranca })}
 					/>
 					<label>&nbsp;Os dados de entrega são iguais aos dados de cobrança</label>
 				</div>
@@ -151,7 +152,8 @@ class DadosClienteContainer extends Component {
 						<FormSimples value={cidade} name='cidade' placeholder='Cidade' label='Cidade' onChange={(e) => this.onChange('cidade', e)} />
 					</div>
 
-					<div className='flex-1 flex'>
+					<div className='flex-1 flex vertical form-input'>
+						<label>Estado</label>
 						<select value={estado} onChange={(e) => this.onChangeCobranca('cidade', e)}>
 							<option>Selecione...</option>
 							{Object.keys(ESTADOS).map((abbr) => (

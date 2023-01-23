@@ -28,7 +28,7 @@ class DadosDoCarrinho extends Component {
 				</div>
 
 				<div className='dados-do-carrinho-item flex flex-right'>
-					<button className='btn btn-sucess btn-cta'>
+					<button className='btn btn-success btn-cta'>
 						<span>Finalizar Pedido</span>
 					</button>
 				</div>

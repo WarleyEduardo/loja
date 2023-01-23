@@ -1,4 +1,4 @@
-/* modulo 42 - pagina de Checkout - criando o componente de dados  de pagamento*/
+/* modulo 42 - pagina de Checkout - criando o componente de dados  de pagamento 1/2 */
 import React, { Component } from 'react';
 
 import FormRadio from '../../components/Inputs/FormRadio';
@@ -7,7 +7,12 @@ import FormSimples from '../../components/Inputs/FormSimples';
 class DadosPagamento extends Component {
 	state = {
 		opcaoPagamentoSelecionada: 'boleto',
-		CPF:""
+		CPF: "",
+		numeroCartao: "",
+		nomeCartao: "",
+		CVVCartao: "",
+		mesCartao: "",
+		anoCartao: ""
 	};
 
 	renderOpcoesPagamento() {
@@ -38,32 +43,72 @@ class DadosPagamento extends Component {
 	onChange = (field, e) => this.setState({ [field]: e.target.value });
 
 	renderPagamentoComBoleto() {
-		const { nomeCartao, numeroCartao, CVVCartao , mesCartao, anoCartao } = this.state;
-		return (
-			<div className='Dados-Pagamento'>
-				<FormSimples value={nomeCartao}
-					nome='nomeCartao'
-					Placeholder='Nome como escrito no cartão'
-					label='Nome completo no cartão'
-					onChange={() => this.onChange('nomeCartao', e)} />
-				<div className="teste">
-					
-				 </div>
-			</div>
-		);
-	}
-
-	renderPagamentoComCartao(){
+		
+		const { CPF } = this.state;
 		return (
 			<div className='Dados-Pagamento'>
 				<FormSimples value={CPF}
 					nome='CPF'
-					Placeholder='CPF'
+					placeholder='CPF'
 					label='CPF'
 					onChange={() => this.onChange('CPF', e)} />
 			</div>
 		);
 	}
+
+
+	renderPagamentoComCartao() {
+		const { nomeCartao, numeroCartao, CVVCartao , mesCartao, anoCartao } = this.state;
+		return (
+			<div className='Dados-Pagamento'>
+				<FormSimples
+					value={nomeCartao}
+					nome='nomeCartao'
+					placeholder='Nome como escrito no cartão'
+					label='Nome completo no cartão'
+					onChange={() => this.onChange('nomeCartao', e)}
+				/>
+				<div className='flex horizontal'>
+					<div className='flex-1'>
+						<FormSimples
+							value={numeroCartao}
+							nome='numeroCartao'
+							placeholder='xxxx xxxx xxxx xxxx'
+							label='Número do cartão'
+							onChange={() => this.onChange('numeroCartao', e)}
+						/>
+					</div>
+					<div className='flex-1'>
+						<FormSimples value={CVVCartao} nome='CVVCartao' placeholder='xxxx' label='Código de Segurança do Cartão' onChange={() => this.onChange('CVVCartao', e)} />
+					</div>
+				</div>
+				<div className='form-input'>
+					<label>Data de Validade</label>
+				</div>
+				<div className='flex'>
+					<FormSimples value={mesCartao} nome='mesCartao' placeholder='MM' label='MÊs' onChange={() => this.onChange('mesCartao', e)} />
+					<span className='slash-pagamento'>&nbsp;/&nbsp;</span>
+					<FormSimples value={anoCartao} nome='anoCartao' placeholder='AAAA' label='Ano' onChange={() => this.onChange('anoCartao', e)} />
+				</div>
+				<br />
+				<div className='form-input'>
+					<label>Parcelas</label>
+				</div>
+				<div className='flex'>
+					<select name='parcela'>
+						<option>Selecione a quantidade de parcelas para pagamento</option>
+						<option value='1'>1x de R$ de 105,00 sem juros</option>
+						<option value='2'>2x de R$ de 62,50 sem juros</option>
+						<option value='3'>3x de R$ de 35,00 sem juros</option>
+						<option value='4'>4x de R$ de 31,75 sem juros</option>
+						<option value='5'>5x de R$ de 21,00 sem juros</option>
+						<option value='6'>6x de R$ de 17,50 sem juros</option>
+					</select>
+				</div>
+			</div>
+		);
+	}
+
 
 	render() {
 		const { opcaoPagamentoSelecionada } = this.state;

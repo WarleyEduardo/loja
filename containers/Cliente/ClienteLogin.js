@@ -15,7 +15,7 @@ class ClienteLogin extends Component {
 			<div className='flex-1'>
 				<h2>Comprar como visitante/Realizar Registro</h2>
 				<br />
-				<button className='btn btn-sucess'>
+				<button className='btn btn-success'>
 					<span>CONTINUAR</span>
 				</button>
 			</div>
@@ -46,7 +46,7 @@ class ClienteLogin extends Component {
 					onChange={(v) => this.setState({ senha: v.target.value })} />
 
 				<br />
-				<button className='btn btn-sucess'>
+				<button className='btn btn-success'>
 					<span>ENTRAR</span>
 				</button>
 			</div>
