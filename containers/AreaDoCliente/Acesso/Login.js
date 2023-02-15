@@ -19,8 +19,7 @@ class LoginContainer extends Component {
 		return (
 			<div className='Login-Container'>
 				<h2 className='text-center'>Minha Conta</h2>
-				<br />
-				<hr />
+				<br />			
 				<br />
 				<div className='form-login'>
 					<FormSimples value={email} name='email' type='email' placeholder='Email' />
@@ -29,7 +28,8 @@ class LoginContainer extends Component {
 					<div className='flex flex-center'>
 						<button className='btn btn-primary'>ENTRAR</button>
 					</div>
-					<div className='text-center'>
+					<hr />
+					<div className='link-acesso text-center'>
 						<span onClick={this.props.changeAcesso}>Não tem conta? clique aqui para cadastrar</span>
 					</div>
 				</div>

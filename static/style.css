@@ -194,7 +194,7 @@
 /*Paginação*/
 
 .Paginacao{
-	margin: 40px 0 80px;	
+	margin: 40px 0 10px;	
 }
 
 .paginacao-item{
@@ -442,6 +442,14 @@
 	margin: 15px 0;
 }
 
+.btn-sm {
+
+	font-size: 0.85rem;
+	padding: 5px 8px;
+	border-radius: 10px;
+
+}
+
 
 .Carrinho > h2{
 
@@ -574,6 +582,100 @@
 	padding: 0;
 }
 
+/*Minha Conta*/
+
+.Acesso-Container {
+
+	margin: 50px auto;
+	width: calc(100% - 20px) ;
+	padding: 20px;
+	max-width: 500px;
+	border: 1px solid #aaa;
+	box-shadow: 0 0 7px #aaaa; 
+	border-radius: 10px;
+}
+
+.Acesso-Container .form-input input{
+
+	max-width: 100%;
+}
+
+.Acesso-Container .link-acesso {
+	margin-top: 10px;
+	font-size: 0.9rem;
+	cursor: pointer;
+	color: #1c2041;
+
+
+}
+
+.Acesso-Container .link-acesso:hover {
+
+	text-decoration: underline;
+}
+
+.Pedidos-Container{
+
+	margin-top: 30px !important;
+
+}
+
+.menu-lateral {
+
+	border-top: 3px solid #ff9600;
+	margin-top: 30px;
+}
+
+.menu-lateral-item {
+	font-size: 1rem;
+	font-weight: bold;
+	padding: 10px 20px;
+	border : 1px solid #aaaa;
+	border-top: 0;
+	cursor: pointer;	
+}
+
+.menu-lateral-item-active,
+.menu-lateral-item:hover
+{
+
+	background-color: #111;
+	color:#fff;
+	
+}
+
+.conteudo-area-cliente{
+	margin: 10px 10px 10px 30px;
+	box-shadow: 0 0 5px #ccc;
+	padding: 20px;
+	border-radius: 15px;
+}
+
+
+.menu-pedidos {
+
+	background-color: #111;
+	color: #fff;	
+}
+
+.Pedido-Card {
+
+	padding: 15px 0;
+	border-bottom: 1px solid #aaa;
+}
+
+.menu-pedidos > div,
+.Pedido-Card > div {
+
+	padding: 0 10px;
+}
+
+.Pedidos-Lista > div:last-child { 
+	
+    border-bottom: 4px solid #111;
+}
+
+
 
 /* Rodapé*/
 
@@ -639,9 +741,5 @@
 
 .dados-da-loja {
 	text-align: center;
-
-	
-
-
 }
 

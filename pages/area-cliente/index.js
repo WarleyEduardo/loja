@@ -10,9 +10,9 @@ import React, { Component } from 'react';
 
 import Layout from '../../components/Layout';
 import Cabecalho from '../../containers/Cabecalho';
-import AreaDoClienteContainer from '../../containers/AreaDoCliente/Acesso';
+import AreaDoClienteContainer from '../../containers/AreaDoCliente';
 import Rodape from '../../containers/Rodape';
-export default class areaDoCliente extends Component {
+class areaDoCliente extends Component {
 	render() {
 		return (
 			<Layout title="Minha conta | LOJA IT - melhores produtos para informática">
@@ -23,3 +23,5 @@ export default class areaDoCliente extends Component {
 		);
 	}
 }
+
+export default areaDoCliente;

@@ -106,6 +106,11 @@ import React from 'react';
 					text-align: center;
 				}
 
+				select {
+
+					font-size : 1rem;
+				}
+
 				@media screen and (max-width: 720px) {
 					.wrap-mb {
 						flex-wrap: wrap;
