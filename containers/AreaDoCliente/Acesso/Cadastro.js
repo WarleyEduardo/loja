@@ -31,11 +31,11 @@ class CadastroContainer extends Component {
 			local , numero, complemento, bairro, cidade, estado, CEP } = this.state;
 
 		return (
-			<div className='Login-Container'>
+			<div className='Cadastro-Container'>
 				<h2 className='text-center'>Criar Conta</h2>
 				<br />		
 				<br />
-				<div className='form-login'>
+				<div className='form-cadastro'>
 					<FormSimples value={email} name='email' type='email' placeholder='Email' />
 					<FormSimples value={senha} name='senha' type='password' placeholder='Senha' />
 					<br />

@@ -2,12 +2,24 @@
 
 import React, { Component } from 'react';
 
+/* modulo 43 - Area do cliente -  dados do cliente e senha - 
+  criando  a pagina, componentes e todos o estilo final 2/3
+*/
+
+import Layout from '../../components/Layout';
+import Cabecalho from '../../containers/Cabecalho';
+import AlterarSenhaContainer from '../../containers/AreaDoCliente/AlterarSenha';
+import Rodape from '../../containers/Rodape';
+
+
 export default class AlterarSenha extends Component {
 	render() {
 		return (
-			<div>
-				<h2>Loja IT - Alterar Senha</h2>
-			</div>
+			<Layout title="Alterar Senha | Loja IT -  melhores produtos em Informática">
+				<Cabecalho />
+				<AlterarSenhaContainer />
+				<Rodape/>
+			</Layout>
 		);
 	}
 }

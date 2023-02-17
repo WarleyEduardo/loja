@@ -1,13 +1,30 @@
-/* modulo 39 - loja virtual -  criando arquivos de pasta  */
+/* modulo  - loja virtual -  criando arquivos de pasta  */
+
+
+/* modulo 43 - Area do cliente -  Detalhes do pedido - 
+ criando a página, componentes e todo o estilo  1/3
+*/
+
 
 import React, { Component } from 'react';
+import Layout from '../../../components/Layout';
+import Cabecalho from '../../../containers/Cabecalho';
+import PedidoContainer from '../../../containers/Pedido';
+import Rodape from '../../../containers/Rodape';
 
-export default class Pedido extends Component {
+
+
+ class Pedido extends Component {
 	render() {
 		return (
-			<div>
-				<h2>Loja IT - Pedido</h2>
-			</div>
+			<Layout title="Pedido | LOJA IT -  Melhores produtos em informática">
+				<Cabecalho />
+				<PedidoContainer />
+				<Rodape />
+			</Layout>
 		);
 	}
 }
+
+
+export default Pedido;
