@@ -26,13 +26,13 @@ class DadosDoPedido extends Component {
 		const carrinho = [
 			{
 				Produto: 'Mouse Gamer 1 - p ',
-				'Preço Und.': formatMoney(55),
+				'Preço Und': formatMoney(55),
 				Quantidade: 1,
 				'Preço Total': formatMoney(55),
 			},
 			{
 				Produto: 'Mouse Gamer 2 - M ',
-				'Preço Und.': formatMoney(105),
+				'Preço Und': formatMoney(105),
 				Quantidade: 2,
 				'Preço Total': formatMoney(210),
 			},

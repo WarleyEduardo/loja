@@ -1956,12 +1956,12 @@ var DadosDoPedido = /*#__PURE__*/function (_Component) {
     value: function renderDadosDoCarrinho() {
       var carrinho = [{
         Produto: 'Mouse Gamer 1 - p ',
-        'Preço Und.': Object(_utils__WEBPACK_IMPORTED_MODULE_9__["formatMoney"])(55),
+        'Preço Und': Object(_utils__WEBPACK_IMPORTED_MODULE_9__["formatMoney"])(55),
         Quantidade: 1,
         'Preço Total': Object(_utils__WEBPACK_IMPORTED_MODULE_9__["formatMoney"])(55)
       }, {
         Produto: 'Mouse Gamer 2 - M ',
-        'Preço Und.': Object(_utils__WEBPACK_IMPORTED_MODULE_9__["formatMoney"])(105),
+        'Preço Und': Object(_utils__WEBPACK_IMPORTED_MODULE_9__["formatMoney"])(105),
         Quantidade: 2,
         'Preço Total': Object(_utils__WEBPACK_IMPORTED_MODULE_9__["formatMoney"])(210)
       }];
