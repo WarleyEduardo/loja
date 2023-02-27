@@ -2,11 +2,14 @@
 import actions from '../redux/actions';
 import { fetchData } from './fetch';
 
-export default function (calls = [], cxt) {
+export default function (calls = [], ctx) {
+
+	console.log('entrou no base data')
 	
 	return Promise.all([
 		fetchData(actions.fetchCategorias, ctx),
-		fetchData(actions.fetchDadosLoja, ctx),
-		...calls.map((action)=> fetchData(action,ctx))
-	])
+		fetchData(actions.fetchLoja, ctx),
+		fetchData(actions.fetchProdutosPaginaInicial, ctx),
+		...calls.map((action) => fetchData(action, ctx)),
+	]);
 }

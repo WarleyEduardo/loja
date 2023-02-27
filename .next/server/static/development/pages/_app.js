@@ -1400,9 +1400,47 @@ var initialState = {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
   switch (action.type) {
+    case _types__WEBPACK_IMPORTED_MODULE_1__["USER"]:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        usuario: action.payload,
+        token: action.payload ? action.payload.token : null
+      });
     case _types__WEBPACK_IMPORTED_MODULE_1__["AUTENTICAR_TOKEN"]:
       return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
         token: action.payload
+      });
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./redux/reducers/categoriaReducers.js":
+/*!*********************************************!*\
+  !*** ./redux/reducers/categoriaReducers.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../types */ "./redux/types.js");
+
+/* modulo 44 - Criando actions e reduces para integração 1/2*/
+
+
+var initialState = {
+  categorias: null
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  switch (action.type) {
+    case _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_CATEGORIAS"]:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        categorias: action.payload.categorias
       });
     default:
       return state;
@@ -1423,15 +1461,96 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "redux");
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _authReducers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./authReducers */ "./redux/reducers/authReducers.js");
+/* harmony import */ var _categoriaReducers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./categoriaReducers */ "./redux/reducers/categoriaReducers.js");
+/* harmony import */ var _lojaReducers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lojaReducers */ "./redux/reducers/lojaReducers.js");
+/* harmony import */ var _produtoReducers__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./produtoReducers */ "./redux/reducers/produtoReducers.js");
 /* modulo 39 - loja virtual -  desenvolvimento a configuração base do redux  */
 
 
 
 /* modulo 40 - loja virtual - criando helper para inicialização*/
 
+
+/* modulo 44 - Criando actions e reduces para integração 1/2*/
+
+
+
+/* modulo 44 - Criando actions e reduces para integração 2/2*/
+
+
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  auth: _authReducers__WEBPACK_IMPORTED_MODULE_1__["default"]
+  auth: _authReducers__WEBPACK_IMPORTED_MODULE_1__["default"],
+  categoria: _categoriaReducers__WEBPACK_IMPORTED_MODULE_2__["default"],
+  loja: _lojaReducers__WEBPACK_IMPORTED_MODULE_3__["default"],
+  produto: _produtoReducers__WEBPACK_IMPORTED_MODULE_4__["default"]
 }));
+
+/***/ }),
+
+/***/ "./redux/reducers/lojaReducers.js":
+/*!****************************************!*\
+  !*** ./redux/reducers/lojaReducers.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../types */ "./redux/types.js");
+
+/* modulo 44 - Criando actions e reduces para integração 1/2*/
+
+
+var initialState = {
+  loja: null
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  switch (action.type) {
+    case _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_LOJA"]:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        loja: action.payload.loja
+      });
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./redux/reducers/produtoReducers.js":
+/*!*******************************************!*\
+  !*** ./redux/reducers/produtoReducers.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../types */ "./redux/types.js");
+
+/* modulo 44 - Criando actions e reduces para integração 2/2*/
+/* modulo 44 - Criando actions e reduces para integração 1/2*/
+
+
+var initialState = {
+  produtos: null
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  switch (action.type) {
+    case _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_PRODUTOS"]:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        produtos: action.payload.produtos
+      });
+    default:
+      return state;
+  }
+});
 
 /***/ }),
 
@@ -1439,15 +1558,25 @@ __webpack_require__.r(__webpack_exports__);
 /*!************************!*\
   !*** ./redux/types.js ***!
   \************************/
-/*! exports provided: AUTENTICAR_TOKEN */
+/*! exports provided: REGISTER, AUTENTICAR_TOKEN, FETCH_CATEGORIAS, FETCH_LOJA, FETCH_PRODUTOS, USER */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REGISTER", function() { return REGISTER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AUTENTICAR_TOKEN", function() { return AUTENTICAR_TOKEN; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_CATEGORIAS", function() { return FETCH_CATEGORIAS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_LOJA", function() { return FETCH_LOJA; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_PRODUTOS", function() { return FETCH_PRODUTOS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "USER", function() { return USER; });
 /* modulo 40 - loja virtual - criando helper para inicialização*/
 
-var AUTENTICAR_TOKEN = 'AUTENTICAR_TOKEN';
+var REGISTER = 'REGISTER',
+  AUTENTICAR_TOKEN = 'AUTENTICAR_TOKEN',
+  FETCH_CATEGORIAS = 'FETCH_CATEGORIAS',
+  FETCH_LOJA = 'FETCH_LOJA',
+  FETCH_PRODUTOS = 'FETCH_PRODUTOS',
+  USER = 'USER';
 
 /***/ }),
 
