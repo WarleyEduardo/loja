@@ -859,17 +859,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
-/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_9__);
-
-
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
+/* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_8__);
 
 
 
@@ -877,77 +875,59 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _jsxFileName = "D:\\javaScript\\lojavirtual\\lojavirtual\\components\\Listas\\Categorias.js";
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(this).constructor; result = _babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__["default"])(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(this).constructor; result = _babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, result); }; }
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default.a) return false; if (_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default.a.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 /* Modulo 41 - pagina inicial - criando o componente de categorias */
 
 
+
+/* Modulo 44 - adicionando dados e realizando integração dos componentes da pagina inicial */
+
+
 var Categorias = /*#__PURE__*/function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(Categorias, _Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__["default"])(Categorias, _Component);
   var _super = _createSuper(Categorias);
   function Categorias() {
-    var _this;
     Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, Categorias);
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-    _this = _super.call.apply(_super, [this].concat(args));
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "state", {
-      categorias: [{
-        id: 1,
-        nome: 'Acessorios'
-      }, {
-        id: 2,
-        nome: 'Teclado'
-      }, {
-        id: 3,
-        nome: 'Mouse Gamer'
-      }, {
-        id: 4,
-        nome: 'Mousepad'
-      }, {
-        id: 5,
-        nome: 'Webcam'
-      }]
-    });
-    return _this;
+    return _super.apply(this, arguments);
   }
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(Categorias, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
-      var categorias = this.state.categorias;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+      var _this = this;
+      var categorias = this.props.categorias;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "categorias flex horizontal-mb",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22,
+          lineNumber: 18,
           columnNumber: 4
         }
       }, categorias.map(function (categoria) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_9___default.a, {
-          href: "/categoria/".concat(categoria.nome, "?id=").concat(categoria.id),
-          __self: _this2,
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
+          href: "/categoria/".concat(categoria.nome, "?id=").concat(categoria._id, " "),
+          key: categoria._id,
+          __self: _this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 27,
+            lineNumber: 23,
             columnNumber: 7
           }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
           className: "categoria-item flex-1 flex flex-center",
-          __self: _this2,
+          __self: _this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 28,
+            lineNumber: 24,
             columnNumber: 8
           }
-        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
           className: "text-center",
-          __self: _this2,
+          __self: _this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 29,
+            lineNumber: 25,
             columnNumber: 9
           }
         }, categoria.nome)));
@@ -955,8 +935,13 @@ var Categorias = /*#__PURE__*/function (_Component) {
     }
   }]);
   return Categorias;
-}(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
-/* harmony default export */ __webpack_exports__["default"] = (Categorias);
+}(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    categorias: state.categoria.categorias
+  };
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_8__["connect"])(mapStateToProps)(Categorias));
 
 /***/ }),
 
@@ -1142,17 +1127,21 @@ var Produtos = /*#__PURE__*/function (_Component) {
             columnNumber: 5
           }
         }, produtos.map(function (item) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_item_Produto__WEBPACK_IMPORTED_MODULE_7__["default"], {
-            item: item,
-            key: item.id,
-            porLinha: itensPorLinha,
-            __self: _this,
-            __source: {
-              fileName: _jsxFileName,
-              lineNumber: 31,
-              columnNumber: 7
-            }
-          });
+          return (
+            /*#__PURE__*/
+            /* Modulo 44 - adicionando dados e realizando integração dos componentes da pagina inicial */
+            react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_item_Produto__WEBPACK_IMPORTED_MODULE_7__["default"], {
+              item: item,
+              key: item._id,
+              porLinha: itensPorLinha,
+              __self: _this,
+              __source: {
+                fileName: _jsxFileName,
+                lineNumber: 31,
+                columnNumber: 7
+              }
+            })
+          );
         }));
       }
     }
@@ -1366,8 +1355,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../config.js */ "./config.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../utils */ "./utils/index.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../utils */ "./utils/index.js");
+/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../config.js */ "./config.js");
 
 
 
@@ -1382,12 +1371,14 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_b
 
 
 
-
 /*
 modulo 42 - pagina de Carrinho - criando a estrutura da pagina e componentes 2/3
 const formatMoney = (value) => "R$ " + (value || 0).toFixed(2).replace(".", ",");
 */
 
+
+
+/* Modulo 44 - adicionando dados e realizando integração dos componentes da pagina inicial */
 
 var Produto = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__["default"])(Produto, _Component);
@@ -1399,22 +1390,24 @@ var Produto = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(Produto, [{
     key: "render",
     value: function render() {
+      console.log(_config_js__WEBPACK_IMPORTED_MODULE_9__["baseImg"]);
       var _this$props = this.props,
         item = _this$props.item,
         key = _this$props.key,
         porLinha = _this$props.porLinha;
-      var id = item.id,
+      var _id = item._id,
         titulo = item.titulo,
         preco = item.preco,
         promocao = item.promocao,
         fotos = item.fotos;
       var temPromo = promocao && preco !== promocao;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
-        href: "/produto/".concat(titulo, "?produto=").concat(id),
+        href: "/produto/".concat(titulo, "?produto=").concat(_id),
+        key: _id,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 25,
+          lineNumber: 30,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -1422,7 +1415,7 @@ var Produto = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26,
+          lineNumber: 31,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -1430,11 +1423,11 @@ var Produto = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 27,
+          lineNumber: 32,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
-        src: fotos[0],
+        src: "".concat(_config_js__WEBPACK_IMPORTED_MODULE_9__["baseImg"]).concat(fotos[0]),
         alt: titulo,
         style: {
           maxWidth: '95%'
@@ -1442,7 +1435,7 @@ var Produto = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 28,
+          lineNumber: 33,
           columnNumber: 7
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -1450,21 +1443,21 @@ var Produto = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 31,
+          lineNumber: 36,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 32,
+          lineNumber: 37,
           columnNumber: 7
         }
       }, titulo)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35,
+          lineNumber: 40,
           columnNumber: 6
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -1472,47 +1465,47 @@ var Produto = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37,
+          lineNumber: 42,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 38,
+          lineNumber: 43,
           columnNumber: 7
         }
-      }, temPromo ? Object(_utils__WEBPACK_IMPORTED_MODULE_9__["formatMoney"])(preco) : 0)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, temPromo ? Object(_utils__WEBPACK_IMPORTED_MODULE_8__["formatMoney"])(preco) : 0)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "produto-preco-promocao  flex flex-center",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 46,
+          lineNumber: 51,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 47,
+          lineNumber: 52,
           columnNumber: 7
         }
-      }, temPromo ? Object(_utils__WEBPACK_IMPORTED_MODULE_9__["formatMoney"])(promocao) : Object(_utils__WEBPACK_IMPORTED_MODULE_9__["formatMoney"])(preco))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, temPromo ? Object(_utils__WEBPACK_IMPORTED_MODULE_8__["formatMoney"])(promocao) : Object(_utils__WEBPACK_IMPORTED_MODULE_8__["formatMoney"])(preco))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "produto-preco-parcelado flex flex-center",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 50,
+          lineNumber: 55,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h4", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 51,
+          lineNumber: 56,
           columnNumber: 7
         }
-      }, "ou 6x de ", Object(_utils__WEBPACK_IMPORTED_MODULE_9__["formatMoney"])((temPromo ? promocao : preco) / 6), " sem juros"))));
+      }, "ou 6x de ", Object(_utils__WEBPACK_IMPORTED_MODULE_8__["formatMoney"])((temPromo ? promocao : preco) / 6), " sem juros"))));
     }
   }]);
   return Produto;
@@ -1541,7 +1534,7 @@ var API = 'http://localhost:3000',
   versao = 'v1',
   loja = '62e29ce5fb2cc0196471dafe',
   baseImg = API + '/public/images/',
-  url = 'http://localhost:3000/v1';
+  url = API + '/' + versao;
 
 /***/ }),
 
@@ -1907,6 +1900,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _components_Listas_Produtos__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../components/Listas/Produtos */ "./components/Listas/Produtos.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_8__);
 
 
 
@@ -1919,31 +1914,10 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_b
 /* modulo 41 - loja virtual - criando componente de lista de produto e o card do produto 1/2 */
 
 
-var PRODUTOS = [{
-  id: 19239123,
-  fotos: ['/static/img/mouse-1.png'],
-  titulo: 'Mouser Gamer 1',
-  preco: 25,
-  promocao: 25
-}, {
-  id: 37239137,
-  fotos: ['/static/img/mouse-4.png'],
-  titulo: 'Mouser Gamer 2 para ',
-  preco: 35,
-  promocao: 25
-}, {
-  id: 26239129,
-  fotos: ['/static/img/mouse-5.png'],
-  titulo: 'Mouser Gamer 3',
-  preco: 50,
-  promocao: 40
-}, {
-  id: 48239127,
-  fotos: ['/static/img/mouse-2.png'],
-  titulo: 'Mouser Gamer 4',
-  preco: 135,
-  promocao: 125
-}];
+
+/* Modulo 44 - adicionando dados e realizando integração dos componentes da pagina inicial */
+
+
 var ProdutosPaginaInicial = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__["default"])(ProdutosPaginaInicial, _Component);
   var _super = _createSuper(ProdutosPaginaInicial);
@@ -1959,30 +1933,30 @@ var ProdutosPaginaInicial = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43,
+          lineNumber: 15,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44,
+          lineNumber: 16,
           columnNumber: 5
         }
       }, "Lan\xE7amentos"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 45,
+          lineNumber: 17,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Listas_Produtos__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        produtos: PRODUTOS,
+        produtos: this.props.produtos ? this.props.produtos.docs : [],
         itensPorLinha: 4,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 47,
+          lineNumber: 19,
           columnNumber: 5
         }
       }));
@@ -1990,7 +1964,12 @@ var ProdutosPaginaInicial = /*#__PURE__*/function (_Component) {
   }]);
   return ProdutosPaginaInicial;
 }(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
-/* harmony default export */ __webpack_exports__["default"] = (ProdutosPaginaInicial);
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    produtos: state.produto.produtos
+  };
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_8__["connect"])(mapStateToProps)(ProdutosPaginaInicial));
 
 /***/ }),
 
@@ -3417,42 +3396,42 @@ var Index = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 38,
+          lineNumber: 41,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement(_containers_Cabecalho__WEBPACK_IMPORTED_MODULE_15__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 39,
+          lineNumber: 42,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement(_containers_Banners__WEBPACK_IMPORTED_MODULE_16__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 40,
+          lineNumber: 43,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement(_containers_Beneficios__WEBPACK_IMPORTED_MODULE_17__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 41,
+          lineNumber: 44,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement(_containers_Lista_ProdutosPaginaInicial__WEBPACK_IMPORTED_MODULE_18__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 42,
+          lineNumber: 45,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_13___default.a.createElement(_containers_Rodape__WEBPACK_IMPORTED_MODULE_19__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43,
+          lineNumber: 46,
           columnNumber: 5
         }
       }));
@@ -3668,8 +3647,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var fetchProdutosPaginaInicial = function fetchProdutosPaginaInicial() {
   return function (dispatch) {
-    console.log('entrou na action produtos');
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/produtos/disponiveis?loja=").concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["loja"], "&offset=", 0, "&limit=", 4, "&sortType=", "preco-crescente")).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/produtos/disponiveis?loja=").concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["loja"], "&offset=", 0, "&limit=", 8, "&sortType=", "preco-crescente")).then(function (response) {
       return dispatch({
         type: _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_PRODUTOS"],
         payload: response.data
@@ -3733,8 +3711,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var calls = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var ctx = arguments.length > 1 ? arguments[1] : undefined;
-  console.log('entrou no base data');
-  return _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_1___default.a.all([Object(_fetch__WEBPACK_IMPORTED_MODULE_3__["fetchData"])(_redux_actions__WEBPACK_IMPORTED_MODULE_2__["default"].fetchCategorias, ctx), Object(_fetch__WEBPACK_IMPORTED_MODULE_3__["fetchData"])(_redux_actions__WEBPACK_IMPORTED_MODULE_2__["default"].fetchLoja, ctx), Object(_fetch__WEBPACK_IMPORTED_MODULE_3__["fetchData"])(_redux_actions__WEBPACK_IMPORTED_MODULE_2__["default"].fetchProdutosPaginaInicial, ctx)].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(calls.map(function (action) {
+  return _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_1___default.a.all([Object(_fetch__WEBPACK_IMPORTED_MODULE_3__["fetchData"])(_redux_actions__WEBPACK_IMPORTED_MODULE_2__["default"].fetchCategorias, ctx), Object(_fetch__WEBPACK_IMPORTED_MODULE_3__["fetchData"])(_redux_actions__WEBPACK_IMPORTED_MODULE_2__["default"].fetchLoja, ctx)].concat(Object(_babel_runtime_corejs2_helpers_esm_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(calls.map(function (action) {
     return Object(_fetch__WEBPACK_IMPORTED_MODULE_3__["fetchData"])(action, ctx);
   }))));
 });
@@ -3796,7 +3773,7 @@ __webpack_require__.r(__webpack_exports__);
 /* modulo 40 - loja virtual - criando helper para cookie*/
 
 var fetchData = function fetchData(action, ctx) {
-  return new _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default.a(action).then(function (response) {
+  return new _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default.a(action()).then(function (response) {
     return ctx.store.dispatch(response);
   })["catch"](function (e) {
     return console.log(e);

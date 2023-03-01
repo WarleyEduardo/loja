@@ -5,6 +5,6 @@ export const API = 'http://localhost:3000',
 	versao = 'v1',
 	loja = '62e29ce5fb2cc0196471dafe',
 	baseImg = API + '/public/images/',
-	url = 'http://localhost:3000/v1';
+	url = API + '/' + versao;
 
 

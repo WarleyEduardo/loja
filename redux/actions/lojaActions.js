@@ -8,8 +8,7 @@ import { url, loja } from '../../config.js';
 
 export const fetchLoja = () => (dispatch) => {
 
-	axios
-		.get(`${url}/api/lojas/${loja}?lojas${loja}`)
+	axios.get(`${url}/api/lojas/${loja}?lojas${loja}`)
 		.then((response) => dispatch({ type: FETCH_LOJA, payload: response.data }))
 		.catch((e) => console.log(e));
 };

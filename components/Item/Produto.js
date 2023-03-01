@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import Link from 'next/link';
-import { baseImg } from '../../config.js';
+
 
 
 /*
@@ -12,20 +12,25 @@ const formatMoney = (value) => "R$ " + (value || 0).toFixed(2).replace(".", ",")
 
 import { formatMoney } from '../../utils';
 
+
+/* Modulo 44 - adicionando dados e realizando integração dos componentes da pagina inicial */
+import { baseImg } from '../../config.js';
+
 class Produto extends Component{
 
 	render() {
 		
+		console.log(baseImg)
 
 		const { item, key, porLinha } = this.props;
-		const { id, titulo, preco, promocao, fotos } = item;
+		const { _id, titulo, preco, promocao, fotos } = item;
 		const temPromo = promocao && preco !== promocao;
 
 		return (
-			<Link href={`/produto/${titulo}?produto=${id}`}>
+			<Link href={`/produto/${titulo}?produto=${_id}`} key={_id}>
 				<div className={`produto flex-1 flex vertical wrap-${porLinha} wrap-2-mb`}>
 					<div className='produto-image flex flex-center'>
-						<img src={fotos[0]} alt={titulo} style={{ maxWidth: '95%' }} />
+						<img src={`${baseImg}${fotos[0]}`} alt={titulo} style={{ maxWidth: '95%' }} />
 					</div>
 
 					<div className='produto-title flex flex-center'>

@@ -21,16 +21,19 @@ import { connect } from 'react-redux';
 import actions from '../redux/actions';
 
 
+
 class Index extends Component {
+	
 
 	static async getInitialProps(ctx) {
-		initialize(ctx);
+		initialize(ctx);		
 		return callBaseData([actions.fetchProdutosPaginaInicial], ctx);
 	
-	}
-
+	}	
+    
 	async componentDidMount() {
-		await this.props.getUser({ token: this.props.token });		
+		
+		await this.props.getUser({ token: this.props.token });			
 	}
 
 	render() {
@@ -46,9 +49,9 @@ class Index extends Component {
 	}
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
 	token: state.auth.token
-})
+});
 
 export default connect(mapStateToProps,actions)(Index);
 

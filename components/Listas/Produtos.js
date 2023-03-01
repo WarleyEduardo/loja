@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 
 import Produto from '../item/Produto';
 
+
 class Produtos extends Component {
 	componentDidMount() {
 		var highest = 0;
@@ -24,11 +25,10 @@ class Produtos extends Component {
 			const { produtos, itensPorLinha } = this.props;
 			
 			return (
-				
 				<div className='Produtos flex wrap'>
 					{produtos.map((item) => (
-						
-						<Produto item={item} key={item.id} porLinha={itensPorLinha} />
+						/* Modulo 44 - adicionando dados e realizando integração dos componentes da pagina inicial */
+						<Produto item={item} key={item._id} porLinha={itensPorLinha} />
 					))}
 				</div>
 			);

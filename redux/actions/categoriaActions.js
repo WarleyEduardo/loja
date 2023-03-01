@@ -5,10 +5,9 @@ import { url, loja } from '../../config.js';
 
 import { FETCH_CATEGORIAS } from '../types';
 
-export const fetchCategorias = () => (dispatch) => {
+export const fetchCategorias = () => (dispatch) => {	
 
-	axios
-		.get(`${url}/api/categorias/disponiveis?loja=${loja}`)
+	axios.get(`${url}/api/categorias/disponiveis?loja=${loja}`)
 		.then((response) => dispatch({ type: FETCH_CATEGORIAS, payload: response.data }))
 		.catch((e) => console.log(e));
 	

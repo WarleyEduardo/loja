@@ -2,20 +2,16 @@
 import React, {Component } from 'react';
 import Link from 'next/link';
 
+
+/* Modulo 44 - adicionando dados e realizando integração dos componentes da pagina inicial */
+
+import { connect, Connect } from 'react-redux';
+
 class Categorias extends Component {
-	state = {
-		categorias: [
-			{ id: 1, nome: 'Acessorios' },
-			{ id: 2, nome: 'Teclado' },
-			{ id: 3, nome: 'Mouse Gamer' },
-			{ id: 4, nome: 'Mousepad' },
-			{ id: 5, nome: 'Webcam' }
-		]
-	};
 
 	render() {
 
-		const { categorias } = this.state;
+		const { categorias } = this.props;
 
 		return (
 			
@@ -24,7 +20,7 @@ class Categorias extends Component {
 				{
 					categorias.map(categoria => (
 						
-						<Link href={`/categoria/${categoria.nome}?id=${categoria.id}`}>
+						<Link href={`/categoria/${categoria.nome}?id=${categoria._id} `} key={categoria._id}>
 							<div className="categoria-item flex-1 flex flex-center">
 								<span className='text-center'>
 									{ categoria.nome}
@@ -40,4 +36,9 @@ class Categorias extends Component {
 	}
 }
 
-export default Categorias;
+const mapStateToProps = state => ({
+
+	categorias: state.categoria.categorias
+})
+
+export default connect(mapStateToProps)(Categorias);
