@@ -1430,6 +1430,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /* modulo 44 - Criando actions e reduces para integração 1/2*/
 
+/* modulo 45 - Criando actions e reduces e atualizando os componentes das categorias*/
+
 
 var initialState = {
   categorias: null
@@ -1441,6 +1443,14 @@ var initialState = {
     case _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_CATEGORIAS"]:
       return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
         categorias: action.payload.categorias
+      });
+    case _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_CATEGORIA"]:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        categoria: action.payload.categoria
+      });
+    case _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_PRODUTOS_CATEGORIA"]:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        produtosCategoria: action.payload.produtos
       });
     default:
       return state;
@@ -1535,9 +1545,14 @@ __webpack_require__.r(__webpack_exports__);
 /* modulo 44 - Criando actions e reduces para integração 2/2*/
 /* modulo 44 - Criando actions e reduces para integração 1/2*/
 
+/*modulo 46 - adicionando actions e reducers e alterando os componentes para integração*/
+
 
 var initialState = {
-  produtos: null
+  produtos: null,
+  termo: "",
+  produtosPesquisa: null,
+  produto: null
 };
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
@@ -1546,6 +1561,27 @@ var initialState = {
     case _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_PRODUTOS"]:
       return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
         produtos: action.payload.produtos
+      });
+    case _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_PESQUISA"]:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        termo: action.termo
+      });
+    case _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_PRODUTOS_PESQUISA"]:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        produtosPesquisa: action.payload.produtos,
+        termo: action.termo
+      });
+    case _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_PRODUTO"]:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        produto: action.payload.produto
+      });
+    case _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_PRODUTO_AVALIACOES"]:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        avaliacoes: action.payload.avaliacoes
+      });
+    case _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_PRODUTO_VARIACOES"]:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        variacoes: action.payload.variacoes
       });
     default:
       return state;
@@ -1558,7 +1594,7 @@ var initialState = {
 /*!************************!*\
   !*** ./redux/types.js ***!
   \************************/
-/*! exports provided: REGISTER, AUTENTICAR_TOKEN, FETCH_CATEGORIAS, FETCH_LOJA, FETCH_PRODUTOS, USER */
+/*! exports provided: REGISTER, AUTENTICAR_TOKEN, FETCH_CATEGORIAS, FETCH_LOJA, FETCH_PRODUTOS, FETCH_CATEGORIA, FETCH_PRODUTOS_CATEGORIA, USER, FETCH_PESQUISA, FETCH_PRODUTOS_PESQUISA, FETCH_PRODUTO, FETCH_PRODUTO_VARIACOES, FETCH_PRODUTO_AVALIACOES */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1568,15 +1604,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_CATEGORIAS", function() { return FETCH_CATEGORIAS; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_LOJA", function() { return FETCH_LOJA; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_PRODUTOS", function() { return FETCH_PRODUTOS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_CATEGORIA", function() { return FETCH_CATEGORIA; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_PRODUTOS_CATEGORIA", function() { return FETCH_PRODUTOS_CATEGORIA; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "USER", function() { return USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_PESQUISA", function() { return FETCH_PESQUISA; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_PRODUTOS_PESQUISA", function() { return FETCH_PRODUTOS_PESQUISA; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_PRODUTO", function() { return FETCH_PRODUTO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_PRODUTO_VARIACOES", function() { return FETCH_PRODUTO_VARIACOES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_PRODUTO_AVALIACOES", function() { return FETCH_PRODUTO_AVALIACOES; });
 /* modulo 40 - loja virtual - criando helper para inicialização*/
+
+/* modulo 45 - Criando actions e reduces e atualizando os componentes das categorias*/
+
+/*modulo 46 - adicionando actions e reducers e alterando os componentes para integração*/
+
+/* modulo 47 -  integração -  detalhes do produto */
 
 var REGISTER = 'REGISTER',
   AUTENTICAR_TOKEN = 'AUTENTICAR_TOKEN',
   FETCH_CATEGORIAS = 'FETCH_CATEGORIAS',
   FETCH_LOJA = 'FETCH_LOJA',
   FETCH_PRODUTOS = 'FETCH_PRODUTOS',
-  USER = 'USER';
+  FETCH_CATEGORIA = 'FETCH_CATEGORIA',
+  FETCH_PRODUTOS_CATEGORIA = 'FETCH_PRODUTOS_CATEGORIA',
+  USER = 'USER',
+  FETCH_PESQUISA = 'FETCH_PESQUISA',
+  FETCH_PRODUTOS_PESQUISA = 'FETCH_PRODUTOS_PESQUISA',
+  FETCH_PRODUTO = 'FETCH_PRODUTO',
+  FETCH_PRODUTO_VARIACOES = 'FETCH_PRODUTO_VARIACOES',
+  FETCH_PRODUTO_AVALIACOES = 'FETCH_PRODUTO_AVALIACOES';
 
 /***/ }),
 

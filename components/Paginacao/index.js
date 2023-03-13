@@ -16,7 +16,8 @@ class Paginacao extends React.Component{
 					[...Array(numeroPaginas).keys()].map((numero, index) => {
 						
 						const numeroAtualDaPagina = numero * limite;
-						return (<div className={`paginacao-item ${numeroAtualDaPagina === atual ? "paginacao-item-active" : ""}`}
+						return (
+							<div className={`paginacao-item ${numeroAtualDaPagina === atual ? "paginacao-item-active" : ""}`}
 							key={index}
 							onClick={()=> onClick(numeroAtualDaPagina)}
 						>

@@ -5,11 +5,11 @@ import Link from 'next/link';
 
 /* Modulo 44 - adicionando dados e realizando integração dos componentes da pagina inicial */
 
-import { connect, Connect } from 'react-redux';
+import { connect} from 'react-redux';
 
 class Categorias extends Component {
 
-	render() {
+	render(){
 
 		const { categorias } = this.props;
 

@@ -2,11 +2,20 @@
 
 import React, { Component } from 'react';
 
+/*modulo 46 -  alterando e corrigindo componentes para página de pesquisa para integração*/
+
+import  Router  from 'next/router';
+import { connect } from 'react-redux';
+import actions from '../../redux/actions';
+
 class Pesquisa extends Component {
 
 	state = { termo: "" };
 
 	submitPesquisa() {
+		const { termo } = this.state;
+		this.props.fetchTermo(termo);
+		Router.push({ pathname: "/pesquisa" , query:{termo}})
 		
 		console.log(this.state.termo);
 	}
@@ -35,4 +44,4 @@ class Pesquisa extends Component {
 	}
 }
 
-export default Pesquisa
+export default connect(null,actions)(Pesquisa)

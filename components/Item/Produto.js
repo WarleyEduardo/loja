@@ -27,10 +27,10 @@ class Produto extends Component{
 		const temPromo = promocao && preco !== promocao;
 
 		return (
-			<Link href={`/produto/${titulo}?produto=${_id}`} key={_id}>
+			<Link href={`/produto/${titulo}?id=${_id}`} >
 				<div className={`produto flex-1 flex vertical wrap-${porLinha} wrap-2-mb`}>
 					<div className='produto-image flex flex-center'>
-						<img src={`${baseImg}${fotos[0]}`} alt={titulo} style={{ maxWidth: '95%' }} />
+						<img src={`${baseImg}${fotos[0]}`} alt={titulo} style={{ maxWidth: '55%' }} />
 					</div>
 
 					<div className='produto-title flex flex-center'>

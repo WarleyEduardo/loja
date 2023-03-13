@@ -9,11 +9,31 @@ import ProdutosCategoria from '../../containers/Lista/ProdutosCategoria';
 
 import React, { Component } from 'react';
 
+/* modulo 45 - Criando actions e reduces e atualizando os componentes das categorias*/
+
+import { connect } from 'react-redux';
+import actions from '../../redux/actions';
+import initialize from '../../utils/initialize';
+import callBaseData from '../../utils/callBaseData';
+
 class Categoria extends Component {
+
+	static async getInitialProps(ctx) {
+	   
+		initialize(ctx);
+		return callBaseData([
+			actions.fetchProdutosCategoria.bind(null, ctx.query.id),
+			actions.fetchCategoria.bind(null,ctx.query.id)
+		    
+		],ctx)
+   }
+
 	render() {
+
+		const { categoria } = this.props;
 		return (
 			<div>
-				<Layout title="Acessórios |  LOJA IT - melhores produtos de tecnologia">
+				<Layout title={`${categoria ? categoria.nome : "-"} |  LOJA IT - melhores produtos de tecnologia`}>
 					<Cabecalho />
 					<ProdutosCategoria />
 					<Rodape/>
@@ -23,4 +43,9 @@ class Categoria extends Component {
 	}
 }
 
-export default Categoria;
+const mapStateToProps = state => ({
+	
+	categoria : state.categoria.categoria
+})
+
+export default connect(mapStateToProps,actions)(Categoria);
