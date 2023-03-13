@@ -109,7 +109,11 @@ class Hero extends Component{
 
 		const { produto } = this.props;
 		const { variacaoCompleta } = this.state;
+
+	
 		if (!produto) return null;
+
+		const temPromo = produto.promocao && produto.preco !== produto.promocao;
 
 		console.log(produto)
 		
@@ -122,7 +126,7 @@ class Hero extends Component{
 				<div className='categoria'>
 					<p> 
 						Categoria:&nbsp;
-						<Link href={`/categoria?id=${produto.categoria._id}`}>
+						<Link href={`/categoria/${produto.categoria.nome}?id=${produto.categoria._id}`}>
 							<span className='categoria-link'>
 								{produto.categoria.nome}
 						</span>
@@ -136,12 +140,13 @@ class Hero extends Component{
 				<br />
 				{
                    	variacaoCompleta ? (
-					<div className='precos'>
+					<div className='precos warleyteste'>
 					  <h2 className='preco-original preco-por'>
 						{formatMoney(variacaoCompleta.preco)}
 					  </h2>
-					  { variacaoCompleta.promacao && variacaoCompleta.promocao !== variacaoCompleta.preco && 
-						(<h2 className='preco-promocao'>
+					  
+						{variacaoCompleta.promocao && variacaoCompleta.promocao !== variacaoCompleta.preco && 
+						(<h2 className='preco-promocao warleyteste'>
 							{formatMoney(variacaoCompleta.promocao)}
 						</h2>)
 					  }
@@ -149,16 +154,19 @@ class Hero extends Component{
 					  <h4 className='preco-parcelado'>
 						ou 6x de {formatMoney((variacaoCompleta.promocao || variacaoCompleta.preco) / 6 )} sem juros
 				      </h4>
-					</div>) :(
+						</div>) :
+					(
 					<div className='precos'>
-				    	<h2 className='preco-original preco-por'>
+				    	<h2 className={`preco-original ${temPromo ? "preco-por" : "" }  `}>
 						{formatMoney(produto.preco)}
-				    	</h2>
-					  { produto.promacao && produto.promocao !== produto.preco && 
-					    	(<h2 className='preco-promocao'>
-						     {formatMoney(produto.promocao)}
-						    </h2>)
-					  }
+								</h2>
+			
+						{produto.promocao && produto.promocao !== produto.preco &&
+							(<h2 className='preco-promocao'>
+									{formatMoney(produto.promocao)}
+								</h2>
+							)
+					    }
 
 					   <h4 className='preco-parcelado'>
 						  ou 6x de {formatMoney((produto.promocao || produto.preco) / 6 )} sem juros

@@ -20,14 +20,13 @@ class Produto extends Component{
 
 	render() {
 		
-		console.log(baseImg)
-
+		
 		const { item, key, porLinha } = this.props;
 		const { _id, titulo, preco, promocao, fotos } = item;
 		const temPromo = promocao && preco !== promocao;
-
+	
 		return (
-			<Link href={`/produto/${titulo}?id=${_id}`} >
+			<Link href={`/produto/${titulo}?id=${_id}`}>
 				<div className={`produto flex-1 flex vertical wrap-${porLinha} wrap-2-mb`}>
 					<div className='produto-image flex flex-center'>
 						<img src={`${baseImg}${fotos[0]}`} alt={titulo} style={{ maxWidth: '55%' }} />
@@ -40,7 +39,7 @@ class Produto extends Component{
 					<br />
 
 					<div className={`produto-preco ${temPromo ? 'produto-por' : 'produto-sem-promocao'} flex flex-center`}>
-						<h2>{temPromo ?  formatMoney(preco) : 0}</h2>
+						<h2>{formatMoney(preco)}</h2>					
 					</div>
 					{/*temPromo && (
 						<div className={`produto-preco-promocao  flex flex-center`}>
@@ -49,7 +48,7 @@ class Produto extends Component{
 					)*/}
 
 					<div className={`produto-preco-promocao  flex flex-center`}>
-						<h2>{temPromo ?  formatMoney(promocao) : formatMoney(preco)}</h2>
+						<h2>{temPromo ? formatMoney(promocao) : formatMoney(preco)}</h2>
 					</div>
 
 					<div className={`produto-preco-parcelado flex flex-center`}>

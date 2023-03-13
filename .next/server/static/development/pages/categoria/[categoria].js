@@ -1446,7 +1446,6 @@ var Produto = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(Produto, [{
     key: "render",
     value: function render() {
-      console.log(_config_js__WEBPACK_IMPORTED_MODULE_9__["baseImg"]);
       var _this$props = this.props,
         item = _this$props.item,
         key = _this$props.key,
@@ -1462,7 +1461,7 @@ var Produto = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 30,
+          lineNumber: 29,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -1470,7 +1469,7 @@ var Produto = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 31,
+          lineNumber: 30,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -1478,7 +1477,7 @@ var Produto = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 32,
+          lineNumber: 31,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("img", {
@@ -1490,7 +1489,7 @@ var Produto = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 33,
+          lineNumber: 32,
           columnNumber: 7
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -1498,21 +1497,21 @@ var Produto = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 36,
+          lineNumber: 35,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37,
+          lineNumber: 36,
           columnNumber: 7
         }
       }, titulo)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 40,
+          lineNumber: 39,
           columnNumber: 6
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -1520,29 +1519,29 @@ var Produto = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 42,
+          lineNumber: 41,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43,
+          lineNumber: 42,
           columnNumber: 7
         }
-      }, temPromo ? Object(_utils__WEBPACK_IMPORTED_MODULE_8__["formatMoney"])(preco) : 0)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, Object(_utils__WEBPACK_IMPORTED_MODULE_8__["formatMoney"])(preco))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "produto-preco-promocao  flex flex-center",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 51,
+          lineNumber: 50,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 52,
+          lineNumber: 51,
           columnNumber: 7
         }
       }, temPromo ? Object(_utils__WEBPACK_IMPORTED_MODULE_8__["formatMoney"])(promocao) : Object(_utils__WEBPACK_IMPORTED_MODULE_8__["formatMoney"])(preco))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -1550,14 +1549,14 @@ var Produto = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55,
+          lineNumber: 54,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h4", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 56,
+          lineNumber: 55,
           columnNumber: 7
         }
       }, "ou 6x de ", Object(_utils__WEBPACK_IMPORTED_MODULE_8__["formatMoney"])((temPromo ? promocao : preco) / 6), " sem juros"))));

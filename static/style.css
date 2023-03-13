@@ -178,18 +178,16 @@
 	margin: 0;
 }
 
-.produto-sem-promocao h2{
-	font-size: 1.1rem;
-	color: transparent;
-	margin: 0;
-	
-
-}
 
 .produto-preco-parcelado{
 	color: #666;
 	font-size: 0.95rem;
 }
+
+
+
+
+
 
 /*Paginação*/
 
@@ -296,6 +294,7 @@
 }
 
 
+
 .Produto-Hero .opcao-input{
 
 	font-size: 1.2rem;
@@ -316,6 +315,8 @@
 	max-width: 500px;
 
 }
+
+
 
 
 .mini-foto{
@@ -357,6 +358,13 @@
 .Produtos-Relacionados{
 
 	margin-bottom: 60px;
+}
+
+.produto-sem-promocao h2{
+	font-size: 1.1rem;
+	color: transparent;
+	margin: 0;
+
 }
 
 
