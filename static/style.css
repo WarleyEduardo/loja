@@ -274,7 +274,7 @@
 }
 
 .Produto-Hero .variacao:hover,
-.Produto-Hero .varicao.varicao-active{
+.Produto-Hero .variacao.variacao-active{
 
 	background-color: #111;
 	border-color: #111;
@@ -359,14 +359,6 @@
 
 	margin-bottom: 60px;
 }
-
-.produto-sem-promocao h2{
-	font-size: 1.1rem;
-	color: transparent;
-	margin: 0;
-
-}
-
 
 .avaliacao {
 
@@ -778,6 +770,8 @@ table.simples td {
 
 
 
+
+
 /*Warley */
 .institucional {
 	text-align: center;
@@ -806,5 +800,24 @@ table.simples td {
 
 .dados-da-loja {
 	text-align: center;
+}
+
+.produto-sem-promocao h2{
+	font-size: 1.1rem;
+	color: transparent;
+	margin: 0;
+
+
+
+}
+
+
+.Produto-Hero .preco-original.produto-sem-promocao{
+
+	font-size: 0.95rem;
+	color: transparent;
+	font-weight: normal;
+	text-decoration: line-through;
+
 }
 
