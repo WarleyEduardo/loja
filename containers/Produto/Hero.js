@@ -166,11 +166,20 @@ class Hero extends Component{
 									{formatMoney(produto.promocao)}
 								</h2>
 							)
-					    }
-
+								}
+						
+						{produto.parcelado &&  produto.parcelado > 2  &&  (<h4 className='preco-parcelado'>
+									ou {produto.parcelado.toString()} x de
+									{formatMoney((produto.promocao || produto.preco) / produto.parcelado)} sem juros
+								</h4>)}	
+								
+						{/*		
 					   <h4 className='preco-parcelado'>
 						  ou 6x de {formatMoney((produto.promocao || produto.preco) / 6 )} sem juros
-					   </h4>
+								</h4>
+						*/}	
+								
+
 				    </div>)
 				}				
 				
