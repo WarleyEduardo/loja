@@ -1,18 +1,34 @@
 /* modulo 42 - paginas do produto -  criando componente de descrição */
-import React from 'react';
+import React, { Component} from 'react';
 
 
-const DESC = "Ótimo produto, de muita tecnologia.\n\nAlta disponibilidade e segurança.\n\nGarantia em todo o Brasil por 1 ano."
+/*modulo 47 - integrando o componente da descrição */
+ 
+import { connect } from 'react-redux';
 
-const Descricao = () => (
+class Descricao extends Component {
+	 
+
+	render() {
+
+		const { produto } = this.props;
+
+		console.log(produto)
 	
-	<div className="Descricao flex vertical">
-		<h2>Descrição</h2>
-		<br />
-		<div>
-			{DESC.split("\n").map((item, idx) => <p key={idx}>{item}</p> )}
-		</div>
-	</div>
-);
+		return (
+			<div className="Descricao flex vertical">
+				<h2>Descrição</h2>
+				<br />
+				<div>
+					{produto.descricao.split("\n").map((item, idx) => <p key={idx}>{item}</p>)}
+				</div>
+			</div>);
+	}
+}
 
-export default Descricao
+const mapStateToProps = state => ({
+	
+	produto: state.produto.produto
+})
+
+export default connect(mapStateToProps)(Descricao);

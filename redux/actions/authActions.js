@@ -8,7 +8,10 @@ import axios from 'axios';
 import { url } from '../../config.js';
 
 
-const getHeaders = token => ({ headers: { "Authorization": `Ecommerce ${token}` } });
+
+/* modulo 47 - integrando o componente de avaliações 2/2 */
+//const getHeaders = token => ({ headers: { "Authorization": `Ecommerce ${token}` } });
+import { getHeaders } from './helpers';
 
 export const reauthenticate = token => ({ type: AUTENTICAR_TOKEN, payload: token})
 

@@ -1583,6 +1583,10 @@ var initialState = {
       return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
         variacoes: action.payload.variacoes
       });
+    case _types__WEBPACK_IMPORTED_MODULE_1__["NOVA_AVALIACAO"]:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        avaliacoes: state.avaliacoes.concat([action.payload.avaliacao])
+      });
     default:
       return state;
   }
@@ -1594,7 +1598,7 @@ var initialState = {
 /*!************************!*\
   !*** ./redux/types.js ***!
   \************************/
-/*! exports provided: REGISTER, AUTENTICAR_TOKEN, FETCH_CATEGORIAS, FETCH_LOJA, FETCH_PRODUTOS, FETCH_CATEGORIA, FETCH_PRODUTOS_CATEGORIA, USER, FETCH_PESQUISA, FETCH_PRODUTOS_PESQUISA, FETCH_PRODUTO, FETCH_PRODUTO_VARIACOES, FETCH_PRODUTO_AVALIACOES */
+/*! exports provided: REGISTER, AUTENTICAR_TOKEN, FETCH_CATEGORIAS, FETCH_LOJA, FETCH_PRODUTOS, FETCH_CATEGORIA, FETCH_PRODUTOS_CATEGORIA, USER, FETCH_PESQUISA, FETCH_PRODUTOS_PESQUISA, FETCH_PRODUTO, FETCH_PRODUTO_VARIACOES, FETCH_PRODUTO_AVALIACOES, NOVA_AVALIACAO */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1612,6 +1616,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_PRODUTO", function() { return FETCH_PRODUTO; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_PRODUTO_VARIACOES", function() { return FETCH_PRODUTO_VARIACOES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_PRODUTO_AVALIACOES", function() { return FETCH_PRODUTO_AVALIACOES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NOVA_AVALIACAO", function() { return NOVA_AVALIACAO; });
 /* modulo 40 - loja virtual - criando helper para inicialização*/
 
 /* modulo 45 - Criando actions e reduces e atualizando os componentes das categorias*/
@@ -1632,7 +1637,8 @@ var REGISTER = 'REGISTER',
   FETCH_PRODUTOS_PESQUISA = 'FETCH_PRODUTOS_PESQUISA',
   FETCH_PRODUTO = 'FETCH_PRODUTO',
   FETCH_PRODUTO_VARIACOES = 'FETCH_PRODUTO_VARIACOES',
-  FETCH_PRODUTO_AVALIACOES = 'FETCH_PRODUTO_AVALIACOES';
+  FETCH_PRODUTO_AVALIACOES = 'FETCH_PRODUTO_AVALIACOES',
+  NOVA_AVALIACAO = 'NOVA_AVALIACAO';
 
 /***/ }),
 

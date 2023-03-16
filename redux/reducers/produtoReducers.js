@@ -10,7 +10,8 @@ import {
 	FETCH_PRODUTOS_PESQUISA,
 	FETCH_PRODUTO,
 	FETCH_PRODUTO_VARIACOES,
-	FETCH_PRODUTO_AVALIACOES
+	FETCH_PRODUTO_AVALIACOES,
+	NOVA_AVALIACAO
 
 
 } from '../types';
@@ -61,6 +62,12 @@ export default (state = initialState, action) => {
 				...state,
 				variacoes: action.payload.variacoes,
 			};
+		
+		case NOVA_AVALIACAO:
+			return {
+				...state,
+				avaliacoes : state.avaliacoes.concat([action.payload.avaliacao])
+			}
 
 		default:
 			return state;

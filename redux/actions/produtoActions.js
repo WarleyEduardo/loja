@@ -4,6 +4,8 @@
 
 /* modulo 47 -  integração -  detalhes do produto */
 
+
+
 import axios from 'axios';
 
 import {
@@ -12,10 +14,14 @@ import {
 	FETCH_PRODUTOS_PESQUISA,
 	FETCH_PRODUTO,
 	FETCH_PRODUTO_VARIACOES,
-	FETCH_PRODUTO_AVALIACOES
+	FETCH_PRODUTO_AVALIACOES,
+	NOVA_AVALIACAO
 } from '../types';
 
 import { url, loja } from '../../config.js';
+
+/* modulo 47 - integrando o componente de avaliações 2/2 */
+import { getHeaders } from './helpers';
 
 
 export const fetchProdutosPaginaInicial = () => (dispatch) => {
@@ -60,12 +66,34 @@ export const fetchVariacoes = (id) => (dispatch) => {
 		.catch((e) => console.log(e));
 };	
 
+/* modulo 47 - integrando o componente de avaliações 2/2 */
+
+export const novaAvaliacao =
+	({ nome, token, produto, texto, pontuacao }, cb) =>
+	(dispatch) => {
+		axios
+			.post(
+				`${url}/api/avaliacoes?loja=${loja}&produto=${produto}`,
+				{
+					nome,
+					texto,
+					pontuacao,
+				},
+				getHeaders(token)
+			)
+			.then((response) => {
+				dispatch({ type: NOVA_AVALIACAO, payload: response.data });
+				cb(null);
+			})
+			.catch((e) => cb(e));
+	}; 
+
 export default {
 	fetchProdutosPaginaInicial,
 	fetchTermo,
 	fetchProdutosPesquisa,
 	fetchProduto,
 	fetchAvaliacoes,
-	fetchVariacoes
-	
+	fetchVariacoes,
+	novaAvaliacao,
 };
