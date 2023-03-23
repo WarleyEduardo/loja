@@ -31,6 +31,8 @@ class ProdutosCategoria extends Component {
 
 	render() {
 		const { categoria, produtosCategoria } = this.props;
+
+	
 		return (
 			<div className='container Categoria-Produtos'>
 				<br />

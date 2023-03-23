@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -1052,7 +1052,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _item_Produto__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../item/Produto */ "./components/item/Produto.js");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! redux */ "redux");
+/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(redux__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _item_Produto__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../item/Produto */ "./components/item/Produto.js");
 
 
 
@@ -1063,6 +1065,7 @@ var _jsxFileName = "D:\\javaScript\\lojavirtual\\lojavirtual\\components\\Listas
 function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(this).constructor; result = _babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, result); }; }
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default.a) return false; if (_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default.a.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 /* modulo 41 - loja virtual - criando componente de lista de produto e o card do produto 1/2 */
+
 
 
 
@@ -1089,36 +1092,65 @@ var Produtos = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       var _this = this;
-      {
-        var _this$props = this.props,
-          produtos = _this$props.produtos,
-          itensPorLinha = _this$props.itensPorLinha;
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-          className: "Produtos flex wrap",
-          __self: this,
+      var _this$props = this.props,
+        produtos = _this$props.produtos,
+        itensPorLinha = _this$props.itensPorLinha,
+        produto = _this$props.produto;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "Produtos flex wrap",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 28,
+          columnNumber: 4
+        }
+      }, produtos.map(function (item) {
+        if (item._id != produto) return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_item_Produto__WEBPACK_IMPORTED_MODULE_8__["default"], {
+          item: item,
+          key: item._id,
+          porLinha: itensPorLinha,
+          __self: _this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 28,
-            columnNumber: 5
+            lineNumber: 30,
+            columnNumber: 39
           }
-        }, produtos.map(function (item) {
-          return (
-            /*#__PURE__*/
-            /* Modulo 44 - adicionando dados e realizando integração dos componentes da pagina inicial */
-            react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_item_Produto__WEBPACK_IMPORTED_MODULE_7__["default"], {
-              item: item,
-              key: item._id,
-              porLinha: itensPorLinha,
-              __self: _this,
-              __source: {
-                fileName: _jsxFileName,
-                lineNumber: 31,
-                columnNumber: 7
-              }
-            })
-          );
-        }));
-      }
+        });
+      }));
+    }
+  }, {
+    key: "renderold",
+    value: function renderold() {
+      var _this2 = this;
+      var _this$props2 = this.props,
+        produtos = _this$props2.produtos,
+        itensPorLinha = _this$props2.itensPorLinha,
+        produto = _this$props2.produto;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "Produtos flex wrap",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 40,
+          columnNumber: 4
+        }
+      }, produtos.map(function (item) {
+        return (
+          /*#__PURE__*/
+          /* Modulo 44 - adicionando dados e realizando integração dos componentes da pagina inicial */
+          react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_item_Produto__WEBPACK_IMPORTED_MODULE_8__["default"], {
+            item: item,
+            key: item._id,
+            porLinha: itensPorLinha,
+            __self: _this2,
+            __source: {
+              fileName: _jsxFileName,
+              lineNumber: 44,
+              columnNumber: 6
+            }
+          })
+        );
+      }));
     }
   }]);
   return Produtos;
@@ -1831,21 +1863,21 @@ var ProdutosCategoria = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35,
+          lineNumber: 37,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 36,
+          lineNumber: 38,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37,
+          lineNumber: 39,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -1853,21 +1885,21 @@ var ProdutosCategoria = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 38,
+          lineNumber: 40,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h1", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 39,
+          lineNumber: 41,
           columnNumber: 6
         }
       }, categoria ? categoria.nome : '-')), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 41,
+          lineNumber: 43,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Listas_Produtos__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -1876,7 +1908,7 @@ var ProdutosCategoria = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 42,
+          lineNumber: 44,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Paginacao__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -1889,7 +1921,7 @@ var ProdutosCategoria = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44,
+          lineNumber: 46,
           columnNumber: 5
         }
       }));
@@ -3723,7 +3755,7 @@ var novaAvaliacao = function novaAvaliacao(_ref, cb) {
 /*!************************!*\
   !*** ./redux/types.js ***!
   \************************/
-/*! exports provided: REGISTER, AUTENTICAR_TOKEN, FETCH_CATEGORIAS, FETCH_LOJA, FETCH_PRODUTOS, FETCH_CATEGORIA, FETCH_PRODUTOS_CATEGORIA, USER, FETCH_PESQUISA, FETCH_PRODUTOS_PESQUISA, FETCH_PRODUTO, FETCH_PRODUTO_VARIACOES, FETCH_PRODUTO_AVALIACOES, NOVA_AVALIACAO */
+/*! exports provided: REGISTER, AUTENTICAR_TOKEN, FETCH_CATEGORIAS, FETCH_LOJA, FETCH_PRODUTOS, FETCH_CATEGORIA, FETCH_PRODUTOS_CATEGORIA, USER, FETCH_PESQUISA, FETCH_PRODUTOS_PESQUISA, FETCH_PRODUTO, FETCH_PRODUTO_VARIACOES, FETCH_PRODUTO_AVALIACOES, NOVA_AVALIACAO, SET_CARRINHO, CLEAN_CARRINHO, FETCH_PRODUTO_CARRINHO, FETCH_VARIACAO_CARRINHO, FETCH_VALOR_ENTREGA, UPDATE_QTD_CART, REMOVE_PRODUTO_CART, CLEAN_FRETES, UPDATE_FRETE_CART */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3742,6 +3774,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_PRODUTO_VARIACOES", function() { return FETCH_PRODUTO_VARIACOES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_PRODUTO_AVALIACOES", function() { return FETCH_PRODUTO_AVALIACOES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NOVA_AVALIACAO", function() { return NOVA_AVALIACAO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_CARRINHO", function() { return SET_CARRINHO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAN_CARRINHO", function() { return CLEAN_CARRINHO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_PRODUTO_CARRINHO", function() { return FETCH_PRODUTO_CARRINHO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_VARIACAO_CARRINHO", function() { return FETCH_VARIACAO_CARRINHO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_VALOR_ENTREGA", function() { return FETCH_VALOR_ENTREGA; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_QTD_CART", function() { return UPDATE_QTD_CART; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_PRODUTO_CART", function() { return REMOVE_PRODUTO_CART; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAN_FRETES", function() { return CLEAN_FRETES; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_FRETE_CART", function() { return UPDATE_FRETE_CART; });
 /* modulo 40 - loja virtual - criando helper para inicialização*/
 
 /* modulo 45 - Criando actions e reduces e atualizando os componentes das categorias*/
@@ -3763,7 +3804,16 @@ var REGISTER = 'REGISTER',
   FETCH_PRODUTO = 'FETCH_PRODUTO',
   FETCH_PRODUTO_VARIACOES = 'FETCH_PRODUTO_VARIACOES',
   FETCH_PRODUTO_AVALIACOES = 'FETCH_PRODUTO_AVALIACOES',
-  NOVA_AVALIACAO = 'NOVA_AVALIACAO';
+  NOVA_AVALIACAO = 'NOVA_AVALIACAO',
+  SET_CARRINHO = 'SET_CARRINHO',
+  CLEAN_CARRINHO = 'CLEAN_CARRINHO',
+  FETCH_PRODUTO_CARRINHO = 'FETCH_PRODUTO_CARRINHO',
+  FETCH_VARIACAO_CARRINHO = 'FETCH_VARIACAO_CARRINHO',
+  FETCH_VALOR_ENTREGA = 'FETCH_VALOR_ENTREGA',
+  UPDATE_QTD_CART = 'UPDATE_QTD_CART',
+  REMOVE_PRODUTO_CART = 'REMOVE_PRODUTO_CART',
+  CLEAN_FRETES = 'CLEAN_FRETES',
+  UPDATE_FRETE_CART = 'UPDATE_FRETE_CART';
 
 /***/ }),
 
@@ -3957,7 +4007,7 @@ export default initialize;
 
 /***/ }),
 
-/***/ 5:
+/***/ 8:
 /*!**********************************************!*\
   !*** multi ./pages/categoria/[categoria].js ***!
   \**********************************************/
@@ -4285,6 +4335,17 @@ module.exports = require("react");
 /***/ (function(module, exports) {
 
 module.exports = require("react-redux");
+
+/***/ }),
+
+/***/ "redux":
+/*!************************!*\
+  !*** external "redux" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("redux");
 
 /***/ }),
 

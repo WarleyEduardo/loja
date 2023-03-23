@@ -14,9 +14,13 @@ import lojaReducer from './lojaReducers';
 
 import produtoReducer from './produtoReducers';
 
+/* modulo 48 -  criando as actions e reducers necessários (2/2) */
+import carrinhoReducer from './carrinhoReducers';
+
 export default combineReducers({
 	auth: authReducer,
 	categoria: categoriaReducer,
 	loja: lojaReducer,
-	produto: produtoReducer
+	produto: produtoReducer,
+	carrinho: carrinhoReducer,
 });

@@ -13,8 +13,7 @@ class Descricao extends Component {
 
 		const { produto } = this.props;
 
-		console.log(produto)
-	
+		
 		return (
 			<div className="Descricao flex vertical">
 				<h2>Descrição</h2>
