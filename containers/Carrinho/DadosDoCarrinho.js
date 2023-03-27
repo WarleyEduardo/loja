@@ -5,9 +5,24 @@ import { formatMoney } from '../../utils';
 
 import Frete from '../../components/Item/Frete';
 
+/*modulo 48 - integrando os dados do carrinho */
+
+import { connect } from 'react-redux';
+import actions from '../../redux/actions';
+
+
+
+
 class DadosDoCarrinho extends Component {
 
 	renderDadosDoCarrinho() { 
+
+		const { carrinho, freteSelecionado } = this.props;
+		const valorPedido = (carrinho || []).reduce((all, item) => all + (Number(item.precoUnitario)
+			* Number(item.quantidade)), 0);
+		
+		const valorFrete = Number(freteSelecionado ? (freteSelecionado.valor || "0").replace(",", ".") : 0);
+		const ValorTotal = valorPedido + valorFrete;
 
 		return (
 			<div className='dados-do-carrinho-container  flex-3'>
@@ -16,7 +31,7 @@ class DadosDoCarrinho extends Component {
 						<p className='headline'>Valor do Pedido:</p>
 					</div>
 
-					<div className='flex-1 flex flex-center'>{formatMoney(85.35)}</div>
+					<div className='flex-1 flex flex-center'>{formatMoney(valorPedido)}</div>
 				</div>
 				<Frete />
 				<div className='dados-do-carrinho-item  flex'>
@@ -24,7 +39,11 @@ class DadosDoCarrinho extends Component {
 						<p className='headline'>Valor Total:</p>
 					</div>
 
-					<div className='flex-1 flex flex-center'>{formatMoney(105.35)}</div>
+					<div className='flex-1 flex flex-center'>
+					{
+						formatMoney(ValorTotal)
+					}
+					</div>
 				</div>
 
 				<div className='dados-do-carrinho-item flex flex-right'>
@@ -47,4 +66,12 @@ class DadosDoCarrinho extends Component {
 	}
 }
 
-export default DadosDoCarrinho;
+const mapStateToProps = state => ({
+
+	carrinho: state.carrinho.carrinho,
+	freteSelecionado : state.carrinho.freteSelecionado
+
+
+})
+
+export default connect(mapStateToProps,actions)(DadosDoCarrinho);

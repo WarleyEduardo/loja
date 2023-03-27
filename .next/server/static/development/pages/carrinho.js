@@ -1625,6 +1625,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils */ "./utils/index.js");
 /* harmony import */ var _components_Item_Frete__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/Item/Frete */ "./components/Item/Frete.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../redux/actions */ "./redux/actions/index.js");
 
 
 
@@ -1639,6 +1642,11 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_b
 
 
 
+
+/*modulo 48 - integrando os dados do carrinho */
+
+
+
 var DadosDoCarrinho = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__["default"])(DadosDoCarrinho, _Component);
   var _super = _createSuper(DadosDoCarrinho);
@@ -1649,12 +1657,20 @@ var DadosDoCarrinho = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(DadosDoCarrinho, [{
     key: "renderDadosDoCarrinho",
     value: function renderDadosDoCarrinho() {
+      var _this$props = this.props,
+        carrinho = _this$props.carrinho,
+        freteSelecionado = _this$props.freteSelecionado;
+      var valorPedido = (carrinho || []).reduce(function (all, item) {
+        return all + Number(item.precoUnitario) * Number(item.quantidade);
+      }, 0);
+      var valorFrete = Number(freteSelecionado ? (freteSelecionado.valor || "0").replace(",", ".") : 0);
+      var ValorTotal = valorPedido + valorFrete;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "dados-do-carrinho-container  flex-3",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 13,
+          lineNumber: 28,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -1662,7 +1678,7 @@ var DadosDoCarrinho = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 14,
+          lineNumber: 29,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -1670,7 +1686,7 @@ var DadosDoCarrinho = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 15,
+          lineNumber: 30,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
@@ -1678,7 +1694,7 @@ var DadosDoCarrinho = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 16,
+          lineNumber: 31,
           columnNumber: 7
         }
       }, "Valor do Pedido:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -1686,14 +1702,14 @@ var DadosDoCarrinho = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 19,
+          lineNumber: 34,
           columnNumber: 6
         }
-      }, Object(_utils__WEBPACK_IMPORTED_MODULE_7__["formatMoney"])(85.35))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Item_Frete__WEBPACK_IMPORTED_MODULE_8__["default"], {
+      }, Object(_utils__WEBPACK_IMPORTED_MODULE_7__["formatMoney"])(valorPedido))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Item_Frete__WEBPACK_IMPORTED_MODULE_8__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21,
+          lineNumber: 36,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -1701,7 +1717,7 @@ var DadosDoCarrinho = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22,
+          lineNumber: 37,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -1709,7 +1725,7 @@ var DadosDoCarrinho = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23,
+          lineNumber: 38,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
@@ -1717,7 +1733,7 @@ var DadosDoCarrinho = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 24,
+          lineNumber: 39,
           columnNumber: 7
         }
       }, "Valor Total:")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -1725,15 +1741,15 @@ var DadosDoCarrinho = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 27,
+          lineNumber: 42,
           columnNumber: 6
         }
-      }, Object(_utils__WEBPACK_IMPORTED_MODULE_7__["formatMoney"])(105.35))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }, Object(_utils__WEBPACK_IMPORTED_MODULE_7__["formatMoney"])(ValorTotal))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "dados-do-carrinho-item flex flex-right",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 30,
+          lineNumber: 49,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
@@ -1741,14 +1757,14 @@ var DadosDoCarrinho = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 31,
+          lineNumber: 50,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 32,
+          lineNumber: 51,
           columnNumber: 7
         }
       }, "Finalizar Pedido"))));
@@ -1761,7 +1777,7 @@ var DadosDoCarrinho = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 42,
+          lineNumber: 61,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -1769,7 +1785,7 @@ var DadosDoCarrinho = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43,
+          lineNumber: 62,
           columnNumber: 5
         }
       }), this.renderDadosDoCarrinho());
@@ -1777,7 +1793,13 @@ var DadosDoCarrinho = /*#__PURE__*/function (_Component) {
   }]);
   return DadosDoCarrinho;
 }(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
-/* harmony default export */ __webpack_exports__["default"] = (DadosDoCarrinho);
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    carrinho: state.carrinho.carrinho,
+    freteSelecionado: state.carrinho.freteSelecionado
+  };
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_9__["connect"])(mapStateToProps, _redux_actions__WEBPACK_IMPORTED_MODULE_10__["default"])(DadosDoCarrinho));
 
 /***/ }),
 
