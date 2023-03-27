@@ -25,7 +25,8 @@ export const cleanCarrinho = () => {
 };
 
 export const fetchProdutoCarrinho = (id, idxCarrinho) => dispatch => {
-	
+
+		
 	axios.get(`${url}/api/produtos/${id}?loja=${loja}`)
 		.then(response => dispatch({
 		

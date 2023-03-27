@@ -45,7 +45,9 @@ export default (state = initialState, action) => {
 
 				...state,
 				carrinho: state.carrinho ? state.carrinho.map((item, index) => {
-					return (action.idxCarrinho === index) ?  {...item,produto: action.payload.produto} : item 
+					return (action.idxCarrinho === index) ?
+						{ ...item, produto: action.payload.produto } :
+						item 
 				}) : []
 			}
 		

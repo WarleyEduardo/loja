@@ -9,7 +9,7 @@ import { formatMoney } from '../../utils';
 import { baseImg } from '../../config';
 import { connect } from 'react-redux';
 import actions from '../../redux/actions';
-import { addcart } from '../../utils/cart';
+import { addCart } from '../../utils/cart';
 
 
 class ListaDeProdutos extends Component {
@@ -35,15 +35,39 @@ class ListaDeProdutos extends Component {
 		);
 	}
 
-	renderProduto(item, semAlteracoes) {
+	changeQuantidade(e, quantidade, item, index) {
+		if (Number(e.target.value) < 1) return;
+		let novaQuantidade = Number(e.target.value);
+		let change = novaQuantidade - quantidade;
+		let QtdAtual = item.variacao ? item.variacao.quantidade : item.produto.quantidade;
 
-	       
+		if (novaQuantidade >= QtdAtual) return alert('Quantidade indisponível em estoque');
+
+		addCart(
+			{
+				produto: item.produto._id,
+				variacao: item.variacao ? item.variacao._id : null,
+				quantidade: change,
+				precoUnitario: item.precoUnitario,
+			},
+			false
+		);
+		this.props.updateQuantidade(change, index);
+	}
+
+	removerProdutoCarrinho(index) {
+		
+		if (window.confirm("Você deseja realmente remover esse produto?")) {
+			
+			this.props.removerProduto(index);
+		}
+	}
+
+	renderProduto(item, semAlteracoes, index) {
 		//if (!item.variacao || !item.variacao._id || !item.produto || !item.produto._id) return null;
 		if (!item.produto || !item.produto._id) return null;
 
-
-		const foto =   item.variacao && item.variacao.fotos && item.variacao.fotos.length > 0
-			? item.variacao.fotos[0] : item.produto.fotos[0];
+		const foto = item.variacao && item.variacao.fotos && item.variacao.fotos.length > 0 ? item.variacao.fotos[0] : item.produto.fotos[0];
 		const nome = item.variacao ? item.produto.titulo + ' - ' + item.variacao.nome : item.produto.titulo;
 		const { quantidade, precoUnitario } = item;
 
@@ -60,7 +84,11 @@ class ListaDeProdutos extends Component {
 				</div>
 
 				<div className='flex-1 flex flex-center'>
-					{semAlteracoes ? <span>{quantidade}</span> : <input type='number' defaultValue={quantidade} className='produto-quantidade' />}
+					{semAlteracoes ? (
+						<span>{quantidade}</span>
+					) : (
+						<input type='number' value={quantidade} className='produto-quantidade' onChange={(e) => this.changeQuantidade(e, quantidade, item, index)} />
+					)}
 				</div>
 
 				<div className='flex-1 flex flex-center'>
@@ -71,7 +99,7 @@ class ListaDeProdutos extends Component {
 					<span>{formatMoney(precoUnitario * quantidade)}</span>
 				</div>
 				{!semAlteracoes && (
-					<div className='flex-1 flex flex-center'>
+					<div className='flex-1 flex flex-center' onClick={() => this.removerProdutoCarrinho(index)}>
 						<span className='btn-remover'>Remover</span>
 					</div>
 				)}
@@ -80,9 +108,8 @@ class ListaDeProdutos extends Component {
 	}
 
 	renderProdutos(semAlteracoes) {
-		return this.props.carrinho.map((item) => {		
-
-			return this.renderProduto(item, semAlteracoes);
+		return this.props.carrinho.map((item, index) => {
+			return this.renderProduto(item, semAlteracoes, index);
 		});
 	}
 
