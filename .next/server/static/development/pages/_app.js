@@ -1487,7 +1487,7 @@ var initialState = {
     case _types__WEBPACK_IMPORTED_MODULE_1__["REMOVE_PRODUTO_CART"]:
       return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
         carrinho: state.carrinho.reduce(function (all, item, index) {
-          return index !== action.idxCarrinho ? all.concate([item]) : all;
+          return index !== action.idxCarrinho ? all.concat([item]) : all;
         }, [])
       });
     case _types__WEBPACK_IMPORTED_MODULE_1__["UPDATE_FRETE_CART"]:

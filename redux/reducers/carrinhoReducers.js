@@ -89,7 +89,7 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				carrinho: state.carrinho.reduce((all, item, index) =>
-					index !== action.idxCarrinho ? all.concate([item]) : all 
+					index !== action.idxCarrinho ? all.concat([item]) : all 
 					
 				, [])
 			}
