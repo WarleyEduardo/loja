@@ -3,10 +3,18 @@
 import React, { Component } from 'react'
 import Link from 'next/link'
 
+ /*Módulo  48 -  atualizando o arquivo de pages e produto */
+ import {getCountItemsCart} from '../../utils/cart';
+
 class CardCarrinho extends Component {
 
 
+	 
 	state = { cartQtd: 0 }
+
+	componentDidMount() {
+		this.setState({ cartQtd: getCountItemsCart() });
+	}
 	
 	render() {
 		

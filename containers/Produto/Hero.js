@@ -17,6 +17,10 @@ import { formatMoney } from '../../utils';
 
 import { baseImg } from '../../config.js';
 
+/*Módulo  48 -  atualizando o arquivo de pages e produto */
+ 
+import { addCart } from '../../utils/cart';
+
 class Hero extends Component {
 	constructor(props) {
 		super();
@@ -70,7 +74,7 @@ class Hero extends Component {
 	addCart() {
 		 
 		const { variacao, qtd, variacaoCompleta } = this.state;
-		const { produto } = this.produto;
+		const { produto } = this.props;
 		addCart({
 			
 			produto: produto._id,

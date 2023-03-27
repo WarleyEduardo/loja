@@ -3,7 +3,7 @@
 /* modulo 48 -  criando as actions e reducers necessários (2/2) */
 import axios from 'axios';
 import { url, loja } from '../../config.js';
-import { getCart, removeCart, clearCart } from '../../utils/cart';
+import { getCart, removeCart, cleanCart } from '../../utils/cart';
 import {
 	SET_CARRINHO,
 	CLEAN_CARRINHO,
@@ -20,7 +20,7 @@ import {
 export const setCarrinho = () => ({ type: SET_CARRINHO, carrinho: getCart() });
 
 export const cleanCarrinho = () => {
-	clearCart();
+	cleanCart();
 	return {type: CLEAN_CARRINHO}
 };
 

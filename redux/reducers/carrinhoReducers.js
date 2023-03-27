@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
 			return {
 
 				...state,
-				carrinho : state.carrinho
+				carrinho : action.carrinho
 			}			
 		}
 			

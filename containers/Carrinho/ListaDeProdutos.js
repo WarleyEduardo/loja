@@ -5,23 +5,12 @@ import React, { Component } from 'react';
 
 import { formatMoney } from '../../utils';
 
-const PRODUTOS = [
-	{
-		id: 1,
-		fotos: ['/static/img/mouse-1.png'],
-		titulo: 'Mouser Gamer 1 - M',
-		precoUnitario: 25,
-		quantidade: 1,
-	},
+/*Modulo 48 -  integrando a lista de produtos */
+import { baseImg } from '../../config';
+import { connect } from 'react-redux';
+import actions from '../../redux/actions';
+import { addcart } from '../../utils/cart';
 
-	{
-		id: 2,
-		fotos: ['/static/img/mouse-4.png'],
-		titulo: 'Mouser Gamer 2 - G ',
-		precoUnitario: 55,
-		quantidade: 1,
-	},
-];
 
 class ListaDeProdutos extends Component {
 	renderCabecalhoCarrinho(semAlteracoes) {
@@ -47,15 +36,22 @@ class ListaDeProdutos extends Component {
 	}
 
 	renderProduto(item, semAlteracoes) {
-		const foto = item.fotos[0];
-		const nome = item.titulo;
+
+	       
+		//if (!item.variacao || !item.variacao._id || !item.produto || !item.produto._id) return null;
+		if (!item.produto || !item.produto._id) return null;
+
+
+		const foto =   item.variacao && item.variacao.fotos && item.variacao.fotos.length > 0
+			? item.variacao.fotos[0] : item.produto.fotos[0];
+		const nome = item.variacao ? item.produto.titulo + ' - ' + item.variacao.nome : item.produto.titulo;
 		const { quantidade, precoUnitario } = item;
 
 		return (
-			<div key={item.id} className='carrinho-item flex'>
+			<div key={item.produto._id} className='carrinho-item flex'>
 				<div className='flex-4 flex'>
 					<div className='produto-image flex-2 flex flex-center'>
-						<img src={foto} alt={nome} width='100px' />
+						<img src={baseImg + foto} alt={nome} width='100px' />
 					</div>
 
 					<div className='produto-titulo flex-4 flex flex-start'>
@@ -84,18 +80,26 @@ class ListaDeProdutos extends Component {
 	}
 
 	renderProdutos(semAlteracoes) {
-		return PRODUTOS.map((item) => this.renderProduto(item, semAlteracoes));
+		return this.props.carrinho.map((item) => {		
+
+			return this.renderProduto(item, semAlteracoes);
+		});
 	}
 
 	render() {
-		const { semAlteracoes } = this.props;
+		const { semAlteracoes, carrinho } = this.props;
 		return (
 			<div className='Lista-De-Produtos flex vertical'>
 				{this.renderCabecalhoCarrinho(semAlteracoes)}
-				{this.renderProdutos(semAlteracoes)}
+				{carrinho && this.renderProdutos(semAlteracoes)}
 			</div>
 		);
 	}
 }
 
-export default ListaDeProdutos;
+const mapStateToProps = state => ({
+
+	carrinho: state.carrinho.carrinho
+});
+
+export default connect(mapStateToProps,actions)(ListaDeProdutos);

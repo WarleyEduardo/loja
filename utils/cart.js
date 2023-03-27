@@ -4,10 +4,12 @@ import Router from 'next/router';
 
 
 const _saveCart = (item) => {
+
+	console.log(item)
 	let cart = getCart();
 	let found;
 
-	cart - cart.map((_item) => {
+	cart = cart.map((_item) => {
 		
 		if (_item.produto === item.produto &&
 			_item.variacao === item.variacao
@@ -25,6 +27,8 @@ const _saveCart = (item) => {
 	localStorage.setItem("@cart",JSON.stringify(cart))
 }
 
+
+
 export const getCart = () => JSON.parse(localStorage.getItem("@cart") || "[]");
 
 export const cleanCart = () => localStorage.removeItem("@cart");
@@ -34,7 +38,7 @@ export const addCart = (item, goToCart = true) => {
 	if (goToCart) Router.push("/carrinho")
 };
 
-export const getCountItemCart = () => getCart().reduce((c, { quantidade }) => c + (Number(quantidade) || 1), 0);
+export const getCountItemsCart = () => getCart().reduce((c, { quantidade }) => c + (Number(quantidade) || 1), 0);
 
 export const removeCart = (index) => {
 	let cart = getCart();
@@ -51,6 +55,6 @@ export default {
 	getCart,
 	addCart,
 	cleanCart,
-	getCountItemCart,
+	getCountItemsCart,
 	removeCart
 }
