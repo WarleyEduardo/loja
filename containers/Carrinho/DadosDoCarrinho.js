@@ -10,6 +10,8 @@ import Frete from '../../components/Item/Frete';
 import { connect } from 'react-redux';
 import actions from '../../redux/actions';
 
+import Link from 'next/link';
+
 
 
 
@@ -39,17 +41,15 @@ class DadosDoCarrinho extends Component {
 						<p className='headline'>Valor Total:</p>
 					</div>
 
-					<div className='flex-1 flex flex-center'>
-					{
-						formatMoney(ValorTotal)
-					}
-					</div>
+					<div className='flex-1 flex flex-center'>{formatMoney(ValorTotal)}</div>
 				</div>
 
 				<div className='dados-do-carrinho-item flex flex-right'>
-					<button className='btn btn-success btn-cta'>
-						<span>Finalizar Pedido</span>
-					</button>
+					<Link  href="/checkout">
+						<button className='btn btn-success btn-cta'>
+							<span>Finalizar Pedido</span>
+						</button>
+					</Link>
 				</div>
 			</div>
 		);
