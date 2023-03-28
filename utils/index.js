@@ -1,4 +1,4 @@
-export const formatMoney = (value) => 'R$ ' + (value || 0).toFixed(2).replace('.', ',');
+export const formatMoney = (value) => 'R$ ' + Number(value || 0).toFixed(2).replace('.', ',');
 
 /* modulo 42 - pagina de Checkout - criando o componente de dados de entrega 1/2  */
 
@@ -57,3 +57,12 @@ export const ESTADOS = {
 
 	TO: 'Tocantins',
 };
+
+
+/*modulo 48 -  integrando a seçao de frete 1/2  */
+
+export const codigosCorreios = {
+
+	"40010": "Sedex",
+	"41106": "PAC"
+}

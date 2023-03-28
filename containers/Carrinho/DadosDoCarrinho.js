@@ -21,7 +21,7 @@ class DadosDoCarrinho extends Component {
 		const valorPedido = (carrinho || []).reduce((all, item) => all + (Number(item.precoUnitario)
 			* Number(item.quantidade)), 0);
 		
-		const valorFrete = Number(freteSelecionado ? (freteSelecionado.valor || "0").replace(",", ".") : 0);
+		const valorFrete = Number(freteSelecionado ? (freteSelecionado.Valor || "0").replace(",", ".") : 0);
 		const ValorTotal = valorPedido + valorFrete;
 
 		return (

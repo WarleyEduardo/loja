@@ -50,9 +50,10 @@ export const fetchVariacoesCarrinho = (id,produto,idxCarrinho) => (dispatch) => 
 		.catch((e) => console.log(e));
 };
 
-export const calcularFrete = (cep,carrinho) => (dispatch) => {
+export const calcularFrete = (cep, carrinho) => (dispatch) => {
+	
 	axios
-		.get(`${url}/api/entregas/calcular`,{cep, carrinho})
+		.post(`${url}/api/entregas/calcular`,{cep, carrinho})
 		.then((response) =>
 			dispatch({
 				type: FETCH_VALOR_ENTREGA,

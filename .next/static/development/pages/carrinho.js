@@ -670,6 +670,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../redux/actions */ "./redux/actions/index.js");
+/* harmony import */ var _utils_cart__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/cart */ "./utils/cart.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utils */ "./utils/index.js");
+/* harmony import */ var _utils_format__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../utils/format */ "./utils/format.js");
 
 
 
@@ -683,66 +688,102 @@ function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflec
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default.a) return false; if (_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default.a.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 /* modulo 42 - pagina de Carrinho - criando a estrutura da pagina e componentes 3/3 */
 
+
+
+/*modulo 48 -  integrando a seçao de frete 1/2  */
+
+/*modulo 48 -  integrando a seçao de frete 2/2 */
+
+
+
+
+
+
 var Frete = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(Frete, _Component);
   var _super = _createSuper(Frete);
-  function Frete() {
+  function Frete(props) {
     var _this;
     Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, Frete);
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-    _this = _super.call.apply(_super, [this].concat(args));
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "state", {
-      frete: true
+    _this = _super.call(this);
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "onChangeCEP", function (e) {
+      _this.setState({
+        cep: Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatCEP"])(e.target.value)
+      });
     });
+    _this.state = {
+      cep: props.cep || ""
+    };
     return _this;
   }
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(Frete, [{
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (!prevProps.fretes && this.props.fretes && !this.props.freteSelecionado) {
+        this.props.selecionarFrete(this.props.fretes[0]);
+      }
+    }
+  }, {
+    key: "selectFrete",
+    value: function selectFrete(codigo, fretes) {
+      var frete = fretes.reduce(function (all, frete) {
+        return frete.Codigo.toString() === codigo ? frete : all;
+      }, {});
+      this.props.selecionarFrete(frete);
+    }
+  }, {
     key: "renderOpcoesFrete",
     value: function renderOpcoesFrete() {
+      var _this2 = this;
+      var _this$props = this.props,
+        freteSelecionado = _this$props.freteSelecionado,
+        fretes = _this$props.fretes;
+      if (!fretes) return null;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 13,
+          lineNumber: 49,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("select", {
-        defaultValue: "PAC",
+        value: freteSelecionado.Codigo,
+        onChange: function onChange(e) {
+          return _this2.selectFrete(e.target.value, fretes);
+        },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 14,
+          lineNumber: 50,
           columnNumber: 5
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("option", {
-        value: "PAC",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 15,
-          columnNumber: 6
-        }
-      }, "PAC (15 dias uteis) - R$ 18,90"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("option", {
-        value: "SEDEX",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 16,
-          columnNumber: 6
-        }
-      }, "SEDEX (3 dias uteis) - R$ 38,90")));
+      }, fretes.map(function (frete, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("option", {
+          value: frete.Codigo,
+          key: frete.Codigo,
+          __self: _this2,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 56,
+            columnNumber: 10
+          }
+        }, _utils__WEBPACK_IMPORTED_MODULE_12__["codigosCorreios"][frete.Codigo], " \xA0 (", frete.PrazoEntrega, " dias \xFAteis) -\xA0", Object(_utils__WEBPACK_IMPORTED_MODULE_12__["formatMoney"])(frete.Valor.replace(',', '.')));
+      })));
     }
   }, {
     key: "renderOpcaoSelecionada",
     value: function renderOpcaoSelecionada() {
+      var _this$props2 = this.props,
+        freteSelecionado = _this$props2.freteSelecionado,
+        cleanFretes = _this$props2.cleanFretes;
+      if (!freteSelecionado || !freteSelecionado.Valor) return null;
+      var valorFrete = freteSelecionado.Valor.replace(",", ".");
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "flex vertical flex-center",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 25,
+          lineNumber: 80,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h4", {
@@ -750,28 +791,39 @@ var Frete = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26,
-          columnNumber: 5
+          lineNumber: 81,
+          columnNumber: 6
         }
-      }, "R$ 19,80"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
+      }, Object(_utils__WEBPACK_IMPORTED_MODULE_12__["formatMoney"])(valorFrete)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
         className: "limpar-CEP",
+        onClick: function onClick() {
+          return cleanFretes();
+        },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 27,
+          lineNumber: 82,
           columnNumber: 5
         }
       }, "Limpar CEP"));
     }
   }, {
+    key: "calcularFrete",
+    value: function calcularFrete() {
+      var cep = this.state.cep;
+      if (!cep || cep.length !== 9) return alert("Digite o CEP corretamente");
+      this.props.calcularFrete(cep, Object(_utils_cart__WEBPACK_IMPORTED_MODULE_11__["getCart"])());
+    }
+  }, {
     key: "renderFormularioCEP",
     value: function renderFormularioCEP() {
+      var _this3 = this;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "flex-1 flex",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35,
+          lineNumber: 103,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -779,17 +831,18 @@ var Frete = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 36,
+          lineNumber: 104,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("input", {
-        defaultValue: "",
+        value: this.state.cep,
         name: "CEP",
         className: "campo-frete",
+        onChange: this.onChangeCEP,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37,
+          lineNumber: 105,
           columnNumber: 6
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -797,15 +850,18 @@ var Frete = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 40,
+          lineNumber: 108,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
-        className: "btn btn-primary btn-small",
+        className: "btn btn-primary btn-sm",
+        onClick: function onClick() {
+          return _this3.calcularFrete();
+        },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 41,
+          lineNumber: 109,
           columnNumber: 6
         }
       }, "CALCULAR")));
@@ -818,7 +874,7 @@ var Frete = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 50,
+          lineNumber: 119,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -826,7 +882,7 @@ var Frete = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 51,
+          lineNumber: 120,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("p", {
@@ -834,23 +890,31 @@ var Frete = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 52,
+          lineNumber: 121,
           columnNumber: 6
         }
-      }, "Frete"), this.state.frete && this.renderOpcoesFrete()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+      }, "Frete"), this.props.freteSelecionado && this.renderOpcoesFrete()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "flex-1 flex flex-center",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 56,
+          lineNumber: 125,
           columnNumber: 5
         }
-      }, this.state.frete ? this.renderOpcaoSelecionada() : this.renderFormularioCEP()));
+      }, this.props.freteSelecionado ? this.renderOpcaoSelecionada() : this.renderFormularioCEP()));
     }
   }]);
   return Frete;
 }(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
-/* harmony default export */ __webpack_exports__["default"] = (Frete);
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    carrinho: state.carrinho.carrinho,
+    freteSelecionado: state.carrinho.freteSelecionado,
+    fretes: state.carrinho.fretes,
+    cep: state.carrinho.cep
+  };
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_9__["connect"])(mapStateToProps, _redux_actions__WEBPACK_IMPORTED_MODULE_10__["default"])(Frete));
 
 /***/ }),
 
@@ -1566,7 +1630,7 @@ var DadosDoCarrinho = /*#__PURE__*/function (_Component) {
       var valorPedido = (carrinho || []).reduce(function (all, item) {
         return all + Number(item.precoUnitario) * Number(item.quantidade);
       }, 0);
-      var valorFrete = Number(freteSelecionado ? (freteSelecionado.valor || "0").replace(",", ".") : 0);
+      var valorFrete = Number(freteSelecionado ? (freteSelecionado.Valor || "0").replace(",", ".") : 0);
       var ValorTotal = valorPedido + valorFrete;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "dados-do-carrinho-container  flex-3",
@@ -19442,7 +19506,7 @@ var fetchVariacoesCarrinho = function fetchVariacoesCarrinho(id, produto, idxCar
 };
 var calcularFrete = function calcularFrete(cep, carrinho) {
   return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(_config_js__WEBPACK_IMPORTED_MODULE_1__["url"], "/api/entregas/calcular"), {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("".concat(_config_js__WEBPACK_IMPORTED_MODULE_1__["url"], "/api/entregas/calcular"), {
       cep: cep,
       carrinho: carrinho
     }).then(function (response) {
@@ -20033,19 +20097,45 @@ var fetchData = function fetchData(action, ctx) {
 
 /***/ }),
 
+/***/ "./utils/format.js":
+/*!*************************!*\
+  !*** ./utils/format.js ***!
+  \*************************/
+/*! exports provided: numberPattern, formatCEP */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "numberPattern", function() { return numberPattern; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "formatCEP", function() { return formatCEP; });
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
+
+
+/*modulo 48 -  integrando a seçao de frete 1/2  */
+var numberPattern = /\d+/g;
+var formatCEP = function formatCEP(value) {
+  var auxCep = (value || "").match(numberPattern);
+  var _cep = (auxCep || []).join('');
+  return _cep.length > 5 ? _cep.slice(0, 5) + '-' + _cep.slice(5, 8) : _cep;
+};
+
+/***/ }),
+
 /***/ "./utils/index.js":
 /*!************************!*\
   !*** ./utils/index.js ***!
   \************************/
-/*! exports provided: formatMoney, ESTADOS */
+/*! exports provided: formatMoney, ESTADOS, codigosCorreios */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "formatMoney", function() { return formatMoney; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ESTADOS", function() { return ESTADOS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "codigosCorreios", function() { return codigosCorreios; });
 var formatMoney = function formatMoney(value) {
-  return 'R$ ' + (value || 0).toFixed(2).replace('.', ',');
+  return 'R$ ' + Number(value || 0).toFixed(2).replace('.', ',');
 };
 
 /* modulo 42 - pagina de Checkout - criando o componente de dados de entrega 1/2  */
@@ -20078,6 +20168,13 @@ var ESTADOS = {
   SP: 'São Paulo',
   SE: 'Sergipe',
   TO: 'Tocantins'
+};
+
+/*modulo 48 -  integrando a seçao de frete 1/2  */
+
+var codigosCorreios = {
+  "40010": "Sedex",
+  "41106": "PAC"
 };
 
 /***/ }),
@@ -20130,7 +20227,7 @@ export default initialize;
 
 /***/ }),
 
-/***/ 1:
+/***/ 2:
 /*!********************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fcarrinho&absolutePagePath=D%3A%5CjavaScript%5Clojavirtual%5Clojavirtual%5Cpages%5Ccarrinho.js ***!
   \********************************************************************************************************************************************/
@@ -20153,5 +20250,5 @@ module.exports = dll_b5814d3baa9899c6be4a;
 
 /***/ })
 
-},[[1,"static/runtime/webpack.js"]]]);
+},[[2,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=carrinho.js.map

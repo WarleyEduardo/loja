@@ -3669,7 +3669,7 @@ var fetchVariacoesCarrinho = function fetchVariacoesCarrinho(id, produto, idxCar
 };
 var calcularFrete = function calcularFrete(cep, carrinho) {
   return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("".concat(_config_js__WEBPACK_IMPORTED_MODULE_1__["url"], "/api/entregas/calcular"), {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post("".concat(_config_js__WEBPACK_IMPORTED_MODULE_1__["url"], "/api/entregas/calcular"), {
       cep: cep,
       carrinho: carrinho
     }).then(function (response) {
@@ -4259,15 +4259,16 @@ var fetchData = function fetchData(action, ctx) {
 /*!************************!*\
   !*** ./utils/index.js ***!
   \************************/
-/*! exports provided: formatMoney, ESTADOS */
+/*! exports provided: formatMoney, ESTADOS, codigosCorreios */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "formatMoney", function() { return formatMoney; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ESTADOS", function() { return ESTADOS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "codigosCorreios", function() { return codigosCorreios; });
 var formatMoney = function formatMoney(value) {
-  return 'R$ ' + (value || 0).toFixed(2).replace('.', ',');
+  return 'R$ ' + Number(value || 0).toFixed(2).replace('.', ',');
 };
 
 /* modulo 42 - pagina de Checkout - criando o componente de dados de entrega 1/2  */
@@ -4300,6 +4301,13 @@ var ESTADOS = {
   SP: 'São Paulo',
   SE: 'Sergipe',
   TO: 'Tocantins'
+};
+
+/*modulo 48 -  integrando a seçao de frete 1/2  */
+
+var codigosCorreios = {
+  "40010": "Sedex",
+  "41106": "PAC"
 };
 
 /***/ }),
