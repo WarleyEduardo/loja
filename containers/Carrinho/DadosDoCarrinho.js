@@ -13,8 +13,6 @@ import actions from '../../redux/actions';
 import Link from 'next/link';
 
 
-
-
 class DadosDoCarrinho extends Component {
 
 	renderDadosDoCarrinho() { 

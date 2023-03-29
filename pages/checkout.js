@@ -8,10 +8,25 @@ import CheckoutContainer from '../containers/Checkout';
 import Rodape from '../containers/Rodape';
 
 
+/*Módulo 49 atualizando a Page e o Head*/
+
+
 export default class Checkout extends Component {
+
+	static async getInitialProps({ res }) {
+		
+		if (res) {
+			res.writeHead(302, { location: "/carrinho" });
+			res.end();
+		}
+
+		return {};
+	}
+
 	render() {
 		return (
-			<Layout title="Checkout | Loja IT - melhores produtos de tecnologia">
+			<Layout title="Checkout | Loja IT - melhores produtos de tecnologia"
+			 pagSeguro>
 				<Cabecalho simples />
 				<CheckoutContainer />
 				<Rodape/>

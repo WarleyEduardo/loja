@@ -1,9 +1,11 @@
 /* modulo 41 - loja virtual - criando a base do layout em html da loja */
 
 import  Head   from './Head';
-import  Style  from './Style';
+import Style from './Style';
 
-const Layout = ({ children, title, description, url, image }) => (
+/*Módulo 49 atualizando a Page e o Head */
+
+const Layout = ({ children, title, description, url, image, pagSeguro }) => (
 	
 	<div>
 		<Head
@@ -11,6 +13,7 @@ const Layout = ({ children, title, description, url, image }) => (
 			description={description}
 			url={url}
 			ogImage={image}
+			pagSeguro={pagSeguro}
 		    >
 			
 		</Head>	

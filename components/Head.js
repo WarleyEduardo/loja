@@ -11,6 +11,8 @@ const defaultDescricao = '';
 const defaultOGURL = '';
 const defaultOGImage = "/static/logo.png";
 
+/*Módulo 49 atualizando a Page e o Head */
+
 const Head = (props) => (
 	<NextHead>
 		<meta charSet='UTF-8' />
@@ -35,6 +37,16 @@ const Head = (props) => (
 			crossOrigin='anonymous'
 		/>
 		<link rel="stylesheet" href="/static/style.css" />
+		{
+			props.pagSeguro ? (
+				<script
+					type='text/javascript'
+					src="https://stc.sandbox.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.directpayment.js"
+				>
+
+				</script>
+			) : null
+		}
 		{props.children}
 	</NextHead>
 );

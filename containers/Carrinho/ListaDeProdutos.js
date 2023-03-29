@@ -53,6 +53,10 @@ class ListaDeProdutos extends Component {
 			false
 		);
 		this.props.updateQuantidade(change, index);
+         
+		
+		this.props.cleanFretes();
+
 	}
 
 	removerProdutoCarrinho(index) {

@@ -22,21 +22,19 @@ class CarrinhoContainer extends Component{
 	
 	}
 
-	componentDidUpdate(prevProps) {
-
-		
+	componentDidUpdate(prevProps) {		
 	   
 		const { carrinho } = this.props;
-		
-	
+				
 		if (carrinho && carrinho[0] && 
-			  carrinho[0].produto && !carrinho[0].produto._id 	
+			carrinho[0].produto && !carrinho[0].produto._id &&
+			!carrinho[0].variacao._id	
 		) {
 			
-			carrinho.forEach((item, idx) => {	
-																 
+			carrinho.forEach((item, idx) => {
+																	 
 				this.props.fetchProdutoCarrinho(item.produto, idx);
-     			 this.props.fetchVariacoesCarrinho(item.variacao, item.produto, idx);
+				this.props.fetchVariacoesCarrinho(item.variacao, item.produto, idx);
 			 } )
 		}
    }
