@@ -3,10 +3,17 @@ import React, { Component } from 'react';
 import DadosClienteContainer from '../Cliente/DadosCliente';
 import ClienteLogin from '../Cliente/ClienteLogin';
 
+/*Módulo 49 explicando como funciona a parte dos dados do cliente*/
+
 class DadosCliente extends Component{
-	state = { usuario: true };
+
 	render() {
-		return this.state.usuario ? <DadosClienteContainer /> : <ClienteLogin />;
+
+		const { usuario, permissaoInicial, permitir } = this.props;
+		
+		return usuario || permissaoInicial ?
+			<DadosClienteContainer /> :
+			<ClienteLogin permitir={permitir} />;
 	}
 }
 

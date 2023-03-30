@@ -4,6 +4,8 @@ import React, { Component} from 'react';
 
 import FormInput from '../../components/Inputs/FormSimples';
 
+/*Módulo 49 explicando como funciona a parte dos dados do cliente*/
+
 class ClienteLogin extends Component {
 	state = {
 		email: '',
@@ -15,7 +17,9 @@ class ClienteLogin extends Component {
 			<div className='flex-1'>
 				<h2>Comprar como visitante/Realizar Registro</h2>
 				<br />
-				<button className='btn btn-success'>
+				<button className='btn btn-success'
+				 onClick={()=> this.props.permitir()}
+				>
 					<span>CONTINUAR</span>
 				</button>
 			</div>
