@@ -6,6 +6,8 @@
 
 /* modulo 47 -  integração -  detalhes do produto */
 
+/*modulo 49 - Criando as funções e error handlign para os dados do cliente 2/2*/
+
 export const REGISTER = 'REGISTER',
 	AUTENTICAR_TOKEN = 'AUTENTICAR_TOKEN',
 	FETCH_CATEGORIAS = 'FETCH_CATEGORIAS',
@@ -28,7 +30,9 @@ export const REGISTER = 'REGISTER',
 	UPDATE_QTD_CART = 'UPDATE_QTD_CART',
 	REMOVE_PRODUTO_CART = 'REMOVE_PRODUTO_CART',
 	CLEAN_FRETES = 'CLEAN_FRETES',
-	UPDATE_FRETE_CART = 'UPDATE_FRETE_CART';
+	UPDATE_FRETE_CART = 'UPDATE_FRETE_CART',
+	AUTENTICAR = 'AUTENTICAR',
+	FETCH_CLIENTE = 'FETCH_CLIENTE';
 
 	
 

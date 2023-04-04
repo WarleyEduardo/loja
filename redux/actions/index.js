@@ -15,12 +15,15 @@ import produtoActions from './produtoActions'
 import carrinhoActions from './carrinhoActions';
 
 
+/*modulo 49 - Criando as funções e error handlign para os dados do cliente 2/2*/
+
+import clienteActions from './clienteActions';
 
 export default {
-	
 	...authActions,
 	...categoriaActions,
 	...lojaActions,
 	...produtoActions,
-	...carrinhoActions
-}
+	...carrinhoActions,
+	...clienteActions
+};

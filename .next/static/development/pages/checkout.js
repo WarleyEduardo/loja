@@ -3693,6 +3693,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/Inputs/FormSimples */ "./components/Inputs/FormSimples.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../redux/actions */ "./redux/actions/index.js");
 
 
 
@@ -3710,6 +3712,9 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_b
 
 
 /*Módulo 49 explicando como funciona a parte dos dados do cliente*/
+
+
+
 var ClienteLogin = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(ClienteLogin, _Component);
   var _super = _createSuper(ClienteLogin);
@@ -3735,21 +3740,21 @@ var ClienteLogin = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 17,
+          lineNumber: 21,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 18,
+          lineNumber: 22,
           columnNumber: 5
         }
       }, "Comprar como visitante/Realizar Registro"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 19,
+          lineNumber: 23,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
@@ -3760,17 +3765,22 @@ var ClienteLogin = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20,
+          lineNumber: 24,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23,
+          lineNumber: 27,
           columnNumber: 6
         }
       }, "CONTINUAR")));
+    }
+  }, {
+    key: "logar",
+    value: function logar() {
+      alert('logado');
     }
   }, {
     key: "renderFormLogin",
@@ -3784,21 +3794,21 @@ var ClienteLogin = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 33,
+          lineNumber: 41,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 34,
+          lineNumber: 42,
           columnNumber: 5
         }
       }, "Fazer login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35,
+          lineNumber: 43,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -3814,14 +3824,14 @@ var ClienteLogin = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37,
+          lineNumber: 45,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43,
+          lineNumber: 51,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -3838,29 +3848,32 @@ var ClienteLogin = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44,
+          lineNumber: 52,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 52,
+          lineNumber: 60,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
         className: "btn btn-success",
+        onClick: function onClick() {
+          return _this3.logar();
+        },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 53,
+          lineNumber: 61,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 54,
+          lineNumber: 65,
           columnNumber: 6
         }
       }, "ENTRAR")));
@@ -3873,7 +3886,7 @@ var ClienteLogin = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 62,
+          lineNumber: 73,
           columnNumber: 4
         }
       }, this.renderAvisoDeRegistro(), this.renderFormLogin());
@@ -3881,7 +3894,12 @@ var ClienteLogin = /*#__PURE__*/function (_Component) {
   }]);
   return ClienteLogin;
 }(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
-/* harmony default export */ __webpack_exports__["default"] = (ClienteLogin);
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    token: state.auth.token
+  };
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_10__["connect"])(mapStateToProps, _redux_actions__WEBPACK_IMPORTED_MODULE_11__["default"])(ClienteLogin));
 
 /***/ }),
 
@@ -11681,6 +11699,186 @@ var invariant = function(condition, format, a, b, c, d, e, f) {
 };
 
 module.exports = invariant;
+
+
+/***/ }),
+
+/***/ "./node_modules/js-cookie/src/js.cookie.js":
+/*!*************************************************!*\
+  !*** ./node_modules/js-cookie/src/js.cookie.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+ * JavaScript Cookie v2.2.0
+ * https://github.com/js-cookie/js-cookie
+ *
+ * Copyright 2006, 2015 Klaus Hartl & Fagner Brack
+ * Released under the MIT license
+ */
+;(function (factory) {
+	var registeredInModuleLoader = false;
+	if (true) {
+		!(__WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
+				(__WEBPACK_AMD_DEFINE_FACTORY__.call(exports, __webpack_require__, exports, module)) :
+				__WEBPACK_AMD_DEFINE_FACTORY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		registeredInModuleLoader = true;
+	}
+	if (true) {
+		module.exports = factory();
+		registeredInModuleLoader = true;
+	}
+	if (!registeredInModuleLoader) {
+		var OldCookies = window.Cookies;
+		var api = window.Cookies = factory();
+		api.noConflict = function () {
+			window.Cookies = OldCookies;
+			return api;
+		};
+	}
+}(function () {
+	function extend () {
+		var i = 0;
+		var result = {};
+		for (; i < arguments.length; i++) {
+			var attributes = arguments[ i ];
+			for (var key in attributes) {
+				result[key] = attributes[key];
+			}
+		}
+		return result;
+	}
+
+	function init (converter) {
+		function api (key, value, attributes) {
+			var result;
+			if (typeof document === 'undefined') {
+				return;
+			}
+
+			// Write
+
+			if (arguments.length > 1) {
+				attributes = extend({
+					path: '/'
+				}, api.defaults, attributes);
+
+				if (typeof attributes.expires === 'number') {
+					var expires = new Date();
+					expires.setMilliseconds(expires.getMilliseconds() + attributes.expires * 864e+5);
+					attributes.expires = expires;
+				}
+
+				// We're using "expires" because "max-age" is not supported by IE
+				attributes.expires = attributes.expires ? attributes.expires.toUTCString() : '';
+
+				try {
+					result = JSON.stringify(value);
+					if (/^[\{\[]/.test(result)) {
+						value = result;
+					}
+				} catch (e) {}
+
+				if (!converter.write) {
+					value = encodeURIComponent(String(value))
+						.replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent);
+				} else {
+					value = converter.write(value, key);
+				}
+
+				key = encodeURIComponent(String(key));
+				key = key.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent);
+				key = key.replace(/[\(\)]/g, escape);
+
+				var stringifiedAttributes = '';
+
+				for (var attributeName in attributes) {
+					if (!attributes[attributeName]) {
+						continue;
+					}
+					stringifiedAttributes += '; ' + attributeName;
+					if (attributes[attributeName] === true) {
+						continue;
+					}
+					stringifiedAttributes += '=' + attributes[attributeName];
+				}
+				return (document.cookie = key + '=' + value + stringifiedAttributes);
+			}
+
+			// Read
+
+			if (!key) {
+				result = {};
+			}
+
+			// To prevent the for loop in the first place assign an empty array
+			// in case there are no cookies at all. Also prevents odd result when
+			// calling "get()"
+			var cookies = document.cookie ? document.cookie.split('; ') : [];
+			var rdecode = /(%[0-9A-Z]{2})+/g;
+			var i = 0;
+
+			for (; i < cookies.length; i++) {
+				var parts = cookies[i].split('=');
+				var cookie = parts.slice(1).join('=');
+
+				if (!this.json && cookie.charAt(0) === '"') {
+					cookie = cookie.slice(1, -1);
+				}
+
+				try {
+					var name = parts[0].replace(rdecode, decodeURIComponent);
+					cookie = converter.read ?
+						converter.read(cookie, name) : converter(cookie, name) ||
+						cookie.replace(rdecode, decodeURIComponent);
+
+					if (this.json) {
+						try {
+							cookie = JSON.parse(cookie);
+						} catch (e) {}
+					}
+
+					if (key === name) {
+						result = cookie;
+						break;
+					}
+
+					if (!key) {
+						result[name] = cookie;
+					}
+				} catch (e) {}
+			}
+
+			return result;
+		}
+
+		api.set = api;
+		api.get = function (key) {
+			return api.call(api, key);
+		};
+		api.getJSON = function () {
+			return api.apply({
+				json: true
+			}, [].slice.call(arguments));
+		};
+		api.defaults = {};
+
+		api.remove = function (key, attributes) {
+			api(key, '', extend(attributes, {
+				expires: -1
+			}));
+		};
+
+		api.withConverter = init;
+
+		return api;
+	}
+
+	return init(function () {});
+}));
 
 
 /***/ }),
@@ -21121,18 +21319,23 @@ var Checkout = /*#__PURE__*/function (_Component) {
 /*!**************************************!*\
   !*** ./redux/actions/authActions.js ***!
   \**************************************/
-/*! exports provided: reauthenticate, getUser, default */
+/*! exports provided: reauthenticate, getUser, autenticar, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "reauthenticate", function() { return reauthenticate; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getUser", function() { return getUser; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "autenticar", function() { return autenticar; });
 /* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../types */ "./redux/types.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config.js */ "./config.js");
 /* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers */ "./redux/actions/helpers.js");
+/* harmony import */ var _utils_cookie__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/cookie */ "./utils/cookie.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! next/router */ "./node_modules/next/dist/client/router.js");
+/* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _errorHandling__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./errorHandling */ "./redux/actions/errorHandling.js");
 /* modulo 40 - loja virtual - criando helper para inicialização*/
 
 /* modulo 44 - Criando actions e reduces para integração 1/2*/
@@ -21143,6 +21346,13 @@ __webpack_require__.r(__webpack_exports__);
 
 /* modulo 47 - integrando o componente de avaliações 2/2 */
 //const getHeaders = token => ({ headers: { "Authorization": `Ecommerce ${token}` } });
+
+
+/* modulo 49  - Criando as funções e error handlign para os dados do cliente 1/2*/
+/* modulo 49  - Criando as funções e error handlign para os dados do cliente 2/2*/
+
+
+
 
 var reauthenticate = function reauthenticate(token) {
   return {
@@ -21163,9 +21373,35 @@ var getUser = function getUser(_ref) {
     });
   };
 };
+
+/*Criando as funções e error handlign para os dados do cliente 1/2*/
+
+var autenticar = function autenticar(_ref2) {
+  var email = _ref2.email,
+    password = _ref2.password;
+  var goTo = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : fase;
+  var cb = arguments.length > 2 ? arguments[2] : undefined;
+  return function (dispatch) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("".concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/usuarios/login"), {
+      email: email,
+      password: password
+    }).then(function (response) {
+      Object(_utils_cookie__WEBPACK_IMPORTED_MODULE_4__["setCookie"])('token', response.data.usuario.token);
+      if (goTo) next_router__WEBPACK_IMPORTED_MODULE_5___default.a.push(goTo);
+      dispatch({
+        type: _types__WEBPACK_IMPORTED_MODULE_0__["AUTENTICAR"],
+        payload: response.data
+      });
+      dispatch(fetchCliente(response.data.usuario._id, response.data.usuario.token));
+    })["catch"](function (e) {
+      return cb(Object(_errorHandling__WEBPACK_IMPORTED_MODULE_6__["default"])(e));
+    });
+  };
+};
 /* harmony default export */ __webpack_exports__["default"] = ({
   reauthenticate: reauthenticate,
-  getUser: getUser
+  getUser: getUser,
+  autenticar: autenticar
 });
 
 /***/ }),
@@ -21363,6 +21599,100 @@ var fetchProdutosCategoria = function fetchProdutosCategoria(id) {
 
 /***/ }),
 
+/***/ "./redux/actions/clienteActions.js":
+/*!*****************************************!*\
+  !*** ./redux/actions/clienteActions.js ***!
+  \*****************************************/
+/*! exports provided: fetchCliente, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchCliente", function() { return fetchCliente; });
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../types */ "./redux/types.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config.js */ "./config.js");
+/*modulo 49 - Criando as funções e error handlign para os dados do cliente 2/2*/
+
+
+
+var fetchCliente = function fetchCliente(id, token) {
+  return function (dispatch) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("".concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/clientes/").concat(id, "?loja=").concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["loja"])).then(function (response) {
+      dispatch({
+        type: _types__WEBPACK_IMPORTED_MODULE_0__["FETCH_CLIENTE"],
+        payload: response.data
+      });
+    })["catch"](function (e) {
+      return console.log(e);
+    });
+  };
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  fetchCliente: fetchCliente
+});
+
+/***/ }),
+
+/***/ "./redux/actions/errorHandling.js":
+/*!****************************************!*\
+  !*** ./redux/actions/errorHandling.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _babel_runtime_corejs2_core_js_array_is_array__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/array/is-array */ "./node_modules/@babel/runtime-corejs2/core-js/array/is-array.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_array_is_array__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_array_is_array__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/* modulo 49 - Criando as funções e error handlign para os dados do cliente 1/2*/
+
+/*modulo 49 - Criando as funções e error handlign para os dados do cliente 2/2*/
+var errorHandling = function errorHandling(error) {
+  console.log(error, error.response.data);
+  if (!error.response || !error.data) {
+    return {
+      status: 500,
+      message: "Ocorreu um erro no servidor. Tente novamente."
+    };
+  }
+  if (error.response.data.status === 401) {
+    return {
+      status: 401,
+      message: "Você não tem autorização para acessar esses dados."
+    };
+  }
+  var _errors = error.response.data.errors || error.response.data.error;
+  if (_errors && typeof _errors === "string") return {
+    status: 400,
+    message: _erros
+  };
+  var msg = 'Erro: ';
+  if (!_babel_runtime_corejs2_core_js_array_is_array__WEBPACK_IMPORTED_MODULE_1___default()(_errors)) {
+    _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0___default()(_errors).forEach(function (erro, index) {
+      msg += "".concat(erro, " ").concat(_errors[erro].message || _errors[erro], "\n");
+    });
+  } else {
+    msg += "Preenchar corretamente ".concat(_errors.length > 1 ? "os campos " : "o campo ", " de:");
+    _errors.forEach(function (item, index) {
+      var field = item.field[item.field.length - 1];
+      msg += " ".concat(field, " ").concat(index === _errors.length - 1 ? "." : ",");
+    });
+  }
+  return {
+    status: 400,
+    message: msg
+  };
+};
+/* harmony default export */ __webpack_exports__["default"] = (errorHandling);
+
+/***/ }),
+
 /***/ "./redux/actions/helpers.js":
 /*!**********************************!*\
   !*** ./redux/actions/helpers.js ***!
@@ -21399,6 +21729,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _lojaActions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./lojaActions */ "./redux/actions/lojaActions.js");
 /* harmony import */ var _produtoActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./produtoActions */ "./redux/actions/produtoActions.js");
 /* harmony import */ var _carrinhoActions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./carrinhoActions */ "./redux/actions/carrinhoActions.js");
+/* harmony import */ var _clienteActions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./clienteActions */ "./redux/actions/clienteActions.js");
 
 /* modulo 40 - loja virtual - criando helper para inicialização*/
 
@@ -21412,7 +21743,11 @@ __webpack_require__.r(__webpack_exports__);
 
 /* modulo 48 -  criando as actions e reducers necessários (1/2) */
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, _authActions__WEBPACK_IMPORTED_MODULE_1__["default"], _categoriaActions__WEBPACK_IMPORTED_MODULE_2__["default"], _lojaActions__WEBPACK_IMPORTED_MODULE_3__["default"], _produtoActions__WEBPACK_IMPORTED_MODULE_4__["default"], _carrinhoActions__WEBPACK_IMPORTED_MODULE_5__["default"]));
+
+/*modulo 49 - Criando as funções e error handlign para os dados do cliente 2/2*/
+
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, _authActions__WEBPACK_IMPORTED_MODULE_1__["default"], _categoriaActions__WEBPACK_IMPORTED_MODULE_2__["default"], _lojaActions__WEBPACK_IMPORTED_MODULE_3__["default"], _produtoActions__WEBPACK_IMPORTED_MODULE_4__["default"], _carrinhoActions__WEBPACK_IMPORTED_MODULE_5__["default"], _clienteActions__WEBPACK_IMPORTED_MODULE_6__["default"]));
 
 /***/ }),
 
@@ -21596,7 +21931,7 @@ var novaAvaliacao = function novaAvaliacao(_ref, cb) {
 /*!************************!*\
   !*** ./redux/types.js ***!
   \************************/
-/*! exports provided: REGISTER, AUTENTICAR_TOKEN, FETCH_CATEGORIAS, FETCH_LOJA, FETCH_PRODUTOS, FETCH_CATEGORIA, FETCH_PRODUTOS_CATEGORIA, USER, FETCH_PESQUISA, FETCH_PRODUTOS_PESQUISA, FETCH_PRODUTO, FETCH_PRODUTO_VARIACOES, FETCH_PRODUTO_AVALIACOES, NOVA_AVALIACAO, SET_CARRINHO, CLEAN_CARRINHO, FETCH_PRODUTO_CARRINHO, FETCH_VARIACAO_CARRINHO, FETCH_VALOR_ENTREGA, UPDATE_QTD_CART, REMOVE_PRODUTO_CART, CLEAN_FRETES, UPDATE_FRETE_CART */
+/*! exports provided: REGISTER, AUTENTICAR_TOKEN, FETCH_CATEGORIAS, FETCH_LOJA, FETCH_PRODUTOS, FETCH_CATEGORIA, FETCH_PRODUTOS_CATEGORIA, USER, FETCH_PESQUISA, FETCH_PRODUTOS_PESQUISA, FETCH_PRODUTO, FETCH_PRODUTO_VARIACOES, FETCH_PRODUTO_AVALIACOES, NOVA_AVALIACAO, SET_CARRINHO, CLEAN_CARRINHO, FETCH_PRODUTO_CARRINHO, FETCH_VARIACAO_CARRINHO, FETCH_VALOR_ENTREGA, UPDATE_QTD_CART, REMOVE_PRODUTO_CART, CLEAN_FRETES, UPDATE_FRETE_CART, AUTENTICAR, FETCH_CLIENTE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -21624,6 +21959,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "REMOVE_PRODUTO_CART", function() { return REMOVE_PRODUTO_CART; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAN_FRETES", function() { return CLEAN_FRETES; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_FRETE_CART", function() { return UPDATE_FRETE_CART; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AUTENTICAR", function() { return AUTENTICAR; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_CLIENTE", function() { return FETCH_CLIENTE; });
 /* modulo 40 - loja virtual - criando helper para inicialização*/
 
 /* modulo 45 - Criando actions e reduces e atualizando os componentes das categorias*/
@@ -21631,6 +21968,8 @@ __webpack_require__.r(__webpack_exports__);
 /*modulo 46 - adicionando actions e reducers e alterando os componentes para integração*/
 
 /* modulo 47 -  integração -  detalhes do produto */
+
+/*modulo 49 - Criando as funções e error handlign para os dados do cliente 2/2*/
 
 var REGISTER = 'REGISTER',
   AUTENTICAR_TOKEN = 'AUTENTICAR_TOKEN',
@@ -21654,7 +21993,9 @@ var REGISTER = 'REGISTER',
   UPDATE_QTD_CART = 'UPDATE_QTD_CART',
   REMOVE_PRODUTO_CART = 'REMOVE_PRODUTO_CART',
   CLEAN_FRETES = 'CLEAN_FRETES',
-  UPDATE_FRETE_CART = 'UPDATE_FRETE_CART';
+  UPDATE_FRETE_CART = 'UPDATE_FRETE_CART',
+  AUTENTICAR = 'AUTENTICAR',
+  FETCH_CLIENTE = 'FETCH_CLIENTE';
 
 /***/ }),
 
@@ -21730,6 +22071,50 @@ var removeCart = function removeCart(index) {
   getCountItemsCart: getCountItemsCart,
   removeCart: removeCart
 });
+
+/***/ }),
+
+/***/ "./utils/cookie.js":
+/*!*************************!*\
+  !*** ./utils/cookie.js ***!
+  \*************************/
+/*! exports provided: setCookie, removeCookie, getCookie */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setCookie", function() { return setCookie; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeCookie", function() { return removeCookie; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getCookie", function() { return getCookie; });
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/src/js.cookie.js");
+/* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(js_cookie__WEBPACK_IMPORTED_MODULE_0__);
+/* modulo 40 - loja virtual - criando helper para cookie*/
+
+
+var setCookie = function setCookie(key, value) {
+  if (true) js_cookie__WEBPACK_IMPORTED_MODULE_0___default.a.set(key, value, {
+    expires: 1,
+    path: "/"
+  });
+};
+var removeCookie = function removeCookie(key) {
+  if (true) js_cookie__WEBPACK_IMPORTED_MODULE_0___default.a.remove(key, {
+    expires: 1
+  });
+};
+var getCookie = function getCookie(key, req) {
+  return  true ? getCookieFromBrowser(key) : undefined;
+};
+var getCookieFromBrowser = function getCookieFromBrowser(key) {
+  return js_cookie__WEBPACK_IMPORTED_MODULE_0___default.a.get(key);
+};
+var getCookieFromServer = function getCookieFromServer(key, req) {
+  if (!req.headers.cookie) return undefined;
+  var _cookie = req.headers.cookie.split(";").find(function (c) {
+    return c.trim().startsWith("".concat(key, "="));
+  });
+  return _cookie ? _cookie.split("=")[1] : undefined;
+};
 
 /***/ }),
 

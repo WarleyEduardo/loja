@@ -6,6 +6,10 @@ import FormInput from '../../components/Inputs/FormSimples';
 
 /*Módulo 49 explicando como funciona a parte dos dados do cliente*/
 
+import { connect } from 'react-redux';
+
+import actions from '../../redux/actions';
+
 class ClienteLogin extends Component {
 	state = {
 		email: '',
@@ -24,6 +28,10 @@ class ClienteLogin extends Component {
 				</button>
 			</div>
 		);
+	}
+
+	logar() {
+		alert('logado')
 	}
 
 	renderFormLogin() {
@@ -50,7 +58,10 @@ class ClienteLogin extends Component {
 					onChange={(v) => this.setState({ senha: v.target.value })} />
 
 				<br />
-				<button className='btn btn-success'>
+				<button className='btn btn-success'
+				  onClick={()=> this.logar()}
+				
+				>
 					<span>ENTRAR</span>
 				</button>
 			</div>
@@ -68,5 +79,9 @@ class ClienteLogin extends Component {
 }
 
 
+const mapStateToProps = (state) => ({
+	token: state.auth.token
+});
 
-export default ClienteLogin;
+
+export default connect(mapStateToProps,actions)(ClienteLogin);
