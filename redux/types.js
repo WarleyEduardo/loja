@@ -8,6 +8,8 @@
 
 /*modulo 49 - Criando as funções e error handlign para os dados do cliente 2/2*/
 
+/*modulo 49 - integração checkout - desenvolvendo o container dos dados do cliente */
+
 export const REGISTER = 'REGISTER',
 	AUTENTICAR_TOKEN = 'AUTENTICAR_TOKEN',
 	FETCH_CATEGORIAS = 'FETCH_CATEGORIAS',
@@ -32,7 +34,8 @@ export const REGISTER = 'REGISTER',
 	CLEAN_FRETES = 'CLEAN_FRETES',
 	UPDATE_FRETE_CART = 'UPDATE_FRETE_CART',
 	AUTENTICAR = 'AUTENTICAR',
-	FETCH_CLIENTE = 'FETCH_CLIENTE';
+	FETCH_CLIENTE = 'FETCH_CLIENTE',
+	SET_FORM = 'SET_FORM';
 
 	
 

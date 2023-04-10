@@ -5,15 +5,22 @@ import React, { Component} from 'react';
 import FormInput from '../../components/Inputs/FormSimples';
 
 /*Módulo 49 explicando como funciona a parte dos dados do cliente*/
-
 import { connect } from 'react-redux';
 
+
+/*Integrando a parte de login dos dados do cliente (1/2)*/
+  /*Integrando a parte de login dos dados do cliente (2/2)*/
+ 
 import actions from '../../redux/actions';
+
+import AlertGeral from '../../components/Alert/Geral';
 
 class ClienteLogin extends Component {
 	state = {
 		email: '',
 		senha: '',
+		aviso: null,
+		erros: {},
 	};
 
 	renderAvisoDeRegistro() {
@@ -21,47 +28,62 @@ class ClienteLogin extends Component {
 			<div className='flex-1'>
 				<h2>Comprar como visitante/Realizar Registro</h2>
 				<br />
-				<button className='btn btn-success'
-				 onClick={()=> this.props.permitir()}
-				>
+				<button className='btn btn-success' onClick={() => this.props.permitir()}>
 					<span>CONTINUAR</span>
 				</button>
 			</div>
 		);
 	}
 
-	logar() {
-		alert('logado')
+	validate() {
+		const { email, senha } = this.state;
+		const erros = {};
+
+		if (!email) erros.email = 'Preencha aqui com o seu e-mail';
+		if (!senha || senha === '') erros.senha = 'Preencha aqui com a sua senha';
+
+		this.setState({ erros, aviso: null });
+		return !(Object.keys(erros).length > 0);
+	}
+
+	onChange = (field, e) => this.setState({ [field]: e.target.value }, () => this.validate());
+	
+	handleSubmit() {
+		if (!this.validate()) return null;
+		const { email, senha } = this.state;
+
+		this.props.autenticar({ email, password: senha }, false, (error) => {
+			if (error) this.setState({ aviso: { status: false, message: error.message } });
+		});
 	}
 
 	renderFormLogin() {
-		const { email, senha } = this.state;
+		const { email, senha, erros } = this.state;
 
 		return (
 			<div className='flex-1'>
 				<h2>Fazer login</h2>
+				<AlertGeral aviso={this.state.aviso} />
 				<br />
 
 				<FormInput
 					value={email}
 					name={'email'}
 					label='E-mail'
+					erro={erros.email}
 					placeholder='E-mail'
-					onChange={(v) => this.setState({ email: v.target.value })} />
-				<br/>
-				<FormInput
-					value={senha}
+					onChange={(e) => this.onChange('email', e)} />
+				<br />
+				<FormInput value={senha}
 					name={'senha'}
 					label='Senha'
 					type='password'
+					erro={erros.password}
 					placeholder='Senha'
-					onChange={(v) => this.setState({ senha: v.target.value })} />
+					onChange={(e) => this.onChange('senha', e)} />
 
 				<br />
-				<button className='btn btn-success'
-				  onClick={()=> this.logar()}
-				
-				>
+				<button className='btn btn-success' onClick={() => this.handleSubmit()}>
 					<span>ENTRAR</span>
 				</button>
 			</div>
@@ -79,9 +101,6 @@ class ClienteLogin extends Component {
 }
 
 
-const mapStateToProps = (state) => ({
-	token: state.auth.token
-});
 
 
-export default connect(mapStateToProps,actions)(ClienteLogin);
+export default connect(null,actions)(ClienteLogin);

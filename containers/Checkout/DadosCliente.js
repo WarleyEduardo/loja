@@ -5,7 +5,22 @@ import ClienteLogin from '../Cliente/ClienteLogin';
 
 /*Módulo 49 explicando como funciona a parte dos dados do cliente*/
 
+/*Integrando a parte de login dos dados do cliente (2/2)*/
+  
+import { connect } from 'react-redux';
+import actions from '../../redux/actions';
+
 class DadosCliente extends Component{
+
+	componentDidMount() {
+		
+		const { usuario, token, cliente } = this.props;
+	
+		if (usuario && token && !cliente) {
+
+			this.props.fetchCliente(usuario._id, token);
+		}
+	}
 
 	render() {
 
@@ -17,4 +32,12 @@ class DadosCliente extends Component{
 	}
 }
 
-export default DadosCliente;
+const mapStateToProps = state => ({
+
+	usuario: state.auth.usuario,
+	token: state.auth.token,
+	cliente : state.cliente.cliente
+
+})
+
+export default connect(mapStateToProps,actions)(DadosCliente);

@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -122,6 +122,7 @@ function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflec
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default.a) return false; if (_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default.a.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 /* modulo 42 - pagina de Checkout - criando o componente de enviar os dados do cliente e entrega */
 
+/*Integrando a parte de login dos dados do cliente (2/2)*/
 
 var AlertGeral = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__["default"])(AlertGeral, _Component);
@@ -133,23 +134,23 @@ var AlertGeral = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(AlertGeral, [{
     key: "render",
     value: function render() {
-      if (!this.props.show) return null;
+      if (!this.props.aviso) return null;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "alert alert-danger",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 12,
+          lineNumber: 13,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 13,
+          lineNumber: 14,
           columnNumber: 5
         }
-      }, this.props.msg));
+      }, this.props.aviso.message));
     }
   }]);
   return AlertGeral;
@@ -751,6 +752,8 @@ function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflec
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default.a) return false; if (_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default.a.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 /* modulo 42 - pagina de Checkout - criando o componente de dados do cliente 2/3  */
 
+/*Integrando a parte de login dos dados do cliente (1/2)*/
+
 
 var FormSimples = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__["default"])(FormSimples, _Component);
@@ -768,20 +771,21 @@ var FormSimples = /*#__PURE__*/function (_Component) {
         placeholder = _this$props.placeholder,
         label = _this$props.label,
         onChange = _this$props.onChange,
-        type = _this$props.type;
+        type = _this$props.type,
+        erro = _this$props.erro;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "form-input",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 11,
+          lineNumber: 14,
           columnNumber: 4
         }
       }, label && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("label", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 12,
+          lineNumber: 15,
           columnNumber: 15
         }
       }, label), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("input", {
@@ -793,10 +797,18 @@ var FormSimples = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 13,
+          lineNumber: 16,
           columnNumber: 5
         }
-      }));
+      }), erro && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("small", {
+        className: "erro",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 24,
+          columnNumber: 15
+        }
+      }, erro));
     }
   }]);
   return FormSimples;
@@ -2061,6 +2073,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _Cliente_DadosCliente__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Cliente/DadosCliente */ "./containers/Cliente/DadosCliente.js");
 /* harmony import */ var _Cliente_ClienteLogin__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../Cliente/ClienteLogin */ "./containers/Cliente/ClienteLogin.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../redux/actions */ "./redux/actions/index.js");
 
 
 
@@ -2076,6 +2091,11 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_b
 
 
 /*Módulo 49 explicando como funciona a parte dos dados do cliente*/
+
+/*Integrando a parte de login dos dados do cliente (2/2)*/
+
+
+
 var DadosCliente = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__["default"])(DadosCliente, _Component);
   var _super = _createSuper(DadosCliente);
@@ -2084,17 +2104,28 @@ var DadosCliente = /*#__PURE__*/function (_Component) {
     return _super.apply(this, arguments);
   }
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(DadosCliente, [{
-    key: "render",
-    value: function render() {
+    key: "componentDidMount",
+    value: function componentDidMount() {
       var _this$props = this.props,
         usuario = _this$props.usuario,
-        permissaoInicial = _this$props.permissaoInicial,
-        permitir = _this$props.permitir;
+        token = _this$props.token,
+        cliente = _this$props.cliente;
+      if (usuario && token && !cliente) {
+        this.props.fetchCliente(usuario._id, token);
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props2 = this.props,
+        usuario = _this$props2.usuario,
+        permissaoInicial = _this$props2.permissaoInicial,
+        permitir = _this$props2.permitir;
       return usuario || permissaoInicial ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_Cliente_DadosCliente__WEBPACK_IMPORTED_MODULE_7__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 15,
+          lineNumber: 30,
           columnNumber: 4
         }
       }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_Cliente_ClienteLogin__WEBPACK_IMPORTED_MODULE_8__["default"], {
@@ -2102,7 +2133,7 @@ var DadosCliente = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 16,
+          lineNumber: 31,
           columnNumber: 4
         }
       });
@@ -2110,7 +2141,14 @@ var DadosCliente = /*#__PURE__*/function (_Component) {
   }]);
   return DadosCliente;
 }(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
-/* harmony default export */ __webpack_exports__["default"] = (DadosCliente);
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    usuario: state.auth.usuario,
+    token: state.auth.token,
+    cliente: state.cliente.cliente
+  };
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_9__["connect"])(mapStateToProps, _redux_actions__WEBPACK_IMPORTED_MODULE_10__["default"])(DadosCliente));
 
 /***/ }),
 
@@ -3781,19 +3819,23 @@ var mapStateToProps = function mapStateToProps(state) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/reflect/construct */ "./node_modules/@babel/runtime-corejs2/core-js/reflect/construct.js");
 /* harmony import */ var _babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/Inputs/FormSimples */ "./components/Inputs/FormSimples.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../redux/actions */ "./redux/actions/index.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/Inputs/FormSimples */ "./components/Inputs/FormSimples.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../redux/actions */ "./redux/actions/index.js");
+/* harmony import */ var _components_Alert_Geral__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../components/Alert/Geral */ "./components/Alert/Geral.js");
+
 
 
 
@@ -3803,7 +3845,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _jsxFileName = "D:\\javaScript\\lojavirtual\\lojavirtual\\containers\\Cliente\\ClienteLogin.js";
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(this).constructor; result = _babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__["default"])(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_7__["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_7__["default"])(this).constructor; result = _babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_6__["default"])(this, result); }; }
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default.a) return false; if (_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default.a.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 /* modulo 42 - pagina de Checkout - criando o componente de dados do cliente 2/3  */
 
@@ -3813,50 +3855,61 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_b
 /*Módulo 49 explicando como funciona a parte dos dados do cliente*/
 
 
+/*Integrando a parte de login dos dados do cliente (1/2)*/
+/*Integrando a parte de login dos dados do cliente (2/2)*/
+
+
 
 var ClienteLogin = /*#__PURE__*/function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(ClienteLogin, _Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(ClienteLogin, _Component);
   var _super = _createSuper(ClienteLogin);
   function ClienteLogin() {
     var _this;
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, ClienteLogin);
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__["default"])(this, ClienteLogin);
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "state", {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "state", {
       email: '',
-      senha: ''
+      senha: '',
+      aviso: null,
+      erros: {}
+    });
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "onChange", function (field, e) {
+      return _this.setState(Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])({}, field, e.target.value), function () {
+        return _this.validate();
+      });
     });
     return _this;
   }
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(ClienteLogin, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__["default"])(ClienteLogin, [{
     key: "renderAvisoDeRegistro",
     value: function renderAvisoDeRegistro() {
       var _this2 = this;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         className: "flex-1",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21,
+          lineNumber: 28,
           columnNumber: 4
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h2", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22,
+          lineNumber: 29,
           columnNumber: 5
         }
-      }, "Comprar como visitante/Realizar Registro"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
+      }, "Comprar como visitante/Realizar Registro"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23,
+          lineNumber: 30,
           columnNumber: 5
         }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("button", {
         className: "btn btn-success",
         onClick: function onClick() {
           return _this2.props.permitir();
@@ -3864,115 +3917,152 @@ var ClienteLogin = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 24,
+          lineNumber: 31,
           columnNumber: 5
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("span", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 27,
+          lineNumber: 32,
           columnNumber: 6
         }
       }, "CONTINUAR")));
     }
   }, {
-    key: "logar",
-    value: function logar() {
-      alert('logado');
+    key: "validate",
+    value: function validate() {
+      var _this$state = this.state,
+        email = _this$state.email,
+        senha = _this$state.senha;
+      var erros = {};
+      if (!email) erros.email = 'Preencha aqui com o seu e-mail';
+      if (!senha || senha === '') erros.senha = 'Preencha aqui com a sua senha';
+      this.setState({
+        erros: erros,
+        aviso: null
+      });
+      return !(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_1___default()(erros).length > 0);
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit() {
+      var _this3 = this;
+      if (!this.validate()) return null;
+      var _this$state2 = this.state,
+        email = _this$state2.email,
+        senha = _this$state2.senha;
+      this.props.autenticar({
+        email: email,
+        password: senha
+      }, false, function (error) {
+        if (error) _this3.setState({
+          aviso: {
+            status: false,
+            message: error.message
+          }
+        });
+      });
     }
   }, {
     key: "renderFormLogin",
     value: function renderFormLogin() {
-      var _this3 = this;
-      var _this$state = this.state,
-        email = _this$state.email,
-        senha = _this$state.senha;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+      var _this4 = this;
+      var _this$state3 = this.state,
+        email = _this$state3.email,
+        senha = _this$state3.senha,
+        erros = _this$state3.erros;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         className: "flex-1",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 41,
+          lineNumber: 64,
           columnNumber: 4
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h2", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 42,
-          columnNumber: 5
-        }
-      }, "Fazer login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 43,
-          columnNumber: 5
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        value: email,
-        name: 'email',
-        label: "E-mail",
-        placeholder: "E-mail",
-        onChange: function onChange(v) {
-          return _this3.setState({
-            email: v.target.value
-          });
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 45,
-          columnNumber: 5
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 51,
-          columnNumber: 5
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        value: senha,
-        name: 'senha',
-        label: "Senha",
-        type: "password",
-        placeholder: "Senha",
-        onChange: function onChange(v) {
-          return _this3.setState({
-            senha: v.target.value
-          });
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 52,
-          columnNumber: 5
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 60,
-          columnNumber: 5
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
-        className: "btn btn-success",
-        onClick: function onClick() {
-          return _this3.logar();
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 61,
-          columnNumber: 5
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 65,
+          columnNumber: 5
+        }
+      }, "Fazer login"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Alert_Geral__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        aviso: this.state.aviso,
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 66,
+          columnNumber: 5
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 67,
+          columnNumber: 5
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        value: email,
+        name: 'email',
+        label: "E-mail",
+        erro: erros.email,
+        placeholder: "E-mail",
+        onChange: function onChange(e) {
+          return _this4.onChange('email', e);
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 69,
+          columnNumber: 5
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 76,
+          columnNumber: 5
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
+        value: senha,
+        name: 'senha',
+        label: "Senha",
+        type: "password",
+        erro: erros.password,
+        placeholder: "Senha",
+        onChange: function onChange(e) {
+          return _this4.onChange('senha', e);
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 77,
+          columnNumber: 5
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 85,
+          columnNumber: 5
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("button", {
+        className: "btn btn-success",
+        onClick: function onClick() {
+          return _this4.handleSubmit();
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 86,
+          columnNumber: 5
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("span", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 87,
           columnNumber: 6
         }
       }, "ENTRAR")));
@@ -3980,25 +4070,20 @@ var ClienteLogin = /*#__PURE__*/function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         className: "Cliente-Login flex horizontal",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 73,
+          lineNumber: 95,
           columnNumber: 4
         }
       }, this.renderAvisoDeRegistro(), this.renderFormLogin());
     }
   }]);
   return ClienteLogin;
-}(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
-var mapStateToProps = function mapStateToProps(state) {
-  return {
-    token: state.auth.token
-  };
-};
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_10__["connect"])(mapStateToProps, _redux_actions__WEBPACK_IMPORTED_MODULE_11__["default"])(ClienteLogin));
+}(react__WEBPACK_IMPORTED_MODULE_9__["Component"]);
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_11__["connect"])(null, _redux_actions__WEBPACK_IMPORTED_MODULE_12__["default"])(ClienteLogin));
 
 /***/ }),
 
@@ -4023,6 +4108,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/Inputs/FormSimples */ "./components/Inputs/FormSimples.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../redux/actions */ "./redux/actions/index.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! moment */ "moment");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_12__);
 
 
 
@@ -4041,6 +4131,12 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_b
 
 
 
+
+/* modulo 49 - integração checkout - conectando e validando os dados do cliente 1/2 */
+
+
+
+
 var DadosClienteContainer = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(DadosClienteContainer, _Component);
   var _super = _createSuper(DadosClienteContainer);
@@ -4051,29 +4147,58 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "state", {
-      email: "",
-      senha: "",
-      nome: "",
-      CPF: "",
-      telefone: "",
-      dataDeNascimento: ""
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "onChange", function (field, e) {
+      _this.props.setForm(Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])({}, field, e.target.value), null).then(function () {
+        return _this.validate();
+      });
     });
     return _this;
   }
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(DadosClienteContainer, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.props.setForm({
+        email: '',
+        senha: '',
+        nome: this.props.cliente ? this.props.cliente.nome : '',
+        CPF: this.props.cliente ? this.props.cliente.cpf : '',
+        telefone: this.props.cliente && this.props.cliente.telefones ? this.props.cliente.telefones[0] : '',
+        dataDeNascimento: this.props.cliente ? moment__WEBPACK_IMPORTED_MODULE_12___default()(this.props.cliente.dataDeNascimento).format('DD/MM/YYYY') : ''
+      });
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (!prevProps.cliente && this.props.cliente) {
+        var _this$props$cliente = this.props.cliente,
+          nome = _this$props$cliente.nome,
+          cpf = _this$props$cliente.cpf,
+          telefones = _this$props$cliente.telefones,
+          dataDeNascimento = _this$props$cliente.dataDeNascimento;
+        this.props.setForm({
+          nome: nome,
+          cpf: cpf,
+          telefone: telefones[0],
+          dataDeNascimento: moment__WEBPACK_IMPORTED_MODULE_12___default()(dataDeNascimento).format('DD/MM/YYYY')
+        });
+      }
+    }
+  }, {
+    key: "validate",
+    value: function validate() {}
+  }, {
     key: "renderDadosRegistro",
     value: function renderDadosRegistro() {
       var _this2 = this;
-      var _this$state = this.state,
-        email = _this$state.email,
-        senha = _this$state.senha;
+      var _this$props$form = this.props.form,
+        email = _this$props$form.email,
+        senha = _this$props$form.senha;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "flex-1 flex horizontal",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 27,
+          lineNumber: 60,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -4081,7 +4206,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 28,
+          lineNumber: 61,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -4095,7 +4220,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 29,
+          lineNumber: 62,
           columnNumber: 6
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -4103,7 +4228,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 32,
+          lineNumber: 65,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -4118,7 +4243,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 33,
+          lineNumber: 66,
           columnNumber: 6
         }
       })));
@@ -4127,26 +4252,26 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
     key: "renderDadosUsuario",
     value: function renderDadosUsuario() {
       var _this3 = this;
-      var _this$state2 = this.state,
-        nome = _this$state2.nome,
-        CPF = _this$state2.CPF,
-        dataDeNascimento = _this$state2.dataDeNascimento,
-        telefone = _this$state2.telefone;
+      var _this$props$form2 = this.props.form,
+        nome = _this$props$form2.nome,
+        cpf = _this$props$form2.cpf,
+        dataDeNascimento = _this$props$form2.dataDeNascimento,
+        telefone = _this$props$form2.telefone;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "flex-1 flex vertical",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44,
-          columnNumber: 6
+          lineNumber: 76,
+          columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "flex-1",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 45,
-          columnNumber: 7
+          lineNumber: 77,
+          columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_9__["default"], {
         value: nome,
@@ -4159,19 +4284,19 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 46,
-          columnNumber: 8
+          lineNumber: 78,
+          columnNumber: 6
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "flex-1",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 49,
-          columnNumber: 7
+          lineNumber: 81,
+          columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        value: CPF,
+        value: cpf,
         name: "CPF",
         placeholder: "CPF",
         label: "CPF",
@@ -4181,24 +4306,24 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 50,
-          columnNumber: 8
+          lineNumber: 82,
+          columnNumber: 6
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "flex-1 flex horizontal",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 53,
-          columnNumber: 7
+          lineNumber: 85,
+          columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "flex-1",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 54,
-          columnNumber: 8
+          lineNumber: 86,
+          columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_9__["default"], {
         value: dataDeNascimento,
@@ -4211,16 +4336,16 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55,
-          columnNumber: 9
+          lineNumber: 87,
+          columnNumber: 7
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "flex-1",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 64,
-          columnNumber: 8
+          lineNumber: 96,
+          columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_9__["default"], {
         value: telefone,
@@ -4233,8 +4358,8 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 65,
-          columnNumber: 9
+          lineNumber: 97,
+          columnNumber: 7
         }
       }))));
     }
@@ -4246,29 +4371,37 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 80,
+          lineNumber: 106,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 81,
+          lineNumber: 107,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 82,
+          lineNumber: 108,
           columnNumber: 6
         }
-      }, "DADOS DO CLIENTE")), this.renderDadosRegistro(), this.renderDadosUsuario());
+      }, "DADOS DO CLIENTE")), !this.props.usuario && this.renderDadosRegistro(), this.renderDadosUsuario());
     }
   }]);
   return DadosClienteContainer;
 }(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
-/* harmony default export */ __webpack_exports__["default"] = (DadosClienteContainer);
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    usuario: state.auth.usuario,
+    token: state.auth.token,
+    cliente: state.cliente.cliente,
+    form: state.checkout.form
+  };
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_10__["connect"])(mapStateToProps, _redux_actions__WEBPACK_IMPORTED_MODULE_11__["default"])(DadosClienteContainer));
 
 /***/ }),
 
@@ -5921,6 +6054,39 @@ var fetchProdutosCategoria = function fetchProdutosCategoria(id) {
 
 /***/ }),
 
+/***/ "./redux/actions/checkoutActions.js":
+/*!******************************************!*\
+  !*** ./redux/actions/checkoutActions.js ***!
+  \******************************************/
+/*! exports provided: setForm, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setForm", function() { return setForm; });
+/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/promise */ "./node_modules/@babel/runtime-corejs2/core-js/promise.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../types */ "./redux/types.js");
+
+/*modulo 49 - integração checkout - desenvolvendo o container dos dados do cliente */
+
+
+var setForm = function setForm(payload, prefix) {
+  return function (dispatch) {
+    dispatch({
+      type: _types__WEBPACK_IMPORTED_MODULE_1__["SET_FORM"],
+      payload: payload,
+      prefix: prefix
+    });
+    return _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default.a.resolve();
+  };
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  setForm: setForm
+});
+
+/***/ }),
+
 /***/ "./redux/actions/clienteActions.js":
 /*!*****************************************!*\
   !*** ./redux/actions/clienteActions.js ***!
@@ -5935,13 +6101,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "axios");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _config_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../config.js */ "./config.js");
+/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./helpers */ "./redux/actions/helpers.js");
 /*modulo 49 - Criando as funções e error handlign para os dados do cliente 2/2*/
+
 
 
 
 var fetchCliente = function fetchCliente(id, token) {
   return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("".concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/clientes/").concat(id, "?loja=").concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["loja"])).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("".concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/clientes/").concat(id, "?loja=").concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["loja"]), Object(_helpers__WEBPACK_IMPORTED_MODULE_3__["getHeaders"])(token)).then(function (response) {
       dispatch({
         type: _types__WEBPACK_IMPORTED_MODULE_0__["FETCH_CLIENTE"],
         payload: response.data
@@ -5976,8 +6144,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /*modulo 49 - Criando as funções e error handlign para os dados do cliente 2/2*/
 var errorHandling = function errorHandling(error) {
-  console.log(error, error.response.data);
-  if (!error.response || !error.data) {
+  console.log(error, error.response ? error.response.data : null);
+  if (!error.response || !error.response.data) {
     return {
       status: 500,
       message: "Ocorreu um erro no servidor. Tente novamente."
@@ -5986,13 +6154,13 @@ var errorHandling = function errorHandling(error) {
   if (error.response.data.status === 401) {
     return {
       status: 401,
-      message: "Você não tem autorização para acessar esses dados."
+      message: 'Você não tem autorização para acessar esses dados.'
     };
   }
   var _errors = error.response.data.errors || error.response.data.error;
   if (_errors && typeof _errors === "string") return {
     status: 400,
-    message: _erros
+    message: _errors
   };
   var msg = 'Erro: ';
   if (!_babel_runtime_corejs2_core_js_array_is_array__WEBPACK_IMPORTED_MODULE_1___default()(_errors)) {
@@ -6052,6 +6220,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _produtoActions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./produtoActions */ "./redux/actions/produtoActions.js");
 /* harmony import */ var _carrinhoActions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./carrinhoActions */ "./redux/actions/carrinhoActions.js");
 /* harmony import */ var _clienteActions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./clienteActions */ "./redux/actions/clienteActions.js");
+/* harmony import */ var _checkoutActions__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./checkoutActions */ "./redux/actions/checkoutActions.js");
 
 /* modulo 40 - loja virtual - criando helper para inicialização*/
 
@@ -6069,7 +6238,10 @@ __webpack_require__.r(__webpack_exports__);
 /*modulo 49 - Criando as funções e error handlign para os dados do cliente 2/2*/
 
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, _authActions__WEBPACK_IMPORTED_MODULE_1__["default"], _categoriaActions__WEBPACK_IMPORTED_MODULE_2__["default"], _lojaActions__WEBPACK_IMPORTED_MODULE_3__["default"], _produtoActions__WEBPACK_IMPORTED_MODULE_4__["default"], _carrinhoActions__WEBPACK_IMPORTED_MODULE_5__["default"], _clienteActions__WEBPACK_IMPORTED_MODULE_6__["default"]));
+
+/*modulo 49 - Criando as funções e error handlign para os dados do cliente 2/2*/
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, _authActions__WEBPACK_IMPORTED_MODULE_1__["default"], _categoriaActions__WEBPACK_IMPORTED_MODULE_2__["default"], _lojaActions__WEBPACK_IMPORTED_MODULE_3__["default"], _produtoActions__WEBPACK_IMPORTED_MODULE_4__["default"], _carrinhoActions__WEBPACK_IMPORTED_MODULE_5__["default"], _clienteActions__WEBPACK_IMPORTED_MODULE_6__["default"], _checkoutActions__WEBPACK_IMPORTED_MODULE_7__["default"]));
 
 /***/ }),
 
@@ -6253,7 +6425,7 @@ var novaAvaliacao = function novaAvaliacao(_ref, cb) {
 /*!************************!*\
   !*** ./redux/types.js ***!
   \************************/
-/*! exports provided: REGISTER, AUTENTICAR_TOKEN, FETCH_CATEGORIAS, FETCH_LOJA, FETCH_PRODUTOS, FETCH_CATEGORIA, FETCH_PRODUTOS_CATEGORIA, USER, FETCH_PESQUISA, FETCH_PRODUTOS_PESQUISA, FETCH_PRODUTO, FETCH_PRODUTO_VARIACOES, FETCH_PRODUTO_AVALIACOES, NOVA_AVALIACAO, SET_CARRINHO, CLEAN_CARRINHO, FETCH_PRODUTO_CARRINHO, FETCH_VARIACAO_CARRINHO, FETCH_VALOR_ENTREGA, UPDATE_QTD_CART, REMOVE_PRODUTO_CART, CLEAN_FRETES, UPDATE_FRETE_CART, AUTENTICAR, FETCH_CLIENTE */
+/*! exports provided: REGISTER, AUTENTICAR_TOKEN, FETCH_CATEGORIAS, FETCH_LOJA, FETCH_PRODUTOS, FETCH_CATEGORIA, FETCH_PRODUTOS_CATEGORIA, USER, FETCH_PESQUISA, FETCH_PRODUTOS_PESQUISA, FETCH_PRODUTO, FETCH_PRODUTO_VARIACOES, FETCH_PRODUTO_AVALIACOES, NOVA_AVALIACAO, SET_CARRINHO, CLEAN_CARRINHO, FETCH_PRODUTO_CARRINHO, FETCH_VARIACAO_CARRINHO, FETCH_VALOR_ENTREGA, UPDATE_QTD_CART, REMOVE_PRODUTO_CART, CLEAN_FRETES, UPDATE_FRETE_CART, AUTENTICAR, FETCH_CLIENTE, SET_FORM */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6283,6 +6455,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_FRETE_CART", function() { return UPDATE_FRETE_CART; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AUTENTICAR", function() { return AUTENTICAR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_CLIENTE", function() { return FETCH_CLIENTE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_FORM", function() { return SET_FORM; });
 /* modulo 40 - loja virtual - criando helper para inicialização*/
 
 /* modulo 45 - Criando actions e reduces e atualizando os componentes das categorias*/
@@ -6292,6 +6465,8 @@ __webpack_require__.r(__webpack_exports__);
 /* modulo 47 -  integração -  detalhes do produto */
 
 /*modulo 49 - Criando as funções e error handlign para os dados do cliente 2/2*/
+
+/*modulo 49 - integração checkout - desenvolvendo o container dos dados do cliente */
 
 var REGISTER = 'REGISTER',
   AUTENTICAR_TOKEN = 'AUTENTICAR_TOKEN',
@@ -6317,7 +6492,8 @@ var REGISTER = 'REGISTER',
   CLEAN_FRETES = 'CLEAN_FRETES',
   UPDATE_FRETE_CART = 'UPDATE_FRETE_CART',
   AUTENTICAR = 'AUTENTICAR',
-  FETCH_CLIENTE = 'FETCH_CLIENTE';
+  FETCH_CLIENTE = 'FETCH_CLIENTE',
+  SET_FORM = 'SET_FORM';
 
 /***/ }),
 
@@ -6492,7 +6668,7 @@ var codigosCorreios = {
 
 /***/ }),
 
-/***/ 5:
+/***/ 6:
 /*!*********************************!*\
   !*** multi ./pages/checkout.js ***!
   \*********************************/
@@ -6699,6 +6875,17 @@ module.exports = require("core-js/library/fn/symbol/iterator");
 /***/ (function(module, exports) {
 
 module.exports = require("js-cookie");
+
+/***/ }),
+
+/***/ "moment":
+/*!*************************!*\
+  !*** external "moment" ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("moment");
 
 /***/ }),
 

@@ -562,7 +562,11 @@
 	border-radius: 5px;
 }
 
+.form-input .erro {
 
+	color : red;
+	font-size: 12px;
+}
 
 .Checkout select{
 

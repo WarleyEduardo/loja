@@ -20,6 +20,9 @@ import carrinhoReducer from './carrinhoReducers';
 /*modulo 49 - Criando as funções e error handlign para os dados do cliente 2/2*/
 import clienteReducer from './clienteReducers';
 
+/*modulo 49 - integração checkout - desenvolvendo o container dos dados do cliente */
+import checkoutReducers from './checkoutReducers';
+
 export default combineReducers({
 	auth: authReducer,
 	categoria: categoriaReducer,
@@ -27,4 +30,5 @@ export default combineReducers({
 	produto: produtoReducer,
 	carrinho: carrinhoReducer,
 	cliente: clienteReducer,
+	checkout: checkoutReducers
 });

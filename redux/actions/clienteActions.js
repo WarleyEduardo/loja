@@ -3,11 +3,12 @@ import { FETCH_CLIENTE} from '../types';
 
 import axios from 'axios';
 import { url , loja} from '../../config.js';
+import { getHeaders } from './helpers';
 
 
 export const fetchCliente = (id, token) => dispatch => {
 	
-	axios.get(`${url}/api/clientes/${id}?loja=${loja}`)
+	axios.get(`${url}/api/clientes/${id}?loja=${loja}`, getHeaders(token))
 	.then((response) => {
 	  
 		dispatch({type: FETCH_CLIENTE, payload : response.data})

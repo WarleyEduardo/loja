@@ -34,20 +34,21 @@ export const getUser = ({ token }) => (dispatch) => {
 /*Criando as funções e error handlign para os dados do cliente 1/2*/
 
 export const autenticar = ({ email, password } , goTo = fase , cb) => (dispatch) => {
-		axios
-			.post(`${url}/api/usuarios/login`, { email, password})
+		axios.post(`${url}/api/usuarios/login`, { email, password})
 			.then((response) => {
 				
 				setCookie('token', response.data.usuario.token);
-
+		
 				if (goTo) Router.push(goTo) 
+	
 
 				dispatch({ type: AUTENTICAR, payload: response.data });
                 dispatch(fetchCliente(response.data.usuario._id,response.data.usuario.token))  
 
 			}
-			)
-			.catch((e) => cb(errorHandling(e)));
+		).catch(
+			(e) => cb(errorHandling(e))			
+		);
 	};
 
 export default {
