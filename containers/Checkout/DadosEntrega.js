@@ -6,40 +6,73 @@ import FormSimples from '../../components/Inputs/FormSimples';
 
 import { ESTADOS } from '../../utils';
 
+/*modulo 49 - Dados de entrega - fazendo alterações no formulário de entrega */
+
+import { connect } from 'react-redux';
+import actions from '../../redux/actions';
+import { formatNumber, formatCEP } from '../../utils/format';
+
 class DadosClienteContainer extends Component {
+
+
 	state = {
-		dadosEntregaIgualDadosCobranca: true,
-		local: '',
-		numero: '',
-		bairro: '',
-		complemento: '',
-		cidade: '',
-		estado: '',
-		CEP: '',
-		dadosCobranca: {
-			local: '',
-			numero: '',
-			bairro: '',
-			complemento: '',
-			cidade: '',
-			estado: '',
-			CEP: '',
-		},
-	};
 
-	onChange = (field, e) => this.setState({ [field]: e.target.value });
+		erros: { dadosCobranca: {} }
+	}
 
-	onChangeCobranca = (field, e) => {
+	componentDidMount() {
+		this.fetchCliente();
+	}
+
+	componentDidUpdate(prevProps) {
+		if (!prevProps.cliente && this.props.cliente) this.fetchCliente();
+	}
+
+	fetchCliente() {
+		const { cliente } = this.props;
+
+		this.props.setForm({
+			dadosEntregaIgualDadosCobranca: true,
+			local: cliente ? cliente.endereco.local : '',
+			numero: cliente ? cliente.endereco.numero : '',
+			bairro: cliente ? cliente.endereco.bairro : '',
+			complemento: cliente ? cliente.endereco.complemento : '',
+			cidade: cliente ? cliente.endereco.cidade : '',
+			estado: cliente ? cliente.endereco.estado : '',
+			CEP: cliente ? cliente.endereco.CEP : '',
+			dadosCobranca: {
+				local: cliente ? cliente.endereco.local : '',
+				numero: cliente ? cliente.endereco.numero : '',
+				bairro: cliente ? cliente.endereco.bairro : '',
+				complemento: cliente ? cliente.endereco.complemento : '',
+				cidade: cliente ? cliente.endereco.cidade : '',
+				estado: cliente ? cliente.endereco.estado : '',
+				CEP: cliente ? cliente.endereco.CEP : '',
+			},
+		});
+	}
+
+	validate() {
 		
+	};
+	
+	onChange = (field, value, prefix) => this.props.setForm({ [field]: value }, prefix).then(() => this.validate());
+
+	/*
+	onChangeCobranca = (field, e) => {
 		const { state } = this;
 		state.dadosCobranca[field] = e.target.value;
 		this.setState(state);
-	}
-		
-	
+	};
+	*/
 
 	renderDadosDeEntrega() {
-		const { dadosEntregaIgualDadosCobranca, local, numero, bairro, complemento, cidade, estado, CEP } = this.state;
+
+		if (!this.props.form) return null;
+		const { dadosEntregaIgualDadosCobranca, local,
+			numero, bairro, complemento, cidade, estado, CEP } = this.props.form;
+		
+		const { erros } = this.state;
 
 		return (
 			<div className='flex-1 flex vertical'>
@@ -48,37 +81,65 @@ class DadosClienteContainer extends Component {
 				</div>
 
 				<div className='flex-1'>
-					<FormSimples value={CEP} name='CEP' placeholder='12345-789' label='CEP' onChange={(e) => this.onChange('CEP', e)} />
+					<FormSimples value={CEP} erro={erros.CEP} name='CEP' placeholder='12345-789' label='CEP' onChange={(e) => this.onChange('CEP', e.target.value)} />
 				</div>
 
 				<div className='flex-1 flex horizontal'>
 					<div className='flex-1 flex'>
-						<FormSimples value={local} name='local' placeholder='Rua , Avenida' label='Endereço (Rua, Avenida)...' onChange={(e) => this.onChange('local', e)} />
+						<FormSimples
+							value={local}
+							erro={erros.local}
+							name='local'
+							placeholder='Rua , Avenida'
+							label='Endereço (Rua, Avenida)...'
+							onChange={(e) => this.onChange('local', e.target.value)}
+						/>
 					</div>
 
 					<div className='flex-1 flex'>
-						<FormSimples value={numero} name='numero' placeholder='999' label='Número' onChange={(e) => this.onChange('numero', e)} />
-					</div>
-				</div>
-
-				<div className='flex-1 flex horizontal'>
-					<div className='flex-1 flex'>
-						<FormSimples value={bairro} name='bairro' placeholder='Bairro' label='Bairro' onChange={(e) => this.onChange('bairro', e)} />
-					</div>
-
-					<div className='flex-1 flex'>
-						<FormSimples value={complemento} name='complemento' placeholder='Complemento' label='Complemento' onChange={(e) => this.onChange('complemento', e)} />
+						<FormSimples value={numero} name='numero' erro={erros.numero} placeholder='999' label='Número' onChange={(e) => this.onChange('numero', e.target.value)} />
 					</div>
 				</div>
 
 				<div className='flex-1 flex horizontal'>
 					<div className='flex-1 flex'>
-						<FormSimples value={cidade} name='cidade' placeholder='Cidade' label='Cidade' onChange={(e) => this.onChange('cidade', e)} />
+						<FormSimples
+							value={bairro}
+							erro={erros.bairro}
+							name='bairro'
+							placeholder='Bairro'
+							label='Bairro'
+							onChange={(e) => this.onChange('bairro', e.target.value)}
+						/>
+					</div>
+
+					<div className='flex-1 flex'>
+						<FormSimples
+							value={complemento}
+							erro={erros.complemento}
+							name='complemento'
+							placeholder='Complemento'
+							label='Complemento'
+							onChange={(e) => this.onChange('complemento', e.target.value)}
+						/>
+					</div>
+				</div>
+
+				<div className='flex-1 flex horizontal'>
+					<div className='flex-1 flex'>
+						<FormSimples
+							value={cidade}
+							erro={erros.cidade}
+							name='cidade'
+							placeholder='Cidade'
+							label='Cidade'
+							onChange={(e) => this.onChange('cidade', e.target.valeu)}
+						/>
 					</div>
 
 					<div className='flex-1 flex vertical form-input'>
 						<label>Estado</label>
-						<select value={estado} onChange={(e) => this.onChange('cidade', e)}>
+						<select value={estado} onChange={(e) => this.onChange('cidade', e.target.value)}>
 							<option>Selecione...</option>
 							{Object.keys(ESTADOS).map((abbr) => (
 								<option key={abbr} value={abbr}>
@@ -86,6 +147,9 @@ class DadosClienteContainer extends Component {
 								</option>
 							))}
 						</select>
+						{
+							erros.estado && (<smal className="erro">{erros.estado}</smal>)
+						}
 					</div>
 				</div>
 
@@ -94,7 +158,7 @@ class DadosClienteContainer extends Component {
 					<input
 						checked={dadosEntregaIgualDadosCobranca}
 						type='checkbox'
-						onChange={() => this.setState({ dadosEntregaIgualDadosCobranca: !dadosEntregaIgualDadosCobranca })}
+						onChange={() => this.props.setForm({ dadosEntregaIgualDadosCobranca: !dadosEntregaIgualDadosCobranca })}
 					/>
 					<label>&nbsp;Os dados de entrega são iguais aos dados de cobrança</label>
 				</div>
@@ -103,7 +167,13 @@ class DadosClienteContainer extends Component {
 	}
 
 	renderDadosDeCobranca() {
-		const { local, numero, bairro, complemento, cidade, estado, CEP } = this.state.dadosCobranca;
+
+		if (!this.props.form || !this.props.form.dadosCobranca) return null;
+		
+		const { local, numero, bairro, complemento,
+			cidade, estado, CEP } = this.props.form.dadosCobranca;
+		
+		const { erros } = this.state;
 
 		return (
 			<div className='flex-1 flex vertical'>
@@ -112,49 +182,78 @@ class DadosClienteContainer extends Component {
 				</div>
 
 				<div className='flex-1'>
-					<FormSimples value={CEP} name='CEP' placeholder='12345-789' label='CEP' onChange={(e) => this.onChangeCobranca('CEP', e)} />
+					<FormSimples
+						value={CEP}
+						erro={erros.dadosCobranca.CEP}
+						name='CEP'
+						placeholder='12345-789'
+						label='CEP'
+						onChange={(e) => this.onChange('CEP', e.target.value, 'dadosCobranca')}
+					/>
 				</div>
 
 				<div className='flex-1 flex horizontal'>
 					<div className='flex-1 flex'>
 						<FormSimples
 							value={local}
+							erro={erros.dadosCobranca.local}
 							name='local'
 							placeholder='Rua , Avenida'
 							label='Endereço (Rua, Avenida)...'
-							onChange={(e) => this.onChangeCobranca('local', e)}
+							onChange={(e) => this.onChange('local', e.target.value, 'dadosCobranca')}
 						/>
 					</div>
 
 					<div className='flex-1 flex'>
-						<FormSimples value={numero} name='numero' placeholder='999' label='Número' onChange={(e) => this.onChangeCobranca('numero', e)} />
+						<FormSimples
+							value={numero}
+							erro={erros.dadosCobranca.numero}
+							name='numero'
+							placeholder='999'
+							label='Número'
+							onChange={(e) => this.onChange('numero', e.target.value, 'dadosCobranca')}
+						/>
 					</div>
 				</div>
 
 				<div className='flex-1 flex horizontal'>
 					<div className='flex-1 flex'>
-						<FormSimples value={bairro} name='bairro' placeholder='Bairro' label='Bairro' onChange={(e) => this.onChangeCobranca('bairro', e)} />
+						<FormSimples
+							value={bairro.dadosCobranca.bairro}
+							name='bairro'
+							placeholder='Bairro'
+							label='Bairro'
+							onChange={(e) => this.onChange('bairro', e.target.value, 'dadosCobranca')}
+						/>
 					</div>
 
 					<div className='flex-1 flex'>
 						<FormSimples
 							value={complemento}
+							erro={erros.dadosCobranca.complemento}
 							name='complemento'
 							placeholder='Complemento'
 							label='Complemento'
-							onChange={(e) => this.onChangeCobranca('complemento', e)}
+							onChange={(e) => this.onChange('complemento', e.target.value, 'dadosCobranca')}
 						/>
 					</div>
 				</div>
 
 				<div className='flex-1 flex horizontal'>
 					<div className='flex-1 flex'>
-						<FormSimples value={cidade} name='cidade' placeholder='Cidade' label='Cidade' onChange={(e) => this.onChange('cidade', e)} />
+						<FormSimples
+							value={cidade}
+							erro={erros.dadosCobranca.cidade}
+							name='cidade'
+							placeholder='Cidade'
+							label='Cidade'
+							onChange={(e) => this.onChange('cidade', e.target.value, 'dadosCobranca')}
+						/>
 					</div>
 
 					<div className='flex-1 flex vertical form-input'>
 						<label>Estado</label>
-						<select value={estado} onChange={(e) => this.onChangeCobranca('cidade', e)}>
+						<select value={estado} onChange={(e) => this.onChange('cidade', e.target.value, 'dadosCobranca')}>
 							<option>Selecione...</option>
 							{Object.keys(ESTADOS).map((abbr) => (
 								<option key={abbr} value={abbr}>
@@ -162,12 +261,14 @@ class DadosClienteContainer extends Component {
 								</option>
 							))}
 						</select>
+						{erros.dadosCobranca.estado && <smal className='erro'>{erros.dadosCobranca.estado}</smal>}
 					</div>
 				</div>
 			</div>
 		);
 	}
-
+     
+	/*
 	renderDadosUsuario() {
 		const { nome, CPF, dataDeNascimento, telefone } = this.state;
 
@@ -199,9 +300,10 @@ class DadosClienteContainer extends Component {
 			</div>
 		);
 	}
+	*/
 
 	render() {
-		const { dadosEntregaIgualDadosCobranca } = this.state;
+		const { dadosEntregaIgualDadosCobranca } = this.props.form;
 		return (
 			<div className='flex-1'>
 				{this.renderDadosDeEntrega()}
@@ -211,4 +313,11 @@ class DadosClienteContainer extends Component {
 	}
 }
 
-export default DadosClienteContainer;
+const mapStateToProps = state => ({
+
+	usuario: state.auth.usuario,
+	cliente: state.cliente.cliente,
+	form: state.checkout.form
+})
+
+export default connect(mapStateToProps,actions)(DadosClienteContainer);
