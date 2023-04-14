@@ -10,25 +10,34 @@ import ClienteLogin from '../Cliente/ClienteLogin';
 import { connect } from 'react-redux';
 import actions from '../../redux/actions';
 
-class DadosCliente extends Component{
+/* modulo 49 - (correção) alteração para dos dados do cliente  */
+
+class DadosCliente extends Component {
+	
+	
+	fetchCliente() { 
+			const { usuario, token, cliente } = this.props;
+
+			if (usuario && token && !cliente) {
+				this.props.fetchCliente(usuario._id, token);
+			}
+
+
+	}
 
 	componentDidMount() {
-		
-		const { usuario, token, cliente } = this.props;
-	
-		if (usuario && token && !cliente) {
+		this.fetchCliente();
+	}
 
-			this.props.fetchCliente(usuario._id, token);
-		}
+	componentDidUpdate() {
+		
+		this.fetchCliente();
 	}
 
 	render() {
-
 		const { usuario, permissaoInicial, permitir } = this.props;
-		
-		return usuario || permissaoInicial ?
-			<DadosClienteContainer /> :
-			<ClienteLogin permitir={permitir} />;
+
+		return usuario || permissaoInicial ? <DadosClienteContainer /> : <ClienteLogin permitir={permitir} />;
 	}
 }
 

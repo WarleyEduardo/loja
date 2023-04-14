@@ -23,7 +23,7 @@ export const formatCPF = (value) => {
 
 export const formatDataDeNascimento = (value) => {
 	
-	const auxData = (value | "").match(numberPattern);
+	const auxData = (value || "").match(numberPattern);
 	const _data = (auxData || []).join('');
 	if (_data.length > 4) return _data.slice(0, 2) + '/' + _data.slice(2, 4) + '/' + _data.slice(4, 8);
 	if (_data.length > 2) return _data.slice(0, 2) + '/' + _data.slice(2, 4);
@@ -33,7 +33,7 @@ export const formatDataDeNascimento = (value) => {
 
 
 export const formatTelefone = (value) => {
-	const auxTelefone = (value | '').match(numberPattern);
+	const auxTelefone = (value || '').match(numberPattern);
 	const _telefone = (auxTelefone || []).join('');
      return _telefone.length > 2 ?  _telefone.slice(0, 2) + ' ' + _telefone.slice(2, 12) :  _telefone;
 	

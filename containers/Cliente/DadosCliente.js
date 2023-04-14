@@ -19,6 +19,10 @@ import moment from 'moment';
 /* conectando e validando os dados do cliente (2/2) */
 import { validateCPF } from '../../utils/validade';
 
+/* modulo 49 - adicionando as mascaras nos campos para validação dos dados do cliente  */
+
+import { formatDataDeNascimento, formatTelefone, formatCPF } from '../../utils/format';
+
 class DadosClienteContainer extends Component {
 
 	state = {
@@ -60,7 +64,7 @@ class DadosClienteContainer extends Component {
 
 		if (!nome) erros.nome = "Preencha aqui com o seu nome";
 		if (!cpf || cpf.length !== 14) erros.CPF = "Preencha aqui com o seu CPF";	
-		if (cpf && cpf.length !== 14 && !validateCPF(cpf)) erros.CPF = "Preencha aqui com o seu cpf corretamente";
+		if (cpf && cpf.length === 14 && !validateCPF(cpf)) erros.CPF = "Preencha aqui com o seu cpf corretamente";
 		if (!dataDeNascimento || dataDeNascimento.length !== 10) erros.dataDeNascimento = "Preencha aqui com a sua data de nascimento";
 
 		if (!telefone || telefone.length < 11) erros.telefone = "Preencha aqui com o seu telefone";
@@ -73,9 +77,9 @@ class DadosClienteContainer extends Component {
 	} 
 
 
-	onChange = (field, e) => {
+	onChange = (field, e, value) => {
 
-		this.props.setForm({ [field]: e.target.value }, null).then(
+		this.props.setForm({ [field]: value || e.target.value }, null).then(
 			() => this.validate()
 	  )
 
@@ -136,7 +140,7 @@ class DadosClienteContainer extends Component {
 						placeholder='CPF'
 						label='CPF'
 						erro={erros.CPF}
-						onChange={(e) => this.onChange('cpf', e)} />
+						onChange={(e) => this.onChange('cpf', e , formatCPF(e.target.value))} />
 				</div>
 
 				<div className='flex-1 flex horizontal'>
@@ -147,7 +151,7 @@ class DadosClienteContainer extends Component {
 							placeholder='DD/MM/YYYY'
 							label='Data de Nascimento'
 							erro={erros.dataDeNascimento}
-							onChange={(e) => this.onChange('dataDeNascimento', e)}
+							onChange={(e) => this.onChange('dataDeNascimento', e , formatDataDeNascimento(e.target.value) )}
 						/>
 					</div>
 
@@ -158,7 +162,7 @@ class DadosClienteContainer extends Component {
 							placeholder='(34) 1234-5678'
 							label='Telefone/Celular'
 							erro={erros.telefone}
-							onChange={(e) => this.onChange('telefone', e)} />
+							onChange={(e) => this.onChange('telefone', e , formatTelefone(e.target.value))} />
 					</div>
 				</div>
 			</div>
