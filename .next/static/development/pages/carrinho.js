@@ -615,6 +615,7 @@ var DadosDaLoja = /*#__PURE__*/function (_Component) {
       }, "Telefones:"), telefones.map(function (telefone, index) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
           className: "loja-telefone",
+          key: index,
           __self: _this,
           __source: {
             fileName: _jsxFileName,
@@ -1306,6 +1307,7 @@ var RedesSociais = function RedesSociais() {
   }, REDES_SOCIAIS.map(function (item, idx) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "flex-1 flex",
+      key: idx,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
@@ -19757,17 +19759,25 @@ __webpack_require__.r(__webpack_exports__);
 
 /*modulo 49 - Dados de entrega - criando funções e preparando a base */
 
+/*modulo 49 - submit dados do cliente - fazendo a integreção e ativando dados do cliente (2/2) */
+
 
 
 var getRawData = function getRawData(data) {
   var _data = data.split('/');
-  return "".concat(_data[2], "-").concat(_data[1] - 1, "-").concat(_data[0]);
+  console.log('data', _data);
+  var ano = _data[2];
+  var _mes = Number(_data[1]);
+  var mes = _mes < 10 ? "0" + _mes : _mes;
+  var _dia = Number(_data[0]);
+  var dia = _dia < 10 ? "0" + _dia : _dia;
+  return "".concat(ano, "-").concat(mes, "-").concat(dia);
 };
 var newCliente = function newCliente(form, cb) {
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("".concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/clientes?loja=").concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["loja"]), {
       nome: form.nome,
-      paswword: form.senha,
+      password: form.senha,
       cpf: form.cpf,
       email: form.email,
       telefones: [form.telefone],
@@ -19782,6 +19792,7 @@ var newCliente = function newCliente(form, cb) {
       },
       dataDeNascimento: getRawData(form.dataDeNascimento)
     }).then(function (response) {
+      console.log('entrou no retorno ');
       dispatch({
         type: _types__WEBPACK_IMPORTED_MODULE_0__["FETCH_CLIENTE"],
         payload: response.data
@@ -19789,16 +19800,17 @@ var newCliente = function newCliente(form, cb) {
       dispatch(Object(_authActions__WEBPACK_IMPORTED_MODULE_4__["autenticar"])({
         email: form.email,
         password: form.senha
-      }));
+      }, null, cb));
       cb(null);
     })["catch"](function (e) {
-      return cb(Object(_errorHandling__WEBPACK_IMPORTED_MODULE_5__["default"])(e));
+      console.log('meu erro');
+      cb(Object(_errorHandling__WEBPACK_IMPORTED_MODULE_5__["default"])(e));
     });
   };
 };
 var updateCliente = function updateCliente(form, id, token, cb) {
   return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("".concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/clientes/").concat(id, "?loja=").concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["loja"]), {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.put("".concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/clientes/").concat(id, "?loja=").concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["loja"]), {
       nome: form.nome,
       cpf: form.cpf,
       telefones: [form.telefone],

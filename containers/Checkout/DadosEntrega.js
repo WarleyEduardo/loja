@@ -12,6 +12,8 @@ import { connect } from 'react-redux';
 import actions from '../../redux/actions';
 import { formatNumber, formatCEP } from '../../utils/format';
 
+/* Modulo 49 - colocando validação  nos campos e finalizando o componente */
+
 class DadosClienteContainer extends Component {
 
 
@@ -53,7 +55,44 @@ class DadosClienteContainer extends Component {
 	}
 
 	validate() {
-		
+
+		const {
+			dadosEntregaIgualDadosCobranca,
+			local,
+			numero,
+			bairro,
+			cidade,
+			estado,
+			CEP,
+			dadosCobranca
+		} = this.props.form;
+
+		const erros = { dadosCobranca: {} };
+
+		if (!local) erros.local = "Preenchar aqui com o seu endereço"
+		if (!numero) erros.numero = 'Preenchar aqui com o seu número';
+		if (!bairro) erros.bairro = 'Preenchar aqui com o seu bairro';
+		if (!cidade) erros.cidade = 'Preenchar aqui com o a sua cidade';
+		if (!estado) erros.estado = 'Selecione o seu estado';
+		if (!CEP || !CEP.length == 9) erros.CEP = 'Digite aqui o seu CEP';
+
+		if (!dadosEntregaIgualDadosCobranca) {
+
+
+				if (!dadosCobranca.local) erros.dadosCobranca.local = 'Preenchar aqui com o seu endereço';
+				if (!dadosCobranca.numero) erros.dadosCobranca.numero = 'Preenchar aqui com o seu número';
+				if (!dadosCobranca.bairro) erros.dadosCobranca.bairro = 'Preenchar aqui com o seu bairro';
+				if (!dadosCobranca.cidade) erros.dadosCobranca.cidade = 'Preenchar aqui com o a sua cidade';
+				if (!dadosCobranca.estado) erros.dadosCobranca.estado = 'Selecione o seu estado';
+				if (!dadosCobranca.CEP || !dadosCobranca.CEP.length == 9) erros.dadosCobranca.CEP = 'Digite aqui o seu CEP';
+
+
+
+		}
+
+		this.setState({ erros });
+
+		return (Object.keys(erros).length === 1 & Object.keys(erros.dadosCobranca).length === 0);
 	};
 	
 	onChange = (field, value, prefix) => this.props.setForm({ [field]: value }, prefix).then(() => this.validate());
@@ -81,7 +120,8 @@ class DadosClienteContainer extends Component {
 				</div>
 
 				<div className='flex-1'>
-					<FormSimples value={CEP} erro={erros.CEP} name='CEP' placeholder='12345-789' label='CEP' onChange={(e) => this.onChange('CEP', e.target.value)} />
+					<FormSimples value={CEP} erro={erros.CEP} name='CEP' placeholder='12345-789' label='CEP'
+						onChange={(e) => this.onChange('CEP', formatCEP(e.target.value))} />
 				</div>
 
 				<div className='flex-1 flex horizontal'>
@@ -97,7 +137,8 @@ class DadosClienteContainer extends Component {
 					</div>
 
 					<div className='flex-1 flex'>
-						<FormSimples value={numero} name='numero' erro={erros.numero} placeholder='999' label='Número' onChange={(e) => this.onChange('numero', e.target.value)} />
+						<FormSimples value={numero} name='numero' erro={erros.numero} placeholder='999' label='Número'
+							onChange={(e) => this.onChange('numero', formatNumber(e.target.value))} />
 					</div>
 				</div>
 
@@ -133,13 +174,13 @@ class DadosClienteContainer extends Component {
 							name='cidade'
 							placeholder='Cidade'
 							label='Cidade'
-							onChange={(e) => this.onChange('cidade', e.target.valeu)}
+							onChange={(e) => this.onChange('cidade', e.target.value)}
 						/>
 					</div>
 
 					<div className='flex-1 flex vertical form-input'>
 						<label>Estado</label>
-						<select value={estado} onChange={(e) => this.onChange('cidade', e.target.value)}>
+						<select value={estado} onChange={(e) => this.onChange('estado', e.target.value)}>
 							<option>Selecione...</option>
 							{Object.keys(ESTADOS).map((abbr) => (
 								<option key={abbr} value={abbr}>
@@ -188,7 +229,7 @@ class DadosClienteContainer extends Component {
 						name='CEP'
 						placeholder='12345-789'
 						label='CEP'
-						onChange={(e) => this.onChange('CEP', e.target.value, 'dadosCobranca')}
+						onChange={(e) => this.onChange('CEP', formatCEP(e.target.value), 'dadosCobranca')}
 					/>
 				</div>
 
@@ -211,7 +252,7 @@ class DadosClienteContainer extends Component {
 							name='numero'
 							placeholder='999'
 							label='Número'
-							onChange={(e) => this.onChange('numero', e.target.value, 'dadosCobranca')}
+							onChange={(e) => this.onChange('numero', formatNumber(e.target.value), 'dadosCobranca')}
 						/>
 					</div>
 				</div>
@@ -219,7 +260,8 @@ class DadosClienteContainer extends Component {
 				<div className='flex-1 flex horizontal'>
 					<div className='flex-1 flex'>
 						<FormSimples
-							value={bairro.dadosCobranca.bairro}
+							value={bairro}
+							erro ={erros.dadosCobranca.bairro}
 							name='bairro'
 							placeholder='Bairro'
 							label='Bairro'
@@ -253,7 +295,7 @@ class DadosClienteContainer extends Component {
 
 					<div className='flex-1 flex vertical form-input'>
 						<label>Estado</label>
-						<select value={estado} onChange={(e) => this.onChange('cidade', e.target.value, 'dadosCobranca')}>
+						<select value={estado} onChange={(e) => this.onChange('estado', e.target.value, 'dadosCobranca')}>
 							<option>Selecione...</option>
 							{Object.keys(ESTADOS).map((abbr) => (
 								<option key={abbr} value={abbr}>

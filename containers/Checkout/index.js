@@ -15,6 +15,8 @@ import CheckoutButton from './CheckoutButton';
 import { connect } from 'react-redux';
 import actions from '../../redux/actions';
 
+/* Modulo 49 - submit dados do cliente - fazendo a integração e ativando validações (1/2) */
+
 class CheckoutContainer extends Component{
 
 	state = {
@@ -39,7 +41,11 @@ class CheckoutContainer extends Component{
 				
 				/>
 				{(permissaoInicial || usuario) && <DadosEntrega />}
-				{(permissaoInicial || usuario) && <SubmitDadosCliente />}
+				
+				{(permissaoInicial || usuario) &&
+					<SubmitDadosCliente permitir={()=> this.setState({permissaoCheckout: true})} />
+				}
+				
 				{permissaoCheckout && <DadosFrete />}
 				{permissaoCheckout && <DadosPagamento />}
 				{permissaoCheckout && <DadosPedido />}			

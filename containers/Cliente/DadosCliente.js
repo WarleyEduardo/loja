@@ -60,7 +60,7 @@ class DadosClienteContainer extends Component {
 		const erros = {};
 
 		if (!usuario && !email) erros.email = "Preencha aqui com o seu e-mail";
-		if (!usuario && senha) erros.senha = "Preencha aqui com a sua senha";
+		if (!usuario && !senha) erros.senha = "Preencha aqui com a sua senha";
 
 		if (!nome) erros.nome = "Preencha aqui com o seu nome";
 		if (!cpf || cpf.length !== 14) erros.CPF = "Preencha aqui com o seu CPF";	
@@ -117,8 +117,7 @@ class DadosClienteContainer extends Component {
 
 	renderDadosUsuario() {
 		const { nome, cpf, dataDeNascimento, telefone } = this.props.form;
-
-		console.log('formulario', this.props.form);
+		
 		const { erros } = this.state;
 
 		return (

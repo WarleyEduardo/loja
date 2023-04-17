@@ -949,6 +949,7 @@ var DadosDaLoja = /*#__PURE__*/function (_Component) {
       }, "Telefones:"), telefones.map(function (telefone, index) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
           className: "loja-telefone",
+          key: index,
           __self: _this,
           __source: {
             fileName: _jsxFileName,
@@ -1373,6 +1374,7 @@ var RedesSociais = function RedesSociais() {
   }, REDES_SOCIAIS.map(function (item, idx) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "flex-1 flex",
+      key: idx,
       __self: _this,
       __source: {
         fileName: _jsxFileName,
@@ -2215,6 +2217,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_b
 
 
 
+
+/* Modulo 49 - colocando validação  nos campos e finalizando o componente */
 var DadosClienteContainer = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(DadosClienteContainer, _Component);
   var _super = _createSuper(DadosClienteContainer);
@@ -2273,7 +2277,38 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
     }
   }, {
     key: "validate",
-    value: function validate() {}
+    value: function validate() {
+      var _this$props$form = this.props.form,
+        dadosEntregaIgualDadosCobranca = _this$props$form.dadosEntregaIgualDadosCobranca,
+        local = _this$props$form.local,
+        numero = _this$props$form.numero,
+        bairro = _this$props$form.bairro,
+        cidade = _this$props$form.cidade,
+        estado = _this$props$form.estado,
+        CEP = _this$props$form.CEP,
+        dadosCobranca = _this$props$form.dadosCobranca;
+      var erros = {
+        dadosCobranca: {}
+      };
+      if (!local) erros.local = "Preenchar aqui com o seu endereço";
+      if (!numero) erros.numero = 'Preenchar aqui com o seu número';
+      if (!bairro) erros.bairro = 'Preenchar aqui com o seu bairro';
+      if (!cidade) erros.cidade = 'Preenchar aqui com o a sua cidade';
+      if (!estado) erros.estado = 'Selecione o seu estado';
+      if (!CEP || !CEP.length == 9) erros.CEP = 'Digite aqui o seu CEP';
+      if (!dadosEntregaIgualDadosCobranca) {
+        if (!dadosCobranca.local) erros.dadosCobranca.local = 'Preenchar aqui com o seu endereço';
+        if (!dadosCobranca.numero) erros.dadosCobranca.numero = 'Preenchar aqui com o seu número';
+        if (!dadosCobranca.bairro) erros.dadosCobranca.bairro = 'Preenchar aqui com o seu bairro';
+        if (!dadosCobranca.cidade) erros.dadosCobranca.cidade = 'Preenchar aqui com o a sua cidade';
+        if (!dadosCobranca.estado) erros.dadosCobranca.estado = 'Selecione o seu estado';
+        if (!dadosCobranca.CEP || !dadosCobranca.CEP.length == 9) erros.dadosCobranca.CEP = 'Digite aqui o seu CEP';
+      }
+      this.setState({
+        erros: erros
+      });
+      return _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_1___default()(erros).length === 1 & _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_1___default()(erros.dadosCobranca).length === 0;
+    }
   }, {
     key: "renderDadosDeEntrega",
     value:
@@ -2288,36 +2323,36 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
     function renderDadosDeEntrega() {
       var _this2 = this;
       if (!this.props.form) return null;
-      var _this$props$form = this.props.form,
-        dadosEntregaIgualDadosCobranca = _this$props$form.dadosEntregaIgualDadosCobranca,
-        local = _this$props$form.local,
-        numero = _this$props$form.numero,
-        bairro = _this$props$form.bairro,
-        complemento = _this$props$form.complemento,
-        cidade = _this$props$form.cidade,
-        estado = _this$props$form.estado,
-        CEP = _this$props$form.CEP;
+      var _this$props$form2 = this.props.form,
+        dadosEntregaIgualDadosCobranca = _this$props$form2.dadosEntregaIgualDadosCobranca,
+        local = _this$props$form2.local,
+        numero = _this$props$form2.numero,
+        bairro = _this$props$form2.bairro,
+        complemento = _this$props$form2.complemento,
+        cidade = _this$props$form2.cidade,
+        estado = _this$props$form2.estado,
+        CEP = _this$props$form2.CEP;
       var erros = this.state.erros;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         className: "flex-1 flex vertical",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 78,
+          lineNumber: 117,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 79,
+          lineNumber: 118,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 80,
+          lineNumber: 119,
           columnNumber: 6
         }
       }, "DADOS DE ENTREGA ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2325,7 +2360,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 83,
+          lineNumber: 122,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2335,12 +2370,12 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         placeholder: "12345-789",
         label: "CEP",
         onChange: function onChange(e) {
-          return _this2.onChange('CEP', e.target.value);
+          return _this2.onChange('CEP', Object(_utils_format__WEBPACK_IMPORTED_MODULE_14__["formatCEP"])(e.target.value));
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 84,
+          lineNumber: 123,
           columnNumber: 6
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2348,7 +2383,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 87,
+          lineNumber: 127,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2356,7 +2391,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 88,
+          lineNumber: 128,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2371,7 +2406,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 89,
+          lineNumber: 129,
           columnNumber: 7
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2379,7 +2414,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 99,
+          lineNumber: 139,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2389,12 +2424,12 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         placeholder: "999",
         label: "N\xFAmero",
         onChange: function onChange(e) {
-          return _this2.onChange('numero', e.target.value);
+          return _this2.onChange('numero', Object(_utils_format__WEBPACK_IMPORTED_MODULE_14__["formatNumber"])(e.target.value));
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 100,
+          lineNumber: 140,
           columnNumber: 7
         }
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2402,7 +2437,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 104,
+          lineNumber: 145,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2410,7 +2445,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 105,
+          lineNumber: 146,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2425,7 +2460,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 106,
+          lineNumber: 147,
           columnNumber: 7
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2433,7 +2468,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 116,
+          lineNumber: 157,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2448,7 +2483,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 117,
+          lineNumber: 158,
           columnNumber: 7
         }
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2456,7 +2491,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 128,
+          lineNumber: 169,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2464,7 +2499,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 129,
+          lineNumber: 170,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2474,12 +2509,12 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         placeholder: "Cidade",
         label: "Cidade",
         onChange: function onChange(e) {
-          return _this2.onChange('cidade', e.target.valeu);
+          return _this2.onChange('cidade', e.target.value);
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 130,
+          lineNumber: 171,
           columnNumber: 7
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2487,32 +2522,32 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 140,
+          lineNumber: 181,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 141,
+          lineNumber: 182,
           columnNumber: 7
         }
       }, "Estado"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("select", {
         value: estado,
         onChange: function onChange(e) {
-          return _this2.onChange('cidade', e.target.value);
+          return _this2.onChange('estado', e.target.value);
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 142,
+          lineNumber: 183,
           columnNumber: 7
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("option", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 143,
+          lineNumber: 184,
           columnNumber: 8
         }
       }, "Selecione..."), _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_1___default()(_utils__WEBPACK_IMPORTED_MODULE_11__["ESTADOS"]).map(function (abbr) {
@@ -2522,7 +2557,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 145,
+            lineNumber: 186,
             columnNumber: 9
           }
         }, _utils__WEBPACK_IMPORTED_MODULE_11__["ESTADOS"][abbr]);
@@ -2531,21 +2566,21 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 151,
+          lineNumber: 192,
           columnNumber: 25
         }
       }, erros.estado))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 156,
+          lineNumber: 197,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 157,
+          lineNumber: 198,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
@@ -2559,14 +2594,14 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 158,
+          lineNumber: 199,
           columnNumber: 6
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 163,
+          lineNumber: 204,
           columnNumber: 6
         }
       }, "\xA0Os dados de entrega s\xE3o iguais aos dados de cobran\xE7a")));
@@ -2590,21 +2625,21 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 179,
+          lineNumber: 220,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 180,
+          lineNumber: 221,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 181,
+          lineNumber: 222,
           columnNumber: 6
         }
       }, "DADOS DE COBRAN\xC7A ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2612,7 +2647,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 184,
+          lineNumber: 225,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2622,12 +2657,12 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         placeholder: "12345-789",
         label: "CEP",
         onChange: function onChange(e) {
-          return _this3.onChange('CEP', e.target.value, 'dadosCobranca');
+          return _this3.onChange('CEP', Object(_utils_format__WEBPACK_IMPORTED_MODULE_14__["formatCEP"])(e.target.value), 'dadosCobranca');
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 185,
+          lineNumber: 226,
           columnNumber: 6
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2635,7 +2670,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 195,
+          lineNumber: 236,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2643,7 +2678,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 196,
+          lineNumber: 237,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2658,7 +2693,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 197,
+          lineNumber: 238,
           columnNumber: 7
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2666,7 +2701,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 207,
+          lineNumber: 248,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2676,12 +2711,12 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         placeholder: "999",
         label: "N\xFAmero",
         onChange: function onChange(e) {
-          return _this3.onChange('numero', e.target.value, 'dadosCobranca');
+          return _this3.onChange('numero', Object(_utils_format__WEBPACK_IMPORTED_MODULE_14__["formatNumber"])(e.target.value), 'dadosCobranca');
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 208,
+          lineNumber: 249,
           columnNumber: 7
         }
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2689,7 +2724,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 219,
+          lineNumber: 260,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2697,11 +2732,12 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 220,
+          lineNumber: 261,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        value: bairro.dadosCobranca.bairro,
+        value: bairro,
+        erro: erros.dadosCobranca.bairro,
         name: "bairro",
         placeholder: "Bairro",
         label: "Bairro",
@@ -2711,7 +2747,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 221,
+          lineNumber: 262,
           columnNumber: 7
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2719,7 +2755,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 230,
+          lineNumber: 272,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2734,7 +2770,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 231,
+          lineNumber: 273,
           columnNumber: 7
         }
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2742,7 +2778,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 242,
+          lineNumber: 284,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2750,7 +2786,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 243,
+          lineNumber: 285,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2765,7 +2801,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 244,
+          lineNumber: 286,
           columnNumber: 7
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2773,32 +2809,32 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 254,
+          lineNumber: 296,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 255,
+          lineNumber: 297,
           columnNumber: 7
         }
       }, "Estado"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("select", {
         value: estado,
         onChange: function onChange(e) {
-          return _this3.onChange('cidade', e.target.value, 'dadosCobranca');
+          return _this3.onChange('estado', e.target.value, 'dadosCobranca');
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 256,
+          lineNumber: 298,
           columnNumber: 7
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("option", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 257,
+          lineNumber: 299,
           columnNumber: 8
         }
       }, "Selecione..."), _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_1___default()(_utils__WEBPACK_IMPORTED_MODULE_11__["ESTADOS"]).map(function (abbr) {
@@ -2808,7 +2844,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
           __self: _this3,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 259,
+            lineNumber: 301,
             columnNumber: 9
           }
         }, _utils__WEBPACK_IMPORTED_MODULE_11__["ESTADOS"][abbr]);
@@ -2817,7 +2853,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 264,
+          lineNumber: 306,
           columnNumber: 38
         }
       }, erros.dadosCobranca.estado))));
@@ -2865,7 +2901,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 308,
+          lineNumber: 350,
           columnNumber: 4
         }
       }, this.renderDadosDeEntrega(), !dadosEntregaIgualDadosCobranca && this.renderDadosDeCobranca());
@@ -3570,12 +3606,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var _components_Alert_Geral__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/Alert/Geral */ "./components/Alert/Geral.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _components_Alert_Geral__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/Alert/Geral */ "./components/Alert/Geral.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../redux/actions */ "./redux/actions/index.js");
+/* harmony import */ var _utils_validade__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../utils/validade */ "./utils/validade.js");
+
+
 
 
 
@@ -3583,63 +3627,186 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _jsxFileName = "D:\\javaScript\\lojavirtual\\lojavirtual\\containers\\Checkout\\SubmitDadosCliente.js";
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(this).constructor; result = _babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(this).constructor; result = _babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__["default"])(this, result); }; }
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default.a) return false; if (_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default.a.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 /* modulo 42 - pagina de Checkout - criando o componente de enviar os dados do cliente e entrega */
 
 
 
+
+/* Modulo 49 - submit dados do cliente - fazendo a integração e ativando validações (1/2) */
+
+/*modulo 49 - submit dados do cliente - fazendo a integreção e ativando dados do cliente (2/2) */
+
+
+
+
 var SubmitDadosCliente = /*#__PURE__*/function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__["default"])(SubmitDadosCliente, _Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(SubmitDadosCliente, _Component);
   var _super = _createSuper(SubmitDadosCliente);
   function SubmitDadosCliente() {
+    var _this;
     Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, SubmitDadosCliente);
-    return _super.apply(this, arguments);
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+    _this = _super.call.apply(_super, [this].concat(args));
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "state", {
+      aviso: null
+    });
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "callback", function (error) {
+      if (!error) {
+        _this.props.permitir();
+        _this.setState({
+          aviso: null
+        });
+      } else {
+        _this.setState({
+          aviso: {
+            status: false,
+            message: error.message
+          }
+        });
+      }
+    });
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "validate", function () {
+      var _this$props$form = _this.props.form,
+        email = _this$props$form.email,
+        senha = _this$props$form.senha,
+        nome = _this$props$form.nome,
+        cpf = _this$props$form.cpf,
+        dataDeNascimento = _this$props$form.dataDeNascimento,
+        telefone = _this$props$form.telefone,
+        local = _this$props$form.local,
+        numero = _this$props$form.numero,
+        bairro = _this$props$form.bairro,
+        cidade = _this$props$form.cidade,
+        estado = _this$props$form.estado,
+        CEP = _this$props$form.CEP;
+      var usuario = _this.props.usuario;
+      var erros = {};
+      var temErro = false;
+      if (!usuario && !email) temErro = true;
+      if (!usuario && !senha) temErro = true;
+      if (!nome) {
+        erros.nome = 'Nome não informado';
+        temErro = true;
+      }
+      ;
+      if (!cpf || cpf.length === 14 && !Object(_utils_validade__WEBPACK_IMPORTED_MODULE_12__["validateCPF"])(cpf)) {
+        erros.cpf = "cpf inválido";
+        temErro = true;
+      }
+      ;
+      if (!dataDeNascimento || dataDeNascimento.length !== 10) {
+        erros.dataDeNascimento = 'data de nascimento inválida';
+        temErro = true;
+      }
+      ;
+      if (!telefone || telefone.length < 11) {
+        erros.telefone = 'telefone inválido';
+        temErro = true;
+      }
+      ;
+      if (!local) {
+        erros.local = 'local inválido';
+        temErro = true;
+      }
+      ;
+      if (!numero) {
+        erros.numero = "número inválido";
+        temErro = true;
+      }
+      ;
+      if (!bairro) {
+        erros.bairro = "bairro inválido";
+        temErro = true;
+      }
+      ;
+      if (!cidade) {
+        erros.cidade = 'cidade inválida';
+        temErro = true;
+      }
+      ;
+      if (!estado) {
+        erros.estado = 'estado inválido';
+        temErro = true;
+      }
+      ;
+      if (!CEP || CEP.length !== 9) {
+        erros.CEP = "cep inválido";
+        temErro = true;
+      }
+      ;
+
+      //console.log('erros:' , erros)
+
+      return !temErro;
+    });
+    return _this;
   }
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(SubmitDadosCliente, [{
+    key: "handleSubmit",
+    value: function handleSubmit() {
+      if (!this.validate()) return null;
+      var _this$props = this.props,
+        token = _this$props.token,
+        form = _this$props.form,
+        cliente = _this$props.cliente;
+      if (!token) this.props.newCliente(form, this.callback);else this.props.updateCliente(form, cliente._id, token, this.callback);
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      var _this2 = this;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 11,
+          lineNumber: 83,
           columnNumber: 4
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Alert_Geral__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        show: true,
-        msg: "E-mail j\xE1 utilizado na loja",
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Alert_Geral__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        aviso: this.state.aviso,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 12,
+          lineNumber: 84,
           columnNumber: 5
         }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "flex flex-right",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 14,
+          lineNumber: 86,
           columnNumber: 5
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
         className: "btn btn-success btn-cta",
         onClick: function onClick() {
-          return alert('continuar pedido');
+          return _this2.handleSubmit();
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 15,
+          lineNumber: 87,
           columnNumber: 6
         }
       }, "CONTINUAR PEDIDO")));
     }
   }]);
   return SubmitDadosCliente;
-}(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
-/* harmony default export */ __webpack_exports__["default"] = (SubmitDadosCliente);
+}(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    usuario: state.auth.usuario,
+    token: state.auth.token,
+    cliente: state.cliente.cliente,
+    form: state.checkout.form
+  };
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_10__["connect"])(mapStateToProps, _redux_actions__WEBPACK_IMPORTED_MODULE_11__["default"])(SubmitDadosCliente));
 
 /***/ }),
 
@@ -3699,6 +3866,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_b
 
 
 
+
+/* Modulo 49 - submit dados do cliente - fazendo a integração e ativando validações (1/2) */
 var CheckoutContainer = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(CheckoutContainer, _Component);
   var _super = _createSuper(CheckoutContainer);
@@ -3728,21 +3897,21 @@ var CheckoutContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 32,
+          lineNumber: 34,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 33,
+          lineNumber: 35,
           columnNumber: 5
         }
       }, "CONCLU\xCDNDO SEU PEDIDO"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 34,
+          lineNumber: 36,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_DadosCliente__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -3756,49 +3925,54 @@ var CheckoutContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35,
+          lineNumber: 37,
           columnNumber: 5
         }
       }), (permissaoInicial || usuario) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_DadosEntrega__WEBPACK_IMPORTED_MODULE_10__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 41,
+          lineNumber: 43,
           columnNumber: 39
         }
       }), (permissaoInicial || usuario) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_SubmitDadosCliente__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        permitir: function permitir() {
+          return _this2.setState({
+            permissaoCheckout: true
+          });
+        },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 42,
-          columnNumber: 39
+          lineNumber: 46,
+          columnNumber: 6
         }
       }), permissaoCheckout && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_DadosFrete__WEBPACK_IMPORTED_MODULE_12__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43,
+          lineNumber: 49,
           columnNumber: 27
         }
       }), permissaoCheckout && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_DadosPagamento__WEBPACK_IMPORTED_MODULE_13__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44,
+          lineNumber: 50,
           columnNumber: 27
         }
       }), permissaoCheckout && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_DadosPedido__WEBPACK_IMPORTED_MODULE_14__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 45,
+          lineNumber: 51,
           columnNumber: 27
         }
       }), permissaoCheckout && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_CheckoutButton__WEBPACK_IMPORTED_MODULE_15__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 46,
+          lineNumber: 52,
           columnNumber: 27
         }
       }));
@@ -4218,7 +4392,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
       var usuario = this.props.usuario;
       var erros = {};
       if (!usuario && !email) erros.email = "Preencha aqui com o seu e-mail";
-      if (!usuario && senha) erros.senha = "Preencha aqui com a sua senha";
+      if (!usuario && !senha) erros.senha = "Preencha aqui com a sua senha";
       if (!nome) erros.nome = "Preencha aqui com o seu nome";
       if (!cpf || cpf.length !== 14) erros.CPF = "Preencha aqui com o seu CPF";
       if (cpf && cpf.length === 14 && !Object(_utils_validade__WEBPACK_IMPORTED_MODULE_14__["validateCPF"])(cpf)) erros.CPF = "Preencha aqui com o seu cpf corretamente";
@@ -4303,14 +4477,13 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         cpf = _this$props$form3.cpf,
         dataDeNascimento = _this$props$form3.dataDeNascimento,
         telefone = _this$props$form3.telefone;
-      console.log('formulario', this.props.form);
       var erros = this.state.erros;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         className: "flex-1 flex vertical",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 125,
+          lineNumber: 124,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -4318,7 +4491,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 126,
+          lineNumber: 125,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -4333,7 +4506,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 127,
+          lineNumber: 126,
           columnNumber: 6
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -4341,7 +4514,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 136,
+          lineNumber: 135,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -4356,7 +4529,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 137,
+          lineNumber: 136,
           columnNumber: 6
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -4364,7 +4537,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 146,
+          lineNumber: 145,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -4372,7 +4545,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 147,
+          lineNumber: 146,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -4387,7 +4560,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 148,
+          lineNumber: 147,
           columnNumber: 7
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -4395,7 +4568,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 158,
+          lineNumber: 157,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -4410,7 +4583,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 159,
+          lineNumber: 158,
           columnNumber: 7
         }
       }))));
@@ -4423,21 +4596,21 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 174,
+          lineNumber: 173,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 175,
+          lineNumber: 174,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 176,
+          lineNumber: 175,
           columnNumber: 6
         }
       }, "DADOS DO CLIENTE")), !this.props.usuario && this.renderDadosRegistro(), this.renderDadosUsuario());
@@ -6178,17 +6351,25 @@ __webpack_require__.r(__webpack_exports__);
 
 /*modulo 49 - Dados de entrega - criando funções e preparando a base */
 
+/*modulo 49 - submit dados do cliente - fazendo a integreção e ativando dados do cliente (2/2) */
+
 
 
 var getRawData = function getRawData(data) {
   var _data = data.split('/');
-  return "".concat(_data[2], "-").concat(_data[1] - 1, "-").concat(_data[0]);
+  console.log('data', _data);
+  var ano = _data[2];
+  var _mes = Number(_data[1]);
+  var mes = _mes < 10 ? "0" + _mes : _mes;
+  var _dia = Number(_data[0]);
+  var dia = _dia < 10 ? "0" + _dia : _dia;
+  return "".concat(ano, "-").concat(mes, "-").concat(dia);
 };
 var newCliente = function newCliente(form, cb) {
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("".concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/clientes?loja=").concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["loja"]), {
       nome: form.nome,
-      paswword: form.senha,
+      password: form.senha,
       cpf: form.cpf,
       email: form.email,
       telefones: [form.telefone],
@@ -6203,6 +6384,7 @@ var newCliente = function newCliente(form, cb) {
       },
       dataDeNascimento: getRawData(form.dataDeNascimento)
     }).then(function (response) {
+      console.log('entrou no retorno ');
       dispatch({
         type: _types__WEBPACK_IMPORTED_MODULE_0__["FETCH_CLIENTE"],
         payload: response.data
@@ -6210,16 +6392,17 @@ var newCliente = function newCliente(form, cb) {
       dispatch(Object(_authActions__WEBPACK_IMPORTED_MODULE_4__["autenticar"])({
         email: form.email,
         password: form.senha
-      }));
+      }, null, cb));
       cb(null);
     })["catch"](function (e) {
-      return cb(Object(_errorHandling__WEBPACK_IMPORTED_MODULE_5__["default"])(e));
+      console.log('meu erro');
+      cb(Object(_errorHandling__WEBPACK_IMPORTED_MODULE_5__["default"])(e));
     });
   };
 };
 var updateCliente = function updateCliente(form, id, token, cb) {
   return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.post("".concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/clientes/").concat(id, "?loja=").concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["loja"]), {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.put("".concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/clientes/").concat(id, "?loja=").concat(_config_js__WEBPACK_IMPORTED_MODULE_2__["loja"]), {
       nome: form.nome,
       cpf: form.cpf,
       telefones: [form.telefone],

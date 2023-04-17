@@ -28,7 +28,7 @@ class DadosDaLoja extends Component{
 		
 				{telefones.map((telefone, index) => (
 					
-                  	<p className='loja-telefone'>
+                  	<p className='loja-telefone' key={index}>
 						&nbsp;&nbsp; <a href={`phone:${{telefone}}`}>{telefone}</a>
 					</p>
 

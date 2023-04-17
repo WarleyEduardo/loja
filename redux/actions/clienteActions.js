@@ -7,6 +7,8 @@ import { getHeaders } from './helpers';
 
 /*modulo 49 - Dados de entrega - criando funções e preparando a base */
 
+/*modulo 49 - submit dados do cliente - fazendo a integreção e ativando dados do cliente (2/2) */
+
 import { autenticar } from './authActions';
 import errorHandling from './errorHandling';
 
@@ -14,16 +16,23 @@ export const getRawData = (data) => {
 
 	let _data = data.split('/')
 
-	return `${_data[2]}-${_data[1]-1}-${_data[0]}`;
+	console.log('data',_data);
+	let ano = _data[2];
+	let _mes = Number(_data[1]) ;
+	let mes = _mes < 10 ? "0" + _mes : _mes;
+	let _dia = Number(_data[0]);
+	let dia = _dia < 10 ? "0" + _dia : _dia;
+
+	return `${ano}-${mes}-${dia}`;
 }
 
 
-export const newCliente = (form, cb) => dispatch => {
+export const newCliente = (form, cb) => (dispatch) => {
 	
 	axios.post(`${url}/api/clientes?loja=${loja}`, {
 		
 		nome: form.nome,
-		paswword: form.senha,
+		password: form.senha,
 		cpf: form.cpf,
 		email: form.email,
 		telefones: [form.telefone],
@@ -41,17 +50,20 @@ export const newCliente = (form, cb) => dispatch => {
 	  }
 	).then(
 		(response) => {
+			console.log('entrou no retorno ')
 			dispatch({ type: FETCH_CLIENTE, payload: response.data })
-			dispatch(autenticar({ email: form.email, password: form.senha }))
+			dispatch(autenticar({ email: form.email, password: form.senha },null, cb))
 			cb(null)
 		}
-	).catch( e => cb(errorHandling(e)))
+	).catch(e => {
+		console.log('meu erro',) 
+		cb(errorHandling(e));
+	});
 }
 
 
 export const updateCliente = (form, id, token, cb) => (dispatch) => {
-	axios
-		.post(
+	axios.put(
 			`${url}/api/clientes/${id}?loja=${loja}`,
 			{
 				nome: form.nome,
