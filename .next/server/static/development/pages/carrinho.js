@@ -4185,11 +4185,10 @@ __webpack_require__.r(__webpack_exports__);
 
 var getRawData = function getRawData(data) {
   var _data = data.split('/');
-  console.log('data', _data);
   var ano = _data[2];
-  var _mes = Number(_data[1]);
+  var _mes = _data[1];
   var mes = _mes < 10 ? "0" + _mes : _mes;
-  var _dia = Number(_data[0]);
+  var _dia = Number(_data[0]) + 1;
   var dia = _dia < 10 ? "0" + _dia : _dia;
   return "".concat(ano, "-").concat(mes, "-").concat(dia);
 };
@@ -4212,7 +4211,6 @@ var newCliente = function newCliente(form, cb) {
       },
       dataDeNascimento: getRawData(form.dataDeNascimento)
     }).then(function (response) {
-      console.log('entrou no retorno ');
       dispatch({
         type: _types__WEBPACK_IMPORTED_MODULE_0__["FETCH_CLIENTE"],
         payload: response.data
@@ -4223,8 +4221,7 @@ var newCliente = function newCliente(form, cb) {
       }, null, cb));
       cb(null);
     })["catch"](function (e) {
-      console.log('meu erro');
-      cb(Object(_errorHandling__WEBPACK_IMPORTED_MODULE_5__["default"])(e));
+      return cb(Object(_errorHandling__WEBPACK_IMPORTED_MODULE_5__["default"])(e));
     });
   };
 };
@@ -4315,7 +4312,10 @@ var errorHandling = function errorHandling(error) {
   var msg = 'Erro: ';
   if (!_babel_runtime_corejs2_core_js_array_is_array__WEBPACK_IMPORTED_MODULE_1___default()(_errors)) {
     _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_0___default()(_errors).forEach(function (erro, index) {
-      msg += "".concat(erro, " ").concat(_errors[erro].message || _errors[erro], "\n");
+      /*modulo 49 - submit dados do cliente - fazendo a integreção e ativando dados do cliente (2/2) */
+
+      //msg += `${erro} ${_errors[erro].message || _errors[erro]}\n`;
+      msg += "".concat(erro, " ").concat(_errors[erro].message || (_errors[erro].properties ? _errors[erro].properties.message : '') || _errors[erro], "\n");
     });
   } else {
     msg += "Preenchar corretamente ".concat(_errors.length > 1 ? "os campos " : "o campo ", " de:");

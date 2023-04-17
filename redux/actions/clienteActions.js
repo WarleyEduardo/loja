@@ -14,13 +14,16 @@ import errorHandling from './errorHandling';
 
 export const getRawData = (data) => {
 
-	let _data = data.split('/')
+	let _data = data.split('/');
 
-	console.log('data',_data);
 	let ano = _data[2];
-	let _mes = Number(_data[1]) ;
+
+	let _mes = _data[1];
+
 	let mes = _mes < 10 ? "0" + _mes : _mes;
-	let _dia = Number(_data[0]);
+
+	let _dia = Number(_data[0]) + 1;
+
 	let dia = _dia < 10 ? "0" + _dia : _dia;
 
 	return `${ano}-${mes}-${dia}`;
@@ -49,16 +52,12 @@ export const newCliente = (form, cb) => (dispatch) => {
 		dataDeNascimento : getRawData(form.dataDeNascimento)
 	  }
 	).then(
-		(response) => {
-			console.log('entrou no retorno ')
+		(response) => {		
 			dispatch({ type: FETCH_CLIENTE, payload: response.data })
 			dispatch(autenticar({ email: form.email, password: form.senha },null, cb))
 			cb(null)
 		}
-	).catch(e => {
-		console.log('meu erro',) 
-		cb(errorHandling(e));
-	});
+	).catch(e => cb(errorHandling(e)));
 }
 
 

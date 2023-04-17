@@ -26,8 +26,10 @@ const errorHandling = (error) => {
 	if (!Array.isArray(_errors)) {
 
 		Object.keys(_errors).forEach((erro, index) => {
-			
-			msg += `${erro} ${_errors[erro].message || _errors[erro]}\n`;
+			/*modulo 49 - submit dados do cliente - fazendo a integreção e ativando dados do cliente (2/2) */
+
+			//msg += `${erro} ${_errors[erro].message || _errors[erro]}\n`;
+			msg += `${erro} ${_errors[erro].message || (_errors[erro].properties ? _errors[erro].properties.message : '') || _errors[erro]}\n`;
 		} )
 	} else {
 

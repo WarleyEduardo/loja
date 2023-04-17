@@ -60,7 +60,7 @@ class SubmitDadosCliente extends Component {
 		if (!CEP || CEP.length !== 9) { erros.CEP = "cep inválido"; temErro = true; };
 
         
-		 //console.log('erros:' , erros)
+		 console.log('erros:' , erros)
 
 
 		return !temErro; 
