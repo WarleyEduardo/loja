@@ -17,6 +17,10 @@ import actions from '../../redux/actions';
 
 /* Modulo 49 - submit dados do cliente - fazendo a integração e ativando validações (1/2) */
 
+
+
+/* modulo 49 -  metodos de entrega - fazendo integração*/
+
 class CheckoutContainer extends Component{
 
 	state = {
@@ -28,28 +32,21 @@ class CheckoutContainer extends Component{
 	render() {
 
 		const { permissaoInicial, permissaoCheckout } = this.state;
-		const {usuario} = this.props
+		const {usuario , freteSelecionado} = this.props
 	   
 		return (
 			<div className='Checkout container'>
 				<h2>CONCLUÍNDO SEU PEDIDO</h2>
 				<br />
-				<DadosCliente
-					usuario={usuario}
-					permissaoInicial={permissaoInicial}
-					permitir={()=> this.setState({permissaoInicial: true})}
-				
-				/>
+				<DadosCliente usuario={usuario} permissaoInicial={permissaoInicial} permitir={() => this.setState({ permissaoInicial: true })} />
 				{(permissaoInicial || usuario) && <DadosEntrega />}
-				
-				{(permissaoInicial || usuario) &&
-					<SubmitDadosCliente permitir={()=> this.setState({permissaoCheckout: true})} />
-				}
-				
+
+				{(permissaoInicial || usuario) && <SubmitDadosCliente permitir={() => this.setState({ permissaoCheckout: true })} />}
+
 				{permissaoCheckout && <DadosFrete />}
-				{permissaoCheckout && <DadosPagamento />}
-				{permissaoCheckout && <DadosPedido />}			
-				{permissaoCheckout && <CheckoutButton />}
+				{permissaoCheckout && freteSelecionado && <DadosPagamento />}
+				{permissaoCheckout && freteSelecionado && <DadosPedido />}
+				{permissaoCheckout && freteSelecionado && <CheckoutButton />}
 			</div>
 		);
    }
@@ -58,7 +55,8 @@ class CheckoutContainer extends Component{
 
 const mapStateToProps = state => ({
 
-	usuario: state.auth.usuario
+	usuario: state.auth.usuario,
+	freteSelecionado : state.carrinho.freteSelecionado
 })
 
 export default connect(mapStateToProps,actions)(CheckoutContainer);

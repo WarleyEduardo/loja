@@ -3,41 +3,66 @@ import React, { Component } from 'react';
 
 import FormRadio from '../../components/Inputs/FormRadio';
 
-class DadosFrete extends Component{
 
-	state = {
-		frete_selecionado: "PAC"
+/* modulo 49 -  metodos de entrega - fazendo integração*/
+
+import { connect } from 'react-redux';
+import actions from '../../redux/actions';
+import { getCart } from '../../utils/cart';
+import { formatMoney, codigoCorreiros, codigosCorreios } from '../../utils';
+
+class DadosFrete extends Component {
+	componentDidMount() {
+		const { form } = this.props;
+		if (form) {
+			this.props.calcularFrete(form.CEP, getCart());
+		}
+	}
+
+	componentDidUpdate(prevProps) {
+		if (prevProps.form.CEP !== this.props.form.CEP && this.props.form.CEP.length === 9) {
+			this.props.calcularFrete(this.props.form.CEP, getCart());
+		}
+	}
+
+	selecionarFrete(frete) {
+		this.props.selecionarFrete(frete);
 	}
 
 	render() {
+		const {fretes ,  freteSelecionado } = this.props;
 
-		const { frete_selecionado } = this.state;
-		
 		return (
 			<div className='Dados-Frete'>
 				<h2>MÉTODOS DE ENTREGA</h2>
 				<br />
 				<div className='flex horizontal'>
-					<div className='flex-1'>
-						<FormRadio name='frete_selecionado'
-							checked={frete_selecionado === 'PAC'}
-							label='PAC (8 dias úteis) -  R$ 18,90'
-							onChange={()=> this.setState({frete_selecionado: "PAC"})}
-						/>
-					</div>
-					<div className='flex-1'>
-						<FormRadio
-							name='frete_selecionado'
-							checked={frete_selecionado === 'SEDEX'}
-							label='SEDEX (3 dias úteis) -  R$ 35,90'
-							onChange={()=> this.setState({frete_selecionado: "SEDEX"})}
-						/>
-					</div>
+					{(fretes || []).map((frete, index) => (
+						<div className='flex-1' key={index}>
+							<FormRadio
+								name='frete_selecionado'
+								checked={freteSelecionado ? freteSelecionado.Codigo === frete.Codigo : false}
+								label={`${codigosCorreios[frete.Codigo]} 
+									 (${frete.PrazoEntrega} dias úteis) - 
+									 ${formatMoney(frete.Valor.replace(',', '.'))}`}
+								onChange={() => this.selecionarFrete(frete)}
+							/>
+						</div>
+					))}
 				</div>
 			</div>
 		);
 	}
+}
+ 
+const mapStateToProps = state => ({
+	
+	usuario: state.auth.usuario,
+	carrinho: state.carrinho.carrinho,
+	cliente: state.cliente.cliente,
+	form: state.checkout.form,
+	fretes: state.carrinho.fretes,
+	freteSelecionado : state.carrinho.freteSelecionado
+})
 
- }
-
-export default DadosFrete;
+export default connect(mapStateToProps, actions)(DadosFrete);

@@ -2933,16 +2933,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _components_Inputs_FormRadio__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/Inputs/FormRadio */ "./components/Inputs/FormRadio.js");
-
-
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _components_Inputs_FormRadio__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/Inputs/FormRadio */ "./components/Inputs/FormRadio.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../redux/actions */ "./redux/actions/index.js");
+/* harmony import */ var _utils_cart__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../utils/cart */ "./utils/cart.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils */ "./utils/index.js");
 
 
 
@@ -2950,113 +2951,122 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _jsxFileName = "D:\\javaScript\\lojavirtual\\lojavirtual\\containers\\Checkout\\DadosFrete.js";
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(this).constructor; result = _babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__["default"])(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(this).constructor; result = _babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, result); }; }
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default.a) return false; if (_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default.a.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 /* modulo 42 - pagina de Checkout - criando o componente de dados de frete  */
 
 
+
+/* modulo 49 -  metodos de entrega - fazendo integração*/
+
+
+
+
+
 var DadosFrete = /*#__PURE__*/function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(DadosFrete, _Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__["default"])(DadosFrete, _Component);
   var _super = _createSuper(DadosFrete);
   function DadosFrete() {
-    var _this;
     Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, DadosFrete);
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-    _this = _super.call.apply(_super, [this].concat(args));
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "state", {
-      frete_selecionado: "PAC"
-    });
-    return _this;
+    return _super.apply(this, arguments);
   }
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(DadosFrete, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var form = this.props.form;
+      if (form) {
+        this.props.calcularFrete(form.CEP, Object(_utils_cart__WEBPACK_IMPORTED_MODULE_10__["getCart"])());
+      }
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      if (prevProps.form.CEP !== this.props.form.CEP && this.props.form.CEP.length === 9) {
+        this.props.calcularFrete(this.props.form.CEP, Object(_utils_cart__WEBPACK_IMPORTED_MODULE_10__["getCart"])());
+      }
+    }
+  }, {
+    key: "selecionarFrete",
+    value: function selecionarFrete(frete) {
+      this.props.selecionarFrete(frete);
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-      var frete_selecionado = this.state.frete_selecionado;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+      var _this = this;
+      var _this$props = this.props,
+        fretes = _this$props.fretes,
+        freteSelecionado = _this$props.freteSelecionado;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "Dados-Frete",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 17,
+          lineNumber: 36,
           columnNumber: 4
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h2", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 18,
+          lineNumber: 37,
           columnNumber: 5
         }
-      }, "M\xC9TODOS DE ENTREGA"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
+      }, "M\xC9TODOS DE ENTREGA"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 19,
+          lineNumber: 38,
           columnNumber: 5
         }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "flex horizontal",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20,
+          lineNumber: 39,
           columnNumber: 5
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
-        className: "flex-1",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 21,
-          columnNumber: 6
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormRadio__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        name: "frete_selecionado",
-        checked: frete_selecionado === 'PAC',
-        label: "PAC (8 dias \xFAteis) -  R$ 18,90",
-        onChange: function onChange() {
-          return _this2.setState({
-            frete_selecionado: "PAC"
-          });
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 22,
-          columnNumber: 7
-        }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
-        className: "flex-1",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 28,
-          columnNumber: 6
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormRadio__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        name: "frete_selecionado",
-        checked: frete_selecionado === 'SEDEX',
-        label: "SEDEX (3 dias \xFAteis) -  R$ 35,90",
-        onChange: function onChange() {
-          return _this2.setState({
-            frete_selecionado: "SEDEX"
-          });
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 29,
-          columnNumber: 7
-        }
-      }))));
+      }, (fretes || []).map(function (frete, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+          className: "flex-1",
+          key: index,
+          __self: _this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 41,
+            columnNumber: 7
+          }
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Inputs_FormRadio__WEBPACK_IMPORTED_MODULE_7__["default"], {
+          name: "frete_selecionado",
+          checked: freteSelecionado ? freteSelecionado.Codigo === frete.Codigo : false,
+          label: "".concat(_utils__WEBPACK_IMPORTED_MODULE_11__["codigosCorreios"][frete.Codigo], " \n\t\t\t\t\t\t\t\t\t (").concat(frete.PrazoEntrega, " dias \xFAteis) - \n\t\t\t\t\t\t\t\t\t ").concat(Object(_utils__WEBPACK_IMPORTED_MODULE_11__["formatMoney"])(frete.Valor.replace(',', '.'))),
+          onChange: function onChange() {
+            return _this.selecionarFrete(frete);
+          },
+          __self: _this,
+          __source: {
+            fileName: _jsxFileName,
+            lineNumber: 42,
+            columnNumber: 8
+          }
+        }));
+      })));
     }
   }]);
   return DadosFrete;
-}(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
-/* harmony default export */ __webpack_exports__["default"] = (DadosFrete);
+}(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    usuario: state.auth.usuario,
+    carrinho: state.carrinho.carrinho,
+    cliente: state.cliente.cliente,
+    form: state.checkout.form,
+    fretes: state.carrinho.fretes,
+    freteSelecionado: state.carrinho.freteSelecionado
+  };
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_8__["connect"])(mapStateToProps, _redux_actions__WEBPACK_IMPORTED_MODULE_9__["default"])(DadosFrete));
 
 /***/ }),
 
@@ -3866,6 +3876,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_b
 
 
 /* Modulo 49 - submit dados do cliente - fazendo a integração e ativando validações (1/2) */
+
+/* modulo 49 -  metodos de entrega - fazendo integração*/
 var CheckoutContainer = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(CheckoutContainer, _Component);
   var _super = _createSuper(CheckoutContainer);
@@ -3889,27 +3901,29 @@ var CheckoutContainer = /*#__PURE__*/function (_Component) {
       var _this$state = this.state,
         permissaoInicial = _this$state.permissaoInicial,
         permissaoCheckout = _this$state.permissaoCheckout;
-      var usuario = this.props.usuario;
+      var _this$props = this.props,
+        usuario = _this$props.usuario,
+        freteSelecionado = _this$props.freteSelecionado;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "Checkout container",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 34,
+          lineNumber: 38,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 35,
+          lineNumber: 39,
           columnNumber: 5
         }
       }, "CONCLU\xCDNDO SEU PEDIDO"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 36,
+          lineNumber: 40,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_DadosCliente__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -3923,14 +3937,14 @@ var CheckoutContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37,
+          lineNumber: 41,
           columnNumber: 5
         }
       }), (permissaoInicial || usuario) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_DadosEntrega__WEBPACK_IMPORTED_MODULE_10__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43,
+          lineNumber: 42,
           columnNumber: 39
         }
       }), (permissaoInicial || usuario) && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_SubmitDadosCliente__WEBPACK_IMPORTED_MODULE_11__["default"], {
@@ -3942,36 +3956,36 @@ var CheckoutContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 46,
-          columnNumber: 6
+          lineNumber: 44,
+          columnNumber: 39
         }
       }), permissaoCheckout && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_DadosFrete__WEBPACK_IMPORTED_MODULE_12__["default"], {
         __self: this,
         __source: {
           fileName: _jsxFileName,
+          lineNumber: 46,
+          columnNumber: 27
+        }
+      }), permissaoCheckout && freteSelecionado && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_DadosPagamento__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 47,
+          columnNumber: 47
+        }
+      }), permissaoCheckout && freteSelecionado && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_DadosPedido__WEBPACK_IMPORTED_MODULE_14__["default"], {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 48,
+          columnNumber: 47
+        }
+      }), permissaoCheckout && freteSelecionado && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_CheckoutButton__WEBPACK_IMPORTED_MODULE_15__["default"], {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
           lineNumber: 49,
-          columnNumber: 27
-        }
-      }), permissaoCheckout && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_DadosPagamento__WEBPACK_IMPORTED_MODULE_13__["default"], {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 50,
-          columnNumber: 27
-        }
-      }), permissaoCheckout && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_DadosPedido__WEBPACK_IMPORTED_MODULE_14__["default"], {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 51,
-          columnNumber: 27
-        }
-      }), permissaoCheckout && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_CheckoutButton__WEBPACK_IMPORTED_MODULE_15__["default"], {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 52,
-          columnNumber: 27
+          columnNumber: 47
         }
       }));
     }
@@ -3980,7 +3994,8 @@ var CheckoutContainer = /*#__PURE__*/function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    usuario: state.auth.usuario
+    usuario: state.auth.usuario,
+    freteSelecionado: state.carrinho.freteSelecionado
   };
 };
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_16__["connect"])(mapStateToProps, _redux_actions__WEBPACK_IMPORTED_MODULE_17__["default"])(CheckoutContainer));
