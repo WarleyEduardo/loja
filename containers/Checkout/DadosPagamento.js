@@ -9,7 +9,13 @@ import FormSimples from '../../components/Inputs/FormSimples';
 import { connect } from 'react-redux';
 import actions from '../../redux/actions';
 
+/* modulo 49 -  Dados de pagamento integrando componentes e funcionalidades*/
+
+import { formatCPF } from '../../utils/format';
+
 class DadosPagamento extends Component {
+	
+	
 	state = {
 		opcaoPagamentoSelecionada: 'boleto',
 		CPF: "",
@@ -20,29 +26,99 @@ class DadosPagamento extends Component {
 		anoCartao: ""
 	};
 
+	
+
 	componentDidMount() {
 		
 		this.props.getSessionPagamento();
 	}
 
+
+	componentDidUpdate(prevProps) {
+
+		const {
+
+			numeroCartao,
+			nomeCartao,
+			CVVCartao,
+			mesCartao,
+			anoCartao,
+			credit_card_token,
+			bandeira_cartao,
+			parcelasCartao
+
+		} = this.props.form;
+		
+		if (!bandeira_cartao && numeroCartao && numeroCartao.split(' ').join('').length > 7) {
+			
+			this.getBrand();
+		}
+
+		if (			
+			!credit_card_token && numeroCartao && numeroCartao.splic(' ').join('').length === 16 &&
+			mesCartao && mesCartao.length === 2 &&
+			anoCartao && anoCartao.length === 4 &&
+			CVVCartao && CVVCartao.length === 3 &&
+			bandeira_cartao
+		) this.submitCartaoHash();
+
+
+		if ((!parcelasCartao && bandeira_cartao) &&
+			(parcelasCartao && bandeira_cartao &&
+			prevProps.freteSelecionado !== this.props.freteSelecionado)) this.getParcelas()	
+
+	}
+
+
+	getBrand() {
+		
+		const { numeroCartao } = this.props.form;
+		pagSeguroDirectPayment.getBrand({
+
+			cardbin: numeroCartao.split(' ').join('').slice(0, 6),
+			success: (r) => this.props.setForm({ bandeira_cartao: r.brand }),
+			error : (r) => console.log(r)
+		})
+	}
+
+
+	submitCartaoHash() {
+		const {
+
+			numeroCartao,
+			mesCartao,
+			anoCartao,
+			CVVCartao,
+			bandeira_cartao } = this.props.form;
+		
+		const params = {
+			cardNumber: anoCartao.split(' ').join(''),
+			brand: bandeira_cartao,
+			cvv: CVVCartao,
+			expirationMonth: mesCartao,
+			expirationYear: anoCartao,
+			success: (r) => this.props.setForm({})
+		}
+	}
+
 	renderOpcoesPagamento() {
-		const { opcaoPagamentoSelecionada } = this.state;
+		const { tipoPagamentoSelecionado } = this.props;
 
 		return (
 			<div className='flex horizontal'>
 				<div className='flex-1'>
 					<FormRadio
 						name='tipo_pagamento_selecionado'
-						checked={opcaoPagamentoSelecionada === 'boleto'}
-						onChange={() => this.setState({ opcaoPagamentoSelecionada: 'boleto' })}
+						checked={tipoPagamentoSelecionado === 'boleto'}
+						onChange={() => this.props.setTipoPagamento('boleto')}
 						label='Boleto Bancário'
 					/>
 				</div>
 				<div className='flex-1'>
 					<FormRadio
 						name='tipo_pagamento_selecionado'
-						checked={opcaoPagamentoSelecionada === 'cartao'}
-						onChange={() => this.setState({ opcaoPagamentoSelecionada: 'cartao' })}
+						checked={tipoPagamentoSelecionado === 'cartao'}
+						onChange={() => this.setTipoPagamento('cartao')}
 						label='Cartão de Crédito'
 					/>
 				</div>
@@ -50,18 +126,23 @@ class DadosPagamento extends Component {
 		);
 	}
 
-	onChange = (field, e) => this.setState({ [field]: e.target.value });
+	validate() {
+		
+
+	}
+
+	onChange = (field, value) => this.props.setForm({ [field]: value }).then(()=> this.validate());
 
 	renderPagamentoComBoleto() {
 		
-		const { CPF } = this.state;
+		const { cpf, cpfBoleto } = this.props.form;
 		return (
 			<div className='Dados-Pagamento'>
-				<FormSimples value={CPF}
+				<FormSimples value={cpfBoleto || cpf}
 					nome='CPF'
 					placeholder='CPF'
 					label='CPF'
-					onChange={() => this.onChange('CPF', e)} />
+					onChange={(e) => this.onChange("cpfBoleto" ,formatCPF(e.target.value))} />
 			</div>
 		);
 	}
@@ -121,16 +202,16 @@ class DadosPagamento extends Component {
 
 
 	render() {
-		const { opcaoPagamentoSelecionada } = this.state;
+		const { tipoPagamentoSelecionado } = this.props;
 		return (
 			<div className='Dados-Pagamento-Container'>
 				<h2>DADOS DE PAGAMENTO</h2>
 				<br />
 				{this.renderOpcoesPagamento()}
 				<br />
-				<br/>
-				{opcaoPagamentoSelecionada === 'boleto' && this.renderPagamentoComBoleto()}
-				{opcaoPagamentoSelecionada === 'cartao' && this.renderPagamentoComCartao()}
+				<br />
+				{tipoPagamentoSelecionado === 'boleto' && this.renderPagamentoComBoleto()}
+				{tipoPagamentoSelecionado === 'cartao' && this.renderPagamentoComCartao()}
 			</div>
 		);
 	}
