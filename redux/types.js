@@ -10,6 +10,8 @@
 
 /*modulo 49 - integração checkout - desenvolvendo o container dos dados do cliente */
 
+/* módulo 49 -  Dados de pagamento - preparando a base, actions e  funções do pagseguro */
+
 export const REGISTER = 'REGISTER',
 	AUTENTICAR_TOKEN = 'AUTENTICAR_TOKEN',
 	FETCH_CATEGORIAS = 'FETCH_CATEGORIAS',
@@ -35,7 +37,11 @@ export const REGISTER = 'REGISTER',
 	UPDATE_FRETE_CART = 'UPDATE_FRETE_CART',
 	AUTENTICAR = 'AUTENTICAR',
 	FETCH_CLIENTE = 'FETCH_CLIENTE',
-	SET_FORM = 'SET_FORM';
+	SET_FORM = 'SET_FORM',
+	CLEAN_FORM = 'CLEAN_FORM',
+	SET_TIPO_PAGAMENTO = 'SET_TIPO_PAGAMENTO',
+	FETCH_SESSION_ID = 'FETCH_SESSION_ID',
+	FETCH_SENDER_HASH = 'FETCH_SENDER_HASH';
 
 	
 

@@ -4,6 +4,11 @@ import React, { Component } from 'react';
 import FormRadio from '../../components/Inputs/FormRadio';
 import FormSimples from '../../components/Inputs/FormSimples';
 
+/* módulo 49 -  Dados de pagamento - preparando a base, actions e  funções do pagseguro */
+
+import { connect } from 'react-redux';
+import actions from '../../redux/actions';
+
 class DadosPagamento extends Component {
 	state = {
 		opcaoPagamentoSelecionada: 'boleto',
@@ -14,6 +19,11 @@ class DadosPagamento extends Component {
 		mesCartao: "",
 		anoCartao: ""
 	};
+
+	componentDidMount() {
+		
+		this.props.getSessionPagamento();
+	}
 
 	renderOpcoesPagamento() {
 		const { opcaoPagamentoSelecionada } = this.state;
@@ -126,4 +136,17 @@ class DadosPagamento extends Component {
 	}
 }
 
-export default DadosPagamento;
+
+const mapStateToProps = state => ({
+
+	usuario: state.auth.usuario,
+	carrinho: state.carrinho.carrinho,
+	cliente: state.cliente.cliente,
+	form: state.checkout.form,
+	tipoPagamentoSelecionado: state.checkout.tipoPagamentoSelecionado,
+	sessionId: state.checkout.senderId,
+	senderHash: state.checkout.senderHash,
+	freteSelecionado: state.carrinho.freteSelecionado
+})
+
+export default connect(mapStateToProps,actions)(DadosPagamento);
