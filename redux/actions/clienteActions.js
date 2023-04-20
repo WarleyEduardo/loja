@@ -14,17 +14,27 @@ import errorHandling from './errorHandling';
 
 export const getRawData = (data) => {
 
+
+
 	let _data = data.split('/');
 
+	console.log(_data)
+
 	let ano = _data[2];
+	let mes = _data[1]; 
+	let dia = _data[0]; 
 
-	let _mes = _data[1];
+	//let _mes = _data[1];
 
-	let mes = _mes < 10 ? "0" + _mes : _mes;
+	//let mes = _mes < 10 ? "0" + _mes : _mes;
 
-	let _dia = Number(_data[0]) + 1;
+	//let _dia = Number(_data[0]) + 1;
 
-	let dia = _dia < 10 ? "0" + _dia : _dia;
+	//let dia = _dia < 10 ? "0" + _dia : _dia;
+
+	console.log(`${ano}-${mes}-${dia}`);
+
+
 
 	return `${ano}-${mes}-${dia}`;
 }

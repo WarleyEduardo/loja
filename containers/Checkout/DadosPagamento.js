@@ -9,9 +9,12 @@ import FormSimples from '../../components/Inputs/FormSimples';
 import { connect } from 'react-redux';
 import actions from '../../redux/actions';
 
-/* modulo 49 -  Dados de pagamento integrando componentes e funcionalidades*/
+/* modulo 49 -  Dados de pagamento integrando componentes e funcionalidades (1/2) */
+/* modulo 49 -  Dados de pagamento integrando componentes e funcionalidades (2/2) */
 
-import { formatCPF } from '../../utils/format';
+import { formatCPF, formatCartao, formatNumber } from '../../utils/format';
+
+import { formatMoney } from '../../utils';
 
 class DadosPagamento extends Component {
 	
@@ -39,8 +42,7 @@ class DadosPagamento extends Component {
 		const {
 
 			numeroCartao,
-			nomeCartao,
-			CVVCartao,
+	    	CVVCartao,
 			mesCartao,
 			anoCartao,
 			credit_card_token,
@@ -51,16 +53,14 @@ class DadosPagamento extends Component {
 		
 		if (!bandeira_cartao && numeroCartao && numeroCartao.split(' ').join('').length > 7) {
 			
+			
 			this.getBrand();
-		}
+		};
 
-		if (			
-			!credit_card_token && numeroCartao && numeroCartao.splic(' ').join('').length === 16 &&
-			mesCartao && mesCartao.length === 2 &&
-			anoCartao && anoCartao.length === 4 &&
-			CVVCartao && CVVCartao.length === 3 &&
-			bandeira_cartao
-		) this.submitCartaoHash();
+		if (!credit_card_token && numeroCartao && numeroCartao.split(' ').join('').length === 16
+			&& mesCartao && mesCartao.length === 2 && anoCartao && anoCartao.length === 4
+			&& CVVCartao && CVVCartao.length === 3 && bandeira_cartao)
+			this.submitCartaoHash();
 
 
 		if ((!parcelasCartao && bandeira_cartao) &&
@@ -73,7 +73,7 @@ class DadosPagamento extends Component {
 	getBrand() {
 		
 		const { numeroCartao } = this.props.form;
-		pagSeguroDirectPayment.getBrand({
+		PagSeguroDirectPayment.getBrand({
 
 			cardbin: numeroCartao.split(' ').join('').slice(0, 6),
 			success: (r) => this.props.setForm({ bandeira_cartao: r.brand }),
@@ -92,14 +92,40 @@ class DadosPagamento extends Component {
 			bandeira_cartao } = this.props.form;
 		
 		const params = {
-			cardNumber: anoCartao.split(' ').join(''),
+			cardNumber: numeroCartao.split(' ').join(''),
 			brand: bandeira_cartao,
 			cvv: CVVCartao,
 			expirationMonth: mesCartao,
 			expirationYear: anoCartao,
-			success: (r) => this.props.setForm({})
-		}
+			success: (r) => this.props.setForm({ credit_card_token: r.card.token }),
+			error : (r) => console.log(r)
+		};
+
+		PagSeguroDirectPayment.createCardToken(params);
 	}
+
+	getParcelas() { 
+
+		const { freteSelecionado, carrinho } = this.props;
+		const { bandeira_cartao } = this.props.form;
+
+		let valorTotal = carrinho.reduce((all, item) => { all + ((Number(item.precoUnitario) * Number(item.quantidade))); }, 0);
+
+		let valorFrete = Number(freteSelecionado.valor.replace(',', '.'));
+
+		PagSeguroDirectPayment.getInstallments({
+			amount: valorTotal + valorFrete,
+			maxInstallmentNoInterest: 6,
+			maxInstallment: 6,
+			brand: bandeira_cartao.name,
+			sucess: (data) => {
+				this.props.setForm({ parcelasCartao: data.getInstallments });
+				this.props.setForm({ parcelasCartaoSelecionada: data.installments[bandeira_cartao.name][0] });
+			},
+			error: (e) => console.log(r),
+		});
+	}
+	
 
 	renderOpcoesPagamento() {
 		const { tipoPagamentoSelecionado } = this.props;
@@ -118,7 +144,7 @@ class DadosPagamento extends Component {
 					<FormRadio
 						name='tipo_pagamento_selecionado'
 						checked={tipoPagamentoSelecionado === 'cartao'}
-						onChange={() => this.setTipoPagamento('cartao')}
+						onChange={() => this.props.setTipoPagamento('cartao')}
 						label='Cartão de Crédito'
 					/>
 				</div>
@@ -149,7 +175,12 @@ class DadosPagamento extends Component {
 
 
 	renderPagamentoComCartao() {
-		const { nomeCartao, numeroCartao, CVVCartao , mesCartao, anoCartao } = this.state;
+		const { nomeCartao, numeroCartao,
+			CVVCartao, mesCartao, anoCartao,
+			parcelasCartao, parcelasCartaoSelecionada,
+			bandeira_cartao
+		} = this.props.form;
+		
 		return (
 			<div className='Dados-Pagamento'>
 				<FormSimples
@@ -157,7 +188,7 @@ class DadosPagamento extends Component {
 					nome='nomeCartao'
 					placeholder='Nome como escrito no cartão'
 					label='Nome completo no cartão'
-					onChange={() => this.onChange('nomeCartao', e)}
+					onChange={(e) => this.onChange('nomeCartao', e.target.value)}
 				/>
 				<div className='flex horizontal'>
 					<div className='flex-1'>
@@ -166,36 +197,54 @@ class DadosPagamento extends Component {
 							nome='numeroCartao'
 							placeholder='xxxx xxxx xxxx xxxx'
 							label='Número do cartão'
-							onChange={() => this.onChange('numeroCartao', e)}
+							onChange={(e) => this.onChange('numeroCartao', formatCartao(e.target.value))}
 						/>
 					</div>
 					<div className='flex-1'>
-						<FormSimples value={CVVCartao} nome='CVVCartao' placeholder='xxxx' label='Código de Segurança do Cartão' onChange={() => this.onChange('CVVCartao', e)} />
+						<FormSimples
+							value={CVVCartao}
+							nome='CVVCartao'
+							placeholder='xxxx'
+							label='Código de Segurança do Cartão'
+							onChange={(e) => this.onChange('CVVCartao', formatNumber(e.target.value, 3))}
+						/>
 					</div>
 				</div>
 				<div className='form-input'>
 					<label>Data de Validade</label>
 				</div>
 				<div className='flex'>
-					<FormSimples value={mesCartao} nome='mesCartao' placeholder='MM' label='MÊs' onChange={() => this.onChange('mesCartao', e)} />
+					<FormSimples value={mesCartao} nome='mesCartao' placeholder='MM' label='MÊs'
+						onChange={(e) => this.onChange('mesCartao', formatNumber(e.target.value, 2))} />
 					<span className='slash-pagamento'>&nbsp;/&nbsp;</span>
-					<FormSimples value={anoCartao} nome='anoCartao' placeholder='AAAA' label='Ano' onChange={() => this.onChange('anoCartao', e)} />
+					<FormSimples value={anoCartao} nome='anoCartao' placeholder='AAAA' label='Ano' onChange={(e) => this.onChange('anoCartao', formatNumber(e.target.value, 4))} />
 				</div>
 				<br />
 				<div className='form-input'>
 					<label>Parcelas</label>
 				</div>
-				<div className='flex'>
-					<select name='parcela'>
-						<option>Selecione a quantidade de parcelas para pagamento</option>
-						<option value='1'>1x de R$ de 105,00 sem juros</option>
-						<option value='2'>2x de R$ de 62,50 sem juros</option>
-						<option value='3'>3x de R$ de 35,00 sem juros</option>
-						<option value='4'>4x de R$ de 31,75 sem juros</option>
-						<option value='5'>5x de R$ de 21,00 sem juros</option>
-						<option value='6'>6x de R$ de 17,50 sem juros</option>
-					</select>
-				</div>
+
+				{parcelasCartao && parcelasCartaoSelecionada && (
+					<div className='flex'>
+						<select
+							name='parcela'
+							value={parcelasCartaoSelecionada.quantity}
+							onChange={(e) => this.onChange('parcelasCartaoSelecionada', parcelasCartao[bandeira_cartao.name][e.target.value - 1])}
+						>
+							<option>Selecione a quantidade de parcelas para pagamento</option>
+
+							{parcelasCartao[bandeira_cartao.name].map((item, index) =>
+							(								
+								<option option key={index} value={item.quantify}>
+									{item.quantify} x de {formatMoney(item.totalAmount/item.quantify)} sem juros
+									1x de R$ de 105, 00 sem juros
+								</option>
+						    ))
+							}
+							
+						</select>
+					</div>
+				)}
 			</div>
 		);
 	}

@@ -17,12 +17,12 @@ export const setTipoPagamento = (tipoPagamentoSelecionado) => ({
 export const getSessionPagamento = () => dispatch => {
 	
 	axios.get(`${url}/api/pagamentos/session`).then((response) => {
-		
 		dispatch({ type: FETCH_SESSION_ID, payload: response.data });
 
 		PagSeguroDirectPayment.setSessionId(response.data.sessonId);
 		let senderHash = PagSeguroDirectPayment.getSenderHash();
-		dispatch({type: FETCH_SENDER_HASH, senderHash})
+		// let senderHash = PagSeguroDirectPayment.onSenderHashReady();
+		dispatch({ type: FETCH_SENDER_HASH, senderHash });
 	}).catch( e => console.log(e)) 	
 
 }

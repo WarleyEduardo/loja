@@ -19745,6 +19745,7 @@ var getSessionPagamento = function getSessionPagamento() {
       });
       PagSeguroDirectPayment.setSessionId(response.data.sessonId);
       var senderHash = PagSeguroDirectPayment.getSenderHash();
+      // let senderHash = PagSeguroDirectPayment.onSenderHashReady();
       dispatch({
         type: _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_SENDER_HASH"],
         senderHash: senderHash
@@ -19807,11 +19808,20 @@ __webpack_require__.r(__webpack_exports__);
 
 var getRawData = function getRawData(data) {
   var _data = data.split('/');
+  console.log(_data);
   var ano = _data[2];
-  var _mes = _data[1];
-  var mes = _mes < 10 ? "0" + _mes : _mes;
-  var _dia = Number(_data[0]) + 1;
-  var dia = _dia < 10 ? "0" + _dia : _dia;
+  var mes = _data[1];
+  var dia = _data[0];
+
+  //let _mes = _data[1];
+
+  //let mes = _mes < 10 ? "0" + _mes : _mes;
+
+  //let _dia = Number(_data[0]) + 1;
+
+  //let dia = _dia < 10 ? "0" + _dia : _dia;
+
+  console.log("".concat(ano, "-").concat(mes, "-").concat(dia));
   return "".concat(ano, "-").concat(mes, "-").concat(dia);
 };
 var newCliente = function newCliente(form, cb) {
