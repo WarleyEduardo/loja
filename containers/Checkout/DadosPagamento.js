@@ -11,6 +11,7 @@ import actions from '../../redux/actions';
 
 /* modulo 49 -  Dados de pagamento integrando componentes e funcionalidades (1/2) */
 /* modulo 49 -  Dados de pagamento integrando componentes e funcionalidades (2/2) */
+/*modulo 49 - Dados de pagamento - finalizando componente*/
 
 import { formatCPF, formatCartao, formatNumber } from '../../utils/format';
 
@@ -63,7 +64,7 @@ class DadosPagamento extends Component {
 			this.submitCartaoHash();
 
 
-		if ((!parcelasCartao && bandeira_cartao) &&
+		if ((!parcelasCartao && bandeira_cartao) ||
 			(parcelasCartao && bandeira_cartao &&
 			prevProps.freteSelecionado !== this.props.freteSelecionado)) this.getParcelas()	
 
@@ -74,11 +75,14 @@ class DadosPagamento extends Component {
 		
 		const { numeroCartao } = this.props.form;
 		PagSeguroDirectPayment.getBrand({
-
-			cardbin: numeroCartao.split(' ').join('').slice(0, 6),
-			success: (r) => this.props.setForm({ bandeira_cartao: r.brand }),
-			error : (r) => console.log(r)
-		})
+			cardBin: '411111', //numeroCartao.split(' ').join('').slice(0, 6),
+			success: (r) => {
+				console.log('getBrand: ', r);
+				//this.props.setForm({ bandeira_cartao: r.brand });
+			},
+			error: (r) => console.log(r),
+			complete: (r) => console.log(r)
+		});
 	}
 
 
@@ -97,7 +101,10 @@ class DadosPagamento extends Component {
 			cvv: CVVCartao,
 			expirationMonth: mesCartao,
 			expirationYear: anoCartao,
-			success: (r) => this.props.setForm({ credit_card_token: r.card.token }),
+			success: (r) => {
+				console.log('submitCartaoHash: ', r);
+				this.props.setForm({ credit_card_token: r.card.token });
+			},
 			error : (r) => console.log(r)
 		};
 
@@ -119,6 +126,7 @@ class DadosPagamento extends Component {
 			maxInstallment: 6,
 			brand: bandeira_cartao.name,
 			sucess: (data) => {
+				console.log('getParcelas: ', data)
 				this.props.setForm({ parcelasCartao: data.getInstallments });
 				this.props.setForm({ parcelasCartaoSelecionada: data.installments[bandeira_cartao.name][0] });
 			},

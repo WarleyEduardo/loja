@@ -3019,6 +3019,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_b
 
 /* modulo 49 -  Dados de pagamento integrando componentes e funcionalidades (1/2) */
 /* modulo 49 -  Dados de pagamento integrando componentes e funcionalidades (2/2) */
+/*modulo 49 - Dados de pagamento - finalizando componente*/
 
 
 
@@ -3069,21 +3070,24 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
       }
       ;
       if (!credit_card_token && numeroCartao && numeroCartao.split(' ').join('').length === 16 && mesCartao && mesCartao.length === 2 && anoCartao && anoCartao.length === 4 && CVVCartao && CVVCartao.length === 3 && bandeira_cartao) this.submitCartaoHash();
-      if (!parcelasCartao && bandeira_cartao && parcelasCartao && bandeira_cartao && prevProps.freteSelecionado !== this.props.freteSelecionado) this.getParcelas();
+      if (!parcelasCartao && bandeira_cartao || parcelasCartao && bandeira_cartao && prevProps.freteSelecionado !== this.props.freteSelecionado) this.getParcelas();
     }
   }, {
     key: "getBrand",
     value: function getBrand() {
-      var _this2 = this;
       var numeroCartao = this.props.form.numeroCartao;
       PagSeguroDirectPayment.getBrand({
-        cardbin: numeroCartao.split(' ').join('').slice(0, 6),
+        cardBin: '411111',
+        //numeroCartao.split(' ').join('').slice(0, 6),
         success: function success(r) {
-          return _this2.props.setForm({
-            bandeira_cartao: r.brand
-          });
+          console.log('getBrand: ', r);
+          //this.props.setForm({ bandeira_cartao: r.brand });
         },
+
         error: function error(r) {
+          return console.log(r);
+        },
+        complete: function complete(r) {
           return console.log(r);
         }
       });
@@ -3091,7 +3095,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
   }, {
     key: "submitCartaoHash",
     value: function submitCartaoHash() {
-      var _this3 = this;
+      var _this2 = this;
       var _this$props$form2 = this.props.form,
         numeroCartao = _this$props$form2.numeroCartao,
         mesCartao = _this$props$form2.mesCartao,
@@ -3105,7 +3109,8 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         expirationMonth: mesCartao,
         expirationYear: anoCartao,
         success: function success(r) {
-          return _this3.props.setForm({
+          console.log('submitCartaoHash: ', r);
+          _this2.props.setForm({
             credit_card_token: r.card.token
           });
         },
@@ -3118,7 +3123,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
   }, {
     key: "getParcelas",
     value: function getParcelas() {
-      var _this4 = this;
+      var _this3 = this;
       var _this$props = this.props,
         freteSelecionado = _this$props.freteSelecionado,
         carrinho = _this$props.carrinho;
@@ -3133,10 +3138,11 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         maxInstallment: 6,
         brand: bandeira_cartao.name,
         sucess: function sucess(data) {
-          _this4.props.setForm({
+          console.log('getParcelas: ', data);
+          _this3.props.setForm({
             parcelasCartao: data.getInstallments
           });
-          _this4.props.setForm({
+          _this3.props.setForm({
             parcelasCartaoSelecionada: data.installments[bandeira_cartao.name][0]
           });
         },
@@ -3148,38 +3154,17 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
   }, {
     key: "renderOpcoesPagamento",
     value: function renderOpcoesPagamento() {
-      var _this5 = this;
+      var _this4 = this;
       var tipoPagamentoSelecionado = this.props.tipoPagamentoSelecionado;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "flex horizontal",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 134,
+          lineNumber: 142,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
-        className: "flex-1",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 135,
-          columnNumber: 5
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormRadio__WEBPACK_IMPORTED_MODULE_9__["default"], {
-        name: "tipo_pagamento_selecionado",
-        checked: tipoPagamentoSelecionado === 'boleto',
-        onChange: function onChange() {
-          return _this5.props.setTipoPagamento('boleto');
-        },
-        label: "Boleto Banc\xE1rio",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 136,
-          columnNumber: 6
-        }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "flex-1",
         __self: this,
         __source: {
@@ -3189,15 +3174,36 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormRadio__WEBPACK_IMPORTED_MODULE_9__["default"], {
         name: "tipo_pagamento_selecionado",
+        checked: tipoPagamentoSelecionado === 'boleto',
+        onChange: function onChange() {
+          return _this4.props.setTipoPagamento('boleto');
+        },
+        label: "Boleto Banc\xE1rio",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 144,
+          columnNumber: 6
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "flex-1",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 151,
+          columnNumber: 5
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormRadio__WEBPACK_IMPORTED_MODULE_9__["default"], {
+        name: "tipo_pagamento_selecionado",
         checked: tipoPagamentoSelecionado === 'cartao',
         onChange: function onChange() {
-          return _this5.props.setTipoPagamento('cartao');
+          return _this4.props.setTipoPagamento('cartao');
         },
         label: "Cart\xE3o de Cr\xE9dito",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 144,
+          lineNumber: 152,
           columnNumber: 6
         }
       })));
@@ -3208,7 +3214,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
   }, {
     key: "renderPagamentoComBoleto",
     value: function renderPagamentoComBoleto() {
-      var _this6 = this;
+      var _this5 = this;
       var _this$props$form3 = this.props.form,
         cpf = _this$props$form3.cpf,
         cpfBoleto = _this$props$form3.cpfBoleto;
@@ -3217,7 +3223,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 166,
+          lineNumber: 174,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -3226,12 +3232,12 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         placeholder: "CPF",
         label: "CPF",
         onChange: function onChange(e) {
-          return _this6.onChange("cpfBoleto", Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatCPF"])(e.target.value));
+          return _this5.onChange("cpfBoleto", Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatCPF"])(e.target.value));
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 167,
+          lineNumber: 175,
           columnNumber: 5
         }
       }));
@@ -3239,7 +3245,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
   }, {
     key: "renderPagamentoComCartao",
     value: function renderPagamentoComCartao() {
-      var _this7 = this;
+      var _this6 = this;
       var _this$props$form4 = this.props.form,
         nomeCartao = _this$props$form4.nomeCartao,
         numeroCartao = _this$props$form4.numeroCartao,
@@ -3254,7 +3260,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 185,
+          lineNumber: 193,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -3263,12 +3269,12 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         placeholder: "Nome como escrito no cart\xE3o",
         label: "Nome completo no cart\xE3o",
         onChange: function onChange(e) {
-          return _this7.onChange('nomeCartao', e.target.value);
+          return _this6.onChange('nomeCartao', e.target.value);
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 186,
+          lineNumber: 194,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3276,7 +3282,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 193,
+          lineNumber: 201,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3284,7 +3290,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 194,
+          lineNumber: 202,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -3293,12 +3299,12 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         placeholder: "xxxx xxxx xxxx xxxx",
         label: "N\xFAmero do cart\xE3o",
         onChange: function onChange(e) {
-          return _this7.onChange('numeroCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatCartao"])(e.target.value));
+          return _this6.onChange('numeroCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatCartao"])(e.target.value));
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 195,
+          lineNumber: 203,
           columnNumber: 7
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3306,7 +3312,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 203,
+          lineNumber: 211,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -3315,12 +3321,12 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         placeholder: "xxxx",
         label: "C\xF3digo de Seguran\xE7a do Cart\xE3o",
         onChange: function onChange(e) {
-          return _this7.onChange('CVVCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatNumber"])(e.target.value, 3));
+          return _this6.onChange('CVVCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatNumber"])(e.target.value, 3));
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 204,
+          lineNumber: 212,
           columnNumber: 7
         }
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3328,14 +3334,14 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 213,
+          lineNumber: 221,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("label", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 214,
+          lineNumber: 222,
           columnNumber: 6
         }
       }, "Data de Validade")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3343,7 +3349,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 216,
+          lineNumber: 224,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -3352,12 +3358,12 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         placeholder: "MM",
         label: "M\xCAs",
         onChange: function onChange(e) {
-          return _this7.onChange('mesCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatNumber"])(e.target.value, 2));
+          return _this6.onChange('mesCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatNumber"])(e.target.value, 2));
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 217,
+          lineNumber: 225,
           columnNumber: 6
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
@@ -3365,7 +3371,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 219,
+          lineNumber: 227,
           columnNumber: 6
         }
       }, "\xA0/\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -3374,19 +3380,19 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         placeholder: "AAAA",
         label: "Ano",
         onChange: function onChange(e) {
-          return _this7.onChange('anoCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatNumber"])(e.target.value, 4));
+          return _this6.onChange('anoCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatNumber"])(e.target.value, 4));
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 220,
+          lineNumber: 228,
           columnNumber: 6
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 222,
+          lineNumber: 230,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3394,14 +3400,14 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 223,
+          lineNumber: 231,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("label", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 224,
+          lineNumber: 232,
           columnNumber: 6
         }
       }, "Parcelas")), parcelasCartao && parcelasCartaoSelecionada && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3409,26 +3415,26 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 228,
+          lineNumber: 236,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("select", {
         name: "parcela",
         value: parcelasCartaoSelecionada.quantity,
         onChange: function onChange(e) {
-          return _this7.onChange('parcelasCartaoSelecionada', parcelasCartao[bandeira_cartao.name][e.target.value - 1]);
+          return _this6.onChange('parcelasCartaoSelecionada', parcelasCartao[bandeira_cartao.name][e.target.value - 1]);
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 229,
+          lineNumber: 237,
           columnNumber: 7
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("option", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 234,
+          lineNumber: 242,
           columnNumber: 8
         }
       }, "Selecione a quantidade de parcelas para pagamento"), parcelasCartao[bandeira_cartao.name].map(function (item, index) {
@@ -3436,10 +3442,10 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
           option: true,
           key: index,
           value: item.quantify,
-          __self: _this7,
+          __self: _this6,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 238,
+            lineNumber: 246,
             columnNumber: 9
           }
         }, item.quantify, " x de ", Object(_utils__WEBPACK_IMPORTED_MODULE_14__["formatMoney"])(item.totalAmount / item.quantify), " sem juros 1x de R$ de 105, 00 sem juros");
@@ -3454,35 +3460,35 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 256,
+          lineNumber: 264,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 257,
+          lineNumber: 265,
           columnNumber: 5
         }
       }, "DADOS DE PAGAMENTO"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 258,
+          lineNumber: 266,
           columnNumber: 5
         }
       }), this.renderOpcoesPagamento(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 260,
+          lineNumber: 268,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 261,
+          lineNumber: 269,
           columnNumber: 5
         }
       }), tipoPagamentoSelecionado === 'boleto' && this.renderPagamentoComBoleto(), tipoPagamentoSelecionado === 'cartao' && this.renderPagamentoComCartao());
@@ -3745,7 +3751,9 @@ var SubmitDadosCliente = /*#__PURE__*/function (_Component) {
         temErro = true;
       }
       ;
-      console.log('erros:', erros);
+
+      // console.log('erros:' , erros)
+
       return !temErro;
     });
     return _this;
@@ -39821,14 +39829,14 @@ var setTipoPagamento = function setTipoPagamento(tipoPagamentoSelecionado) {
 };
 var getSessionPagamento = function getSessionPagamento() {
   return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("".concat(_config__WEBPACK_IMPORTED_MODULE_3__["url"], "/api/pagamentos/session")).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("".concat(_config__WEBPACK_IMPORTED_MODULE_3__["url"], "/api/pagamentos/session")).then(function (response) {
       dispatch({
         type: _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_SESSION_ID"],
         payload: response.data
       });
       PagSeguroDirectPayment.setSessionId(response.data.sessonId);
-      var senderHash = PagSeguroDirectPayment.getSenderHash();
-      // let senderHash = PagSeguroDirectPayment.onSenderHashReady();
+      //let senderHash = PagSeguroDirectPayment.getSenderHash();
+      var senderHash = PagSeguroDirectPayment.onSenderHashReady();
       dispatch({
         type: _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_SENDER_HASH"],
         senderHash: senderHash
@@ -39891,7 +39899,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var getRawData = function getRawData(data) {
   var _data = data.split('/');
-  console.log(_data);
   var ano = _data[2];
   var mes = _data[1];
   var dia = _data[0];
@@ -39904,7 +39911,6 @@ var getRawData = function getRawData(data) {
 
   //let dia = _dia < 10 ? "0" + _dia : _dia;
 
-  console.log("".concat(ano, "-").concat(mes, "-").concat(dia));
   return "".concat(ano, "-").concat(mes, "-").concat(dia);
 };
 var newCliente = function newCliente(form, cb) {

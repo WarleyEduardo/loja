@@ -19738,14 +19738,14 @@ var setTipoPagamento = function setTipoPagamento(tipoPagamentoSelecionado) {
 };
 var getSessionPagamento = function getSessionPagamento() {
   return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("".concat(_config__WEBPACK_IMPORTED_MODULE_3__["url"], "/api/pagamentos/session")).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("".concat(_config__WEBPACK_IMPORTED_MODULE_3__["url"], "/api/pagamentos/session")).then(function (response) {
       dispatch({
         type: _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_SESSION_ID"],
         payload: response.data
       });
       PagSeguroDirectPayment.setSessionId(response.data.sessonId);
-      var senderHash = PagSeguroDirectPayment.getSenderHash();
-      // let senderHash = PagSeguroDirectPayment.onSenderHashReady();
+      //let senderHash = PagSeguroDirectPayment.getSenderHash();
+      var senderHash = PagSeguroDirectPayment.onSenderHashReady();
       dispatch({
         type: _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_SENDER_HASH"],
         senderHash: senderHash
@@ -19808,7 +19808,6 @@ __webpack_require__.r(__webpack_exports__);
 
 var getRawData = function getRawData(data) {
   var _data = data.split('/');
-  console.log(_data);
   var ano = _data[2];
   var mes = _data[1];
   var dia = _data[0];
@@ -19821,7 +19820,6 @@ var getRawData = function getRawData(data) {
 
   //let dia = _dia < 10 ? "0" + _dia : _dia;
 
-  console.log("".concat(ano, "-").concat(mes, "-").concat(dia));
   return "".concat(ano, "-").concat(mes, "-").concat(dia);
 };
 var newCliente = function newCliente(form, cb) {

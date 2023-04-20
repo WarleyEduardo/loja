@@ -16,9 +16,7 @@ export const getRawData = (data) => {
 
 
 
-	let _data = data.split('/');
-
-	console.log(_data)
+	let _data = data.split('/');	
 
 	let ano = _data[2];
 	let mes = _data[1]; 
@@ -31,10 +29,6 @@ export const getRawData = (data) => {
 	//let _dia = Number(_data[0]) + 1;
 
 	//let dia = _dia < 10 ? "0" + _dia : _dia;
-
-	console.log(`${ano}-${mes}-${dia}`);
-
-
 
 	return `${ano}-${mes}-${dia}`;
 }
