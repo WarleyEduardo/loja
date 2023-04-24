@@ -88,7 +88,7 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -4158,14 +4158,25 @@ var setTipoPagamento = function setTipoPagamento(tipoPagamentoSelecionado) {
 };
 var getSessionPagamento = function getSessionPagamento() {
   return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("".concat(_config__WEBPACK_IMPORTED_MODULE_3__["url"], "/api/pagamentos/session")).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("".concat(_config__WEBPACK_IMPORTED_MODULE_3__["url"], "/api/pagamentos/session")).then(function (response) {
       dispatch({
         type: _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_SESSION_ID"],
         payload: response.data
       });
-      PagSeguroDirectPayment.setSessionId(response.data.sessonId);
-      //let senderHash = PagSeguroDirectPayment.getSenderHash();
-      var senderHash = PagSeguroDirectPayment.onSenderHashReady();
+      PagSeguroDirectPayment.setSessionId(response.data.sessionId);
+      var senderHash = PagSeguroDirectPayment.getSenderHash();
+      /*
+      PagSeguroDirectPayment.onSenderHashReady((response) => {
+      	if (response.status == 'error') {
+      		console.log(response.message);
+      		return false;
+      	}
+      	 console.log(response.senderHash);
+      	
+      }
+      );
+      */
+
       dispatch({
         type: _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_SENDER_HASH"],
         senderHash: senderHash
@@ -4926,9 +4937,9 @@ var formatNumber = function formatNumber(value, limit) {
 var formatCartao = function formatCartao(value) {
   var auxCartao = (value || '').match(numberPattern);
   var _Cartao = (auxCartao || []).join('');
-  if (_Cartao.length > 12) return _Cartao.slice(0, 4) + '.' + _Cartao.slice(4, 8) + '.' + _Cartao.slice(8, 12) + '-' + _Cartao.slice(12, 16);
-  if (_Cartao.length > 8) return _Cartao.slice(0, 4) + '.' + _Cartao.slice(4, 8) + '.' + _Cartao.slice(8, 12);
-  if (_Cartao.length > 4) return _Cartao.slice(0, 4) + '.' + _Cartao.slice(4, 8);
+  if (_Cartao.length > 12) return _Cartao.slice(0, 4) + ' ' + _Cartao.slice(4, 8) + ' ' + _Cartao.slice(8, 12) + '-' + _Cartao.slice(12, 16);
+  if (_Cartao.length > 8) return _Cartao.slice(0, 4) + ' ' + _Cartao.slice(4, 8) + ' ' + _Cartao.slice(8, 12);
+  if (_Cartao.length > 4) return _Cartao.slice(0, 4) + ' ' + _Cartao.slice(4, 8);
   return _Cartao;
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5048,7 +5059,7 @@ export default initialize;
 
 /***/ }),
 
-/***/ 4:
+/***/ 3:
 /*!*********************************!*\
   !*** multi ./pages/carrinho.js ***!
   \*********************************/

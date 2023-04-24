@@ -70,20 +70,21 @@ class DadosPagamento extends Component {
 
 	}
 
-
+    
 	getBrand() {
 		
 		const { numeroCartao } = this.props.form;
 		PagSeguroDirectPayment.getBrand({
-			cardBin: '411111', //numeroCartao.split(' ').join('').slice(0, 6),
+
+			cardBin: numeroCartao.split(' ').join('').slice(0, 6),
 			success: (r) => {
-				console.log('getBrand: ', r);
-				//this.props.setForm({ bandeira_cartao: r.brand });
+				this.props.setForm({ bandeira_cartao: r.brand });
 			},
 			error: (r) => console.log(r),
-			complete: (r) => console.log(r)
+			
 		});
 	}
+
 
 
 	submitCartaoHash() {
@@ -114,23 +115,34 @@ class DadosPagamento extends Component {
 	getParcelas() { 
 
 		const { freteSelecionado, carrinho } = this.props;
+
 		const { bandeira_cartao } = this.props.form;
 
-		let valorTotal = carrinho.reduce((all, item) => { all + ((Number(item.precoUnitario) * Number(item.quantidade))); }, 0);
+	
+		let valorItem = carrinho.reduce((all, item) => 
+			all + (Number(item.precoUnitario) * Number(item.quantidade))
+		, 0);
 
-		let valorFrete = Number(freteSelecionado.valor.replace(',', '.'));
+		let valorFrete = Number(freteSelecionado.Valor.replace(',', '.'));
 
+		let valorTotal = valorItem + valorFrete;
+		valorTotal = valorTotal.toFixed(2);
+
+
+		console.log('entrou aqui')
+		
+	        
 		PagSeguroDirectPayment.getInstallments({
-			amount: valorTotal + valorFrete,
+			amount: valorTotal,
 			maxInstallmentNoInterest: 6,
 			maxInstallment: 6,
 			brand: bandeira_cartao.name,
-			sucess: (data) => {
-				console.log('getParcelas: ', data)
-				this.props.setForm({ parcelasCartao: data.getInstallments });
+			success: (data) => {
+				console.log('getParcelas: ', data);
+				this.props.setForm({ parcelasCartao: data.installments });
 				this.props.setForm({ parcelasCartaoSelecionada: data.installments[bandeira_cartao.name][0] });
 			},
-			error: (e) => console.log(r),
+			error: (e) => console.log('getParcelas', e),
 		});
 	}
 	
@@ -188,6 +200,9 @@ class DadosPagamento extends Component {
 			parcelasCartao, parcelasCartaoSelecionada,
 			bandeira_cartao
 		} = this.props.form;
+
+
+		const ValorPrestacao = parcelasCartao[bandeira_cartao.name][0].installmentAmount;
 		
 		return (
 			<div className='Dados-Pagamento'>
@@ -222,7 +237,7 @@ class DadosPagamento extends Component {
 					<label>Data de Validade</label>
 				</div>
 				<div className='flex'>
-					<FormSimples value={mesCartao} nome='mesCartao' placeholder='MM' label='MÊs'
+					<FormSimples value={mesCartao} nome='mesCartao' placeholder='MM' label='Mês'
 						onChange={(e) => this.onChange('mesCartao', formatNumber(e.target.value, 2))} />
 					<span className='slash-pagamento'>&nbsp;/&nbsp;</span>
 					<FormSimples value={anoCartao} nome='anoCartao' placeholder='AAAA' label='Ano' onChange={(e) => this.onChange('anoCartao', formatNumber(e.target.value, 4))} />
@@ -237,15 +252,20 @@ class DadosPagamento extends Component {
 						<select
 							name='parcela'
 							value={parcelasCartaoSelecionada.quantity}
-							onChange={(e) => this.onChange('parcelasCartaoSelecionada', parcelasCartao[bandeira_cartao.name][e.target.value - 1])}
+							onChange={(e) =>
+								this.onChange('parcelasCartaoSelecionada',
+									parcelasCartao[bandeira_cartao.name][e.target.value - 1])}
 						>
 							<option>Selecione a quantidade de parcelas para pagamento</option>
 
 							{parcelasCartao[bandeira_cartao.name].map((item, index) =>
 							(								
 								<option option key={index} value={item.quantify}>
-									{item.quantify} x de {formatMoney(item.totalAmount/item.quantify)} sem juros
-									1x de R$ de 105, 00 sem juros
+									{item.quantity} x de {formatMoney(item.installmentAmount)}
+									
+									{ValorPrestacao === item.totalAmount ? '  sem juros ' : ''}
+									
+									
 								</option>
 						    ))
 							}

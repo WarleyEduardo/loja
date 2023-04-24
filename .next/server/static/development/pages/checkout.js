@@ -3176,19 +3176,16 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
   }, {
     key: "getBrand",
     value: function getBrand() {
+      var _this2 = this;
       var numeroCartao = this.props.form.numeroCartao;
       PagSeguroDirectPayment.getBrand({
-        cardBin: '411111',
-        //numeroCartao.split(' ').join('').slice(0, 6),
+        cardBin: numeroCartao.split(' ').join('').slice(0, 6),
         success: function success(r) {
-          console.log('getBrand: ', r);
-          //this.props.setForm({ bandeira_cartao: r.brand });
+          _this2.props.setForm({
+            bandeira_cartao: r.brand
+          });
         },
-
         error: function error(r) {
-          return console.log(r);
-        },
-        complete: function complete(r) {
           return console.log(r);
         }
       });
@@ -3196,7 +3193,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
   }, {
     key: "submitCartaoHash",
     value: function submitCartaoHash() {
-      var _this2 = this;
+      var _this3 = this;
       var _this$props$form2 = this.props.form,
         numeroCartao = _this$props$form2.numeroCartao,
         mesCartao = _this$props$form2.mesCartao,
@@ -3211,7 +3208,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         expirationYear: anoCartao,
         success: function success(r) {
           console.log('submitCartaoHash: ', r);
-          _this2.props.setForm({
+          _this3.props.setForm({
             credit_card_token: r.card.token
           });
         },
@@ -3224,45 +3221,48 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
   }, {
     key: "getParcelas",
     value: function getParcelas() {
-      var _this3 = this;
+      var _this4 = this;
       var _this$props = this.props,
         freteSelecionado = _this$props.freteSelecionado,
         carrinho = _this$props.carrinho;
       var bandeira_cartao = this.props.form.bandeira_cartao;
-      var valorTotal = carrinho.reduce(function (all, item) {
-        all + Number(item.precoUnitario) * Number(item.quantidade);
+      var valorItem = carrinho.reduce(function (all, item) {
+        return all + Number(item.precoUnitario) * Number(item.quantidade);
       }, 0);
-      var valorFrete = Number(freteSelecionado.valor.replace(',', '.'));
+      var valorFrete = Number(freteSelecionado.Valor.replace(',', '.'));
+      var valorTotal = valorItem + valorFrete;
+      valorTotal = valorTotal.toFixed(2);
+      console.log('entrou aqui');
       PagSeguroDirectPayment.getInstallments({
-        amount: valorTotal + valorFrete,
+        amount: valorTotal,
         maxInstallmentNoInterest: 6,
         maxInstallment: 6,
         brand: bandeira_cartao.name,
-        sucess: function sucess(data) {
+        success: function success(data) {
           console.log('getParcelas: ', data);
-          _this3.props.setForm({
-            parcelasCartao: data.getInstallments
+          _this4.props.setForm({
+            parcelasCartao: data.installments
           });
-          _this3.props.setForm({
+          _this4.props.setForm({
             parcelasCartaoSelecionada: data.installments[bandeira_cartao.name][0]
           });
         },
         error: function error(e) {
-          return console.log(r);
+          return console.log('getParcelas', e);
         }
       });
     }
   }, {
     key: "renderOpcoesPagamento",
     value: function renderOpcoesPagamento() {
-      var _this4 = this;
+      var _this5 = this;
       var tipoPagamentoSelecionado = this.props.tipoPagamentoSelecionado;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "flex horizontal",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 142,
+          lineNumber: 154,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3270,20 +3270,20 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 143,
+          lineNumber: 155,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormRadio__WEBPACK_IMPORTED_MODULE_9__["default"], {
         name: "tipo_pagamento_selecionado",
         checked: tipoPagamentoSelecionado === 'boleto',
         onChange: function onChange() {
-          return _this4.props.setTipoPagamento('boleto');
+          return _this5.props.setTipoPagamento('boleto');
         },
         label: "Boleto Banc\xE1rio",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 144,
+          lineNumber: 156,
           columnNumber: 6
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3291,20 +3291,20 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 151,
+          lineNumber: 163,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormRadio__WEBPACK_IMPORTED_MODULE_9__["default"], {
         name: "tipo_pagamento_selecionado",
         checked: tipoPagamentoSelecionado === 'cartao',
         onChange: function onChange() {
-          return _this4.props.setTipoPagamento('cartao');
+          return _this5.props.setTipoPagamento('cartao');
         },
         label: "Cart\xE3o de Cr\xE9dito",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 152,
+          lineNumber: 164,
           columnNumber: 6
         }
       })));
@@ -3315,7 +3315,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
   }, {
     key: "renderPagamentoComBoleto",
     value: function renderPagamentoComBoleto() {
-      var _this5 = this;
+      var _this6 = this;
       var _this$props$form3 = this.props.form,
         cpf = _this$props$form3.cpf,
         cpfBoleto = _this$props$form3.cpfBoleto;
@@ -3324,7 +3324,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 174,
+          lineNumber: 186,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -3333,12 +3333,12 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         placeholder: "CPF",
         label: "CPF",
         onChange: function onChange(e) {
-          return _this5.onChange("cpfBoleto", Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatCPF"])(e.target.value));
+          return _this6.onChange("cpfBoleto", Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatCPF"])(e.target.value));
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 175,
+          lineNumber: 187,
           columnNumber: 5
         }
       }));
@@ -3346,7 +3346,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
   }, {
     key: "renderPagamentoComCartao",
     value: function renderPagamentoComCartao() {
-      var _this6 = this;
+      var _this7 = this;
       var _this$props$form4 = this.props.form,
         nomeCartao = _this$props$form4.nomeCartao,
         numeroCartao = _this$props$form4.numeroCartao,
@@ -3356,12 +3356,13 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         parcelasCartao = _this$props$form4.parcelasCartao,
         parcelasCartaoSelecionada = _this$props$form4.parcelasCartaoSelecionada,
         bandeira_cartao = _this$props$form4.bandeira_cartao;
+      var ValorPrestacao = parcelasCartao[bandeira_cartao.name][0].installmentAmount;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "Dados-Pagamento",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 193,
+          lineNumber: 208,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -3370,12 +3371,12 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         placeholder: "Nome como escrito no cart\xE3o",
         label: "Nome completo no cart\xE3o",
         onChange: function onChange(e) {
-          return _this6.onChange('nomeCartao', e.target.value);
+          return _this7.onChange('nomeCartao', e.target.value);
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 194,
+          lineNumber: 209,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3383,7 +3384,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 201,
+          lineNumber: 216,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3391,7 +3392,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 202,
+          lineNumber: 217,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -3400,12 +3401,12 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         placeholder: "xxxx xxxx xxxx xxxx",
         label: "N\xFAmero do cart\xE3o",
         onChange: function onChange(e) {
-          return _this6.onChange('numeroCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatCartao"])(e.target.value));
+          return _this7.onChange('numeroCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatCartao"])(e.target.value));
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 203,
+          lineNumber: 218,
           columnNumber: 7
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3413,7 +3414,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 211,
+          lineNumber: 226,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -3422,12 +3423,12 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         placeholder: "xxxx",
         label: "C\xF3digo de Seguran\xE7a do Cart\xE3o",
         onChange: function onChange(e) {
-          return _this6.onChange('CVVCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatNumber"])(e.target.value, 3));
+          return _this7.onChange('CVVCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatNumber"])(e.target.value, 3));
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 212,
+          lineNumber: 227,
           columnNumber: 7
         }
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3435,14 +3436,14 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 221,
+          lineNumber: 236,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("label", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 222,
+          lineNumber: 237,
           columnNumber: 6
         }
       }, "Data de Validade")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3450,21 +3451,21 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 224,
+          lineNumber: 239,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
         value: mesCartao,
         nome: "mesCartao",
         placeholder: "MM",
-        label: "M\xCAs",
+        label: "M\xEAs",
         onChange: function onChange(e) {
-          return _this6.onChange('mesCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatNumber"])(e.target.value, 2));
+          return _this7.onChange('mesCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatNumber"])(e.target.value, 2));
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 225,
+          lineNumber: 240,
           columnNumber: 6
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
@@ -3472,7 +3473,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 227,
+          lineNumber: 242,
           columnNumber: 6
         }
       }, "\xA0/\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -3481,19 +3482,19 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         placeholder: "AAAA",
         label: "Ano",
         onChange: function onChange(e) {
-          return _this6.onChange('anoCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatNumber"])(e.target.value, 4));
+          return _this7.onChange('anoCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatNumber"])(e.target.value, 4));
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 228,
+          lineNumber: 243,
           columnNumber: 6
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 230,
+          lineNumber: 245,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3501,14 +3502,14 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 231,
+          lineNumber: 246,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("label", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 232,
+          lineNumber: 247,
           columnNumber: 6
         }
       }, "Parcelas")), parcelasCartao && parcelasCartaoSelecionada && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3516,26 +3517,26 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 236,
+          lineNumber: 251,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("select", {
         name: "parcela",
         value: parcelasCartaoSelecionada.quantity,
         onChange: function onChange(e) {
-          return _this6.onChange('parcelasCartaoSelecionada', parcelasCartao[bandeira_cartao.name][e.target.value - 1]);
+          return _this7.onChange('parcelasCartaoSelecionada', parcelasCartao[bandeira_cartao.name][e.target.value - 1]);
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 237,
+          lineNumber: 252,
           columnNumber: 7
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("option", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 242,
+          lineNumber: 259,
           columnNumber: 8
         }
       }, "Selecione a quantidade de parcelas para pagamento"), parcelasCartao[bandeira_cartao.name].map(function (item, index) {
@@ -3543,13 +3544,13 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
           option: true,
           key: index,
           value: item.quantify,
-          __self: _this6,
+          __self: _this7,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 246,
+            lineNumber: 263,
             columnNumber: 9
           }
-        }, item.quantify, " x de ", Object(_utils__WEBPACK_IMPORTED_MODULE_14__["formatMoney"])(item.totalAmount / item.quantify), " sem juros 1x de R$ de 105, 00 sem juros");
+        }, item.quantity, " x de ", Object(_utils__WEBPACK_IMPORTED_MODULE_14__["formatMoney"])(item.installmentAmount), ValorPrestacao === item.totalAmount ? '  sem juros ' : '');
       }))));
     }
   }, {
@@ -3561,35 +3562,35 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 264,
+          lineNumber: 284,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 265,
+          lineNumber: 285,
           columnNumber: 5
         }
       }, "DADOS DE PAGAMENTO"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 266,
+          lineNumber: 286,
           columnNumber: 5
         }
       }), this.renderOpcoesPagamento(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 268,
+          lineNumber: 288,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 269,
+          lineNumber: 289,
           columnNumber: 5
         }
       }), tipoPagamentoSelecionado === 'boleto' && this.renderPagamentoComBoleto(), tipoPagamentoSelecionado === 'cartao' && this.renderPagamentoComCartao());
@@ -6450,14 +6451,25 @@ var setTipoPagamento = function setTipoPagamento(tipoPagamentoSelecionado) {
 };
 var getSessionPagamento = function getSessionPagamento() {
   return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("".concat(_config__WEBPACK_IMPORTED_MODULE_3__["url"], "/api/pagamentos/session")).then(function (response) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("".concat(_config__WEBPACK_IMPORTED_MODULE_3__["url"], "/api/pagamentos/session")).then(function (response) {
       dispatch({
         type: _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_SESSION_ID"],
         payload: response.data
       });
-      PagSeguroDirectPayment.setSessionId(response.data.sessonId);
-      //let senderHash = PagSeguroDirectPayment.getSenderHash();
-      var senderHash = PagSeguroDirectPayment.onSenderHashReady();
+      PagSeguroDirectPayment.setSessionId(response.data.sessionId);
+      var senderHash = PagSeguroDirectPayment.getSenderHash();
+      /*
+      PagSeguroDirectPayment.onSenderHashReady((response) => {
+      	if (response.status == 'error') {
+      		console.log(response.message);
+      		return false;
+      	}
+      	 console.log(response.senderHash);
+      	
+      }
+      );
+      */
+
       dispatch({
         type: _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_SENDER_HASH"],
         senderHash: senderHash
@@ -7164,9 +7176,9 @@ var formatNumber = function formatNumber(value, limit) {
 var formatCartao = function formatCartao(value) {
   var auxCartao = (value || '').match(numberPattern);
   var _Cartao = (auxCartao || []).join('');
-  if (_Cartao.length > 12) return _Cartao.slice(0, 4) + '.' + _Cartao.slice(4, 8) + '.' + _Cartao.slice(8, 12) + '-' + _Cartao.slice(12, 16);
-  if (_Cartao.length > 8) return _Cartao.slice(0, 4) + '.' + _Cartao.slice(4, 8) + '.' + _Cartao.slice(8, 12);
-  if (_Cartao.length > 4) return _Cartao.slice(0, 4) + '.' + _Cartao.slice(4, 8);
+  if (_Cartao.length > 12) return _Cartao.slice(0, 4) + ' ' + _Cartao.slice(4, 8) + ' ' + _Cartao.slice(8, 12) + '-' + _Cartao.slice(12, 16);
+  if (_Cartao.length > 8) return _Cartao.slice(0, 4) + ' ' + _Cartao.slice(4, 8) + ' ' + _Cartao.slice(8, 12);
+  if (_Cartao.length > 4) return _Cartao.slice(0, 4) + ' ' + _Cartao.slice(4, 8);
   return _Cartao;
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
