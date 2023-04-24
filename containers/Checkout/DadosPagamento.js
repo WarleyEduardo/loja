@@ -128,17 +128,13 @@ class DadosPagamento extends Component {
 		let valorTotal = valorItem + valorFrete;
 		valorTotal = valorTotal.toFixed(2);
 
-
-		console.log('entrou aqui')
-		
-	        
+			        
 		PagSeguroDirectPayment.getInstallments({
 			amount: valorTotal,
 			maxInstallmentNoInterest: 6,
 			maxInstallment: 6,
 			brand: bandeira_cartao.name,
 			success: (data) => {
-				console.log('getParcelas: ', data);
 				this.props.setForm({ parcelasCartao: data.installments });
 				this.props.setForm({ parcelasCartaoSelecionada: data.installments[bandeira_cartao.name][0] });
 			},
@@ -202,7 +198,7 @@ class DadosPagamento extends Component {
 		} = this.props.form;
 
 
-		const ValorPrestacao = parcelasCartao[bandeira_cartao.name][0].installmentAmount;
+		const ValorPrestacao = parcelasCartao ? parcelasCartao[bandeira_cartao.name][0].installmentAmount : 0;
 		
 		return (
 			<div className='Dados-Pagamento'>

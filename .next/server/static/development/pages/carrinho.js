@@ -4937,7 +4937,7 @@ var formatNumber = function formatNumber(value, limit) {
 var formatCartao = function formatCartao(value) {
   var auxCartao = (value || '').match(numberPattern);
   var _Cartao = (auxCartao || []).join('');
-  if (_Cartao.length > 12) return _Cartao.slice(0, 4) + ' ' + _Cartao.slice(4, 8) + ' ' + _Cartao.slice(8, 12) + '-' + _Cartao.slice(12, 16);
+  if (_Cartao.length > 12) return _Cartao.slice(0, 4) + ' ' + _Cartao.slice(4, 8) + ' ' + _Cartao.slice(8, 12) + ' ' + _Cartao.slice(12, 16);
   if (_Cartao.length > 8) return _Cartao.slice(0, 4) + ' ' + _Cartao.slice(4, 8) + ' ' + _Cartao.slice(8, 12);
   if (_Cartao.length > 4) return _Cartao.slice(0, 4) + ' ' + _Cartao.slice(4, 8);
   return _Cartao;

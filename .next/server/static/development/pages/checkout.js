@@ -3232,14 +3232,12 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
       var valorFrete = Number(freteSelecionado.Valor.replace(',', '.'));
       var valorTotal = valorItem + valorFrete;
       valorTotal = valorTotal.toFixed(2);
-      console.log('entrou aqui');
       PagSeguroDirectPayment.getInstallments({
         amount: valorTotal,
         maxInstallmentNoInterest: 6,
         maxInstallment: 6,
         brand: bandeira_cartao.name,
         success: function success(data) {
-          console.log('getParcelas: ', data);
           _this4.props.setForm({
             parcelasCartao: data.installments
           });
@@ -3262,7 +3260,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 154,
+          lineNumber: 150,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3270,7 +3268,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 155,
+          lineNumber: 151,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormRadio__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -3283,7 +3281,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 156,
+          lineNumber: 152,
           columnNumber: 6
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3291,7 +3289,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 163,
+          lineNumber: 159,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormRadio__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -3304,7 +3302,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 164,
+          lineNumber: 160,
           columnNumber: 6
         }
       })));
@@ -3324,7 +3322,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 186,
+          lineNumber: 182,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -3338,7 +3336,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 187,
+          lineNumber: 183,
           columnNumber: 5
         }
       }));
@@ -3356,13 +3354,13 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         parcelasCartao = _this$props$form4.parcelasCartao,
         parcelasCartaoSelecionada = _this$props$form4.parcelasCartaoSelecionada,
         bandeira_cartao = _this$props$form4.bandeira_cartao;
-      var ValorPrestacao = parcelasCartao[bandeira_cartao.name][0].installmentAmount;
+      var ValorPrestacao = parcelasCartao ? parcelasCartao[bandeira_cartao.name][0].installmentAmount : 0;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "Dados-Pagamento",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 208,
+          lineNumber: 204,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -3376,7 +3374,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 209,
+          lineNumber: 205,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3384,7 +3382,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 216,
+          lineNumber: 212,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3392,7 +3390,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 217,
+          lineNumber: 213,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -3406,7 +3404,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 218,
+          lineNumber: 214,
           columnNumber: 7
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3414,7 +3412,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 226,
+          lineNumber: 222,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -3428,7 +3426,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 227,
+          lineNumber: 223,
           columnNumber: 7
         }
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3436,14 +3434,14 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 236,
+          lineNumber: 232,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("label", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 237,
+          lineNumber: 233,
           columnNumber: 6
         }
       }, "Data de Validade")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3451,7 +3449,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 239,
+          lineNumber: 235,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -3465,7 +3463,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 240,
+          lineNumber: 236,
           columnNumber: 6
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
@@ -3473,7 +3471,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 242,
+          lineNumber: 238,
           columnNumber: 6
         }
       }, "\xA0/\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -3487,14 +3485,14 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 243,
+          lineNumber: 239,
           columnNumber: 6
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 245,
+          lineNumber: 241,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3502,14 +3500,14 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 246,
+          lineNumber: 242,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("label", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 247,
+          lineNumber: 243,
           columnNumber: 6
         }
       }, "Parcelas")), parcelasCartao && parcelasCartaoSelecionada && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3517,7 +3515,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 251,
+          lineNumber: 247,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("select", {
@@ -3529,14 +3527,14 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 252,
+          lineNumber: 248,
           columnNumber: 7
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("option", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 259,
+          lineNumber: 255,
           columnNumber: 8
         }
       }, "Selecione a quantidade de parcelas para pagamento"), parcelasCartao[bandeira_cartao.name].map(function (item, index) {
@@ -3547,7 +3545,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
           __self: _this7,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 263,
+            lineNumber: 259,
             columnNumber: 9
           }
         }, item.quantity, " x de ", Object(_utils__WEBPACK_IMPORTED_MODULE_14__["formatMoney"])(item.installmentAmount), ValorPrestacao === item.totalAmount ? '  sem juros ' : '');
@@ -3562,35 +3560,35 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 284,
+          lineNumber: 280,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 285,
+          lineNumber: 281,
           columnNumber: 5
         }
       }, "DADOS DE PAGAMENTO"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 286,
+          lineNumber: 282,
           columnNumber: 5
         }
       }), this.renderOpcoesPagamento(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 288,
+          lineNumber: 284,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 289,
+          lineNumber: 285,
           columnNumber: 5
         }
       }), tipoPagamentoSelecionado === 'boleto' && this.renderPagamentoComBoleto(), tipoPagamentoSelecionado === 'cartao' && this.renderPagamentoComCartao());
@@ -7176,7 +7174,7 @@ var formatNumber = function formatNumber(value, limit) {
 var formatCartao = function formatCartao(value) {
   var auxCartao = (value || '').match(numberPattern);
   var _Cartao = (auxCartao || []).join('');
-  if (_Cartao.length > 12) return _Cartao.slice(0, 4) + ' ' + _Cartao.slice(4, 8) + ' ' + _Cartao.slice(8, 12) + '-' + _Cartao.slice(12, 16);
+  if (_Cartao.length > 12) return _Cartao.slice(0, 4) + ' ' + _Cartao.slice(4, 8) + ' ' + _Cartao.slice(8, 12) + ' ' + _Cartao.slice(12, 16);
   if (_Cartao.length > 8) return _Cartao.slice(0, 4) + ' ' + _Cartao.slice(4, 8) + ' ' + _Cartao.slice(8, 12);
   if (_Cartao.length > 4) return _Cartao.slice(0, 4) + ' ' + _Cartao.slice(4, 8);
   return _Cartao;
