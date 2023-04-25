@@ -12,6 +12,8 @@
 
 /* módulo 49 -  Dados de pagamento - preparando a base, actions e  funções do pagseguro */
 
+/*modulo 49 - Botão final de checkout -  preprando base , actions e reducers */
+
 export const REGISTER = 'REGISTER',
 	AUTENTICAR_TOKEN = 'AUTENTICAR_TOKEN',
 	FETCH_CATEGORIAS = 'FETCH_CATEGORIAS',
@@ -41,7 +43,9 @@ export const REGISTER = 'REGISTER',
 	CLEAN_FORM = 'CLEAN_FORM',
 	SET_TIPO_PAGAMENTO = 'SET_TIPO_PAGAMENTO',
 	FETCH_SESSION_ID = 'FETCH_SESSION_ID',
-	FETCH_SENDER_HASH = 'FETCH_SENDER_HASH';
+	FETCH_SENDER_HASH = 'FETCH_SENDER_HASH',
+	NOVO_PEDIDO = 'NOVO_PEDIDO',
+	PAGAR_PEDIDO = 'PAGAR_PEDIDO';
 
 	
 

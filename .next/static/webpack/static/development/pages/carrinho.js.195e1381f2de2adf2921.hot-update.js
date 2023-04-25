@@ -1,0 +1,102 @@
+webpackHotUpdate("static\\development\\pages\\carrinho.js",{
+
+/***/ "./redux/actions/checkoutActions.js":
+/*!******************************************!*\
+  !*** ./redux/actions/checkoutActions.js ***!
+  \******************************************/
+/*! exports provided: novoPedido, cleanForm, setTipoPagamento, getSessionPagamento, setForm, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "novoPedido", function() { return novoPedido; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cleanForm", function() { return cleanForm; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setTipoPagamento", function() { return setTipoPagamento; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSessionPagamento", function() { return getSessionPagamento; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setForm", function() { return setForm; });
+/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/promise */ "./node_modules/@babel/runtime-corejs2/core-js/promise.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../types */ "./redux/types.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../config */ "./config.js");
+/* harmony import */ var _utils_cart__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../utils/cart */ "./utils/cart.js");
+
+/*modulo 49 - integração checkout - desenvolvendo o container dos dados do cliente */
+
+
+
+/* módulo 49 -  Dados de pagamento - preparando a base, actions e  funções do pagseguro */
+
+
+
+
+/*modulo 49 - Botão final de checkout -  preprando base , actions e reducers */
+
+var novoPedido = function novoPedido(form, freteSelecionado, tipoPagamentoSelecionado, valorTotal, token, senderHash) {
+  var carrinho = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : Object(_utils_cart__WEBPACK_IMPORTED_MODULE_4__["getCart"])();
+  var cb = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : null;
+  return function (dispatch) {};
+};
+var cleanForm = function cleanForm() {
+  return {
+    type: _types__WEBPACK_IMPORTED_MODULE_1__["CLEAN_FORM"]
+  };
+};
+var setTipoPagamento = function setTipoPagamento(tipoPagamentoSelecionado) {
+  return {
+    type: _types__WEBPACK_IMPORTED_MODULE_1__["SET_TIPO_PAGAMENTO"],
+    tipoPagamentoSelecionado: tipoPagamentoSelecionado
+  };
+};
+var getSessionPagamento = function getSessionPagamento() {
+  return function (dispatch) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("".concat(_config__WEBPACK_IMPORTED_MODULE_3__["url"], "/api/pagamentos/session")).then(function (response) {
+      dispatch({
+        type: _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_SESSION_ID"],
+        payload: response.data
+      });
+      PagSeguroDirectPayment.setSessionId(response.data.sessionId);
+      var senderHash = PagSeguroDirectPayment.getSenderHash();
+      /*
+      PagSeguroDirectPayment.onSenderHashReady((response) => {
+      	if (response.status == 'error') {
+      		console.log(response.message);
+      		return false;
+      	}
+      	 console.log(response.senderHash);
+      	
+      }
+      );
+      */
+
+      dispatch({
+        type: _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_SENDER_HASH"],
+        senderHash: senderHash
+      });
+    })["catch"](function (e) {
+      return console.log(e);
+    });
+  };
+};
+var setForm = function setForm(payload, prefix) {
+  return function (dispatch) {
+    dispatch({
+      type: _types__WEBPACK_IMPORTED_MODULE_1__["SET_FORM"],
+      payload: payload,
+      prefix: prefix
+    });
+    return _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default.a.resolve();
+  };
+};
+/* harmony default export */ __webpack_exports__["default"] = ({
+  setForm: setForm,
+  getSessionPagamento: getSessionPagamento,
+  setTipoPagamento: setTipoPagamento,
+  cleanForm: cleanForm
+});
+
+/***/ })
+
+})
+//# sourceMappingURL=carrinho.js.195e1381f2de2adf2921.hot-update.js.map

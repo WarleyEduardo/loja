@@ -7,7 +7,14 @@
 /*modulo 49 - Dados de pagamento - finalizando componente*/
 
 
-import { SET_FORM, CLEAN_FORM, SET_TIPO_PAGAMENTO, FETCH_SESSION_ID, FETCH_SENDER_HASH } from '../types';
+/*modulo 49 - Botão final de checkout -  preprando base , actions e reducers */
+
+
+import {
+	SET_FORM, CLEAN_FORM, SET_TIPO_PAGAMENTO, FETCH_SESSION_ID, FETCH_SENDER_HASH, NOVO_PEDIDO,
+	PAGAR_PEDIDO     
+
+} from '../types';
 
 const initialState = {
 
@@ -61,6 +68,20 @@ export default (state = initialState, action) => {
 				senderHash: action.senderHash
 			}
 		
+		case NOVO_PEDIDO: 
+			
+			return {
+				...state,
+				novoPedido: action.payload.Pedido
+			}
+		
+		case PAGAR_PEDIDO:
+			return {
+
+				...state,
+				novoPagamento : action.payload.pagamento
+
+			}
 		default: return state;
 	}
 

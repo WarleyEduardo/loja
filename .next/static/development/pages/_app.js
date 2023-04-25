@@ -12264,6 +12264,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /*modulo 49 - Dados de pagamento - finalizando componente*/
 
+/*modulo 49 - Botão final de checkout -  preprando base , actions e reducers */
+
 
 var initialState = {
   form: {
@@ -12297,6 +12299,14 @@ var initialState = {
       //console.log(action.senderHash);
       return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
         senderHash: action.senderHash
+      });
+    case _types__WEBPACK_IMPORTED_MODULE_2__["NOVO_PEDIDO"]:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
+        novoPedido: action.payload.Pedido
+      });
+    case _types__WEBPACK_IMPORTED_MODULE_2__["PAGAR_PEDIDO"]:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
+        novoPagamento: action.payload.pagamento
       });
     default:
       return state;
@@ -12490,7 +12500,7 @@ var initialState = {
 /*!************************!*\
   !*** ./redux/types.js ***!
   \************************/
-/*! exports provided: REGISTER, AUTENTICAR_TOKEN, FETCH_CATEGORIAS, FETCH_LOJA, FETCH_PRODUTOS, FETCH_CATEGORIA, FETCH_PRODUTOS_CATEGORIA, USER, FETCH_PESQUISA, FETCH_PRODUTOS_PESQUISA, FETCH_PRODUTO, FETCH_PRODUTO_VARIACOES, FETCH_PRODUTO_AVALIACOES, NOVA_AVALIACAO, SET_CARRINHO, CLEAN_CARRINHO, FETCH_PRODUTO_CARRINHO, FETCH_VARIACAO_CARRINHO, FETCH_VALOR_ENTREGA, UPDATE_QTD_CART, REMOVE_PRODUTO_CART, CLEAN_FRETES, UPDATE_FRETE_CART, AUTENTICAR, FETCH_CLIENTE, SET_FORM, CLEAN_FORM, SET_TIPO_PAGAMENTO, FETCH_SESSION_ID, FETCH_SENDER_HASH */
+/*! exports provided: REGISTER, AUTENTICAR_TOKEN, FETCH_CATEGORIAS, FETCH_LOJA, FETCH_PRODUTOS, FETCH_CATEGORIA, FETCH_PRODUTOS_CATEGORIA, USER, FETCH_PESQUISA, FETCH_PRODUTOS_PESQUISA, FETCH_PRODUTO, FETCH_PRODUTO_VARIACOES, FETCH_PRODUTO_AVALIACOES, NOVA_AVALIACAO, SET_CARRINHO, CLEAN_CARRINHO, FETCH_PRODUTO_CARRINHO, FETCH_VARIACAO_CARRINHO, FETCH_VALOR_ENTREGA, UPDATE_QTD_CART, REMOVE_PRODUTO_CART, CLEAN_FRETES, UPDATE_FRETE_CART, AUTENTICAR, FETCH_CLIENTE, SET_FORM, CLEAN_FORM, SET_TIPO_PAGAMENTO, FETCH_SESSION_ID, FETCH_SENDER_HASH, NOVO_PEDIDO, PAGAR_PEDIDO */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12525,6 +12535,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SET_TIPO_PAGAMENTO", function() { return SET_TIPO_PAGAMENTO; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_SESSION_ID", function() { return FETCH_SESSION_ID; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_SENDER_HASH", function() { return FETCH_SENDER_HASH; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NOVO_PEDIDO", function() { return NOVO_PEDIDO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PAGAR_PEDIDO", function() { return PAGAR_PEDIDO; });
 /* modulo 40 - loja virtual - criando helper para inicialização*/
 
 /* modulo 45 - Criando actions e reduces e atualizando os componentes das categorias*/
@@ -12538,6 +12550,8 @@ __webpack_require__.r(__webpack_exports__);
 /*modulo 49 - integração checkout - desenvolvendo o container dos dados do cliente */
 
 /* módulo 49 -  Dados de pagamento - preparando a base, actions e  funções do pagseguro */
+
+/*modulo 49 - Botão final de checkout -  preprando base , actions e reducers */
 
 var REGISTER = 'REGISTER',
   AUTENTICAR_TOKEN = 'AUTENTICAR_TOKEN',
@@ -12568,7 +12582,9 @@ var REGISTER = 'REGISTER',
   CLEAN_FORM = 'CLEAN_FORM',
   SET_TIPO_PAGAMENTO = 'SET_TIPO_PAGAMENTO',
   FETCH_SESSION_ID = 'FETCH_SESSION_ID',
-  FETCH_SENDER_HASH = 'FETCH_SENDER_HASH';
+  FETCH_SENDER_HASH = 'FETCH_SENDER_HASH',
+  NOVO_PEDIDO = 'NOVO_PEDIDO',
+  PAGAR_PEDIDO = 'PAGAR_PEDIDO';
 
 /***/ }),
 
