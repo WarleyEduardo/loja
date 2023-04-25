@@ -3081,22 +3081,26 @@ var mapStateToProps = function mapStateToProps(state) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/reflect/construct */ "./node_modules/@babel/runtime-corejs2/core-js/reflect/construct.js");
 /* harmony import */ var _babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var _components_Inputs_FormRadio__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/Inputs/FormRadio */ "./components/Inputs/FormRadio.js");
-/* harmony import */ var _components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/Inputs/FormSimples */ "./components/Inputs/FormSimples.js");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-redux */ "react-redux");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../redux/actions */ "./redux/actions/index.js");
-/* harmony import */ var _utils_format__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../utils/format */ "./utils/format.js");
-/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../utils */ "./utils/index.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/object/keys */ "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js");
+/* harmony import */ var _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _components_Inputs_FormRadio__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../components/Inputs/FormRadio */ "./components/Inputs/FormRadio.js");
+/* harmony import */ var _components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../components/Inputs/FormSimples */ "./components/Inputs/FormSimples.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../redux/actions */ "./redux/actions/index.js");
+/* harmony import */ var _utils_format__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../utils/format */ "./utils/format.js");
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../../utils */ "./utils/index.js");
+/* harmony import */ var _utils_validade__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../utils/validade */ "./utils/validade.js");
+
 
 
 
@@ -3106,7 +3110,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _jsxFileName = "D:\\javaScript\\lojavirtual\\lojavirtual\\containers\\Checkout\\DadosPagamento.js";
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(this).constructor; result = _babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__["default"])(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_7__["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_7__["default"])(this).constructor; result = _babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_6__["default"])(this, result); }; }
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default.a) return false; if (_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default.a.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 /* modulo 42 - pagina de Checkout - criando o componente de dados  de pagamento 1/2 */
 
@@ -3124,33 +3128,28 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_b
 
 
 
+
 var DadosPagamento = /*#__PURE__*/function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(DadosPagamento, _Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(DadosPagamento, _Component);
   var _super = _createSuper(DadosPagamento);
   function DadosPagamento() {
     var _this;
-    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, DadosPagamento);
+    Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_2__["default"])(this, DadosPagamento);
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
     _this = _super.call.apply(_super, [this].concat(args));
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "state", {
-      opcaoPagamentoSelecionada: 'boleto',
-      CPF: "",
-      numeroCartao: "",
-      nomeCartao: "",
-      CVVCartao: "",
-      mesCartao: "",
-      anoCartao: ""
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "state", {
+      erros: {}
     });
-    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "onChange", function (field, value) {
-      return _this.props.setForm(Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])({}, field, value)).then(function () {
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "onChange", function (field, value) {
+      return _this.props.setForm(Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])({}, field, value)).then(function () {
         return _this.validate();
       });
     });
     return _this;
   }
-  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(DadosPagamento, [{
+  Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_3__["default"])(DadosPagamento, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.getSessionPagamento();
@@ -3202,7 +3201,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         bandeira_cartao = _this$props$form2.bandeira_cartao;
       var params = {
         cardNumber: numeroCartao.split(' ').join(''),
-        brand: bandeira_cartao,
+        brand: bandeira_cartao.name,
         cvv: CVVCartao,
         expirationMonth: mesCartao,
         expirationYear: anoCartao,
@@ -3213,7 +3212,7 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
           });
         },
         error: function error(r) {
-          return console.log(r);
+          return console.log('submitCartaoHash', r);
         }
       };
       PagSeguroDirectPayment.createCardToken(params);
@@ -3255,23 +3254,23 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
     value: function renderOpcoesPagamento() {
       var _this5 = this;
       var tipoPagamentoSelecionado = this.props.tipoPagamentoSelecionado;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         className: "flex horizontal",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 150,
+          lineNumber: 147,
           columnNumber: 4
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         className: "flex-1",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 151,
+          lineNumber: 148,
           columnNumber: 5
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormRadio__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormRadio__WEBPACK_IMPORTED_MODULE_10__["default"], {
         name: "tipo_pagamento_selecionado",
         checked: tipoPagamentoSelecionado === 'boleto',
         onChange: function onChange() {
@@ -3281,18 +3280,18 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 152,
+          lineNumber: 149,
           columnNumber: 6
         }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         className: "flex-1",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 159,
+          lineNumber: 156,
           columnNumber: 5
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormRadio__WEBPACK_IMPORTED_MODULE_9__["default"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormRadio__WEBPACK_IMPORTED_MODULE_10__["default"], {
         name: "tipo_pagamento_selecionado",
         checked: tipoPagamentoSelecionado === 'cartao',
         onChange: function onChange() {
@@ -3302,41 +3301,70 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 160,
+          lineNumber: 157,
           columnNumber: 6
         }
       })));
     }
   }, {
     key: "validate",
-    value: function validate() {}
+    value: function validate() {
+      var tipoPagamentoSelecionado = this.props.tipoPagamentoSelecionado;
+      var _this$props$form3 = this.props.form,
+        cpf = _this$props$form3.cpf,
+        cpfBoleto = _this$props$form3.cpfBoleto,
+        numeroCartao = _this$props$form3.numeroCartao,
+        nomeCartao = _this$props$form3.nomeCartao,
+        mesCartao = _this$props$form3.mesCartao,
+        anoCartao = _this$props$form3.anoCartao,
+        parcelasCartaoSelecionada = _this$props$form3.parcelasCartaoSelecionada,
+        CVVCartao = _this$props$form3.CVVCartao;
+      var erros = {};
+      if (tipoPagamentoSelecionado === 'boleto') {
+        if (!cpfBoleto && !cpf) erros.cpfBoleto = "Preencha aqui com o seu cpf";
+        if (cpfBoleto && cpfBoleto.length !== 14 && !Object(_utils_validade__WEBPACK_IMPORTED_MODULE_16__["validateCPF"])(cpfBoleto)) erros.cpfBoleto = "Preencha aqui com o seu cpf corretamente";
+      } else {
+        if (!numeroCartao || numeroCartao.length !== 19) erros.numeroCartao = "Preencha aqui com o número do seu cartão";
+        if (!nomeCartao) erros.nomeCartao = 'Preencha aqui com o nome que está no cartão';
+        if (!mesCartao || mesCartao.length !== 2) erros.mesCartao = 'Preencha aqui com o mês de vencimento  do cartão';
+        if (!anoCartao || anoCartao.length !== 4) erros.anoCartao = 'Preencha aqui com o ano de vencimento  do cartão';
+        if (!CVVCartao || CVVCartao.length !== 3) erros.CVVCartao = 'Preencha aqui o código de validação do cartão';
+        if (!parcelasCartaoSelecionada) erros.parcelasCartaoSelecionada = "selecione uma condição de pagamento";
+      }
+      this.setState({
+        erros: erros
+      });
+      return !(_babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_1___default()(erros).length > 0);
+    }
   }, {
     key: "renderPagamentoComBoleto",
     value: function renderPagamentoComBoleto() {
       var _this6 = this;
-      var _this$props$form3 = this.props.form,
-        cpf = _this$props$form3.cpf,
-        cpfBoleto = _this$props$form3.cpfBoleto;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+      var _this$props$form4 = this.props.form,
+        cpf = _this$props$form4.cpf,
+        cpfBoleto = _this$props$form4.cpfBoleto;
+      var erros = this.state.erros;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         className: "Dados-Pagamento",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 182,
+          lineNumber: 212,
           columnNumber: 4
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_11__["default"], {
         value: cpfBoleto || cpf,
         nome: "CPF",
         placeholder: "CPF",
         label: "CPF",
+        erro: erros.cpfBoleto,
         onChange: function onChange(e) {
-          return _this6.onChange("cpfBoleto", Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatCPF"])(e.target.value));
+          return _this6.onChange("cpfBoleto", Object(_utils_format__WEBPACK_IMPORTED_MODULE_14__["formatCPF"])(e.target.value));
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 183,
+          lineNumber: 213,
           columnNumber: 5
         }
       }));
@@ -3345,180 +3373,186 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
     key: "renderPagamentoComCartao",
     value: function renderPagamentoComCartao() {
       var _this7 = this;
-      var _this$props$form4 = this.props.form,
-        nomeCartao = _this$props$form4.nomeCartao,
-        numeroCartao = _this$props$form4.numeroCartao,
-        CVVCartao = _this$props$form4.CVVCartao,
-        mesCartao = _this$props$form4.mesCartao,
-        anoCartao = _this$props$form4.anoCartao,
-        parcelasCartao = _this$props$form4.parcelasCartao,
-        parcelasCartaoSelecionada = _this$props$form4.parcelasCartaoSelecionada,
-        bandeira_cartao = _this$props$form4.bandeira_cartao;
+      var _this$props$form5 = this.props.form,
+        nomeCartao = _this$props$form5.nomeCartao,
+        numeroCartao = _this$props$form5.numeroCartao,
+        CVVCartao = _this$props$form5.CVVCartao,
+        mesCartao = _this$props$form5.mesCartao,
+        anoCartao = _this$props$form5.anoCartao,
+        parcelasCartao = _this$props$form5.parcelasCartao,
+        parcelasCartaoSelecionada = _this$props$form5.parcelasCartaoSelecionada,
+        bandeira_cartao = _this$props$form5.bandeira_cartao;
+      var erros = this.state.erros;
       var ValorPrestacao = parcelasCartao ? parcelasCartao[bandeira_cartao.name][0].installmentAmount : 0;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         className: "Dados-Pagamento",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 204,
+          lineNumber: 237,
           columnNumber: 4
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_11__["default"], {
         value: nomeCartao,
         nome: "nomeCartao",
         placeholder: "Nome como escrito no cart\xE3o",
         label: "Nome completo no cart\xE3o",
+        erro: erros.nomeCartao,
         onChange: function onChange(e) {
           return _this7.onChange('nomeCartao', e.target.value);
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 205,
+          lineNumber: 238,
           columnNumber: 5
         }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         className: "flex horizontal",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 212,
+          lineNumber: 246,
           columnNumber: 5
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         className: "flex-1",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 213,
-          columnNumber: 6
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        value: numeroCartao,
-        nome: "numeroCartao",
-        placeholder: "xxxx xxxx xxxx xxxx",
-        label: "N\xFAmero do cart\xE3o",
-        onChange: function onChange(e) {
-          return _this7.onChange('numeroCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatCartao"])(e.target.value));
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 214,
-          columnNumber: 7
-        }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
-        className: "flex-1",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 222,
-          columnNumber: 6
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        value: CVVCartao,
-        nome: "CVVCartao",
-        placeholder: "xxxx",
-        label: "C\xF3digo de Seguran\xE7a do Cart\xE3o",
-        onChange: function onChange(e) {
-          return _this7.onChange('CVVCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatNumber"])(e.target.value, 3));
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 223,
-          columnNumber: 7
-        }
-      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
-        className: "form-input",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 232,
-          columnNumber: 5
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("label", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 233,
-          columnNumber: 6
-        }
-      }, "Data de Validade")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
-        className: "flex",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 235,
-          columnNumber: 5
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        value: mesCartao,
-        nome: "mesCartao",
-        placeholder: "MM",
-        label: "M\xEAs",
-        onChange: function onChange(e) {
-          return _this7.onChange('mesCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatNumber"])(e.target.value, 2));
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 236,
-          columnNumber: 6
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
-        className: "slash-pagamento",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 238,
-          columnNumber: 6
-        }
-      }, "\xA0/\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        value: anoCartao,
-        nome: "anoCartao",
-        placeholder: "AAAA",
-        label: "Ano",
-        onChange: function onChange(e) {
-          return _this7.onChange('anoCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_13__["formatNumber"])(e.target.value, 4));
-        },
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 239,
-          columnNumber: 6
-        }
-      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 241,
-          columnNumber: 5
-        }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
-        className: "form-input",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 242,
-          columnNumber: 5
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("label", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 243,
-          columnNumber: 6
-        }
-      }, "Parcelas")), parcelasCartao && parcelasCartaoSelecionada && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
-        className: "flex",
         __self: this,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 247,
           columnNumber: 6
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("select", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        value: numeroCartao,
+        nome: "numeroCartao",
+        placeholder: "xxxx xxxx xxxx xxxx",
+        label: "N\xFAmero do cart\xE3o",
+        erro: erros.numeroCartao,
+        onChange: function onChange(e) {
+          return _this7.onChange('numeroCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_14__["formatCartao"])(e.target.value));
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 248,
+          columnNumber: 7
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
+        className: "flex-1",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 257,
+          columnNumber: 6
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        value: CVVCartao,
+        nome: "CVVCartao",
+        placeholder: "xxxx",
+        label: "C\xF3digo de Seguran\xE7a do Cart\xE3o",
+        erro: erros.CVVCartao,
+        onChange: function onChange(e) {
+          return _this7.onChange('CVVCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_14__["formatNumber"])(e.target.value, 3));
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 258,
+          columnNumber: 7
+        }
+      }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
+        className: "form-input",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 268,
+          columnNumber: 5
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 269,
+          columnNumber: 6
+        }
+      }, "Data de Validade")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
+        className: "flex",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 271,
+          columnNumber: 5
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        value: mesCartao,
+        nome: "mesCartao",
+        placeholder: "MM",
+        label: "M\xEAs",
+        erro: erros.mesCartao,
+        onChange: function onChange(e) {
+          return _this7.onChange('mesCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_14__["formatNumber"])(e.target.value, 2));
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 272,
+          columnNumber: 6
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("span", {
+        className: "slash-pagamento",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 280,
+          columnNumber: 6
+        }
+      }, "\xA0/\xA0"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_11__["default"], {
+        value: anoCartao,
+        nome: "anoCartao",
+        placeholder: "AAAA",
+        label: "Ano",
+        erro: erros.anoCartao,
+        onChange: function onChange(e) {
+          return _this7.onChange('anoCartao', Object(_utils_format__WEBPACK_IMPORTED_MODULE_14__["formatNumber"])(e.target.value, 4));
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 281,
+          columnNumber: 6
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 290,
+          columnNumber: 5
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
+        className: "form-input",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 291,
+          columnNumber: 5
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 292,
+          columnNumber: 6
+        }
+      }, "Parcelas")), parcelasCartao && parcelasCartaoSelecionada && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
+        className: "flex",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 296,
+          columnNumber: 6
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("select", {
         name: "parcela",
         value: parcelasCartaoSelecionada.quantity,
         onChange: function onChange(e) {
@@ -3527,75 +3561,83 @@ var DadosPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 248,
+          lineNumber: 297,
           columnNumber: 7
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("option", {
+      }, !parcelasCartaoSelecionada && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("option", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 255,
-          columnNumber: 8
+          lineNumber: 306,
+          columnNumber: 11
         }
-      }, "Selecione a quantidade de parcelas para pagamento"), parcelasCartao[bandeira_cartao.name].map(function (item, index) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("option", {
+      }, "Selecione a quantidade de parcelas para pagamento"), parcelasCartao[bandeira_cartao.name].slice(0, 6).map(function (item, index) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("option", {
           option: true,
           key: index,
-          value: item.quantify,
+          value: item.quantity,
           __self: _this7,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 259,
+            lineNumber: 311,
             columnNumber: 9
           }
-        }, item.quantity, " x de ", Object(_utils__WEBPACK_IMPORTED_MODULE_14__["formatMoney"])(item.installmentAmount), ValorPrestacao === item.totalAmount ? '  sem juros ' : '');
-      }))));
+        }, item.quantity, " x de ", Object(_utils__WEBPACK_IMPORTED_MODULE_15__["formatMoney"])(item.installmentAmount), ValorPrestacao === item.totalAmount ? '  sem juros ' : '');
+      })), erros.parcelasCartaoSelecionada && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("small", {
+        className: "erro",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 319,
+          columnNumber: 9
+        }
+      }, " ", erros.parcelasCartaoSelecionada, " ")));
     }
   }, {
     key: "render",
     value: function render() {
       var tipoPagamentoSelecionado = this.props.tipoPagamentoSelecionado;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         className: "Dados-Pagamento-Container",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 280,
+          lineNumber: 332,
           columnNumber: 4
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h2", {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 281,
+          lineNumber: 333,
           columnNumber: 5
         }
-      }, "DADOS DE PAGAMENTO"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
+      }, "DADOS DE PAGAMENTO"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 282,
+          lineNumber: 334,
           columnNumber: 5
         }
-      }), this.renderOpcoesPagamento(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
+      }), this.renderOpcoesPagamento(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 284,
+          lineNumber: 336,
           columnNumber: 5
         }
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 285,
+          lineNumber: 337,
           columnNumber: 5
         }
       }), tipoPagamentoSelecionado === 'boleto' && this.renderPagamentoComBoleto(), tipoPagamentoSelecionado === 'cartao' && this.renderPagamentoComCartao());
     }
   }]);
   return DadosPagamento;
-}(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
+}(react__WEBPACK_IMPORTED_MODULE_9__["Component"]);
 var mapStateToProps = function mapStateToProps(state) {
   return {
     usuario: state.auth.usuario,
@@ -3608,7 +3650,7 @@ var mapStateToProps = function mapStateToProps(state) {
     freteSelecionado: state.carrinho.freteSelecionado
   };
 };
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_11__["connect"])(mapStateToProps, _redux_actions__WEBPACK_IMPORTED_MODULE_12__["default"])(DadosPagamento));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_12__["connect"])(mapStateToProps, _redux_actions__WEBPACK_IMPORTED_MODULE_13__["default"])(DadosPagamento));
 
 /***/ }),
 

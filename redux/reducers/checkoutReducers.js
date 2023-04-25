@@ -4,13 +4,16 @@
 /* módulo 49 -  Dados de pagamento - preparando a base, actions e  funções do pagseguro */
 
 
+/*modulo 49 - Dados de pagamento - finalizando componente*/
+
+
 import { SET_FORM, CLEAN_FORM, SET_TIPO_PAGAMENTO, FETCH_SESSION_ID, FETCH_SENDER_HASH } from '../types';
 
 const initialState = {
 
 	form: {
 		dadosCobranca: {},
-		tipoPagamentoSelecionado : "cartao_credito"	
+		tipoPagamentoSelecionado : "cartao"	
 	}
 };
 

@@ -12262,11 +12262,13 @@ __webpack_require__.r(__webpack_exports__);
 
 /* módulo 49 -  Dados de pagamento - preparando a base, actions e  funções do pagseguro */
 
+/*modulo 49 - Dados de pagamento - finalizando componente*/
+
 
 var initialState = {
   form: {
     dadosCobranca: {},
-    tipoPagamentoSelecionado: "cartao_credito"
+    tipoPagamentoSelecionado: "cartao"
   }
 };
 /* harmony default export */ __webpack_exports__["default"] = (function () {

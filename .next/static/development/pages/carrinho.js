@@ -20644,7 +20644,7 @@ export default initialize;
 
 /***/ }),
 
-/***/ 0:
+/***/ 1:
 /*!********************************************************************************************************************************************!*\
   !*** multi next-client-pages-loader?page=%2Fcarrinho&absolutePagePath=D%3A%5CjavaScript%5Clojavirtual%5Clojavirtual%5Cpages%5Ccarrinho.js ***!
   \********************************************************************************************************************************************/
@@ -20667,5 +20667,5 @@ module.exports = dll_b5814d3baa9899c6be4a;
 
 /***/ })
 
-},[[0,"static/runtime/webpack.js"]]]);
+},[[1,"static/runtime/webpack.js"]]]);
 //# sourceMappingURL=carrinho.js.map
