@@ -70,12 +70,16 @@ export default (state = initialState, action) => {
 		
 		case NOVO_PEDIDO: 
 			
+			 console.log('pedido:', action.payload);
+			
 			return {
 				...state,
-				novoPedido: action.payload.Pedido
+				novoPedido: action.payload.pedido
 			}
 		
 		case PAGAR_PEDIDO:
+
+			console.log('pagamento:', action.payload);
 			return {
 
 				...state,

@@ -1618,10 +1618,12 @@ var initialState = {
         senderHash: action.senderHash
       });
     case _types__WEBPACK_IMPORTED_MODULE_2__["NOVO_PEDIDO"]:
+      console.log('pedido:', action.payload);
       return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
-        novoPedido: action.payload.Pedido
+        novoPedido: action.payload.pedido
       });
     case _types__WEBPACK_IMPORTED_MODULE_2__["PAGAR_PEDIDO"]:
+      console.log('pagamento:', action.payload);
       return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
         novoPagamento: action.payload.pagamento
       });

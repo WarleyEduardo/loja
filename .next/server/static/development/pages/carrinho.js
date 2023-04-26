@@ -4122,17 +4122,17 @@ var fetchProdutosCategoria = function fetchProdutosCategoria(id) {
 /*!******************************************!*\
   !*** ./redux/actions/checkoutActions.js ***!
   \******************************************/
-/*! exports provided: novoPedido, cleanForm, setTipoPagamento, getSessionPagamento, setForm, pagarPedido, default */
+/*! exports provided: novoPedido, pagarPedido, cleanForm, setTipoPagamento, getSessionPagamento, setForm, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "novoPedido", function() { return novoPedido; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pagarPedido", function() { return pagarPedido; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cleanForm", function() { return cleanForm; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setTipoPagamento", function() { return setTipoPagamento; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSessionPagamento", function() { return getSessionPagamento; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setForm", function() { return setForm; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pagarPedido", function() { return pagarPedido; });
 /* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/promise */ "./node_modules/@babel/runtime-corejs2/core-js/promise.js");
 /* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../types */ "./redux/types.js");
@@ -4165,12 +4165,13 @@ var novoPedido = function novoPedido(form, freteSelecionado, tipoPagamentoSeleci
   var carrinho = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : Object(_utils_cart__WEBPACK_IMPORTED_MODULE_4__["getCart"])();
   var cb = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : null;
   return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("".concat(_config__WEBPACK_IMPORTED_MODULE_3__["url"], "/api/pedidos/loja").concat(_config__WEBPACK_IMPORTED_MODULE_3__["loja"]), {
+    console.log('meu carrinho', carrinho);
+    axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("".concat(_config__WEBPACK_IMPORTED_MODULE_3__["url"], "/api/pedidos?loja=").concat(_config__WEBPACK_IMPORTED_MODULE_3__["loja"]), {
       carrinho: carrinho,
       entrega: {
         custo: freteSelecionado.Valor.replace(',', '.'),
         tipo: freteSelecionado.Codigo.toString(),
-        prazo: freteSelecionado.prazoEntrega,
+        prazo: freteSelecionado.PrazoEntrega,
         endereco: {
           local: form.local,
           numero: form.numero,
@@ -4185,17 +4186,17 @@ var novoPedido = function novoPedido(form, freteSelecionado, tipoPagamentoSeleci
         valor: tipoPagamentoSelecionado === 'cartao' ? form.parcelasCartaoSelecionada.totalAmount : valorTotal,
         forma: tipoPagamentoSelecionado === 'cartao' ? 'creditCard' : 'boleto',
         parcelas: tipoPagamentoSelecionado === 'cartao' ? form.parcelasCartaoSelecionada.quantity : 1,
-        enderecoEntregaIgualCobranca: form.enderecoEntregaIgualCobranca,
+        enderecoEntregaIgualCobranca: form.dadosEntregaIgualDadosCobranca,
         endereco: {
-          local: form.enderecoEntregaIgualCobranca ? form.local : form.dadosCobranca.local,
-          numero: form.enderecoEntregaIgualCobranca ? form.numero : form.dadosCobranca.numero,
-          complemento: form.enderecoEntregaIgualCobranca ? form.complemento : form.dadosCobranca.complemento,
-          bairro: form.enderecoEntregaIgualCobranca ? form.bairro : form.dadosCobranca.bairro,
-          cidade: form.enderecoEntregaIgualCobranca ? form.cidade : form.dadosCobranca.cidade,
-          estado: form.enderecoEntregaIgualCobranca ? form.estado : form.dadosCobranca.estado,
-          CEP: form.enderecoEntregaIgualCobranca ? form.CEP : form.dadosCobranca.CEP
+          local: form.dadosEntregaIgualDadosCobranca ? form.local : form.dadosCobranca.local,
+          numero: form.dadosEntregaIgualDadosCobranca ? form.numero : form.dadosCobranca.numero,
+          complemento: form.dadosEntregaIgualDadosCobranca ? form.complemento : form.dadosCobranca.complemento,
+          bairro: form.dadosEntregaIgualDadosCobranca ? form.bairro : form.dadosCobranca.bairro,
+          cidade: form.dadosEntregaIgualDadosCobranca ? form.cidade : form.dadosCobranca.cidade,
+          estado: form.dadosEntregaIgualDadosCobranca ? form.estado : form.dadosCobranca.estado,
+          CEP: form.dadosEntregaIgualDadosCobranca ? form.CEP : form.dadosCobranca.CEP
         },
-        cartao: tipoPagamentoSelecionado === "cartao" ? {
+        cartao: tipoPagamentoSelecionado === 'cartao' ? {
           nomeCompleto: form.nomeCartao.trim(),
           codigoArea: form.telefone.slice(0, 2),
           telefone: form.telefone.slice(2).trim(),
@@ -4213,6 +4214,23 @@ var novoPedido = function novoPedido(form, freteSelecionado, tipoPagamentoSeleci
       cb(null);
     })["catch"](function (e) {
       return cb(Object(_errorHandling__WEBPACK_IMPORTED_MODULE_6__["default"])(e));
+    });
+  };
+};
+var pagarPedido = function pagarPedido(id, token, senderHash) {
+  return function (dispatch) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("".concat(_config__WEBPACK_IMPORTED_MODULE_3__["url"], "/api/pagamentos/pagar/").concat(id, "?loja=").concat(_config__WEBPACK_IMPORTED_MODULE_3__["loja"]), {
+      senderHash: senderHash
+    }, Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["getHeaders"])(token)).then(function (response) {
+      dispatch({
+        type: _types__WEBPACK_IMPORTED_MODULE_1__["PAGAR_PEDIDO"],
+        payload: response.data
+      });
+      next_router__WEBPACK_IMPORTED_MODULE_7___default.a.push('/sucesso');
+      dispatch(Object(_carrinhoActions__WEBPACK_IMPORTED_MODULE_8__["cleanCarrinho"])());
+      dispatch(cleanForm());
+    })["catch"](function (e) {
+      return console.log(e);
     });
   };
 };
@@ -4265,23 +4283,6 @@ var setForm = function setForm(payload, prefix) {
       prefix: prefix
     });
     return _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default.a.resolve();
-  };
-};
-var pagarPedido = function pagarPedido(id, token, senderHash) {
-  return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("".concat(_config__WEBPACK_IMPORTED_MODULE_3__["url"], "/api/pagamentos/pagar/").concat(id, "?loja=").concat(_config__WEBPACK_IMPORTED_MODULE_3__["loja"])), {
-      senderHash: senderHash
-    }, Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["getHeaders"])(token).then(function (response) {
-      dispatch({
-        type: _types__WEBPACK_IMPORTED_MODULE_1__["PAGAR_PEDIDO"],
-        payload: response.data
-      });
-      next_router__WEBPACK_IMPORTED_MODULE_7___default.a.push('/sucesso');
-      dispatch(Object(_carrinhoActions__WEBPACK_IMPORTED_MODULE_8__["cleanCarrinho"])());
-      dispatch(cleanForm());
-    })["catch"](function (e) {
-      return console.log(e);
-    });
   };
 };
 /* harmony default export */ __webpack_exports__["default"] = ({

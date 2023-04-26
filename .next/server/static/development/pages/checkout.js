@@ -1997,11 +1997,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/classCallCheck */ "./node_modules/@babel/runtime-corejs2/helpers/esm/classCallCheck.js");
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/createClass */ "./node_modules/@babel/runtime-corejs2/helpers/esm/createClass.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
-/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "react");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/assertThisInitialized */ "./node_modules/@babel/runtime-corejs2/helpers/esm/assertThisInitialized.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/inherits */ "./node_modules/@babel/runtime-corejs2/helpers/esm/inherits.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/possibleConstructorReturn */ "./node_modules/@babel/runtime-corejs2/helpers/esm/possibleConstructorReturn.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/getPrototypeOf */ "./node_modules/@babel/runtime-corejs2/helpers/esm/getPrototypeOf.js");
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/defineProperty */ "./node_modules/@babel/runtime-corejs2/helpers/esm/defineProperty.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../redux/actions */ "./redux/actions/index.js");
+/* harmony import */ var _utils_cart__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../../utils/cart */ "./utils/cart.js");
+/* harmony import */ var _components_Alert_Geral__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../components/Alert/Geral */ "./components/Alert/Geral.js");
+/* harmony import */ var _utils_validade__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../utils/validade */ "./utils/validade.js");
+
+
 
 
 
@@ -2009,49 +2019,235 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _jsxFileName = "D:\\javaScript\\lojavirtual\\lojavirtual\\containers\\Checkout\\CheckoutButton.js";
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_5__["default"])(this).constructor; result = _babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_4__["default"])(this, result); }; }
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = Object(_babel_runtime_corejs2_helpers_esm_getPrototypeOf__WEBPACK_IMPORTED_MODULE_6__["default"])(this).constructor; result = _babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return Object(_babel_runtime_corejs2_helpers_esm_possibleConstructorReturn__WEBPACK_IMPORTED_MODULE_5__["default"])(this, result); }; }
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default.a) return false; if (_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default.a.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(_babel_runtime_corejs2_core_js_reflect_construct__WEBPACK_IMPORTED_MODULE_0___default()(Boolean, [], function () {})); return true; } catch (e) { return false; } }
 /* modulo 42 - pagina de Checkout - criando o componente de dados  de pagamento 2/2*/
 
+
+/* modulo 49 - Botão final de checkout integrando componentes e funcionalidades*/
+
+
+
+
+
+/* modulo 49 - Botão final de checkout - finalizando componente*/
+
+
 var CheckoutButton = /*#__PURE__*/function (_Component) {
-  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__["default"])(CheckoutButton, _Component);
+  Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(CheckoutButton, _Component);
   var _super = _createSuper(CheckoutButton);
   function CheckoutButton() {
+    var _this;
     Object(_babel_runtime_corejs2_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_1__["default"])(this, CheckoutButton);
-    return _super.apply(this, arguments);
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+    _this = _super.call.apply(_super, [this].concat(args));
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "state", {
+      disabled: false,
+      aviso: null
+    });
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "toggleDisabled", function () {
+      return _this.setState({
+        disable: !_this.state.disabled
+      });
+    });
+    return _this;
   }
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(CheckoutButton, [{
+    key: "calcularValorTotal",
+    value: function calcularValorTotal(carrinho, freteSelecionado) {
+      var valorProdutos = carrinho.reduce(function (all, item) {
+        return all + Number(item.precoUnitario) * Number(item.quantidade);
+      }, 0);
+      var valorFrete = Number(freteSelecionado.Valor.replace(',', '.'));
+      return valorProdutos + valorFrete;
+    }
+  }, {
+    key: "validarFormulario",
+    value: function validarFormulario() {
+      var _this$props$form = this.props.form,
+        nome = _this$props$form.nome,
+        cpf = _this$props$form.cpf,
+        dataDeNascimento = _this$props$form.dataDeNascimento,
+        telefone = _this$props$form.telefone,
+        local = _this$props$form.local,
+        numero = _this$props$form.numero,
+        bairro = _this$props$form.bairro,
+        cidade = _this$props$form.cidade,
+        estado = _this$props$form.estado,
+        CEP = _this$props$form.CEP,
+        dadosCobranca = _this$props$form.dadosCobranca,
+        dadosEntregaIgualDadosCobranca = _this$props$form.dadosEntregaIgualDadosCobranca,
+        cpfBoleto = _this$props$form.cpfBoleto,
+        numeroCartao = _this$props$form.numeroCartao,
+        nomeCartao = _this$props$form.nomeCartao,
+        mesCartao = _this$props$form.mesCartao,
+        anoCartao = _this$props$form.anoCartao,
+        parcelasCartaoSelecionada = _this$props$form.parcelasCartaoSelecionada,
+        CVVCartao = _this$props$form.CVVCartao,
+        credit_card_token = _this$props$form.credit_card_token;
+      var tipoPagamentoSelecionado = this.props.tipoPagamentoSelecionado;
+      var erros = {};
+      var temErro = false;
+      if (!nome) {
+        erros.nome = 'Nome não informado';
+        temErro = true;
+      }
+      if (!cpf || cpf.length === 14 && !Object(_utils_validade__WEBPACK_IMPORTED_MODULE_13__["validateCPF"])(cpf)) {
+        erros.cpf = 'cpf inválido';
+        temErro = true;
+      }
+      if (!dataDeNascimento || dataDeNascimento.length !== 10) {
+        erros.dataDeNascimento = 'data de nascimento inválida';
+        temErro = true;
+      }
+      if (!telefone || telefone.length < 11) {
+        erros.telefone = 'telefone inválido';
+        temErro = true;
+      }
+      if (!local) {
+        erros.local = 'local inválido';
+        temErro = true;
+      }
+      if (!numero) {
+        erros.numero = 'número inválido';
+        temErro = true;
+      }
+      if (!bairro) {
+        erros.bairro = 'bairro inválido';
+        temErro = true;
+      }
+      if (!cidade) {
+        erros.cidade = 'cidade inválida';
+        temErro = true;
+      }
+      if (!estado) {
+        erros.estado = 'estado inválido';
+        temErro = true;
+      }
+      if (!CEP || CEP.length !== 9) {
+        erros.CEP = 'cep inválido';
+        temErro = true;
+      }
+      if (!dadosEntregaIgualDadosCobranca) {
+        if (!dadosCobranca.local) temErro = true;
+        if (!dadosCobranca.numero) temErro = true;
+        if (!dadosCobranca.bairro) temErro = true;
+        if (!dadosCobranca.cidade) temErro = true;
+        if (!dadosCobranca.estado) temErro = true;
+        if (!dadosCobranca.CEP || !dadosCobranca.CEP.length == 9) temErro = true;
+      }
+      if (tipoPagamentoSelecionado === 'boleto') {
+        if (!cpfBoleto && !cpf) temErro = true;
+        if (cpfBoleto && cpfBoleto.length !== 14 && !Object(_utils_validade__WEBPACK_IMPORTED_MODULE_13__["validateCPF"])(cpfBoleto)) temErro = true;
+      } else {
+        if (!numeroCartao || numeroCartao.length !== 19) temErro = true;
+        if (!nomeCartao) temErro = true;
+        if (!mesCartao || mesCartao.length !== 2) temErro = true;
+        if (!anoCartao || anoCartao.length !== 4) temErro = true;
+        if (!CVVCartao || CVVCartao.length !== 3) temErro = true;
+        if (!parcelasCartaoSelecionada) temErro = true;
+        if (!credit_card_token) temErro = true;
+      }
+
+      // console.log('erros:' , erros)
+
+      return !temErro;
+    }
+  }, {
+    key: "validate",
+    value: function validate() {
+      var _this$props = this.props,
+        freteSelecionado = _this$props.freteSelecionado,
+        tipoPagamentoSelecionado = _this$props.tipoPagamentoSelecionado;
+      var validarFormulario = this.validarFormulario();
+      return validarFormulario && freteSelecionado && tipoPagamentoSelecionado;
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit() {
+      var _this2 = this;
+      var _this$props2 = this.props,
+        form = _this$props2.form,
+        freteSelecionado = _this$props2.freteSelecionado,
+        token = _this$props2.token,
+        senderHash = _this$props2.senderHash,
+        tipoPagamentoSelecionado = _this$props2.tipoPagamentoSelecionado;
+      var carrinho = Object(_utils_cart__WEBPACK_IMPORTED_MODULE_11__["getCart"])();
+      var valorTotal = this.calcularValorTotal(carrinho, freteSelecionado);
+      if (!this.validate()) return null;
+      this.toggleDisabled();
+      this.props.novoPedido(form, freteSelecionado, tipoPagamentoSelecionado, valorTotal, token, senderHash, carrinho, function (error) {
+        console.log('pedido finalizado');
+        if (error) {
+          _this2.setState({
+            aviso: {
+              status: false,
+              message: error.message
+            }
+          });
+        }
+        _this2.toggleDisabled();
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+      var _this3 = this;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "flex flex-right",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 10,
+          lineNumber: 147,
           columnNumber: 4
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("button", {
-        className: "btn btn-cta btn-success",
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Alert_Geral__WEBPACK_IMPORTED_MODULE_12__["default"], {
+        aviso: this.state.aviso,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 11,
+          lineNumber: 148,
           columnNumber: 5
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("button", {
+        className: "btn btn-cta btn-success",
+        disable: this.state.disabled,
+        onClick: function onClick() {
+          return _this3.handleSubmit();
+        },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 12,
+          lineNumber: 149,
+          columnNumber: 5
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("span", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 150,
           columnNumber: 6
         }
-      }, "CONCLUIR PEDIDO")));
+      }, this.state.disabled ? 'ENVIANDO...' : 'CONCLUIR PEDIDO')));
     }
   }]);
   return CheckoutButton;
-}(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
-/* harmony default export */ __webpack_exports__["default"] = (CheckoutButton);
+}(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    carrinho: state.carrinho.carrinho,
+    usuario: state.auth.usuario,
+    cliente: state.cliente.cliente,
+    freteSelecionado: state.carrinho.freteSelecionado,
+    form: state.checkout.form,
+    token: state.auth.token,
+    senderHash: state.checkout.senderHash,
+    tipoPagamentoSelecionado: state.checkout.tipoPagamentoSelecionado
+  };
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_9__["connect"])(mapStateToProps, _redux_actions__WEBPACK_IMPORTED_MODULE_10__["default"])(CheckoutButton));
 
 /***/ }),
 
@@ -6455,17 +6651,17 @@ var fetchProdutosCategoria = function fetchProdutosCategoria(id) {
 /*!******************************************!*\
   !*** ./redux/actions/checkoutActions.js ***!
   \******************************************/
-/*! exports provided: novoPedido, cleanForm, setTipoPagamento, getSessionPagamento, setForm, pagarPedido, default */
+/*! exports provided: novoPedido, pagarPedido, cleanForm, setTipoPagamento, getSessionPagamento, setForm, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "novoPedido", function() { return novoPedido; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pagarPedido", function() { return pagarPedido; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cleanForm", function() { return cleanForm; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setTipoPagamento", function() { return setTipoPagamento; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getSessionPagamento", function() { return getSessionPagamento; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "setForm", function() { return setForm; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "pagarPedido", function() { return pagarPedido; });
 /* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/core-js/promise */ "./node_modules/@babel/runtime-corejs2/core-js/promise.js");
 /* harmony import */ var _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../types */ "./redux/types.js");
@@ -6498,12 +6694,13 @@ var novoPedido = function novoPedido(form, freteSelecionado, tipoPagamentoSeleci
   var carrinho = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : Object(_utils_cart__WEBPACK_IMPORTED_MODULE_4__["getCart"])();
   var cb = arguments.length > 7 && arguments[7] !== undefined ? arguments[7] : null;
   return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("".concat(_config__WEBPACK_IMPORTED_MODULE_3__["url"], "/api/pedidos/loja").concat(_config__WEBPACK_IMPORTED_MODULE_3__["loja"]), {
+    console.log('meu carrinho', carrinho);
+    axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("".concat(_config__WEBPACK_IMPORTED_MODULE_3__["url"], "/api/pedidos?loja=").concat(_config__WEBPACK_IMPORTED_MODULE_3__["loja"]), {
       carrinho: carrinho,
       entrega: {
         custo: freteSelecionado.Valor.replace(',', '.'),
         tipo: freteSelecionado.Codigo.toString(),
-        prazo: freteSelecionado.prazoEntrega,
+        prazo: freteSelecionado.PrazoEntrega,
         endereco: {
           local: form.local,
           numero: form.numero,
@@ -6518,17 +6715,17 @@ var novoPedido = function novoPedido(form, freteSelecionado, tipoPagamentoSeleci
         valor: tipoPagamentoSelecionado === 'cartao' ? form.parcelasCartaoSelecionada.totalAmount : valorTotal,
         forma: tipoPagamentoSelecionado === 'cartao' ? 'creditCard' : 'boleto',
         parcelas: tipoPagamentoSelecionado === 'cartao' ? form.parcelasCartaoSelecionada.quantity : 1,
-        enderecoEntregaIgualCobranca: form.enderecoEntregaIgualCobranca,
+        enderecoEntregaIgualCobranca: form.dadosEntregaIgualDadosCobranca,
         endereco: {
-          local: form.enderecoEntregaIgualCobranca ? form.local : form.dadosCobranca.local,
-          numero: form.enderecoEntregaIgualCobranca ? form.numero : form.dadosCobranca.numero,
-          complemento: form.enderecoEntregaIgualCobranca ? form.complemento : form.dadosCobranca.complemento,
-          bairro: form.enderecoEntregaIgualCobranca ? form.bairro : form.dadosCobranca.bairro,
-          cidade: form.enderecoEntregaIgualCobranca ? form.cidade : form.dadosCobranca.cidade,
-          estado: form.enderecoEntregaIgualCobranca ? form.estado : form.dadosCobranca.estado,
-          CEP: form.enderecoEntregaIgualCobranca ? form.CEP : form.dadosCobranca.CEP
+          local: form.dadosEntregaIgualDadosCobranca ? form.local : form.dadosCobranca.local,
+          numero: form.dadosEntregaIgualDadosCobranca ? form.numero : form.dadosCobranca.numero,
+          complemento: form.dadosEntregaIgualDadosCobranca ? form.complemento : form.dadosCobranca.complemento,
+          bairro: form.dadosEntregaIgualDadosCobranca ? form.bairro : form.dadosCobranca.bairro,
+          cidade: form.dadosEntregaIgualDadosCobranca ? form.cidade : form.dadosCobranca.cidade,
+          estado: form.dadosEntregaIgualDadosCobranca ? form.estado : form.dadosCobranca.estado,
+          CEP: form.dadosEntregaIgualDadosCobranca ? form.CEP : form.dadosCobranca.CEP
         },
-        cartao: tipoPagamentoSelecionado === "cartao" ? {
+        cartao: tipoPagamentoSelecionado === 'cartao' ? {
           nomeCompleto: form.nomeCartao.trim(),
           codigoArea: form.telefone.slice(0, 2),
           telefone: form.telefone.slice(2).trim(),
@@ -6546,6 +6743,23 @@ var novoPedido = function novoPedido(form, freteSelecionado, tipoPagamentoSeleci
       cb(null);
     })["catch"](function (e) {
       return cb(Object(_errorHandling__WEBPACK_IMPORTED_MODULE_6__["default"])(e));
+    });
+  };
+};
+var pagarPedido = function pagarPedido(id, token, senderHash) {
+  return function (dispatch) {
+    axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("".concat(_config__WEBPACK_IMPORTED_MODULE_3__["url"], "/api/pagamentos/pagar/").concat(id, "?loja=").concat(_config__WEBPACK_IMPORTED_MODULE_3__["loja"]), {
+      senderHash: senderHash
+    }, Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["getHeaders"])(token)).then(function (response) {
+      dispatch({
+        type: _types__WEBPACK_IMPORTED_MODULE_1__["PAGAR_PEDIDO"],
+        payload: response.data
+      });
+      next_router__WEBPACK_IMPORTED_MODULE_7___default.a.push('/sucesso');
+      dispatch(Object(_carrinhoActions__WEBPACK_IMPORTED_MODULE_8__["cleanCarrinho"])());
+      dispatch(cleanForm());
+    })["catch"](function (e) {
+      return console.log(e);
     });
   };
 };
@@ -6598,23 +6812,6 @@ var setForm = function setForm(payload, prefix) {
       prefix: prefix
     });
     return _babel_runtime_corejs2_core_js_promise__WEBPACK_IMPORTED_MODULE_0___default.a.resolve();
-  };
-};
-var pagarPedido = function pagarPedido(id, token, senderHash) {
-  return function (dispatch) {
-    axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("".concat(_config__WEBPACK_IMPORTED_MODULE_3__["url"], "/api/pagamentos/pagar/").concat(id, "?loja=").concat(_config__WEBPACK_IMPORTED_MODULE_3__["loja"])), {
-      senderHash: senderHash
-    }, Object(_helpers__WEBPACK_IMPORTED_MODULE_5__["getHeaders"])(token).then(function (response) {
-      dispatch({
-        type: _types__WEBPACK_IMPORTED_MODULE_1__["PAGAR_PEDIDO"],
-        payload: response.data
-      });
-      next_router__WEBPACK_IMPORTED_MODULE_7___default.a.push('/sucesso');
-      dispatch(Object(_carrinhoActions__WEBPACK_IMPORTED_MODULE_8__["cleanCarrinho"])());
-      dispatch(cleanForm());
-    })["catch"](function (e) {
-      return console.log(e);
-    });
   };
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
