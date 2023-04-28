@@ -2390,6 +2390,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_12__);
 /* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../redux/actions */ "./redux/actions/index.js");
 /* harmony import */ var _utils_format__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../../utils/format */ "./utils/format.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! axios */ "axios");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_15___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_15__);
 
 
 
@@ -2415,6 +2417,12 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_b
 
 
 /* Modulo 49 - colocando validação  nos campos e finalizando o componente */
+
+/*modulo 49 -  extra -  adicionando função para preenchimento
+
+automático dos dados de endereço a partir do cep.
+*/
+
 var DadosClienteContainer = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_5__["default"])(DadosClienteContainer, _Component);
   var _super = _createSuper(DadosClienteContainer);
@@ -2433,6 +2441,25 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "onChange", function (field, value, prefix) {
       return _this.props.setForm(Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])({}, field, value), prefix).then(function () {
         return _this.validate();
+      });
+    });
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "onChangeCEP", function (field, value, prefix) {
+      _this.props.setForm(Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])({}, field, value), prefix).then(function () {
+        _this.validate();
+        if (value.length === 9) {
+          axios__WEBPACK_IMPORTED_MODULE_15___default.a.get("https://viacep.com.br/ws/".concat(value.replace('-', ''), "/json")).then(function (response) {
+            _this.props.setForm({
+              "local": response.data["logradouro"],
+              "bairro": response.data["bairro"],
+              "cidade": response.data["localidade"],
+              "estado": response.data["uf"]
+            }, prefix).then(function () {
+              return _this.validate();
+            });
+          })["catch"](function (e) {
+            return console.log(e);
+          });
+        }
       });
     });
     return _this;
@@ -2486,7 +2513,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
       var erros = {
         dadosCobranca: {}
       };
-      if (!local) erros.local = "Preenchar aqui com o seu endereço";
+      if (!local) erros.local = 'Preenchar aqui com o seu endereço';
       if (!numero) erros.numero = 'Preenchar aqui com o seu número';
       if (!bairro) erros.bairro = 'Preenchar aqui com o seu bairro';
       if (!cidade) erros.cidade = 'Preenchar aqui com o a sua cidade';
@@ -2534,21 +2561,21 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 117,
+          lineNumber: 128,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 118,
+          lineNumber: 129,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 119,
+          lineNumber: 130,
           columnNumber: 6
         }
       }, "DADOS DE ENTREGA ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2556,7 +2583,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 122,
+          lineNumber: 133,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2566,12 +2593,12 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         placeholder: "12345-789",
         label: "CEP",
         onChange: function onChange(e) {
-          return _this2.onChange('CEP', Object(_utils_format__WEBPACK_IMPORTED_MODULE_14__["formatCEP"])(e.target.value));
+          return _this2.onChangeCEP('CEP', Object(_utils_format__WEBPACK_IMPORTED_MODULE_14__["formatCEP"])(e.target.value));
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 123,
+          lineNumber: 134,
           columnNumber: 6
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2579,7 +2606,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 127,
+          lineNumber: 137,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2587,7 +2614,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 128,
+          lineNumber: 138,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2602,7 +2629,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 129,
+          lineNumber: 139,
           columnNumber: 7
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2610,7 +2637,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 139,
+          lineNumber: 149,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2625,7 +2652,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 140,
+          lineNumber: 150,
           columnNumber: 7
         }
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2633,7 +2660,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 145,
+          lineNumber: 161,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2641,7 +2668,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 146,
+          lineNumber: 162,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2656,7 +2683,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 147,
+          lineNumber: 163,
           columnNumber: 7
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2664,7 +2691,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 157,
+          lineNumber: 173,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2679,7 +2706,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 158,
+          lineNumber: 174,
           columnNumber: 7
         }
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2687,7 +2714,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 169,
+          lineNumber: 185,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2695,7 +2722,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 170,
+          lineNumber: 186,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2710,7 +2737,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 171,
+          lineNumber: 187,
           columnNumber: 7
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2718,14 +2745,14 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 181,
+          lineNumber: 197,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 182,
+          lineNumber: 198,
           columnNumber: 7
         }
       }, "Estado"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("select", {
@@ -2736,14 +2763,14 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 183,
+          lineNumber: 199,
           columnNumber: 7
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("option", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 184,
+          lineNumber: 200,
           columnNumber: 8
         }
       }, "Selecione..."), _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_1___default()(_utils__WEBPACK_IMPORTED_MODULE_11__["ESTADOS"]).map(function (abbr) {
@@ -2753,7 +2780,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
           __self: _this2,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 186,
+            lineNumber: 202,
             columnNumber: 9
           }
         }, _utils__WEBPACK_IMPORTED_MODULE_11__["ESTADOS"][abbr]);
@@ -2762,21 +2789,21 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 192,
-          columnNumber: 25
+          lineNumber: 207,
+          columnNumber: 24
         }
       }, erros.estado))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 197,
+          lineNumber: 211,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 198,
+          lineNumber: 212,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("input", {
@@ -2790,14 +2817,14 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 199,
+          lineNumber: 213,
           columnNumber: 6
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 204,
+          lineNumber: 218,
           columnNumber: 6
         }
       }, "\xA0Os dados de entrega s\xE3o iguais aos dados de cobran\xE7a")));
@@ -2821,21 +2848,21 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 220,
+          lineNumber: 232,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 221,
+          lineNumber: 233,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 222,
+          lineNumber: 234,
           columnNumber: 6
         }
       }, "DADOS DE COBRAN\xC7A ")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2843,7 +2870,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 225,
+          lineNumber: 237,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2853,12 +2880,12 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         placeholder: "12345-789",
         label: "CEP",
         onChange: function onChange(e) {
-          return _this3.onChange('CEP', Object(_utils_format__WEBPACK_IMPORTED_MODULE_14__["formatCEP"])(e.target.value), 'dadosCobranca');
+          return _this3.onChangeCEP('CEP', Object(_utils_format__WEBPACK_IMPORTED_MODULE_14__["formatCEP"])(e.target.value), 'dadosCobranca');
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 226,
+          lineNumber: 238,
           columnNumber: 6
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2866,7 +2893,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 236,
+          lineNumber: 248,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2874,7 +2901,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 237,
+          lineNumber: 249,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2889,7 +2916,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 238,
+          lineNumber: 250,
           columnNumber: 7
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2897,7 +2924,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 248,
+          lineNumber: 260,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2912,7 +2939,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 249,
+          lineNumber: 261,
           columnNumber: 7
         }
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2920,7 +2947,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 260,
+          lineNumber: 272,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2928,7 +2955,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 261,
+          lineNumber: 273,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2943,7 +2970,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 262,
+          lineNumber: 274,
           columnNumber: 7
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2951,7 +2978,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 272,
+          lineNumber: 284,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2966,7 +2993,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 273,
+          lineNumber: 285,
           columnNumber: 7
         }
       }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2974,7 +3001,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 284,
+          lineNumber: 296,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -2982,7 +3009,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 285,
+          lineNumber: 297,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -2997,7 +3024,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 286,
+          lineNumber: 298,
           columnNumber: 7
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("div", {
@@ -3005,14 +3032,14 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 296,
+          lineNumber: 308,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("label", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 297,
+          lineNumber: 309,
           columnNumber: 7
         }
       }, "Estado"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("select", {
@@ -3023,14 +3050,14 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 298,
+          lineNumber: 310,
           columnNumber: 7
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement("option", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 299,
+          lineNumber: 311,
           columnNumber: 8
         }
       }, "Selecione..."), _babel_runtime_corejs2_core_js_object_keys__WEBPACK_IMPORTED_MODULE_1___default()(_utils__WEBPACK_IMPORTED_MODULE_11__["ESTADOS"]).map(function (abbr) {
@@ -3040,7 +3067,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
           __self: _this3,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 301,
+            lineNumber: 313,
             columnNumber: 9
           }
         }, _utils__WEBPACK_IMPORTED_MODULE_11__["ESTADOS"][abbr]);
@@ -3049,7 +3076,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 306,
+          lineNumber: 318,
           columnNumber: 38
         }
       }, erros.dadosCobranca.estado))));
@@ -3097,7 +3124,7 @@ var DadosClienteContainer = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 350,
+          lineNumber: 362,
           columnNumber: 4
         }
       }, this.renderDadosDeEntrega(), !dadosEntregaIgualDadosCobranca && this.renderDadosDeCobranca());
@@ -6739,14 +6766,14 @@ var novoPedido = function novoPedido(form, freteSelecionado, tipoPagamentoSeleci
         type: _types__WEBPACK_IMPORTED_MODULE_1__["NOVO_PEDIDO"],
         payload: response.data
       });
-      dispatch(pagarPedido(response.data.pedido.pagamento._id, token, senderHash));
-      cb(null);
+      dispatch(pagarPedido(response.data.pedido.pagamento._id, token, senderHash, cb));
     })["catch"](function (e) {
       return cb(Object(_errorHandling__WEBPACK_IMPORTED_MODULE_6__["default"])(e));
     });
   };
 };
 var pagarPedido = function pagarPedido(id, token, senderHash) {
+  var cb = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("".concat(_config__WEBPACK_IMPORTED_MODULE_3__["url"], "/api/pagamentos/pagar/").concat(id, "?loja=").concat(_config__WEBPACK_IMPORTED_MODULE_3__["loja"]), {
       senderHash: senderHash
@@ -6755,11 +6782,13 @@ var pagarPedido = function pagarPedido(id, token, senderHash) {
         type: _types__WEBPACK_IMPORTED_MODULE_1__["PAGAR_PEDIDO"],
         payload: response.data
       });
+      cb(null);
       next_router__WEBPACK_IMPORTED_MODULE_7___default.a.push('/sucesso');
       dispatch(Object(_carrinhoActions__WEBPACK_IMPORTED_MODULE_8__["cleanCarrinho"])());
-      dispatch(cleanForm());
+
+      //dispatch(cleanForm());
     })["catch"](function (e) {
-      return console.log(e);
+      return Object(_errorHandling__WEBPACK_IMPORTED_MODULE_6__["default"])(e);
     });
   };
 };

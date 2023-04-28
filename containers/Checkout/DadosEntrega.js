@@ -14,13 +14,16 @@ import { formatNumber, formatCEP } from '../../utils/format';
 
 /* Modulo 49 - colocando validação  nos campos e finalizando o componente */
 
+/*modulo 49 -  extra -  adicionando função para preenchimento
+
+automático dos dados de endereço a partir do cep.
+*/
+import axios from 'axios';
+
 class DadosClienteContainer extends Component {
-
-
 	state = {
-
-		erros: { dadosCobranca: {} }
-	}
+		erros: { dadosCobranca: {} },
+	};
 
 	componentDidMount() {
 		this.fetchCliente();
@@ -55,21 +58,11 @@ class DadosClienteContainer extends Component {
 	}
 
 	validate() {
-
-		const {
-			dadosEntregaIgualDadosCobranca,
-			local,
-			numero,
-			bairro,
-			cidade,
-			estado,
-			CEP,
-			dadosCobranca
-		} = this.props.form;
+		const { dadosEntregaIgualDadosCobranca, local, numero, bairro, cidade, estado, CEP, dadosCobranca } = this.props.form;
 
 		const erros = { dadosCobranca: {} };
 
-		if (!local) erros.local = "Preenchar aqui com o seu endereço"
+		if (!local) erros.local = 'Preenchar aqui com o seu endereço';
 		if (!numero) erros.numero = 'Preenchar aqui com o seu número';
 		if (!bairro) erros.bairro = 'Preenchar aqui com o seu bairro';
 		if (!cidade) erros.cidade = 'Preenchar aqui com o a sua cidade';
@@ -77,25 +70,45 @@ class DadosClienteContainer extends Component {
 		if (!CEP || !CEP.length == 9) erros.CEP = 'Digite aqui o seu CEP';
 
 		if (!dadosEntregaIgualDadosCobranca) {
-
-
-				if (!dadosCobranca.local) erros.dadosCobranca.local = 'Preenchar aqui com o seu endereço';
-				if (!dadosCobranca.numero) erros.dadosCobranca.numero = 'Preenchar aqui com o seu número';
-				if (!dadosCobranca.bairro) erros.dadosCobranca.bairro = 'Preenchar aqui com o seu bairro';
-				if (!dadosCobranca.cidade) erros.dadosCobranca.cidade = 'Preenchar aqui com o a sua cidade';
-				if (!dadosCobranca.estado) erros.dadosCobranca.estado = 'Selecione o seu estado';
-				if (!dadosCobranca.CEP || !dadosCobranca.CEP.length == 9) erros.dadosCobranca.CEP = 'Digite aqui o seu CEP';
-
-
-
+			if (!dadosCobranca.local) erros.dadosCobranca.local = 'Preenchar aqui com o seu endereço';
+			if (!dadosCobranca.numero) erros.dadosCobranca.numero = 'Preenchar aqui com o seu número';
+			if (!dadosCobranca.bairro) erros.dadosCobranca.bairro = 'Preenchar aqui com o seu bairro';
+			if (!dadosCobranca.cidade) erros.dadosCobranca.cidade = 'Preenchar aqui com o a sua cidade';
+			if (!dadosCobranca.estado) erros.dadosCobranca.estado = 'Selecione o seu estado';
+			if (!dadosCobranca.CEP || !dadosCobranca.CEP.length == 9) erros.dadosCobranca.CEP = 'Digite aqui o seu CEP';
 		}
 
 		this.setState({ erros });
 
-		return (Object.keys(erros).length === 1 & Object.keys(erros.dadosCobranca).length === 0);
-	};
-	
+		return (Object.keys(erros).length === 1) & (Object.keys(erros.dadosCobranca).length === 0);
+	}
+
 	onChange = (field, value, prefix) => this.props.setForm({ [field]: value }, prefix).then(() => this.validate());
+
+	onChangeCEP = (field, value, prefix) => {
+		
+		this.props.setForm({ [field]: value }, prefix).then(() => {
+			
+			this.validate();
+			if (value.length === 9) {
+				
+				axios.get(`https://viacep.com.br/ws/${value.replace('-', '')}/json`)
+					.then((response) => {
+						
+						this.props.setForm({
+
+							"local": response.data["logradouro"],
+							"bairro": response.data["bairro"],
+							"cidade": response.data["localidade"],
+							"estado": response.data["uf"]
+						}, prefix).then( ()=> this.validate())
+					})
+				.catch(e => console.log(e))
+			}
+		});
+
+
+	}
 
 	/*
 	onChangeCobranca = (field, e) => {
@@ -106,11 +119,9 @@ class DadosClienteContainer extends Component {
 	*/
 
 	renderDadosDeEntrega() {
-
 		if (!this.props.form) return null;
-		const { dadosEntregaIgualDadosCobranca, local,
-			numero, bairro, complemento, cidade, estado, CEP } = this.props.form;
-		
+		const { dadosEntregaIgualDadosCobranca, local, numero, bairro, complemento, cidade, estado, CEP } = this.props.form;
+
 		const { erros } = this.state;
 
 		return (
@@ -120,8 +131,7 @@ class DadosClienteContainer extends Component {
 				</div>
 
 				<div className='flex-1'>
-					<FormSimples value={CEP} erro={erros.CEP} name='CEP' placeholder='12345-789' label='CEP'
-						onChange={(e) => this.onChange('CEP', formatCEP(e.target.value))} />
+					<FormSimples value={CEP} erro={erros.CEP} name='CEP' placeholder='12345-789' label='CEP' onChange={(e) => this.onChangeCEP('CEP', formatCEP(e.target.value))} />
 				</div>
 
 				<div className='flex-1 flex horizontal'>
@@ -137,8 +147,14 @@ class DadosClienteContainer extends Component {
 					</div>
 
 					<div className='flex-1 flex'>
-						<FormSimples value={numero} name='numero' erro={erros.numero} placeholder='999' label='Número'
-							onChange={(e) => this.onChange('numero', formatNumber(e.target.value))} />
+						<FormSimples
+							value={numero}
+							name='numero'
+							erro={erros.numero}
+							placeholder='999'
+							label='Número'
+							onChange={(e) => this.onChange('numero', formatNumber(e.target.value))}
+						/>
 					</div>
 				</div>
 
@@ -188,9 +204,7 @@ class DadosClienteContainer extends Component {
 								</option>
 							))}
 						</select>
-						{
-							erros.estado && (<smal className="erro">{erros.estado}</smal>)
-						}
+						{erros.estado && <smal className='erro'>{erros.estado}</smal>}
 					</div>
 				</div>
 
@@ -208,12 +222,10 @@ class DadosClienteContainer extends Component {
 	}
 
 	renderDadosDeCobranca() {
-
 		if (!this.props.form || !this.props.form.dadosCobranca) return null;
-		
-		const { local, numero, bairro, complemento,
-			cidade, estado, CEP } = this.props.form.dadosCobranca;
-		
+
+		const { local, numero, bairro, complemento, cidade, estado, CEP } = this.props.form.dadosCobranca;
+
 		const { erros } = this.state;
 
 		return (
@@ -229,7 +241,7 @@ class DadosClienteContainer extends Component {
 						name='CEP'
 						placeholder='12345-789'
 						label='CEP'
-						onChange={(e) => this.onChange('CEP', formatCEP(e.target.value), 'dadosCobranca')}
+						onChange={(e) => this.onChangeCEP('CEP', formatCEP(e.target.value), 'dadosCobranca')}
 					/>
 				</div>
 
@@ -261,7 +273,7 @@ class DadosClienteContainer extends Component {
 					<div className='flex-1 flex'>
 						<FormSimples
 							value={bairro}
-							erro ={erros.dadosCobranca.bairro}
+							erro={erros.dadosCobranca.bairro}
 							name='bairro'
 							placeholder='Bairro'
 							label='Bairro'
@@ -309,7 +321,7 @@ class DadosClienteContainer extends Component {
 			</div>
 		);
 	}
-     
+
 	/*
 	renderDadosUsuario() {
 		const { nome, CPF, dataDeNascimento, telefone } = this.state;

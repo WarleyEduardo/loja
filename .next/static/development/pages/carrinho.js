@@ -19790,14 +19790,14 @@ var novoPedido = function novoPedido(form, freteSelecionado, tipoPagamentoSeleci
         type: _types__WEBPACK_IMPORTED_MODULE_1__["NOVO_PEDIDO"],
         payload: response.data
       });
-      dispatch(pagarPedido(response.data.pedido.pagamento._id, token, senderHash));
-      cb(null);
+      dispatch(pagarPedido(response.data.pedido.pagamento._id, token, senderHash, cb));
     })["catch"](function (e) {
       return cb(Object(_errorHandling__WEBPACK_IMPORTED_MODULE_6__["default"])(e));
     });
   };
 };
 var pagarPedido = function pagarPedido(id, token, senderHash) {
+  var cb = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_2___default.a.post("".concat(_config__WEBPACK_IMPORTED_MODULE_3__["url"], "/api/pagamentos/pagar/").concat(id, "?loja=").concat(_config__WEBPACK_IMPORTED_MODULE_3__["loja"]), {
       senderHash: senderHash
@@ -19806,11 +19806,13 @@ var pagarPedido = function pagarPedido(id, token, senderHash) {
         type: _types__WEBPACK_IMPORTED_MODULE_1__["PAGAR_PEDIDO"],
         payload: response.data
       });
+      cb(null);
       next_router__WEBPACK_IMPORTED_MODULE_7___default.a.push('/sucesso');
       dispatch(Object(_carrinhoActions__WEBPACK_IMPORTED_MODULE_8__["cleanCarrinho"])());
-      dispatch(cleanForm());
+
+      //dispatch(cleanForm());
     })["catch"](function (e) {
-      return console.log(e);
+      return Object(_errorHandling__WEBPACK_IMPORTED_MODULE_6__["default"])(e);
     });
   };
 };

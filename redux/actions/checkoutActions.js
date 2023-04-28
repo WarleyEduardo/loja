@@ -74,8 +74,7 @@ export const novoPedido = (form, freteSelecionado, tipoPagamentoSelecionado,
 		)
 		.then((response) => {
 			dispatch({ type: NOVO_PEDIDO, payload: response.data });
-			dispatch(pagarPedido(response.data.pedido.pagamento._id, token, senderHash));
-			cb(null);
+			dispatch(pagarPedido(response.data.pedido.pagamento._id, token, senderHash , cb));
 		})
 		.catch((e) => cb(errorHandling(e)));
 
@@ -84,7 +83,7 @@ export const novoPedido = (form, freteSelecionado, tipoPagamentoSelecionado,
 
 
 
-export const pagarPedido = (id, token, senderHash) => (dispatch) => {
+export const pagarPedido = (id, token, senderHash , cb = null) => (dispatch) => {
 	axios.post(`${url}/api/pagamentos/pagar/${id}?loja=${loja}`,
 		{
 			senderHash,
@@ -92,12 +91,14 @@ export const pagarPedido = (id, token, senderHash) => (dispatch) => {
 		getHeaders(token)
 	   )
 		.then((response) => {
-				dispatch({ type: PAGAR_PEDIDO, payload: response.data });
-				Router.push('/sucesso');
-				dispatch(cleanCarrinho());
-				dispatch(cleanForm());
+			dispatch({ type: PAGAR_PEDIDO, payload: response.data });
+			cb(null);
+			Router.push('/sucesso');
+			dispatch(cleanCarrinho());
+			
+				//dispatch(cleanForm());
 			})
-			.catch((e) => console.log(e));
+	.catch((e) => errorHandling(e));
 };
 
 export const cleanForm = () => ({ type: CLEAN_FORM })
