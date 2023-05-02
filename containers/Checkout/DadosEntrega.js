@@ -131,13 +131,20 @@ class DadosClienteContainer extends Component {
 				</div>
 
 				<div className='flex-1'>
-					<FormSimples value={CEP} erro={erros.CEP} name='CEP' placeholder='12345-789' label='CEP' onChange={(e) => this.onChangeCEP('CEP', formatCEP(e.target.value))} />
+					<FormSimples
+						value={CEP || ''}
+						erro={erros.CEP}
+						name='CEP'
+						placeholder='12345-789'
+						label='CEP'
+						onChange={(e) => this.onChangeCEP('CEP', formatCEP(e.target.value))}
+					/>
 				</div>
 
 				<div className='flex-1 flex horizontal'>
 					<div className='flex-1 flex'>
 						<FormSimples
-							value={local}
+							value={local || ''}
 							erro={erros.local}
 							name='local'
 							placeholder='Rua , Avenida'
@@ -148,7 +155,7 @@ class DadosClienteContainer extends Component {
 
 					<div className='flex-1 flex'>
 						<FormSimples
-							value={numero}
+							value={numero || ''}
 							name='numero'
 							erro={erros.numero}
 							placeholder='999'
@@ -161,7 +168,7 @@ class DadosClienteContainer extends Component {
 				<div className='flex-1 flex horizontal'>
 					<div className='flex-1 flex'>
 						<FormSimples
-							value={bairro}
+							value={bairro || ''}
 							erro={erros.bairro}
 							name='bairro'
 							placeholder='Bairro'
@@ -172,7 +179,7 @@ class DadosClienteContainer extends Component {
 
 					<div className='flex-1 flex'>
 						<FormSimples
-							value={complemento}
+							value={complemento || ''}
 							erro={erros.complemento}
 							name='complemento'
 							placeholder='Complemento'
@@ -185,7 +192,7 @@ class DadosClienteContainer extends Component {
 				<div className='flex-1 flex horizontal'>
 					<div className='flex-1 flex'>
 						<FormSimples
-							value={cidade}
+							value={cidade || ''}
 							erro={erros.cidade}
 							name='cidade'
 							placeholder='Cidade'
@@ -196,7 +203,7 @@ class DadosClienteContainer extends Component {
 
 					<div className='flex-1 flex vertical form-input'>
 						<label>Estado</label>
-						<select value={estado} onChange={(e) => this.onChange('estado', e.target.value)}>
+						<select value={estado || ''} onChange={(e) => this.onChange('estado', e.target.value)}>
 							<option>Selecione...</option>
 							{Object.keys(ESTADOS).map((abbr) => (
 								<option key={abbr} value={abbr}>
@@ -211,7 +218,7 @@ class DadosClienteContainer extends Component {
 				<br />
 				<div>
 					<input
-						checked={dadosEntregaIgualDadosCobranca}
+						checked={dadosEntregaIgualDadosCobranca || true}
 						type='checkbox'
 						onChange={() => this.props.setForm({ dadosEntregaIgualDadosCobranca: !dadosEntregaIgualDadosCobranca })}
 					/>
@@ -236,7 +243,7 @@ class DadosClienteContainer extends Component {
 
 				<div className='flex-1'>
 					<FormSimples
-						value={CEP}
+						value={CEP || ''}
 						erro={erros.dadosCobranca.CEP}
 						name='CEP'
 						placeholder='12345-789'
@@ -248,7 +255,7 @@ class DadosClienteContainer extends Component {
 				<div className='flex-1 flex horizontal'>
 					<div className='flex-1 flex'>
 						<FormSimples
-							value={local}
+							value={local || ''}
 							erro={erros.dadosCobranca.local}
 							name='local'
 							placeholder='Rua , Avenida'
@@ -259,7 +266,7 @@ class DadosClienteContainer extends Component {
 
 					<div className='flex-1 flex'>
 						<FormSimples
-							value={numero}
+							value={numero || ''}
 							erro={erros.dadosCobranca.numero}
 							name='numero'
 							placeholder='999'
@@ -272,7 +279,7 @@ class DadosClienteContainer extends Component {
 				<div className='flex-1 flex horizontal'>
 					<div className='flex-1 flex'>
 						<FormSimples
-							value={bairro}
+							value={bairro || ''}
 							erro={erros.dadosCobranca.bairro}
 							name='bairro'
 							placeholder='Bairro'
@@ -283,7 +290,7 @@ class DadosClienteContainer extends Component {
 
 					<div className='flex-1 flex'>
 						<FormSimples
-							value={complemento}
+							value={complemento || ''}
 							erro={erros.dadosCobranca.complemento}
 							name='complemento'
 							placeholder='Complemento'
@@ -296,7 +303,7 @@ class DadosClienteContainer extends Component {
 				<div className='flex-1 flex horizontal'>
 					<div className='flex-1 flex'>
 						<FormSimples
-							value={cidade}
+							value={cidade || ''}
 							erro={erros.dadosCobranca.cidade}
 							name='cidade'
 							placeholder='Cidade'

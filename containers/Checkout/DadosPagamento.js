@@ -115,12 +115,16 @@ class DadosPagamento extends Component {
 
 		const { bandeira_cartao } = this.props.form;
 
+		console.log('compras', carrinho)
+
 	
 		let valorItem = carrinho.reduce((all, item) => 
 			all + (Number(item.precoUnitario) * Number(item.quantidade))
 		, 0);
 
 		let valorFrete = Number(freteSelecionado.Valor.replace(',', '.'));
+
+		console.log('valores', valorItem, valorFrete);
 
 		let valorTotal = valorItem + valorFrete;
 		valorTotal = valorTotal.toFixed(2);

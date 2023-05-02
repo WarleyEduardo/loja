@@ -92,24 +92,19 @@ class DadosClienteContainer extends Component {
 		return (
 			<div className='flex-1 flex horizontal'>
 				<div className='flex-1'>
-					<FormSimples
-						value={email}
-						name='email'
-						placeholder='E-mail'
-						label='E-mail'
-						erro={erros.email}
-						onChange={(e) => this.onChange('email', e)} />
+					<FormSimples value={email || ''} name='email' placeholder='E-mail' label='E-mail' erro={erros.email} onChange={(e) => this.onChange('email', e)} />
 				</div>
 
 				<div className='flex-1'>
 					<FormSimples
-						value={senha}
+						value={senha || ''}
 						name='senha'
 						placeholder='Senha'
 						label='Senha'
 						type='password'
 						erro={erros.senha}
-						onChange={(e) => this.onChange('senha', e)} />
+						onChange={(e) => this.onChange('senha', e)}
+					/>
 				</div>
 			</div>
 		);
@@ -123,45 +118,34 @@ class DadosClienteContainer extends Component {
 		return (
 			<div className='flex-1 flex vertical'>
 				<div className='flex-1'>
-					<FormSimples
-						value={nome}
-						name='nome'
-						placeholder='Nome'
-						label='Nome'
-						erro={erros.nome}
-						onChange={(e) => this.onChange('nome', e)} />
+					<FormSimples value={nome || ''} name='nome' placeholder='Nome' label='Nome' erro={erros.nome} onChange={(e) => this.onChange('nome', e)} />
 				</div>
 
 				<div className='flex-1'>
-					<FormSimples
-						value={cpf}
-						name='CPF'
-						placeholder='CPF'
-						label='CPF'
-						erro={erros.CPF}
-						onChange={(e) => this.onChange('cpf', e , formatCPF(e.target.value))} />
+					<FormSimples value={cpf || ''} name='CPF' placeholder='CPF' label='CPF' erro={erros.CPF} onChange={(e) => this.onChange('cpf', e, formatCPF(e.target.value))} />
 				</div>
 
 				<div className='flex-1 flex horizontal'>
 					<div className='flex-1'>
 						<FormSimples
-							value={dataDeNascimento}
+							value={dataDeNascimento || ''}
 							name='dataDeNascimento'
 							placeholder='DD/MM/YYYY'
 							label='Data de Nascimento'
 							erro={erros.dataDeNascimento}
-							onChange={(e) => this.onChange('dataDeNascimento', e , formatDataDeNascimento(e.target.value) )}
+							onChange={(e) => this.onChange('dataDeNascimento', e, formatDataDeNascimento(e.target.value))}
 						/>
 					</div>
 
 					<div className='flex-1'>
 						<FormSimples
-							value={telefone}
+							value={telefone || ''}
 							name='telefone'
 							placeholder='(34) 1234-5678'
 							label='Telefone/Celular'
 							erro={erros.telefone}
-							onChange={(e) => this.onChange('telefone', e , formatTelefone(e.target.value))} />
+							onChange={(e) => this.onChange('telefone', e, formatTelefone(e.target.value))}
+						/>
 					</div>
 				</div>
 			</div>

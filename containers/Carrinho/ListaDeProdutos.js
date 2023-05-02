@@ -76,7 +76,7 @@ class ListaDeProdutos extends Component {
 		const { quantidade, precoUnitario } = item;
 
 		return (
-			<div key={item.produto._id} className='carrinho-item flex'>
+			<div key={index} className='carrinho-item flex'>
 				<div className='flex-4 flex'>
 					<div className='produto-image flex-2 flex flex-center'>
 						<img src={baseImg + foto} alt={nome} width='100px' />

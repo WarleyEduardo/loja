@@ -12,11 +12,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/carrinho": [
+    "/checkout": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/checkout": [
+    "/sucesso": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

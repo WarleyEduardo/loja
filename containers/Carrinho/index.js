@@ -25,6 +25,8 @@ class CarrinhoContainer extends Component{
 	componentDidUpdate(prevProps) {		
 	   
 		const { carrinho } = this.props;
+
+		console.log('meu carrinho', carrinho)
 				
 		if (carrinho && carrinho[0] && 
 			carrinho[0].produto && !carrinho[0].produto._id &&

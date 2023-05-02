@@ -24,4 +24,5 @@ class Sucesso extends Component {
 }
 
 
-export default Sucesso
+
+export default Sucesso;
