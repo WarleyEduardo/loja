@@ -6,7 +6,7 @@ import LoginContainer from './Login';
 import CadastroContainer from './Cadastro';
 
 class AcessoContainer extends Component{
-	state = { paraLogar: false };
+	state = { paraLogar: true };
 
 	changeAcesso = () => this.setState({ paraLogar: !this.state.paraLogar });
 

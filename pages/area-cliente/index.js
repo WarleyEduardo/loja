@@ -12,7 +12,29 @@ import Layout from '../../components/Layout';
 import Cabecalho from '../../containers/Cabecalho';
 import AreaDoClienteContainer from '../../containers/AreaDoCliente';
 import Rodape from '../../containers/Rodape';
+
+/* Modulo 51 - acesso -  login realizando a integração*/
+
+import { connect } from 'react-redux';
+import actions from '../../redux/actions';
+
+import initialize from '../../utils/initialize';
+import callBaseData from '../../utils/callBaseData';
+
+
 class areaDoCliente extends Component {
+
+	static async getInitialProps(ctx) {
+	
+		initialize(ctx);
+		return callBaseData([],ctx)
+	}
+
+	async componentDidMount() {
+		
+		await this.props.getUser({token: this.props.token})
+	}
+
 	render() {
 		return (
 			<Layout title="Minha conta | LOJA IT - melhores produtos para informática">
@@ -24,4 +46,11 @@ class areaDoCliente extends Component {
 	}
 }
 
-export default areaDoCliente;
+const mapStateToProps = state => ({
+
+	token: state.auth.token
+
+
+})
+
+export default connect(mapStateToProps,actions)(areaDoCliente);

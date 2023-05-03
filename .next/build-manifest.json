@@ -4,6 +4,10 @@
     "static/development/dll/dll_c2bd8d1d73560d4853e7.js.map"
   ],
   "pages": {
+    "/": [
+      "static/runtime/webpack.js",
+      "static/runtime/main.js"
+    ],
     "/_app": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
@@ -12,11 +16,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/checkout": [
+    "/area-cliente": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/sucesso": [
+    "/index": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

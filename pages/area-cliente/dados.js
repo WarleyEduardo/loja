@@ -11,6 +11,7 @@ import DadosContainer from '../../containers/AreaDoCliente/Dados';
 import Rodape from '../../containers/Rodape';
 
 
+
  class DadosDocliente extends Component {
 	render() {
 		return (
@@ -23,4 +24,6 @@ import Rodape from '../../containers/Rodape';
 	}
 }
 
-export default  DadosDocliente 
+
+
+export default DadosDocliente; 

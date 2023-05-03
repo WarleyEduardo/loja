@@ -19,6 +19,7 @@ class FormSimples extends Component{
 					name={name}
 					placeholder={placeholder}
 					onChange={onChange}
+					
 				/>
 
 				{erro && (<small className="erro">{erro}</small>)

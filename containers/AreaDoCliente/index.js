@@ -7,14 +7,25 @@ import PedidosContainer from './Pedidos';
 import AcessoContainer from './Acesso';
 
 
+/* Modulo 51 - acesso -  login realizando a integração*/
+
+import { connect } from 'react-redux';
+import actions from '../../redux/actions';
+
+
 class AreaDoClienteContainer extends Component{
 
-	state = { estaLogado: true }
+
 	
 	render() {
 		
-		return this.state.estaLogado ? <PedidosContainer /> : <AcessoContainer />;
+		return this.props.usuario ? <PedidosContainer /> : <AcessoContainer />;
 	}
 }
 
-export default AreaDoClienteContainer;
+const mapStateToProps = (state) => ({
+	usuario: state.auth.usuario,
+});
+
+
+export default connect(mapStateToProps,actions)(AreaDoClienteContainer);

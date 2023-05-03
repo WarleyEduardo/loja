@@ -10,19 +10,18 @@ import { connect } from 'react-redux';
 import actions from '../../redux/actions';
 
 class SucessoContainer extends Component {
-
-
 	renderBoleto() {
-
 		const { pagamento } = this.props;
+
+		console.log('meu boleto',pagamento.payload[0].paymentLink)
 		return (
 			<div>
 				<p> para finalizar o pedido, realize o pagamento do boleto pelo link abaixo:</p>
 				<br />
-				<a className='btn btn-success' href={pagamento.payload[0].pamentLink}
+				<a className='btn btn-success'
+					href={pagamento.payload[0].paymentLink}
 					target='_blank'
-					rel="noopener noreferrer"
-				>
+					rel='noopener noreferrer'>
 					IMPRIMIR BOLETO
 				</a>
 				<br />
@@ -33,16 +32,12 @@ class SucessoContainer extends Component {
 	renderCartao() {
 		return (
 			<div>
-				<p> o pagamento está sendo processado e você receberá a confirmação em breve pelo e-mail.
-					Obrigado pelo pedido
-				</p>
-			
+				<p> o pagamento está sendo processado e você receberá a confirmação em breve pelo e-mail. Obrigado pelo pedido</p>
 			</div>
 		);
 	}
 
 	renderSucesso() {
-
 		const { pagamento } = this.props;
 
 		return (
@@ -57,7 +52,7 @@ class SucessoContainer extends Component {
 		);
 	}
 
-	renderErro() {
+	renderErro(errors) {
 		return (
 			<div className='Erro'>
 				<br />
@@ -65,6 +60,9 @@ class SucessoContainer extends Component {
 				<br />
 				<br />
 				<p>Houve um erro com o seu pedido e ele foi cancelado. por favor refaça seu pedido na loja ou entre em contato para continuar o pedido.</p>
+				{errors.map((item, index) => (
+					<p key={index}>{`${item.code}  -   ${item.message}`}</p>
+				))}
 				<br />
 			</div>
 		);
@@ -73,12 +71,7 @@ class SucessoContainer extends Component {
 	render() {
 		const { pagamento } = this.props;
 
-		return (
-			<div className='Sucesso-Container Container'>
-				
-				{ !pagamento.payload[0].error ? this.renderSucesso() : this.renderErro()}
-			</div>
-		);
+		return <div className='Sucesso-Container Container'>{!pagamento.payload[0].errors ? this.renderSucesso() : this.renderErro(pagamento.payload[0].errors)}</div>;
 	}
 }
 
