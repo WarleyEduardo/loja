@@ -10,11 +10,10 @@
 /*modulo 49 - Botão final de checkout -  preprando base , actions e reducers */
 
 
-import {
-	SET_FORM, CLEAN_FORM, SET_TIPO_PAGAMENTO, FETCH_SESSION_ID, FETCH_SENDER_HASH, NOVO_PEDIDO,
-	PAGAR_PEDIDO     
+/*Módulo 51 -  menu -  criando actionse reducers ...*/
 
-} from '../types';
+
+import { SET_FORM, CLEAN_FORM, SET_TIPO_PAGAMENTO, FETCH_SESSION_ID, FETCH_SENDER_HASH, NOVO_PEDIDO, PAGAR_PEDIDO, LOGOUT_CLIENTE } from '../types';
 
 const initialState = {
 
@@ -86,6 +85,10 @@ export default (state = initialState, action) => {
 				novoPagamento : action.payload.pagamento
 
 			}
+		
+		case LOGOUT_CLIENTE:
+			
+			return initialState;
 		default: return state;
 	}
 

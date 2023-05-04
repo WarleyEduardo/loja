@@ -23,6 +23,10 @@ import clienteActions from './clienteActions';
 /*modulo 49 - Criando as funções e error handlign para os dados do cliente 2/2*/
 import checkoutActions from './checkoutActions';
 
+/*Módulo 51 -  menu -  criando actionse reducers ...*/
+
+import pedidoActions from './pedidoActions';
+
 export default {
 	...authActions,
 	...categoriaActions,
@@ -30,5 +34,6 @@ export default {
 	...produtoActions,
 	...carrinhoActions,
 	...clienteActions,
-	...checkoutActions
+	...checkoutActions,
+	...pedidoActions
 };

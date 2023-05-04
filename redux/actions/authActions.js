@@ -2,7 +2,7 @@
 
 /* modulo 44 - Criando actions e reduces para integração 1/2*/
 
-import { AUTENTICAR_TOKEN, USER, AUTENTICAR } from '../types';
+import { AUTENTICAR_TOKEN, USER, AUTENTICAR, DESAUTENTICAR } from '../types';
 
 import axios from 'axios';
 import { url } from '../../config.js';
@@ -16,9 +16,29 @@ import { getHeaders } from './helpers';
 /* modulo 49  - Criando as funções e error handlign para os dados do cliente 1/2*/
 /* modulo 49  - Criando as funções e error handlign para os dados do cliente 2/2*/
 
-import { setCookie } from '../../utils/cookie';
+import { setCookie ,removeCookie } from '../../utils/cookie';
 import Router from 'next/router';
 import errorHandling from './errorHandling';
+
+/*Módulo 51 -  menu -  criando actionse reducers ...*/
+
+export const desautenticar = () => dispatch => {
+
+	removeCookie('token');
+	Router.push('/');
+	dispatch({type : DESAUTENTICAR})
+}
+
+export const updateSenha = (data, token, cb) => dispatch => {
+	
+	axios.put(`${url}/api/usuarios`, { password: data.novaSenha }, getHeaders(token))
+		.then(response => {
+		
+			dispatch({ type: USER, payload: response.data.usuario })
+			cb(null)
+		})
+	     .catch(e => cb(errorHandling(e)))
+}
 	
 
 export const reauthenticate = token => ({ type: AUTENTICAR_TOKEN, payload: token})
@@ -54,5 +74,7 @@ export const autenticar = ({ email, password } , goTo = fase , cb) => (dispatch)
 export default {
 	reauthenticate,
 	getUser,
-	autenticar
+	autenticar,
+	desautenticar,
+	updateSenha
 };

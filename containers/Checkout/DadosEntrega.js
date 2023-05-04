@@ -18,7 +18,7 @@ import { formatNumber, formatCEP } from '../../utils/format';
 
 automático dos dados de endereço a partir do cep.
 */
-import axios from 'axios';
+//import axios from 'axios';
 
 import { consultaCep } from '../../utils/ConsultaCep';
 

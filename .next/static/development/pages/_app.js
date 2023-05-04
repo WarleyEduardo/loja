@@ -12077,6 +12077,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /*modulo 49 - Criando as funções e error handlign para os dados do cliente 2/2*/
 
+/*Módulo 51 -  menu -  criando actionse reducers ...*/
+
 
 var initialState = {
   token: null,
@@ -12100,6 +12102,8 @@ var initialState = {
       return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
         token: action.payload
       });
+    case _types__WEBPACK_IMPORTED_MODULE_1__["DESAUTENTICAR"]:
+      return initialState;
     default:
       return state;
   }
@@ -12266,6 +12270,8 @@ __webpack_require__.r(__webpack_exports__);
 
 /*modulo 49 - Botão final de checkout -  preprando base , actions e reducers */
 
+/*Módulo 51 -  menu -  criando actionse reducers ...*/
+
 
 var initialState = {
   form: {
@@ -12310,6 +12316,8 @@ var initialState = {
       return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_1__["default"])({}, state, {
         novoPagamento: action.payload.pagamento
       });
+    case _types__WEBPACK_IMPORTED_MODULE_2__["LOGOUT_CLIENTE"]:
+      return initialState;
     default:
       return state;
   }
@@ -12366,6 +12374,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _carrinhoReducers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./carrinhoReducers */ "./redux/reducers/carrinhoReducers.js");
 /* harmony import */ var _clienteReducers__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./clienteReducers */ "./redux/reducers/clienteReducers.js");
 /* harmony import */ var _checkoutReducers__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./checkoutReducers */ "./redux/reducers/checkoutReducers.js");
+/* harmony import */ var _pedidoReducers__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./pedidoReducers */ "./redux/reducers/pedidoReducers.js");
 /* modulo 39 - loja virtual -  desenvolvimento a configuração base do redux  */
 
 
@@ -12389,6 +12398,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /*modulo 49 - integração checkout - desenvolvendo o container dos dados do cliente */
 
+
+/*Módulo 51 -  menu -  criando actionse reducers ...*/
+
+
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   auth: _authReducers__WEBPACK_IMPORTED_MODULE_1__["default"],
   categoria: _categoriaReducers__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -12396,7 +12409,8 @@ __webpack_require__.r(__webpack_exports__);
   produto: _produtoReducers__WEBPACK_IMPORTED_MODULE_4__["default"],
   carrinho: _carrinhoReducers__WEBPACK_IMPORTED_MODULE_5__["default"],
   cliente: _clienteReducers__WEBPACK_IMPORTED_MODULE_6__["default"],
-  checkout: _checkoutReducers__WEBPACK_IMPORTED_MODULE_7__["default"]
+  checkout: _checkoutReducers__WEBPACK_IMPORTED_MODULE_7__["default"],
+  pedido: _pedidoReducers__WEBPACK_IMPORTED_MODULE_8__["default"]
 }));
 
 /***/ }),
@@ -12430,6 +12444,56 @@ var initialState = {
     default:
       return state;
   }
+});
+
+/***/ }),
+
+/***/ "./redux/reducers/pedidoReducers.js":
+/*!******************************************!*\
+  !*** ./redux/reducers/pedidoReducers.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/objectSpread */ "./node_modules/@babel/runtime-corejs2/helpers/esm/objectSpread.js");
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../types */ "./redux/types.js");
+
+/*Módulo 51 -  menu -  criando actionse reducers ...*/
+
+var initialState = {
+  pedidos: null,
+  pedido: null
+};
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  switch (action.type) {
+    case _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_PEDIDOS"]:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        pedidos: action.payload.pedidos
+      });
+    case _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_PEDIDO"]:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        pedido: action.payload.pedido,
+        pedidoRegistro: action.payload.registro
+      });
+    case _types__WEBPACK_IMPORTED_MODULE_1__["CLEAN_PEDIDO"]:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        pedidos: null,
+        pedidoRegistro: null
+      });
+    case _types__WEBPACK_IMPORTED_MODULE_1__["CANCELAR_PEDIDO"]:
+      return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        pedido: state.pedido ? Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+          cancelado: true
+        }) : null
+      });
+    default:
+      return state;
+  }
+  ;
 });
 
 /***/ }),
@@ -12502,7 +12566,7 @@ var initialState = {
 /*!************************!*\
   !*** ./redux/types.js ***!
   \************************/
-/*! exports provided: REGISTER, AUTENTICAR_TOKEN, FETCH_CATEGORIAS, FETCH_LOJA, FETCH_PRODUTOS, FETCH_CATEGORIA, FETCH_PRODUTOS_CATEGORIA, USER, FETCH_PESQUISA, FETCH_PRODUTOS_PESQUISA, FETCH_PRODUTO, FETCH_PRODUTO_VARIACOES, FETCH_PRODUTO_AVALIACOES, NOVA_AVALIACAO, SET_CARRINHO, CLEAN_CARRINHO, FETCH_PRODUTO_CARRINHO, FETCH_VARIACAO_CARRINHO, FETCH_VALOR_ENTREGA, UPDATE_QTD_CART, REMOVE_PRODUTO_CART, CLEAN_FRETES, UPDATE_FRETE_CART, AUTENTICAR, FETCH_CLIENTE, SET_FORM, CLEAN_FORM, SET_TIPO_PAGAMENTO, FETCH_SESSION_ID, FETCH_SENDER_HASH, NOVO_PEDIDO, PAGAR_PEDIDO */
+/*! exports provided: REGISTER, AUTENTICAR_TOKEN, FETCH_CATEGORIAS, FETCH_LOJA, FETCH_PRODUTOS, FETCH_CATEGORIA, FETCH_PRODUTOS_CATEGORIA, USER, FETCH_PESQUISA, FETCH_PRODUTOS_PESQUISA, FETCH_PRODUTO, FETCH_PRODUTO_VARIACOES, FETCH_PRODUTO_AVALIACOES, NOVA_AVALIACAO, SET_CARRINHO, CLEAN_CARRINHO, FETCH_PRODUTO_CARRINHO, FETCH_VARIACAO_CARRINHO, FETCH_VALOR_ENTREGA, UPDATE_QTD_CART, REMOVE_PRODUTO_CART, CLEAN_FRETES, UPDATE_FRETE_CART, AUTENTICAR, FETCH_CLIENTE, SET_FORM, CLEAN_FORM, SET_TIPO_PAGAMENTO, FETCH_SESSION_ID, FETCH_SENDER_HASH, NOVO_PEDIDO, PAGAR_PEDIDO, FETCH_PEDIDOS, FETCH_PEDIDO, CLEAN_PEDIDO, CANCELAR_PEDIDO, DESAUTENTICAR, LOGOUT_CLIENTE */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12539,6 +12603,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_SENDER_HASH", function() { return FETCH_SENDER_HASH; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NOVO_PEDIDO", function() { return NOVO_PEDIDO; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PAGAR_PEDIDO", function() { return PAGAR_PEDIDO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_PEDIDOS", function() { return FETCH_PEDIDOS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FETCH_PEDIDO", function() { return FETCH_PEDIDO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAN_PEDIDO", function() { return CLEAN_PEDIDO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CANCELAR_PEDIDO", function() { return CANCELAR_PEDIDO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DESAUTENTICAR", function() { return DESAUTENTICAR; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LOGOUT_CLIENTE", function() { return LOGOUT_CLIENTE; });
 /* modulo 40 - loja virtual - criando helper para inicialização*/
 
 /* modulo 45 - Criando actions e reduces e atualizando os componentes das categorias*/
@@ -12555,6 +12625,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /*modulo 49 - Botão final de checkout -  preprando base , actions e reducers */
 
+/*Módulo 51 -  menu -  criando actionse reducers ...*/
 var REGISTER = 'REGISTER',
   AUTENTICAR_TOKEN = 'AUTENTICAR_TOKEN',
   FETCH_CATEGORIAS = 'FETCH_CATEGORIAS',
@@ -12586,7 +12657,13 @@ var REGISTER = 'REGISTER',
   FETCH_SESSION_ID = 'FETCH_SESSION_ID',
   FETCH_SENDER_HASH = 'FETCH_SENDER_HASH',
   NOVO_PEDIDO = 'NOVO_PEDIDO',
-  PAGAR_PEDIDO = 'PAGAR_PEDIDO';
+  PAGAR_PEDIDO = 'PAGAR_PEDIDO',
+  FETCH_PEDIDOS = 'FETCH_PEDIDOS',
+  FETCH_PEDIDO = 'FETCH_PEDIDO',
+  CLEAN_PEDIDO = 'CLEAN_PEDIDO',
+  CANCELAR_PEDIDO = 'CANCELAR_PEDIDO',
+  DESAUTENTICAR = 'DESAUTENTICAR',
+  LOGOUT_CLIENTE = 'LOGOUT_CLIENTE';
 
 /***/ }),
 

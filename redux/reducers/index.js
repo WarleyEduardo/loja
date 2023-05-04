@@ -23,6 +23,10 @@ import clienteReducer from './clienteReducers';
 /*modulo 49 - integração checkout - desenvolvendo o container dos dados do cliente */
 import checkoutReducers from './checkoutReducers';
 
+/*Módulo 51 -  menu -  criando actionse reducers ...*/
+
+import pedidoReducers from './pedidoReducers';
+
 export default combineReducers({
 	auth: authReducer,
 	categoria: categoriaReducer,
@@ -30,5 +34,6 @@ export default combineReducers({
 	produto: produtoReducer,
 	carrinho: carrinhoReducer,
 	cliente: clienteReducer,
-	checkout: checkoutReducers
+	checkout: checkoutReducers,
+	pedido: pedidoReducers
 });

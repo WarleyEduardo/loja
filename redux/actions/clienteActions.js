@@ -1,5 +1,5 @@
 /*modulo 49 - Criando as funções e error handlign para os dados do cliente 2/2*/
-import { FETCH_CLIENTE} from '../types';
+import { FETCH_CLIENTE, LOGOUT_CLIENTE } from '../types';
 
 import axios from 'axios';
 import { url , loja} from '../../config.js';
@@ -9,8 +9,16 @@ import { getHeaders } from './helpers';
 
 /*modulo 49 - submit dados do cliente - fazendo a integreção e ativando dados do cliente (2/2) */
 
-import { autenticar } from './authActions';
+import { autenticar, desautenticar } from './authActions';
 import errorHandling from './errorHandling';
+
+
+/*Módulo 51 -  menu -  criando actionse reducers ...*/
+export const logoutCliente = () => dispatch => {
+
+	dispatch(desautenticar());
+	dispatch({type: LOGOUT_CLIENTE})
+}
 
 export const getRawData = (data) => {
 

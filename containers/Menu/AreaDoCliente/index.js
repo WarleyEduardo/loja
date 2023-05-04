@@ -3,15 +3,22 @@ criando o componente  de Menu e adicionando o estilo */
 
 import React, { Component } from 'react';
 import Link from 'next/link';
-import {withRouter} from 'next/router'
+import { withRouter } from 'next/router'
+
+
+/*Módulo 51 -  menu -  preparando o menu*/
+
+import { connect } from 'react-redux';
 
 class MenuAreaDoCliente extends Component{
 
 	renderCabecalho() {
+
+		const {usuario} = this.props
 		
 		return (
 			<div>
-				<h3>Oi, João! <br/> Seja bem-vindo a Área do Cliente.</h3>
+				<h3>Oi, {usuario ? usuario.nome : "Cliente" } ! <br/> Seja bem-vindo a Área do Cliente.</h3>
 				<p>Por aqui você acompanhar seus pedidos e também alterar
 					seus dados de acesso e senha.
 				</p>
@@ -64,5 +71,9 @@ class MenuAreaDoCliente extends Component{
 
  }
 
+const mapStateToProps = state => ({
+	 
+	usuario : state.auth.usuario
+ })
 
-export default withRouter(MenuAreaDoCliente);
+export default connect(mapStateToProps)(withRouter(MenuAreaDoCliente));

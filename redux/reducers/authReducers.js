@@ -2,7 +2,9 @@
 
 /*modulo 49 - Criando as funções e error handlign para os dados do cliente 2/2*/
 
-import { AUTENTICAR_TOKEN, USER, AUTENTICAR } from '../types';
+/*Módulo 51 -  menu -  criando actionse reducers ...*/
+
+import { AUTENTICAR_TOKEN, USER, AUTENTICAR, DESAUTENTICAR } from '../types';
 
 const initialState = { token: null, usuario: null };
 
@@ -32,6 +34,9 @@ export default (state = initialState, action) => {
 				...state,
 				token: action.payload
 			}
+		
+		case DESAUTENTICAR:
+			return initialState;
 		default: return state;
 	}
 }
