@@ -18,7 +18,7 @@ class Categorias extends Component {
 			<div className="categorias flex horizontal-mb">
 
 				{
-					categorias.map(categoria => (
+					(categorias|| []).map(categoria => (
 						
 						<Link href={`/categoria/${categoria.nome}?id=${categoria._id} `} key={categoria._id}>
 							<div className="categoria-item flex-1 flex flex-center">

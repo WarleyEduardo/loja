@@ -11,7 +11,7 @@ import FormSimples from '../../../components/Inputs/FormSimples';
 
 import { connect } from 'react-redux';
 import actions from '../../../redux/actions';
-import AlertGeral from '../../../components/alert/Geral';
+import AlertGeral from '../../../components/Alert/Geral';
 import { validateCPF } from '../../../utils/validade';
 
 import {
