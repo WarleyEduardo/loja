@@ -20,6 +20,8 @@ automático dos dados de endereço a partir do cep.
 */
 import axios from 'axios';
 
+import { consultaCep } from '../../utils/ConsultaCep';
+
 class DadosClienteContainer extends Component {
 	state = {
 		erros: { dadosCobranca: {} },
@@ -86,8 +88,32 @@ class DadosClienteContainer extends Component {
 	onChange = (field, value, prefix) => this.props.setForm({ [field]: value }, prefix).then(() => this.validate());
 
 	onChangeCEP = (field, value, prefix) => {
+		this.props.setForm({ [field]: value }, prefix).then(async () => {
+			this.validate();
+			if (value.length === 9) {
+				const endereco = await consultaCep(value);				
+
+				this.props
+					.setForm(
+						{
+							local: endereco.local,
+							bairro: endereco.bairro,
+							cidade: endereco.cidade,
+							estado: endereco.estado,
+						},
+						prefix
+					)
+					.then(() => this.validate());
+			}
+		});
+	};
+
+	/*
+	onChangeCEP = (field, value, prefix) => {
 		
 		this.props.setForm({ [field]: value }, prefix).then(() => {
+
+			
 			
 			this.validate();
 			if (value.length === 9) {
@@ -109,6 +135,7 @@ class DadosClienteContainer extends Component {
 
 
 	}
+	*/
 
 	/*
 	onChangeCobranca = (field, e) => {
