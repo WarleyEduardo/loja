@@ -5,6 +5,9 @@ import React, { Component } from 'react';
 
 import Pedido from '../Item/PedidoCard';
 
+
+
+
 class Pedidos extends Component { 
 
 	renderCabecalho() {
@@ -34,7 +37,7 @@ class Pedidos extends Component {
 	renderCorpo() {
 
 		const { pedidos } = this.props;
-		return pedidos.map((pedido) => (<Pedido pedido={pedido} key={pedido.id}  />))
+		return pedidos.map((pedido) => (<Pedido pedido={pedido} key={pedido._id}  />))
 		
 
 	}

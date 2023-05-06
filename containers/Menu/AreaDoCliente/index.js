@@ -10,26 +10,49 @@ import { withRouter } from 'next/router'
 
 import { connect } from 'react-redux';
 
-class MenuAreaDoCliente extends Component{
+/*Módulo 51 - menu - criando a função de sair */
+import actions from '../../../redux/actions';
+
+
+class MenuAreaDoCliente extends Component {
+	/* Modulos 51 - Pedidos - realizando a integração*/
+
+
+	componentDidMount() {
+		
+		this.fetchCliente();
+	}
+
+	componentDidUpdate() {
+		this.fetchCliente()
+	}
+
+
+	fetchCliente() {
+		
+		const { usuario, token, cliente } = this.props;
+		if (usuario && token && !cliente) {
+			this.props.fetchCliente(usuario._id,token)
+
+		}
+	}
 
 	renderCabecalho() {
+		const { usuario } = this.props;
 
-		const {usuario} = this.props
-		
 		return (
 			<div>
-				<h3>Oi, {usuario ? usuario.nome : "Cliente" } ! <br/> Seja bem-vindo a Área do Cliente.</h3>
-				<p>Por aqui você acompanhar seus pedidos e também alterar
-					seus dados de acesso e senha.
-				</p>
+				<h3>
+					Oi, {usuario ? usuario.nome : 'Cliente'} ! <br /> Seja bem-vindo a Área do Cliente.
+				</h3>
+				<p>Por aqui você acompanhar seus pedidos e também alterar seus dados de acesso e senha.</p>
 			</div>
-		)
+		);
 	}
 
 	renderMenu() {
-
-		const url =  this.props.router.pathname;
-		const estaEmDados = url.includes("/area-cliente/dados");
+		const url = this.props.router.pathname;
+		const estaEmDados = url.includes('/area-cliente/dados');
 		const estaEmAlterarSenha = url.includes('/area-cliente/alterar-senha');
 		const estaEmPedidos = !estaEmDados && !estaEmAlterarSenha;
 
@@ -51,29 +74,28 @@ class MenuAreaDoCliente extends Component{
 					</div>
 				</Link>
 
-				<div className='menu-lateral-item' onClick={() => alert('logout')}>
+				<div className='menu-lateral-item' onClick={() => this.props.logoutCliente()}>
 					<span>SAIR</span>
 				</div>
 			</div>
 		);
 	}
 
-	render() {  
-
+	render() {
 		return (
-			<div className="flex-1 flex vertical">
+			<div className='flex-1 flex vertical'>
 				{this.renderCabecalho()}
 				{this.renderMenu()}
-
 			</div>
-		)
-  }
-
- }
+		);
+	}
+}
 
 const mapStateToProps = state => ({
 	 
-	usuario : state.auth.usuario
+	usuario: state.auth.usuario,
+	token: state.auth.token,
+	cliente : state.cliente.cliente
  })
 
-export default connect(mapStateToProps)(withRouter(MenuAreaDoCliente));
+export default connect(mapStateToProps,actions)(withRouter(MenuAreaDoCliente));

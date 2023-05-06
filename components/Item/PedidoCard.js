@@ -6,29 +6,33 @@ import React, { Component } from 'react';
 import { formatMoney } from '../../utils';
 import Link from 'next/link';
 
+/* Modulos 51 - Pedidos - realizando a integração*/
+
+import moment from 'moment';
+
 class PedidoCard extends Component{
 
 	render() {
 		
 		const { pedido } = this.props;
-		const { id, data, valor, status } = pedido;
-		
+		const { _id, createdAt, pagamento, entrega, cancelado } = pedido;
+
 		return (
 			<div className='Pedido-Card flex'>
 				<div className='flex-1 flex-start'>
-					<span>{data}</span>
+					<span>{moment(createdAt).format('DD/MM/YYYY HH:mm')}</span>
 				</div>
 
 				<div className='flex-1 flex-start'>
-					<span>{formatMoney(valor)}</span>
+					<span>{formatMoney(pagamento.valor)}</span>
 				</div>
 
 				<div className='flex-3 flex-start'>
-					<span>{status}</span>
+					<span>{cancelado ? "Cancelado" : `${pagamento.status} / ${entrega.status}`}</span>
 				</div>
 
 				<div className='flex-1 flex-start'>
-					<Link href={`/area-cliente/pedido/${id}`}>
+					<Link href={`/area-cliente/pedido/${_id}`}>
 						<span className='btn btn-primary btn-sm'>DETALHES</span>
 					</Link>
 				</div>

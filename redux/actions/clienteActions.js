@@ -115,5 +115,6 @@ export const fetchCliente = (id, token) => dispatch => {
 export default {
 	fetchCliente,
 	newCliente,
-	updateCliente
+	updateCliente,
+	logoutCliente,
 };

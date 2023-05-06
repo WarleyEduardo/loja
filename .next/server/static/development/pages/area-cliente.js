@@ -939,6 +939,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../utils */ "./utils/index.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! next/link */ "./node_modules/next/link.js");
 /* harmony import */ var next_link__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(next_link__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! moment */ "moment");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_9__);
 
 
 
@@ -954,6 +956,10 @@ criando o componente  de Menu e adicionando o estilo */
 
 
 
+
+/* Modulos 51 - Pedidos - realizando a integração*/
+
+
 var PedidoCard = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__["default"])(PedidoCard, _Component);
   var _super = _createSuper(PedidoCard);
@@ -965,34 +971,20 @@ var PedidoCard = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       var pedido = this.props.pedido;
-      var id = pedido.id,
-        data = pedido.data,
-        valor = pedido.valor,
-        status = pedido.status;
+      var _id = pedido._id,
+        createdAt = pedido.createdAt,
+        pagamento = pedido.pagamento,
+        entrega = pedido.entrega,
+        cancelado = pedido.cancelado;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "Pedido-Card flex",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 17,
+          lineNumber: 21,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "flex-1 flex-start",
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 18,
-          columnNumber: 5
-        }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
-        __self: this,
-        __source: {
-          fileName: _jsxFileName,
-          lineNumber: 19,
-          columnNumber: 6
-        }
-      }, data)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "flex-1 flex-start",
         __self: this,
         __source: {
@@ -1007,8 +999,8 @@ var PedidoCard = /*#__PURE__*/function (_Component) {
           lineNumber: 23,
           columnNumber: 6
         }
-      }, Object(_utils__WEBPACK_IMPORTED_MODULE_7__["formatMoney"])(valor))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "flex-3 flex-start",
+      }, moment__WEBPACK_IMPORTED_MODULE_9___default()(createdAt).format('DD/MM/YYYY HH:mm'))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "flex-1 flex-start",
         __self: this,
         __source: {
           fileName: _jsxFileName,
@@ -1022,20 +1014,35 @@ var PedidoCard = /*#__PURE__*/function (_Component) {
           lineNumber: 27,
           columnNumber: 6
         }
-      }, status)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
-        className: "flex-1 flex-start",
+      }, Object(_utils__WEBPACK_IMPORTED_MODULE_7__["formatMoney"])(pagamento.valor))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "flex-3 flex-start",
         __self: this,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 30,
           columnNumber: 5
         }
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_8___default.a, {
-        href: "/area-cliente/pedido/".concat(id),
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
           lineNumber: 31,
+          columnNumber: 6
+        }
+      }, cancelado ? "Cancelado" : "".concat(pagamento.status, " / ").concat(entrega.status))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
+        className: "flex-1 flex-start",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 34,
+          columnNumber: 5
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_8___default.a, {
+        href: "/area-cliente/pedido/".concat(_id),
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 35,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
@@ -1043,7 +1050,7 @@ var PedidoCard = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 32,
+          lineNumber: 36,
           columnNumber: 7
         }
       }, "DETALHES"))));
@@ -1408,7 +1415,7 @@ var Pedidos = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 13,
+          lineNumber: 16,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -1416,14 +1423,14 @@ var Pedidos = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 14,
+          lineNumber: 17,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 15,
+          lineNumber: 18,
           columnNumber: 6
         }
       }, "DATA")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -1431,14 +1438,14 @@ var Pedidos = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 18,
+          lineNumber: 21,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 19,
+          lineNumber: 22,
           columnNumber: 6
         }
       }, "VALOR")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -1446,14 +1453,14 @@ var Pedidos = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22,
+          lineNumber: 25,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 23,
+          lineNumber: 26,
           columnNumber: 6
         }
       }, "STATUS")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -1461,7 +1468,7 @@ var Pedidos = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26,
+          lineNumber: 29,
           columnNumber: 5
         }
       }));
@@ -1474,11 +1481,11 @@ var Pedidos = /*#__PURE__*/function (_Component) {
       return pedidos.map(function (pedido) {
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_Item_PedidoCard__WEBPACK_IMPORTED_MODULE_7__["default"], {
           pedido: pedido,
-          key: pedido.id,
+          key: pedido._id,
           __self: _this,
           __source: {
             fileName: _jsxFileName,
-            lineNumber: 37,
+            lineNumber: 40,
             columnNumber: 35
           }
         });
@@ -1492,7 +1499,7 @@ var Pedidos = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 46,
+          lineNumber: 49,
           columnNumber: 4
         }
       }, this.renderCabecalho(), this.renderCorpo());
@@ -3163,6 +3170,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var _components_Paginacao__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../components/Paginacao */ "./components/Paginacao/index.js");
 /* harmony import */ var _components_Listas_Pedidos__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../components/Listas/Pedidos */ "./components/Listas/Pedidos.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../redux/actions */ "./redux/actions/index.js");
 
 
 
@@ -3183,27 +3193,10 @@ criando o componente  de Menu e adicionando o estilo */
 /* modulo 43 - Meus Pedidos -  
 criando o componente  de Menu e adicionando o estilo */
 
-var PEDIDOS = [{
-  id: 8787812345,
-  data: '16/07/2019',
-  valor: 189.55,
-  status: 'Pago / Entregue'
-}, {
-  id: 7787812376,
-  data: '18/07/2019',
-  valor: 255.55,
-  status: 'Pago / Em Trânsito'
-}, {
-  id: 9987812365,
-  data: '20/07/2019',
-  valor: 155.55,
-  status: 'Pago / Em Separação'
-}, {
-  id: 6587812399,
-  data: '28/07/2019',
-  valor: 300.20,
-  status: 'Pago / - '
-}];
+/* Modulos 51 - Pedidos - realizando a integração*/
+
+
+
 var ListaPedidos = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(ListaPedidos, _Component);
   var _super = _createSuper(ListaPedidos);
@@ -3215,57 +3208,88 @@ var ListaPedidos = /*#__PURE__*/function (_Component) {
     }
     _this = _super.call.apply(_super, [this].concat(args));
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "state", {
-      atual: 0
+      atual: 0,
+      limit: 15
+    });
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "changePagina", function (numeroAtual) {
+      _this.setState({
+        atual: numeroAtual
+      }, function () {
+        return _this.fetchPedidos();
+      });
     });
     return _this;
   }
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(ListaPedidos, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.fetchPedidos();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      var pedidos = this.props.pedidos;
+      if (!pedidos) this.fetchPedidos();
+    }
+  }, {
+    key: "fetchPedidos",
+    value: function fetchPedidos() {
+      var _this$props = this.props,
+        token = _this$props.token,
+        cliente = _this$props.cliente,
+        fetchPedidos = _this$props.fetchPedidos;
+      var _this$state = this.state,
+        atual = _this$state.atual,
+        limit = _this$state.limit;
+      if (token && cliente) fetchPedidos({
+        offset: atual,
+        limit: limit,
+        token: token
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var pedidos = this.props.pedidos;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "flex-4 conteudo-area-cliente",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 40,
+          lineNumber: 67,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 41,
+          lineNumber: 68,
           columnNumber: 5
         }
       }, "MEUS PEDIDOS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 42,
+          lineNumber: 69,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Listas_Pedidos__WEBPACK_IMPORTED_MODULE_10__["default"], {
-        pedidos: PEDIDOS,
+        pedidos: pedidos ? pedidos.docs : [],
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43,
+          lineNumber: 71,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Paginacao__WEBPACK_IMPORTED_MODULE_9__["default"], {
         atual: this.state.atual || 0,
-        total: PEDIDOS.length * 4,
-        limite: PEDIDOS.length,
-        onClick: function onClick(numeroAtual) {
-          return _this2.setState({
-            atual: numeroAtual
-          });
-        },
+        total: pedidos ? pedidos.total : 0,
+        limite: this.state.limit,
+        onClick: this.changePagina,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44,
+          lineNumber: 73,
           columnNumber: 5
         }
       }));
@@ -3273,7 +3297,15 @@ var ListaPedidos = /*#__PURE__*/function (_Component) {
   }]);
   return ListaPedidos;
 }(react__WEBPACK_IMPORTED_MODULE_8__["Component"]);
-/* harmony default export */ __webpack_exports__["default"] = (ListaPedidos);
+var mapStatToProps = function mapStatToProps(state) {
+  return {
+    pedidos: state.pedido.pedidos,
+    token: state.auth.token,
+    usuario: state.auth.usuario,
+    cliente: state.cliente.cliente
+  };
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_11__["connect"])(mapStatToProps, _redux_actions__WEBPACK_IMPORTED_MODULE_12__["default"])(ListaPedidos));
 
 /***/ }),
 
@@ -3301,6 +3333,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_router__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(next_router__WEBPACK_IMPORTED_MODULE_8__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-redux */ "react-redux");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../redux/actions */ "./redux/actions/index.js");
 
 
 
@@ -3320,6 +3353,9 @@ criando o componente  de Menu e adicionando o estilo */
 /*Módulo 51 -  menu -  preparando o menu*/
 
 
+
+/*Módulo 51 - menu - criando a função de sair */
+
 var MenuAreaDoCliente = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__["default"])(MenuAreaDoCliente, _Component);
   var _super = _createSuper(MenuAreaDoCliente);
@@ -3328,6 +3364,29 @@ var MenuAreaDoCliente = /*#__PURE__*/function (_Component) {
     return _super.apply(this, arguments);
   }
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(MenuAreaDoCliente, [{
+    key: "componentDidMount",
+    value: /* Modulos 51 - Pedidos - realizando a integração*/
+
+    function componentDidMount() {
+      this.fetchCliente();
+    }
+  }, {
+    key: "componentDidUpdate",
+    value: function componentDidUpdate() {
+      this.fetchCliente();
+    }
+  }, {
+    key: "fetchCliente",
+    value: function fetchCliente() {
+      var _this$props = this.props,
+        usuario = _this$props.usuario,
+        token = _this$props.token,
+        cliente = _this$props.cliente;
+      if (usuario && token && !cliente) {
+        this.props.fetchCliente(usuario._id, token);
+      }
+    }
+  }, {
     key: "renderCabecalho",
     value: function renderCabecalho() {
       var usuario = this.props.usuario;
@@ -3335,28 +3394,28 @@ var MenuAreaDoCliente = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20,
+          lineNumber: 44,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h3", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21,
+          lineNumber: 45,
           columnNumber: 5
         }
-      }, "Oi, ", usuario ? usuario.nome : "Cliente", " ! ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", {
+      }, "Oi, ", usuario ? usuario.nome : 'Cliente', " ! ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21,
-          columnNumber: 53
+          lineNumber: 46,
+          columnNumber: 49
         }
       }), " Seja bem-vindo a \xC1rea do Cliente."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("p", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22,
+          lineNumber: 48,
           columnNumber: 5
         }
       }, "Por aqui voc\xEA acompanhar seus pedidos e tamb\xE9m alterar seus dados de acesso e senha."));
@@ -3364,8 +3423,9 @@ var MenuAreaDoCliente = /*#__PURE__*/function (_Component) {
   }, {
     key: "renderMenu",
     value: function renderMenu() {
+      var _this = this;
       var url = this.props.router.pathname;
-      var estaEmDados = url.includes("/area-cliente/dados");
+      var estaEmDados = url.includes('/area-cliente/dados');
       var estaEmAlterarSenha = url.includes('/area-cliente/alterar-senha');
       var estaEmPedidos = !estaEmDados && !estaEmAlterarSenha;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -3373,7 +3433,7 @@ var MenuAreaDoCliente = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 37,
+          lineNumber: 60,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
@@ -3381,7 +3441,7 @@ var MenuAreaDoCliente = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 38,
+          lineNumber: 61,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -3389,14 +3449,14 @@ var MenuAreaDoCliente = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 39,
+          lineNumber: 62,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 40,
+          lineNumber: 63,
           columnNumber: 7
         }
       }, "MEUS PEDIDOS"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
@@ -3404,7 +3464,7 @@ var MenuAreaDoCliente = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43,
+          lineNumber: 66,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -3412,14 +3472,14 @@ var MenuAreaDoCliente = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44,
+          lineNumber: 67,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 45,
+          lineNumber: 68,
           columnNumber: 7
         }
       }, "MEUS DADOS"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(next_link__WEBPACK_IMPORTED_MODULE_7___default.a, {
@@ -3427,7 +3487,7 @@ var MenuAreaDoCliente = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 48,
+          lineNumber: 71,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -3435,32 +3495,32 @@ var MenuAreaDoCliente = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 49,
+          lineNumber: 72,
           columnNumber: 6
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 50,
+          lineNumber: 73,
           columnNumber: 7
         }
       }, "ALTERAR SENHA"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "menu-lateral-item",
         onClick: function onClick() {
-          return alert('logout');
+          return _this.props.logoutCliente();
         },
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 54,
+          lineNumber: 77,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("span", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 55,
+          lineNumber: 78,
           columnNumber: 6
         }
       }, "SAIR")));
@@ -3473,7 +3533,7 @@ var MenuAreaDoCliente = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 64,
+          lineNumber: 86,
           columnNumber: 4
         }
       }, this.renderCabecalho(), this.renderMenu());
@@ -3483,10 +3543,12 @@ var MenuAreaDoCliente = /*#__PURE__*/function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
 var mapStateToProps = function mapStateToProps(state) {
   return {
-    usuario: state.auth.usuario
+    usuario: state.auth.usuario,
+    token: state.auth.token,
+    cliente: state.cliente.cliente
   };
 };
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_9__["connect"])(mapStateToProps)(Object(next_router__WEBPACK_IMPORTED_MODULE_8__["withRouter"])(MenuAreaDoCliente)));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_9__["connect"])(mapStateToProps, _redux_actions__WEBPACK_IMPORTED_MODULE_10__["default"])(Object(next_router__WEBPACK_IMPORTED_MODULE_8__["withRouter"])(MenuAreaDoCliente)));
 
 /***/ }),
 
@@ -5622,7 +5684,8 @@ var fetchCliente = function fetchCliente(id, token) {
 /* harmony default export */ __webpack_exports__["default"] = ({
   fetchCliente: fetchCliente,
   newCliente: newCliente,
-  updateCliente: updateCliente
+  updateCliente: updateCliente,
+  logoutCliente: logoutCliente
 });
 
 /***/ }),
@@ -6812,6 +6875,17 @@ module.exports = require("core-js/library/fn/symbol/iterator");
 /***/ (function(module, exports) {
 
 module.exports = require("js-cookie");
+
+/***/ }),
+
+/***/ "moment":
+/*!*************************!*\
+  !*** external "moment" ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("moment");
 
 /***/ }),
 
