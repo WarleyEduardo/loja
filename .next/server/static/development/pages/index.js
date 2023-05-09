@@ -4369,12 +4369,13 @@ var fetchLoja = function fetchLoja() {
 /*!****************************************!*\
   !*** ./redux/actions/pedidoActions.js ***!
   \****************************************/
-/*! exports provided: fetchPedidos, fetchPedido, cancelarPedido, cleanPedido, default */
+/*! exports provided: fetchPedidos, fetchPedidosData, fetchPedido, cancelarPedido, cleanPedido, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPedidos", function() { return fetchPedidos; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPedidosData", function() { return fetchPedidosData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPedido", function() { return fetchPedido; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cancelarPedido", function() { return cancelarPedido; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cleanPedido", function() { return cleanPedido; });
@@ -4405,9 +4406,26 @@ var fetchPedidos = function fetchPedidos(_ref) {
     });
   };
 };
-var fetchPedido = function fetchPedido(_ref2) {
-  var id = _ref2.id,
-    token = _ref2.token;
+var fetchPedidosData = function fetchPedidosData(_ref2) {
+  var offset = _ref2.offset,
+    limit = _ref2.limit,
+    token = _ref2.token,
+    dtInicial = _ref2.dtInicial,
+    dtFinal = _ref2.dtFinal;
+  return function (dispatch) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("".concat(_config__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/pedidos?loja=").concat(_config__WEBPACK_IMPORTED_MODULE_2__["loja"], "&offset=").concat(offset, "&limit=").concat(limit, "\n\t\t\t\t&dtInicial=").concat(dtInicial, "&dtFinal=").concat(dtFinal), Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["getHeaders"])(token)).then(function (response) {
+      return dispatch({
+        type: _types__WEBPACK_IMPORTED_MODULE_0__["FETCH_PEDIDOS"],
+        payload: response.data
+      });
+    })["catch"](function (e) {
+      return console.log(e);
+    });
+  };
+};
+var fetchPedido = function fetchPedido(_ref3) {
+  var id = _ref3.id,
+    token = _ref3.token;
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("".concat(_config__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/pedidos/").concat(id, "?loja=").concat(_config__WEBPACK_IMPORTED_MODULE_2__["loja"]), Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["getHeaders"])(token)).then(function (response) {
       return dispatch({
@@ -4419,10 +4437,10 @@ var fetchPedido = function fetchPedido(_ref2) {
     });
   };
 };
-var cancelarPedido = function cancelarPedido(_ref3) {
-  var id = _ref3.id,
-    token = _ref3.token,
-    cb = _ref3.cb;
+var cancelarPedido = function cancelarPedido(_ref4) {
+  var id = _ref4.id,
+    token = _ref4.token,
+    cb = _ref4.cb;
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]("".concat(_config__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/pedidos/").concat(id, "?loja=").concat(_config__WEBPACK_IMPORTED_MODULE_2__["loja"]), Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["getHeaders"])(token)).then(function (response) {
       dispatch({
@@ -4443,6 +4461,7 @@ var cleanPedido = function cleanPedido() {
 /* harmony default export */ __webpack_exports__["default"] = ({
   fetchPedido: fetchPedido,
   fetchPedidos: fetchPedidos,
+  fetchPedidosData: fetchPedidosData,
   cancelarPedido: cancelarPedido,
   cleanPedido: cleanPedido
 });

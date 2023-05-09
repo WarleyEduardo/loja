@@ -836,3 +836,17 @@ table.simples td {
 
 }
 
+.filtro-data{
+
+	border-radius: 10px;
+	border:0;
+	box-shadow:  0  0 5px #7777;
+	width: 40%;
+	padding:  15px ;
+}
+
+
+.filtro-data input  , .filtro-data label {
+
+	margin: 0 10px;
+}

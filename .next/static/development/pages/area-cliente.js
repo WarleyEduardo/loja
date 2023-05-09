@@ -3073,6 +3073,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Listas_Pedidos__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../components/Listas/Pedidos */ "./components/Listas/Pedidos.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _redux_actions__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../../../redux/actions */ "./redux/actions/index.js");
+/* harmony import */ var _components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../../../components/Inputs/FormSimples */ "./components/Inputs/FormSimples.js");
 
 
 
@@ -3097,6 +3098,7 @@ criando o componente  de Menu e adicionando o estilo */
 
 
 
+
 var ListaPedidos = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_4__["default"])(ListaPedidos, _Component);
   var _super = _createSuper(ListaPedidos);
@@ -3109,7 +3111,9 @@ var ListaPedidos = /*#__PURE__*/function (_Component) {
     _this = _super.call.apply(_super, [this].concat(args));
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "state", {
       atual: 0,
-      limit: 15
+      limit: 15,
+      dtInicial: '',
+      dtFinal: ''
     });
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_3__["default"])(_this), "changePagina", function (numeroAtual) {
       _this.setState({
@@ -3148,29 +3152,110 @@ var ListaPedidos = /*#__PURE__*/function (_Component) {
       });
     }
   }, {
+    key: "fetchPedidosData",
+    value: function fetchPedidosData() {
+      var _this$props2 = this.props,
+        token = _this$props2.token,
+        cliente = _this$props2.cliente,
+        fetchPedidos = _this$props2.fetchPedidos,
+        fetchPedidosData = _this$props2.fetchPedidosData;
+      var _this$state2 = this.state,
+        atual = _this$state2.atual,
+        limit = _this$state2.limit,
+        dtInicial = _this$state2.dtInicial,
+        dtFinal = _this$state2.dtFinal;
+      if (!token) return null;
+      if (!cliente) return null;
+      if (token && cliente) fetchPedidos({
+        offset: atual,
+        limit: limit,
+        token: token
+      });
+      if (dtInicial === '' || dtFinal === '' || dtInicial.length < 10 || dtFinal.length < 10) {
+        return null;
+      }
+      this.setState({
+        atual: 0
+      }, function () {
+        fetchPedidosData({
+          offset: atual,
+          limit: limit,
+          token: token,
+          dtInicial: dtInicial,
+          dtFinal: dtFinal
+        });
+      });
+    }
+  }, {
+    key: "onChange",
+    value: function onChange(field, value) {
+      var _this2 = this;
+      this.setState(Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_7__["default"])({}, field, value), function () {
+        return _this2.fetchPedidosData();
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
       var pedidos = this.props.pedidos;
+      var _this$state3 = this.state,
+        dtInicial = _this$state3.dtInicial,
+        dtFinal = _this$state3.dtFinal;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
         className: "flex-4 conteudo-area-cliente",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 67,
+          lineNumber: 76,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 68,
+          lineNumber: 77,
           columnNumber: 5
         }
-      }, "MEUS PEDIDOS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
+      }, "MEUS PEDIDOS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
+        className: "filtro-data flex flex horizontal",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 69,
+          lineNumber: 79,
+          columnNumber: 5
+        }
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        type: "date",
+        label: "Inicial",
+        value: dtInicial,
+        onChange: function onChange(e) {
+          return _this3.onChange('dtInicial', e.target.value);
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 80,
+          columnNumber: 6
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        type: "date",
+        label: "Final",
+        value: dtFinal,
+        onChange: function onChange(e) {
+          return _this3.onChange('dtFinal', e.target.value);
+        },
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 82,
+          columnNumber: 6
+        }
+      })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 84,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Listas_Pedidos__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -3178,7 +3263,7 @@ var ListaPedidos = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 71,
+          lineNumber: 86,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Paginacao__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -3189,7 +3274,7 @@ var ListaPedidos = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 73,
+          lineNumber: 88,
           columnNumber: 5
         }
       }));
@@ -39145,12 +39230,13 @@ var fetchLoja = function fetchLoja() {
 /*!****************************************!*\
   !*** ./redux/actions/pedidoActions.js ***!
   \****************************************/
-/*! exports provided: fetchPedidos, fetchPedido, cancelarPedido, cleanPedido, default */
+/*! exports provided: fetchPedidos, fetchPedidosData, fetchPedido, cancelarPedido, cleanPedido, default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPedidos", function() { return fetchPedidos; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPedidosData", function() { return fetchPedidosData; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchPedido", function() { return fetchPedido; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cancelarPedido", function() { return cancelarPedido; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "cleanPedido", function() { return cleanPedido; });
@@ -39181,9 +39267,26 @@ var fetchPedidos = function fetchPedidos(_ref) {
     });
   };
 };
-var fetchPedido = function fetchPedido(_ref2) {
-  var id = _ref2.id,
-    token = _ref2.token;
+var fetchPedidosData = function fetchPedidosData(_ref2) {
+  var offset = _ref2.offset,
+    limit = _ref2.limit,
+    token = _ref2.token,
+    dtInicial = _ref2.dtInicial,
+    dtFinal = _ref2.dtFinal;
+  return function (dispatch) {
+    axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("".concat(_config__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/pedidos?loja=").concat(_config__WEBPACK_IMPORTED_MODULE_2__["loja"], "&offset=").concat(offset, "&limit=").concat(limit, "\n\t\t\t\t&dtInicial=").concat(dtInicial, "&dtFinal=").concat(dtFinal), Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["getHeaders"])(token)).then(function (response) {
+      return dispatch({
+        type: _types__WEBPACK_IMPORTED_MODULE_0__["FETCH_PEDIDOS"],
+        payload: response.data
+      });
+    })["catch"](function (e) {
+      return console.log(e);
+    });
+  };
+};
+var fetchPedido = function fetchPedido(_ref3) {
+  var id = _ref3.id,
+    token = _ref3.token;
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("".concat(_config__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/pedidos/").concat(id, "?loja=").concat(_config__WEBPACK_IMPORTED_MODULE_2__["loja"]), Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["getHeaders"])(token)).then(function (response) {
       return dispatch({
@@ -39195,10 +39298,10 @@ var fetchPedido = function fetchPedido(_ref2) {
     });
   };
 };
-var cancelarPedido = function cancelarPedido(_ref3) {
-  var id = _ref3.id,
-    token = _ref3.token,
-    cb = _ref3.cb;
+var cancelarPedido = function cancelarPedido(_ref4) {
+  var id = _ref4.id,
+    token = _ref4.token,
+    cb = _ref4.cb;
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]("".concat(_config__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/pedidos/").concat(id, "?loja=").concat(_config__WEBPACK_IMPORTED_MODULE_2__["loja"]), Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["getHeaders"])(token)).then(function (response) {
       dispatch({
@@ -39219,6 +39322,7 @@ var cleanPedido = function cleanPedido() {
 /* harmony default export */ __webpack_exports__["default"] = ({
   fetchPedido: fetchPedido,
   fetchPedidos: fetchPedidos,
+  fetchPedidosData: fetchPedidosData,
   cancelarPedido: cancelarPedido,
   cleanPedido: cleanPedido
 });

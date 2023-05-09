@@ -23,6 +23,20 @@ export const fetchPedidos = ({ offset, limit, token }) => dispatch => {
 
 }
 
+export const fetchPedidosData =
+	({ offset, limit, token, dtInicial, dtFinal }) =>
+	(dispatch) => {
+		axios
+			.get(
+				`${url}/api/pedidos?loja=${loja}&offset=${offset}&limit=${limit}
+				&dtInicial=${dtInicial}&dtFinal=${dtFinal}`,
+				getHeaders(token)
+			)
+			.then((response) => dispatch({ type: FETCH_PEDIDOS, payload: response.data }))
+			.catch((e) => console.log(e));
+	};
+
+
 
 export const fetchPedido =
 	({ id, token }) =>
@@ -51,6 +65,7 @@ export default {
 
 	fetchPedido,
 	fetchPedidos,
+	fetchPedidosData,
 	cancelarPedido,
 	cleanPedido
 }
