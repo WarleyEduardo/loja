@@ -3266,13 +3266,22 @@ var ListaPedidos = /*#__PURE__*/function (_Component) {
         dtFinal = _this$state2.dtFinal;
       if (!token) return null;
       if (!cliente) return null;
-      if (token && cliente) fetchPedidos({
-        offset: atual,
-        limit: limit,
-        token: token
-      });
+      if (dtInicial === '' && dtFinal === '') {
+        fetchPedidos({
+          offset: atual,
+          limit: limit,
+          token: token
+        });
+      }
       if (dtInicial === '' || dtFinal === '' || dtInicial.length < 10 || dtFinal.length < 10) {
         return null;
+      }
+      if (dtInicial === '' && dtFinal === '') {
+        fetchPedidos({
+          offset: atual,
+          limit: limit,
+          token: token
+        });
       }
       this.setState({
         atual: 0
@@ -3307,14 +3316,14 @@ var ListaPedidos = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 76,
+          lineNumber: 86,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("h2", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 77,
+          lineNumber: 87,
           columnNumber: 5
         }
       }, "MEUS PEDIDOS"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("div", {
@@ -3322,7 +3331,7 @@ var ListaPedidos = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 79,
+          lineNumber: 89,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -3335,7 +3344,7 @@ var ListaPedidos = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 80,
+          lineNumber: 90,
           columnNumber: 6
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Inputs_FormSimples__WEBPACK_IMPORTED_MODULE_13__["default"], {
@@ -3348,14 +3357,14 @@ var ListaPedidos = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 82,
+          lineNumber: 92,
           columnNumber: 6
         }
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 84,
+          lineNumber: 94,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Listas_Pedidos__WEBPACK_IMPORTED_MODULE_10__["default"], {
@@ -3363,7 +3372,7 @@ var ListaPedidos = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 86,
+          lineNumber: 96,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_8___default.a.createElement(_components_Paginacao__WEBPACK_IMPORTED_MODULE_9__["default"], {
@@ -3374,7 +3383,7 @@ var ListaPedidos = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 88,
+          lineNumber: 98,
           columnNumber: 5
         }
       }));
@@ -5998,10 +6007,9 @@ var fetchPedidosData = function fetchPedidosData(_ref2) {
     });
   };
 };
-var fetchPedido = function fetchPedido(_ref3) {
-  var id = _ref3.id,
-    token = _ref3.token;
+var fetchPedido = function fetchPedido(id, token) {
   return function (dispatch) {
+    console.log('meu id', id);
     axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("".concat(_config__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/pedidos/").concat(id, "?loja=").concat(_config__WEBPACK_IMPORTED_MODULE_2__["loja"]), Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["getHeaders"])(token)).then(function (response) {
       return dispatch({
         type: _types__WEBPACK_IMPORTED_MODULE_0__["FETCH_PEDIDO"],
@@ -6012,10 +6020,7 @@ var fetchPedido = function fetchPedido(_ref3) {
     });
   };
 };
-var cancelarPedido = function cancelarPedido(_ref4) {
-  var id = _ref4.id,
-    token = _ref4.token,
-    cb = _ref4.cb;
+var cancelarPedido = function cancelarPedido(id, token, cb) {
   return function (dispatch) {
     axios__WEBPACK_IMPORTED_MODULE_1___default.a["delete"]("".concat(_config__WEBPACK_IMPORTED_MODULE_2__["url"], "/api/pedidos/").concat(id, "?loja=").concat(_config__WEBPACK_IMPORTED_MODULE_2__["loja"]), Object(_helpers__WEBPACK_IMPORTED_MODULE_4__["getHeaders"])(token)).then(function (response) {
       dispatch({

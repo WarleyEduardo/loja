@@ -14,17 +14,49 @@ import Rodape from '../../../containers/Rodape';
 
 
 
- class Pedido extends Component {
+/*Módulo 51 -  detalhes do Pedido - realizando a integração 1/2 */
+
+import { connect } from 'react-redux';
+
+import actions from '../../../redux/actions';
+
+import initialize from '../../../utils/initialize';
+import callBaseData from '../../../utils/callBaseData';
+
+class Pedido extends Component {
+	 
+	static async getInitialProps(ctx) {
+
+		initialize(ctx);
+		return {
+
+			... await callBaseData([], ctx),
+			query: ctx.query
+		}
+	}
+
+	async componentDidMount() {
+		
+		await this.props.getUser({token: this.props.token})
+	}
+
 	render() {
+
+		const { query } = this.props; 
 		return (
-			<Layout title="Pedido | LOJA IT -  Melhores produtos em informática">
+			<Layout title='Pedido | LOJA IT -  Melhores produtos em informática'>
 				<Cabecalho />
-				<PedidoContainer />
+				<PedidoContainer query={query} />
 				<Rodape />
 			</Layout>
 		);
 	}
 }
 
+const mapStateToprops = state => ({
+	
 
-export default Pedido;
+	token : state.auth.token
+})
+
+export default connect(mapStateToprops,actions)(Pedido);

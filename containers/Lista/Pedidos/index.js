@@ -52,12 +52,22 @@ class ListaPedidos extends Component {
 		if (!token) return null;
 		if (!cliente) return null;
 
-		if (token && cliente) fetchPedidos({ offset: atual, limit, token });
+			if (dtInicial === '' && dtFinal === '') {
+				fetchPedidos({ offset: atual, limit, token });
+			}
 
+
+		
 		if (dtInicial === '' || dtFinal === '' || dtInicial.length < 10 || dtFinal.length < 10) {
 			return null;
 		}
+
 		
+		
+		if (dtInicial === '' && dtFinal === '' ) {
+			fetchPedidos({ offset: atual, limit, token });
+		}
+
 		this.setState({ atual: 0}, () => {
 			fetchPedidosData({ offset: atual, limit, token, dtInicial, dtFinal });
 		});

@@ -38,17 +38,15 @@ export const fetchPedidosData =
 
 
 
-export const fetchPedido =
-	({ id, token }) =>
-	(dispatch) => {
-		axios
-			.get(`${url}/api/pedidos/${id}?loja=${loja}`, getHeaders(token))
+export const fetchPedido = ( id, token ) => (dispatch) => {
+	    console.log('meu id', id);
+		axios.get(`${url}/api/pedidos/${id}?loja=${loja}`, getHeaders(token))
 			.then((response) => dispatch({ type: FETCH_PEDIDO, payload: response.data }))
 			.catch((e) => console.log(e));
 	};
 
 
-export const cancelarPedido = ({ id, token , cb}) =>(dispatch) => {
+export const cancelarPedido = ( id, token , cb) =>(dispatch) => {
 		axios
 			.delete(`${url}/api/pedidos/${id}?loja=${loja}`, getHeaders(token))
 			.then((response) => {
