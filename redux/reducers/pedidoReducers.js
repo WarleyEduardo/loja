@@ -24,7 +24,7 @@ export default (state = initialState, action) => {
 		case CLEAN_PEDIDO:
 			return {
 				...state,
-				pedidos: null,
+				pedido: null,
 				pedidoRegistro : null,
 			};
 		
@@ -33,7 +33,7 @@ export default (state = initialState, action) => {
 			return {
 
 				...state,
-				pedido: state.pedido ? { ...state, cancelado: true } : null
+				pedido: state.pedido ? { ...state.pedido, cancelado: true } : null
 			}
 		
 		default:

@@ -1799,12 +1799,12 @@ var initialState = {
       });
     case _types__WEBPACK_IMPORTED_MODULE_1__["CLEAN_PEDIDO"]:
       return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
-        pedidos: null,
+        pedido: null,
         pedidoRegistro: null
       });
     case _types__WEBPACK_IMPORTED_MODULE_1__["CANCELAR_PEDIDO"]:
       return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
-        pedido: state.pedido ? Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
+        pedido: state.pedido ? Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state.pedido, {
           cancelado: true
         }) : null
       });
