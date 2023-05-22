@@ -6,16 +6,33 @@ import React, { Component } from 'react';
 import ListaStatus from '../../../components/Listas/Status';
 
 
-const REGISTROS = [
-	{ data: '10/07/2019', situacao: 'Objeto em separação' },
-	{ data: '11/07/2019', situacao: 'Objeto entregue na transportadora' },
-	{ data: '13/07/2019', situacao: 'Objeto em transito' },
-	{ data: '15/07/2019', situacao: 'Objeto em entregue' },
-];
+/* Detalhes do Pedido - realizando a integração 2/2 */
+
+import { connect } from 'react-redux';
+import moment from 'moment';
+
 
 class DetalhesDaEntrega extends Component {
 
 	render() {
+
+		
+		const { registros } = this.props;
+		if (!registros) return null;
+
+		
+
+			const _regs = registros.filter((reg) => reg.tipo === "entrega");
+
+		
+			const regs = _regs.map((reg) => ({
+			
+				data: moment(reg.createdAt).format('DD/MM/YYYY'),
+				situacao: reg.situacao
+			}));
+          
+		
+
 		
 		return (
 			<div className="flex-1">
@@ -23,7 +40,7 @@ class DetalhesDaEntrega extends Component {
 
 					<h4>Sobre a Entrega</h4>
 					<br />
-					<ListaStatus registros={REGISTROS}/>
+					<ListaStatus registros={regs || []}/>
 				</div>
 
 			</div>
@@ -33,4 +50,10 @@ class DetalhesDaEntrega extends Component {
 
 }
 
-export default DetalhesDaEntrega;
+const mapStateToProps = state => ({
+
+	registros: state.pedido.pedidoRegistros 
+
+})
+
+export default connect(mapStateToProps)(DetalhesDaEntrega);

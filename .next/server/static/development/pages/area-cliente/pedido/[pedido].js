@@ -1968,6 +1968,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Texto_Dados__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../components/Texto/Dados */ "./components/Texto/Dados.js");
 /* harmony import */ var _components_Tabela_Simples_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../components/Tabela/Simples.js */ "./components/Tabela/Simples.js");
 /* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../utils */ "./utils/index.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! moment */ "moment");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_11__);
 
 
 
@@ -1985,6 +1989,12 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_b
 
 
 
+
+/* Detalhes do Pedido - realizando a integração 2/2 */
+
+
+
+
 var DadosDoPedido = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__["default"])(DadosDoPedido, _Component);
   var _super = _createSuper(DadosDoPedido);
@@ -1995,12 +2005,15 @@ var DadosDoPedido = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(DadosDoPedido, [{
     key: "renderDadosDoCliente",
     value: function renderDadosDoCliente() {
+      var pedido = this.props.pedido;
+      if (!pedido) return null;
+      var cliente = pedido.cliente;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "flex-3",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 14,
+          lineNumber: 29,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h4", {
@@ -2008,50 +2021,50 @@ var DadosDoPedido = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 15,
+          lineNumber: 30,
           columnNumber: 5
         }
       }, "DADOS DO CLIENTE"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 16,
+          lineNumber: 31,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Texto_Dados__WEBPACK_IMPORTED_MODULE_7__["default"], {
         chave: "Nome",
-        valor: "Joao Gabriel",
+        valor: cliente.nome,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 17,
+          lineNumber: 32,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Texto_Dados__WEBPACK_IMPORTED_MODULE_7__["default"], {
         chave: "CPF",
-        valor: "111.222.333-45",
+        valor: cliente.cpf,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 18,
+          lineNumber: 33,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Texto_Dados__WEBPACK_IMPORTED_MODULE_7__["default"], {
         chave: "Telefone",
-        valor: "(11) 1234-5678",
+        valor: cliente.telefones[0],
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 19,
+          lineNumber: 34,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Texto_Dados__WEBPACK_IMPORTED_MODULE_7__["default"], {
         chave: "Data de Nascimento",
-        valor: "11/01/1991",
+        valor: moment__WEBPACK_IMPORTED_MODULE_11___default()(cliente.dataDeNascimento).format('DD/MM/YYYY'),
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20,
+          lineNumber: 35,
           columnNumber: 5
         }
       }));
@@ -2059,23 +2072,24 @@ var DadosDoPedido = /*#__PURE__*/function (_Component) {
   }, {
     key: "renderDadosDoCarrinho",
     value: function renderDadosDoCarrinho() {
-      var carrinho = [{
-        Produto: 'Mouse Gamer 1 - p ',
-        'Preço Und': Object(_utils__WEBPACK_IMPORTED_MODULE_9__["formatMoney"])(55),
-        Quantidade: 1,
-        'Preço Total': Object(_utils__WEBPACK_IMPORTED_MODULE_9__["formatMoney"])(55)
-      }, {
-        Produto: 'Mouse Gamer 2 - M ',
-        'Preço Und': Object(_utils__WEBPACK_IMPORTED_MODULE_9__["formatMoney"])(105),
-        Quantidade: 2,
-        'Preço Total': Object(_utils__WEBPACK_IMPORTED_MODULE_9__["formatMoney"])(210)
-      }];
+      var pedido = this.props.pedido;
+      if (!pedido) return null;
+      var carrinho = pedido.carrinho;
+      var dados = [];
+      carrinho.forEach(function (item) {
+        dados.push({
+          Produto: item.produto.titulo + ' - ' + item.variacao.nome,
+          'Preço Und': Object(_utils__WEBPACK_IMPORTED_MODULE_9__["formatMoney"])(item.precoUnitario),
+          Quantidade: item.quantidade,
+          'Preço Total': Object(_utils__WEBPACK_IMPORTED_MODULE_9__["formatMoney"])(item.precoUnitario * item.quantidade)
+        });
+      });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "flex-5",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 42,
+          lineNumber: 61,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h4", {
@@ -2083,23 +2097,23 @@ var DadosDoPedido = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 43,
+          lineNumber: 62,
           columnNumber: 5
         }
       }, "CARRINHO"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 44,
+          lineNumber: 63,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Tabela_Simples_js__WEBPACK_IMPORTED_MODULE_8__["default"], {
         cabecalho: ['Produto', 'Preço Und', 'Quantidade', 'Preço Total'],
-        dados: carrinho,
+        dados: dados,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 45,
+          lineNumber: 64,
           columnNumber: 5
         }
       }));
@@ -2111,12 +2125,15 @@ var DadosDoPedido = /*#__PURE__*/function (_Component) {
   }, {
     key: "renderDadosDeEntrega",
     value: function renderDadosDeEntrega() {
+      var pedido = this.props.pedido;
+      if (!pedido) return null;
+      var entrega = pedido.entrega;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "flex-3",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 56,
+          lineNumber: 81,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h4", {
@@ -2124,77 +2141,93 @@ var DadosDoPedido = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 57,
+          lineNumber: 82,
           columnNumber: 5
         }
       }, "DADOS DE ENTREGA"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 58,
+          lineNumber: 83,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Texto_Dados__WEBPACK_IMPORTED_MODULE_7__["default"], {
         chave: "Endereco",
-        valor: "Rua teste",
+        valor: entrega.endereco.local,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 59,
+          lineNumber: 84,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Texto_Dados__WEBPACK_IMPORTED_MODULE_7__["default"], {
         chave: "N\xFAmero",
-        valor: "123",
+        valor: entrega.endereco.numero,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 60,
+          lineNumber: 85,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Texto_Dados__WEBPACK_IMPORTED_MODULE_7__["default"], {
         chave: "Bairro",
-        valor: "Centro",
+        valor: entrega.endereco.bairro,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 61,
+          lineNumber: 86,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Texto_Dados__WEBPACK_IMPORTED_MODULE_7__["default"], {
         chave: "Complemento",
-        valor: "casa",
+        valor: entrega.endereco.complemento || '',
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 62,
+          lineNumber: 87,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Texto_Dados__WEBPACK_IMPORTED_MODULE_7__["default"], {
         chave: "Cidade",
-        valor: "Uberaba",
+        valor: entrega.endereco.cidade,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 63,
+          lineNumber: 88,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Texto_Dados__WEBPACK_IMPORTED_MODULE_7__["default"], {
         chave: "Estado",
-        valor: "MG",
+        valor: entrega.endereco.estado,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 64,
+          lineNumber: 89,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Texto_Dados__WEBPACK_IMPORTED_MODULE_7__["default"], {
         chave: "CEP",
-        valor: "12345-789",
+        valor: entrega.endereco.CEP,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 65,
+          lineNumber: 90,
+          columnNumber: 5
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", {
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 91,
+          columnNumber: 5
+        }
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Texto_Dados__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        chave: "C\xF3digo de rastreamento",
+        valor: entrega.codigoRastreamento || "---",
+        __self: this,
+        __source: {
+          fileName: _jsxFileName,
+          lineNumber: 92,
           columnNumber: 5
         }
       }));
@@ -2202,12 +2235,17 @@ var DadosDoPedido = /*#__PURE__*/function (_Component) {
   }, {
     key: "renderDadosDePagamento",
     value: function renderDadosDePagamento() {
+      var pedido = this.props.pedido;
+      if (!pedido) return null;
+      var entrega = pedido.entrega,
+        pagamento = pedido.pagamento;
+      console.log('entrega', entrega);
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "flex-5",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 72,
+          lineNumber: 107,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h4", {
@@ -2215,50 +2253,50 @@ var DadosDoPedido = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 73,
+          lineNumber: 108,
           columnNumber: 5
         }
       }, "DADOS DE PAGAMENTO"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 74,
+          lineNumber: 109,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Texto_Dados__WEBPACK_IMPORTED_MODULE_7__["default"], {
         chave: "Taxa de Entrega",
-        valor: Object(_utils__WEBPACK_IMPORTED_MODULE_9__["formatMoney"])(20),
+        valor: " ".concat(Object(_utils__WEBPACK_IMPORTED_MODULE_9__["formatMoney"])(entrega.custo), " \n\t\t\t\t (").concat(_utils__WEBPACK_IMPORTED_MODULE_9__["codigosCorreios"][entrega.tipo], " - ").concat(entrega.prazo, ")\t"),
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 75,
+          lineNumber: 110,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Texto_Dados__WEBPACK_IMPORTED_MODULE_7__["default"], {
         chave: "Valor do Pedido",
-        valor: Object(_utils__WEBPACK_IMPORTED_MODULE_9__["formatMoney"])(265),
+        valor: Object(_utils__WEBPACK_IMPORTED_MODULE_9__["formatMoney"])(pagamento.valor - entrega.custo),
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 76,
+          lineNumber: 112,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Texto_Dados__WEBPACK_IMPORTED_MODULE_7__["default"], {
         chave: "Valor Total",
-        valor: Object(_utils__WEBPACK_IMPORTED_MODULE_9__["formatMoney"])(285),
+        valor: Object(_utils__WEBPACK_IMPORTED_MODULE_9__["formatMoney"])(pagamento.valor),
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 77,
+          lineNumber: 113,
           columnNumber: 5
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Texto_Dados__WEBPACK_IMPORTED_MODULE_7__["default"], {
         chave: "Forma de pagamento",
-        valor: "cartao de cr\xE9dito - 2x",
+        valor: "".concat(pagamento.forma === "boleto" ? "Boleto " : " Cartão de crédito", " -\n\t\t\t\t\t ").concat(pagamento.parcelas, "x"),
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 78,
+          lineNumber: 114,
           columnNumber: 5
         }
       }));
@@ -2271,7 +2309,7 @@ var DadosDoPedido = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 85,
+          lineNumber: 123,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -2279,7 +2317,7 @@ var DadosDoPedido = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 86,
+          lineNumber: 124,
           columnNumber: 5
         }
       }, this.renderDadosDoCliente(), this.renderDadosDoCarrinho()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -2287,7 +2325,7 @@ var DadosDoPedido = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 90,
+          lineNumber: 128,
           columnNumber: 5
         }
       }, this.renderDadosDeEntrega(), this.renderDadosDePagamento()));
@@ -2295,7 +2333,12 @@ var DadosDoPedido = /*#__PURE__*/function (_Component) {
   }]);
   return DadosDoPedido;
 }(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
-/* harmony default export */ __webpack_exports__["default"] = (DadosDoPedido);
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    pedido: state.pedido.pedido
+  };
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_10__["connect"])(mapStateToProps)(DadosDoPedido));
 
 /***/ }),
 
@@ -2318,6 +2361,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _components_Listas_Status__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../components/Listas/Status */ "./components/Listas/Status.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! moment */ "moment");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_9__);
 
 
 
@@ -2332,19 +2379,11 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_b
 */
 
 
-var REGISTROS = [{
-  data: '10/07/2019',
-  situacao: 'Objeto em separação'
-}, {
-  data: '11/07/2019',
-  situacao: 'Objeto entregue na transportadora'
-}, {
-  data: '13/07/2019',
-  situacao: 'Objeto em transito'
-}, {
-  data: '15/07/2019',
-  situacao: 'Objeto em entregue'
-}];
+
+/* Detalhes do Pedido - realizando a integração 2/2 */
+
+
+
 var DetalhesDaEntrega = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__["default"])(DetalhesDaEntrega, _Component);
   var _super = _createSuper(DetalhesDaEntrega);
@@ -2355,12 +2394,23 @@ var DetalhesDaEntrega = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(DetalhesDaEntrega, [{
     key: "render",
     value: function render() {
+      var registros = this.props.registros;
+      if (!registros) return null;
+      var _regs = registros.filter(function (reg) {
+        return reg.tipo === "entrega";
+      });
+      var regs = _regs.map(function (reg) {
+        return {
+          data: moment__WEBPACK_IMPORTED_MODULE_9___default()(reg.createdAt).format('DD/MM/YYYY'),
+          situacao: reg.situacao
+        };
+      });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "flex-1",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21,
+          lineNumber: 38,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -2368,29 +2418,29 @@ var DetalhesDaEntrega = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22,
+          lineNumber: 39,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h4", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 24,
+          lineNumber: 41,
           columnNumber: 6
         }
       }, "Sobre a Entrega"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 25,
+          lineNumber: 42,
           columnNumber: 6
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Listas_Status__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        registros: REGISTROS,
+        registros: regs || [],
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 26,
+          lineNumber: 43,
           columnNumber: 6
         }
       })));
@@ -2398,7 +2448,12 @@ var DetalhesDaEntrega = /*#__PURE__*/function (_Component) {
   }]);
   return DetalhesDaEntrega;
 }(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
-/* harmony default export */ __webpack_exports__["default"] = (DetalhesDaEntrega);
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    registros: state.pedido.pedidoRegistros
+  };
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_8__["connect"])(mapStateToProps)(DetalhesDaEntrega));
 
 /***/ }),
 
@@ -2421,6 +2476,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _components_Listas_Status__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../components/Listas/Status */ "./components/Listas/Status.js");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-redux */ "react-redux");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_redux__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! moment */ "moment");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_9__);
 
 
 
@@ -2435,16 +2494,11 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !_b
 */
 
 
-var REGISTROS = [{
-  data: '08/07/2019',
-  situacao: 'Pagamento em Processamento'
-}, {
-  data: '08/07/2019',
-  situacao: 'Pagamento Aprovado'
-}, {
-  data: '09/07/2019',
-  situacao: 'Pagamento Recebido'
-}];
+
+/* Detalhes do Pedido - realizando a integração 2/2 */
+
+
+
 var DetalhesDoPagamento = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_3__["default"])(DetalhesDoPagamento, _Component);
   var _super = _createSuper(DetalhesDoPagamento);
@@ -2455,12 +2509,23 @@ var DetalhesDoPagamento = /*#__PURE__*/function (_Component) {
   Object(_babel_runtime_corejs2_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_2__["default"])(DetalhesDoPagamento, [{
     key: "render",
     value: function render() {
+      var registros = this.props.registros;
+      if (!registros) return null;
+      var _regs = registros.filter(function (reg) {
+        return reg.tipo === 'pagamento';
+      });
+      var regs = _regs.map(function (reg) {
+        return {
+          data: moment__WEBPACK_IMPORTED_MODULE_9___default()(reg.createdAt).format('DD/MM/YYYY'),
+          situacao: reg.situacao
+        };
+      });
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
         className: "flex-1",
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 18,
+          lineNumber: 31,
           columnNumber: 4
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("div", {
@@ -2468,29 +2533,29 @@ var DetalhesDoPagamento = /*#__PURE__*/function (_Component) {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 19,
+          lineNumber: 32,
           columnNumber: 5
         }
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("h4", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 20,
+          lineNumber: 33,
           columnNumber: 6
         }
       }, "Sobre o Pagamento"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement("br", {
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 21,
+          lineNumber: 34,
           columnNumber: 6
         }
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_6___default.a.createElement(_components_Listas_Status__WEBPACK_IMPORTED_MODULE_7__["default"], {
-        registros: REGISTROS,
+        registros: regs,
         __self: this,
         __source: {
           fileName: _jsxFileName,
-          lineNumber: 22,
+          lineNumber: 35,
           columnNumber: 6
         }
       })));
@@ -2498,7 +2563,12 @@ var DetalhesDoPagamento = /*#__PURE__*/function (_Component) {
   }]);
   return DetalhesDoPagamento;
 }(react__WEBPACK_IMPORTED_MODULE_6__["Component"]);
-/* harmony default export */ __webpack_exports__["default"] = (DetalhesDoPagamento);
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    registros: state.pedido.pedidoRegistros
+  };
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_8__["connect"])(mapStateToProps)(DetalhesDoPagamento));
 
 /***/ }),
 
@@ -5960,6 +6030,17 @@ module.exports = require("core-js/library/fn/symbol/iterator");
 /***/ (function(module, exports) {
 
 module.exports = require("js-cookie");
+
+/***/ }),
+
+/***/ "moment":
+/*!*************************!*\
+  !*** external "moment" ***!
+  \*************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = require("moment");
 
 /***/ }),
 

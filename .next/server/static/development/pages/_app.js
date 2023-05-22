@@ -1795,12 +1795,12 @@ var initialState = {
     case _types__WEBPACK_IMPORTED_MODULE_1__["FETCH_PEDIDO"]:
       return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
         pedido: action.payload.pedido,
-        pedidoRegistro: action.payload.registro
+        pedidoRegistros: action.payload.registros
       });
     case _types__WEBPACK_IMPORTED_MODULE_1__["CLEAN_PEDIDO"]:
       return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {
         pedido: null,
-        pedidoRegistro: null
+        pedidoRegistros: null
       });
     case _types__WEBPACK_IMPORTED_MODULE_1__["CANCELAR_PEDIDO"]:
       return Object(_babel_runtime_corejs2_helpers_esm_objectSpread__WEBPACK_IMPORTED_MODULE_0__["default"])({}, state, {

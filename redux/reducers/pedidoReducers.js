@@ -18,14 +18,14 @@ export default (state = initialState, action) => {
 			return {
 				...state,
 				pedido: action.payload.pedido,
-				pedidoRegistro: action.payload.registro
+				pedidoRegistros: action.payload.registros
 			};
 
 		case CLEAN_PEDIDO:
 			return {
 				...state,
 				pedido: null,
-				pedidoRegistro : null,
+				pedidoRegistros : null,
 			};
 		
 		case CANCELAR_PEDIDO: 
