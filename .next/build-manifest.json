@@ -12,11 +12,11 @@
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/area-cliente": [
+    "/area-cliente/alterar-senha": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/area-cliente/pedido/[pedido]": [
+    "/area-cliente/dados": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]

@@ -74,7 +74,7 @@ class CadastroContainer extends Component {
 		this.setState({ erros, aviso: null });
 		
 
-		return (Object.keys(erros) === 0);
+		return (Object.keys(erros).length === 0);
 
 
 	}

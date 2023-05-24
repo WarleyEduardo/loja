@@ -60,7 +60,10 @@ export const autenticar = ({ email, password } , goTo = fase , cb) => (dispatch)
 				setCookie('token', response.data.usuario.token);
 		
 				if (goTo) Router.push(goTo) 
-	
+
+
+				console.log('data',response.data)
+	              fetchCliente;
 
 				dispatch({ type: AUTENTICAR, payload: response.data });
                 dispatch(fetchCliente(response.data.usuario._id,response.data.usuario.token))  
